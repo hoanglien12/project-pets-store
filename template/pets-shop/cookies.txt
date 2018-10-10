@@ -1,0 +1,9 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+7uptheme.com	TRUE	/wordpress/haustiere/	FALSE	1999999999	wordpress_test_cookie	WP+Cookie+check
+7uptheme.com	TRUE	/wordpress/haustiere/	FALSE	1999999999	yith_woocompare_list	%5B713%2C722%2C723%2C720%2C721%2C719%2C710%2C718%2C715%2C711%2C714%2C708%2C716%2C717%2C709%2C712%2C724%2C677%2C705%2C706%5D
+7uptheme.com	TRUE	/wordpress/haustiere/	FALSE	1999999999	woocommerce_items_in_cart	1
+7uptheme.com	TRUE	/wordpress/haustiere/	FALSE	1999999999	woocommerce_cart_hash	311990ce1a49b53e615e1fe600e4dd9b
+7uptheme.com	TRUE	/wordpress/haustiere/	FALSE	1999999999	wp_woocommerce_session_4c263cfac636558d34a472d984aad663	5750bcdc8b700571b35e56116c2f63f6%7C%7C1534345464%7C%7C1534341864%7C%7C6cecab5d0e20ef5406f6ba0279dde5c1
+7uptheme.com	TRUE	/	FALSE	1999999999	PHPSESSID	el3jtni6crm87k5ngk70ulnp90
+
