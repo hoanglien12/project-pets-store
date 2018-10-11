@@ -16,13 +16,13 @@
     <link href="asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="asset/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="asset/themes/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="asset/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="asset/morrisjs/morris.css" rel="stylesheet">
+    <link href="asset/themes/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="asset/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -51,7 +51,6 @@
         <div id="page-wrapper">
 
             @yield('content')
-
         </div>
         @include('admin.footer')
     </div>
