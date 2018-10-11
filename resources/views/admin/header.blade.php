@@ -220,9 +220,6 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-                @include('cms.side_bar')
-                <!-- /.sidebar-collapse -->
-            </div>
+            
             <!-- /.navbar-static-side -->
         </nav>
