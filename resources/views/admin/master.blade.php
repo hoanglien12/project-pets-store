@@ -13,19 +13,19 @@
     <link rel="icon" href="asset/uploads/2018/01/logo-1.png" >
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="asset/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="asset/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="asset/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="asset/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     {{-- Custom datepicker--}}
     <link rel="stylesheet" href="asset/css/datepicker.css">
@@ -44,8 +44,14 @@
 
     <div id="wrapper">
         @include('admin.header')
+        <div class="navbar-default sidebar" role="navigation">
+            @include('admin.side_bar')
+            <!-- /.sidebar-collapse -->
+        </div>
         <div id="page-wrapper">
+
             @yield('content')
+
         </div>
         @include('admin.footer')
     </div>
