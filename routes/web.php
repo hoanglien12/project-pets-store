@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('client.master');
+    return view('client.home');
 });
