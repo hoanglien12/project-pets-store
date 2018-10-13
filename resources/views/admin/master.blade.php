@@ -10,25 +10,25 @@
     <meta name="author" content="">
     <base href="{{asset('')}}public/" >
     <title>@yield('title')</title>
-    <link rel="icon" href="asset/uploads/2018/01/logo-1.png" >
+    <link rel="icon" href="{{ asset('asset/uploads/2018/01/logo-1.png') }}" >
 
     <!-- Bootstrap Core CSS -->
-    <link href="asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('asset/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="asset/themes/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="{{ asset('asset/themes/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="asset/css/sb-admin-2.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="asset/themes/morrisjs/morris.css" rel="stylesheet">
+    <link href="{{ asset('asset/themes/morrisjs/morris.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="asset/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('asset/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     {{-- Custom datepicker--}}
-    <link rel="stylesheet" href="asset/css/datepicker.css">
+    <link rel="stylesheet" href="{{ asset('asset/css/datepicker.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,25 +57,25 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="{{ asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="vendor/raphael/raphael.min.js"></script>
-    <script src="vendor/morrisjs/morris.min.js"></script>
-    <script src="data/morris-data.js"></script>
+    <script src="{{ asset('vendor/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('vendor/morrisjs/morris.min.js') }}"></script>
+    <script src="{{ asset('data/morris-data.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/custom-js.js"></script>
+    <script src="{{ asset('js/custom-js.js') }}"></script>
 
     <!-- Custom datepicker-->
-    <script src="js/datepicker.js"></script>
-    <script src="js/custom-js.js"></script>
+    <script src="{{ asset('js/datepicker.js') }}"></script>
+    <script src="{{ asset('js/custom-js.js') }}"></script>
     
 
 </body>
