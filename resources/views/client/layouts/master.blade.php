@@ -36,7 +36,7 @@
 </head>
 <body>
 	<div class="wap">
-		@include('client.header')
+		@include('client.layouts.header')
 		<div id="main-content" class="visual-template">
 			<div class="container">
                 <div class="row">
@@ -50,6 +50,6 @@
 				</div>
 			</div>
 		</div>
-		@include('client.footer')
+		@include('client.layouts.footer')
 	</div>
 </body>

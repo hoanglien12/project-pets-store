@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('admin.home');
+    return view('client.layouts.home');
 });
 
 Route::group(['prefix' => 'admin'], function(){
 	Route::group(['prefix' => 'product-catgory'], function(){
-		Route::get('/', '')
+		Route::get('/', 'Admin\ProductCategoryController@index')->name('show');
 	});
 });

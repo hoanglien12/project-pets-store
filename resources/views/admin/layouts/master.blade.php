@@ -43,16 +43,16 @@
 <body>
 
     <div id="wrapper">
-        @include('admin.header')
+        @include('admin.layouts.header')
         <div class="navbar-default sidebar" role="navigation">
-            @include('admin.side_bar')
+            @include('admin.layouts.side_bar')
             <!-- /.sidebar-collapse -->
         </div>
         <div id="page-wrapper">
 
             @yield('content')
         </div>
-        @include('admin.footer')
+        @include('admin.layouts.footer')
     </div>
     <!-- /#wrapper -->
 
