@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('client.home');
+    return view('admin.home');
+});
+
+Route::group(['prefix' => 'admin'], function(){
+
 });
