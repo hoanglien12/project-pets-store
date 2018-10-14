@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ProductCategory;
 
 class ProductCategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $productCategory = ProductCategory::all();
+
+        return view('admin.layouts.home');
     }
 
     /**

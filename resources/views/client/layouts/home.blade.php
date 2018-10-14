@@ -1,4 +1,4 @@
-@extends('client.master')
+@extends('client.layouts.master')
 @section('title','Pets Store')
 @section('content')
 	<!-- slider  -->
