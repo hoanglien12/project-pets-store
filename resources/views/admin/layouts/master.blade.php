@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="{{asset('')}}public/" >
+    <!-- <base href="{{asset('')}}public/" > -->
     <title>@yield('title')</title>
     <link rel="icon" href="{{ asset('asset/uploads/2018/01/logo-1.png') }}" >
 
