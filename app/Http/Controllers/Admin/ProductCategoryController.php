@@ -15,9 +15,9 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $productCategory = ProductCategory::all();
+        $productCategory = ProductCategory::paginate(1);
 
-        return view('admin.layouts.home');
+        return view('admin.product-category.show', ['cate' => $productCategory]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product-category.add');
     }
 
     /**
@@ -38,7 +38,12 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cate = new ProductCategory();
+        $cate->name = $request->name;
+        $cate->description = $request->description;
+        $cate->save();
+
+        return redirect()->route('product_category.show');
     }
 
     /**
@@ -47,9 +52,9 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function admin()
     {
-        //
+        return view('admin.layouts.home');
     }
 
     /**
@@ -60,7 +65,9 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cate = ProductCategory::find($id);
+
+        return view('admin.product-category.edit', ['cate' => $cate]);
     }
 
     /**
@@ -72,7 +79,12 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cate = ProductCategory::find($id);
+        $cate->name = $request->name;
+        $cate->description = $request->description;
+        $cate->save();
+
+        return redirect()->route('product_category.show');
     }
 
     /**
@@ -83,6 +95,8 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ProductCategory::destroy($id);
+
+        return redirect()->route('product_category.show');
     }
 }

@@ -12,11 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('client.layouts.home');
+    return view('admin.layouts.home');
 });
 
 Route::group(['prefix' => 'admin'], function(){
-	Route::group(['prefix' => 'product-catgory'], function(){
-		Route::get('/', 'Admin\ProductCategoryController@index')->name('show');
+	Route::get('', 'Admin\ProductCategoryController@admin')->name('indexAdmin');
+	Route::group(['prefix' => 'product-category'], function(){
+		Route::get('/', 'Admin\ProductCategoryController@index')->name('product_category.show');
+		Route::get('add', 'Admin\ProductCategoryController@create')->name('product_category.add');
+		Route::post('add', 'Admin\ProductCategoryController@store')->name('product_category.store');
+		Route::get('edit/{id}', 'Admin\ProductCategoryController@edit')->name('product_category.edit');
+		Route::post('edit/{id}', 'Admin\ProductCategoryController@update')->name('product_category.update');
+		Route::get('delete/{id}', 'Admin\ProductCategoryController@destroy')->name('product_category.delete');
 	});
 });
+ 
