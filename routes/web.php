@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('admin.layouts.home');
 });
-
+Route::get('/not-allow','Controller@not_allow')->name('not-allow');
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('', 'Admin\ProductCategoryController@admin')->name('indexAdmin');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DogCategory;
+use App\Http\Requests\AdminDogCategoryRequest;
 
 class DogCategoryController extends Controller
 {
@@ -20,6 +21,7 @@ class DogCategoryController extends Controller
         $begin_date     = $request->input('begin_date');
         $end_date       = $request->input('end_date');
         $origin			= $request->input('origin');
+
         $count_category = count($this->dogCategory->getAllDogCategories($name, $begin_date, $end_date)->get());
         $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->paginate(4);
         return view('admin.dog-category.index',compact('dogCategories','name','date','end_date','count_category'));
@@ -30,7 +32,7 @@ class DogCategoryController extends Controller
         return view('admin.dog-category.create');
     }
 
-    public function store(Request $request){
+    public function store(AdminDogCategoryRequest $request){
     	// dd($request->origin);
         $store    		  = DogCategory::create([
             'name'        => $request->name,
