@@ -13,6 +13,9 @@
             <a href="{{ route('product_category.show') }}"><i class="fa fa-dashboard fa-fw"></i> Product Category</a>
         </li>
         <li>
+            <a href="{{ route('product.show') }}"><i class="fa fa-dashboard fa-fw"></i> Product</a>
+        </li>
+        <li>
             <a href="{{ route('dog_category.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dog Category</a>
         </li>
         <li>

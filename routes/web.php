@@ -27,6 +27,15 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('delete/{id}', 'Admin\ProductCategoryController@destroy')->name('product_category.delete');
 	});
 
+	Route::group(['prefix' => 'product'], function(){
+		Route::get('/', 'Admin\ProductController@index')->name('product.show');
+		Route::get('add', 'Admin\ProductController@create')->name('product.add');
+		Route::post('add', 'Admin\ProductController@store')->name('product.store');
+		Route::get('edit/{id}', 'Admin\ProductController@edit')->name('product.edit');
+		Route::post('edit/{id}', 'Admin\ProductController@update')->name('product.update');
+		Route::get('delete/{id}', 'Admin\ProductController@destroy')->name('product.delete');
+	});
+
 	Route::group(['prefix' => 'dog-category',], function (){
 
 	    Route::get('', 'Admin\DogCategoryController@index')->name('dog_category.index');
