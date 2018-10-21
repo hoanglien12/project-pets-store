@@ -15,9 +15,10 @@
                     <!-- Filter Category Name -->
                     <div class="col-md-3">
                         <select name="category_id" class="form-control">
-                            <option value="">{{ old('dog_category->name') }}</option>
+                            <option value="">Giống chó</option>
                             @foreach($dog_category as $cat)
-                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                            <option value="{{ $cat->id }}"
+                                {{ (isset($category_id) && ($cat->id == $category_id)) ? "selected" : '' }}>{{ $cat->name }}</option>
                             @endforeach
                         </select>
                         <div class="help-block">Dog Category's Name</div>
@@ -72,6 +73,8 @@
                         </thead>
                         <tbody>
                             @if($count_dogs > 0)
+                            <input type="text" hidden value="{{$i=1}}">
+
                             @foreach($dogs as $dog)
                             <!-- BEGIN MODAL CONFIRM DELETE ITEM -->
                             <div class="modal fade" id="delete{{$dog->id}}" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" data-target="#delete{{$dog->id}}">
@@ -110,7 +113,7 @@
                                         <div class="modal-body" style="word-wrap: break-word;">
                                             <p>Height   : {{ $dog->height }}</p>
                                             <p>Weight   : {{ $dog->weight }}</p>
-                                            <p>Birthday : {{ $dog->birthday }}</p>
+                                            <p>Birthday : {{ date('Y-m-d',strtotime($dog->birthday)) }}</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -122,9 +125,11 @@
                             </div>
                             <!-- END MODAL -->
                             <tr>
-                                <td>{{ $dog->id }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $dog->name }}</td>
-                                <td>{{ $dog->photos }}</td>
+                                <td>
+                                    <img src="{{ asset('upload/dogs') .'/'. $dog->photos }}" alt="" width="120px" height="100px">
+                                </td>
                                 <td>{{ $dog->dogcategory->name }}</td>
                                 <td>
                                     <a class="btn-xs" data-toggle="modal" href="#info{{ $dog->id }}" title="Delete"><button class="btn-info btn blue btn-outline" >Chi tiết</button></a>
@@ -159,3 +164,8 @@
         </div>
     </div>
 @endsection
+<style>
+    th , td{
+        text-align: center;
+    }
+</style>

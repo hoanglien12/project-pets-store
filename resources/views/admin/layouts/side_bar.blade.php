@@ -13,7 +13,7 @@
             <a href="{{ route('product_category.show') }}"><i class="fa fa-dashboard fa-fw"></i> Product Category</a>
         </li>
         <li>
-            <a href="{{ route('product.show') }}"><i class="fa fa-dashboard fa-fw"></i> Product</a>
+            <a href="{{ route('product.show') }}"><i class="fa fa-dashboard fa-fw"></i> Products</a>
         </li>
         <li>
             <a href="{{ route('dog_category.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dog Category</a>
@@ -22,9 +22,6 @@
             <a href="{{ route('dog.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dogs</a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Products</a>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Feedback</a>
+            <a href="{{ route('order.index') }}"><i class="fa fa-dashboard fa-fw"></i> Orders</a>
         </li>
     </ul>

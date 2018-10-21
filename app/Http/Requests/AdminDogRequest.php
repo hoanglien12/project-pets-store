@@ -30,7 +30,7 @@ class AdminDogRequest extends FormRequest
         return [
             'name'          =>  'required|unique:dogs|max:255',
             'price'         =>  'required',
-            'category_id'   =>  'required'
+            'category_id'   =>  'required',
         ];
     }
 
