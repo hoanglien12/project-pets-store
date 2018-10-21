@@ -3,16 +3,16 @@
 @section('content')
 	<form role="form" method="POST">
         {{csrf_field()}}
-        {{-- @include('admin.errors.error') --}}
+        @include('admin.layouts.errors')
         <div class="form-group">
             <label>Name</label>
-            <input name="name" class="form-control" placeholder="Enter name">
+            <input name="name" class="form-control" placeholder="Enter name" value="{{ old('name') }}">
         </div>
         <div class="form-group">
             <label>Description</label>
-            <input name="description" class="form-control" placeholder="Enter description">
+            <input name="description" class="form-control" placeholder="Enter description" value="{{ old('description') }}">
         </div>
-        <button type="submit" name="btnAdd" class="btn btn-default">Add</button>
-        <button type="reset" class="btn btn-default">Reset</button>
+        <button type="submit" name="btnAdd" class="btn btn-success">Add</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
     </form>
 @endsection

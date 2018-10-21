@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminAddProductRequest;
+use App\Http\Requests\AdminEditProductRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
@@ -39,7 +41,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminAddProductRequest $request)
     {
         $product = new Product;
         $product->name = $request->name;
@@ -50,7 +52,7 @@ class ProductController extends Controller
         $i = 1;
         foreach ($files as $file){
             $filename = $i . time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('/product_images'), $filename);
+            $file->move(public_path('/upload/product'), $filename);
             $filename_arr[] = $filename;
             $i++;
         }
@@ -58,7 +60,7 @@ class ProductController extends Controller
         $product->id_product_cate = $request->product_cate;
         $product->save();
         
-        return redirect()->route('product.show');
+        return redirect()->route('product.show')->with('success', 'Add '. $request->name . ' successful!');
     }
 
     /**
@@ -93,7 +95,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminEditProductRequest $request, $id)
     {
         $product = Product::find($id);
         $product->name = $request->name;
@@ -104,8 +106,8 @@ class ProductController extends Controller
             $filename_arr = [];
             $i =1;
             foreach ($files as $file){
-                $filename = $i.time().'.'.$file->getClientOriginalExtension();
-                $file->move(public_path('/product_images'), $filename);
+                $filename = $i . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('/upload/product'), $filename);
                 $filename_arr[] = $filename;
                 $i++;
             }
@@ -114,7 +116,7 @@ class ProductController extends Controller
         $product->id_product_cate = $request->product_cate;
         $product->save();
         
-        return redirect()->route('product.show');
+        return redirect()->route('product.show')->with('success', 'Edit ' . $request->name . ' successful!');
     }
 
     /**
@@ -127,6 +129,6 @@ class ProductController extends Controller
     {
         Product::destroy($id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Delete product successful!');
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 	<form role="form" method="POST" action="{{ route('product.add') }}" enctype="multipart/form-data">
         {{csrf_field()}}
-        {{-- @include('admin.errors.error') --}}
+        @include('admin.layouts.errors')
         <div class="form-group">
             <label>Name</label>
             <input name="name" class="form-control" placeholder="Enter name">
@@ -18,6 +18,7 @@
         </div>
         <div class="form-group">
             <label>Photos</label>
+            <i style="color: blue; padding-left: 20px;">Keep Ctrl to select multiphotos!</i>
             <input type="file" name="photos[]" class="form-control" multiple>
         </div>
         <div class="form-group">
