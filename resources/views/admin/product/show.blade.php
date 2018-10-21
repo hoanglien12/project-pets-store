@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Product')
 @section('content')
+    @include('admin.layouts.success')
     <div class="portlet-body" style="border: 1px solid #ddd;
     border-radius: 4px; padding:10px; margin-bottom:10px;">
         <div class="table-toolbar">
@@ -59,7 +60,7 @@
                                             $photos = $pro->getImage($pro->id);
                                         @endphp
                                         @foreach ($photos as $photo)
-                                            <img src="{{ asset('product_images/' . $photo) }}" alt="" style="max-width: 150px;max-height: 100px;">
+                                            <img src="{{ asset('upload/product/' . $photo) }}" alt="" style="max-width: 150px;max-height: 100px;">
                                         @endforeach
                                     </td>
                                     <td>{{ $pro->productcategory->name }}</td>

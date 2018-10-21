@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AdminAddProductCategoryRequest;
+use App\Http\Requests\AdminEditProductCategoryRequest;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
 
@@ -15,7 +17,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $productCategory = ProductCategory::paginate(1);
+        $productCategory = ProductCategory::paginate(10);
 
         return view('admin.product-category.show', ['cate' => $productCategory]);
     }
@@ -36,14 +38,14 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminAddProductCategoryRequest $request)
     {
         $cate = new ProductCategory();
         $cate->name = $request->name;
         $cate->description = $request->description;
         $cate->save();
 
-        return redirect()->route('product_category.show');
+        return redirect()->route('product_category.show')->with('success', 'Add ' . $request->name . ' successful!');
     }
 
     /**
@@ -77,14 +79,14 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminEditProductCategoryRequest $request, $id)
     {
         $cate = ProductCategory::find($id);
         $cate->name = $request->name;
         $cate->description = $request->description;
         $cate->save();
 
-        return redirect()->route('product_category.show');
+        return redirect()->route('product_category.show')->with('success', 'Edit '. $request->name . ' successful!');
     }
 
     /**
@@ -97,6 +99,6 @@ class ProductCategoryController extends Controller
     {
         ProductCategory::destroy($id);
 
-        return redirect()->route('product_category.show');
+        return redirect()->route('product_category.show')->with('success', 'Delete successful!');
     }
 }

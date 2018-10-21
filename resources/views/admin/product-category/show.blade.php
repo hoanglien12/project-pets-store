@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Product Category')
 @section('content')
+    @include('admin.layouts.success')
 	<div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
