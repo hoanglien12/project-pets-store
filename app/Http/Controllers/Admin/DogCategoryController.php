@@ -23,7 +23,7 @@ class DogCategoryController extends Controller
         $origin			= $request->input('origin');
 
         $count_category = count($this->dogCategory->getAllDogCategories($name, $begin_date, $end_date)->get());
-        $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->paginate(4);
+        $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->paginate(10);
         return view('admin.dog-category.index',compact('dogCategories','name','date','end_date','count_category'));
     }
 
@@ -77,6 +77,7 @@ class DogCategoryController extends Controller
         $delete = DogCategory::findOrFail($id);
         $delete->delete();
         if (!$delete) {
+            dd(1);
             $request->session()->flash('alert-warning', 'Delete fail');
         }
         else

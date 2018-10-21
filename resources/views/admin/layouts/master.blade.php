@@ -36,7 +36,16 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('js/DataTables/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.js') }}"/>
 
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );
+    </script>
 
 </head>
 
@@ -80,7 +89,9 @@
     <!-- Custom datepicker-->
     <script src="{{ asset('js/datepicker.js') }}"></script>
     <script src="{{ asset('js/custom-js.js') }}"></script>
-    
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
 

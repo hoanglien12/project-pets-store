@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\DogCategory;
+use Illuminate\Support\Facades\DB;
 
 class Dog extends Model
 {
@@ -22,15 +23,30 @@ class Dog extends Model
     {
         $dogs = Dog::query();
         if($name != null){
-            $dogs = Dog::where('name','like','%$name%');
+            $dogs = $dogs->where('name','like',"%$name%");
         }
         if($category_id != null){
-            $dogs = Dog::where('id_dog_cate',$category_id);
-            // dd($dogs);
+            $dogs = $dogs->where('id_dog_cate',$category_id);
         }
         if($price != null){
-            $dogs = Dog::where('price',$price);
+            $dogs = $dogs->where('price',$price);
+        }
+        
+        if($begin_date != null){
+            $dogs = $dogs->whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+        }
+        if($begin_date != null && $end_date != null){
+            $dogs = $dogs->whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));
         }
     	return $dogs;
+    }
+
+    public function getImage($id)
+    {
+        $dog = Dog::find($id);
+        $images = $dog->photos;
+        $imgs = json_decode($images);
+        
+        return $imgs;
     }
 }

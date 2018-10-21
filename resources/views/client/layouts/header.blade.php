@@ -41,9 +41,9 @@
 					<div class="wpb_wrapper">
 						<div class="logo logo-text">
 							<div class="text-logo">
-								<a href="http://7uptheme.com/wordpress/haustiere">
+								<a href="">
 									<ul class="list-inline-block">
-										<li><img class="alignnone size-full wp-image-870" src="asset/uploads/2018/01/logo-2.png" alt="" width="51" height="46" /></li>
+										<li><img class="alignnone size-full wp-image-870" src="{{ asset('asset/uploads/2018/01/logo-2.png') }}" alt="" width="51" height="46" /></li>
 										<li>
 											<h1 class="title30 dosis-font text-uppercase font-bold white">Haustiere</h1>
 											<h2 class="title24 gab-font white opaci">we sell real friends</h2>
@@ -60,26 +60,30 @@
 					<div class="wpb_wrapper">
 						<nav class="main-nav  main-nav1 ">
 							<ul id="menu-main-menu" class="list-none">
-								<li id="nav-menu-item-826" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children"><a href="../index.html" class="menu-link main-menu-link">Home</a></li>
-								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#" class="menu-link main-menu-link">Featured</a>
+								<li id="nav-menu-item-826" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children"><a href="{{ route('home.index') }}" class="menu-link main-menu-link">Home</a></li>
+								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="" class="menu-link main-menu-link">Dogs</a>
 								<ul class="sub-menu menu-odd  menu-depth-1">
-									<li id="nav-menu-item-1083" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../accordion-element/index.html" class="menu-link sub-menu-link">Accordion  element</a></li>
+									@foreach($dogCategories as $cate)
+										<li id="nav-menu-item-1083" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
+											<a href="{{ route('home.dog') }}" class="menu-link sub-menu-link">{{ $cate->name }}</a>
+										</li>
+									@endforeach
 								</ul>
 							</li>
-							<li id="nav-menu-item-829" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="../shop/index.html" class="menu-link main-menu-link">Shop</a>
+							<li id="nav-menu-item-829" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="../shop/index.html" class="menu-link main-menu-link">Products</a>
 							<ul class="sub-menu menu-odd  menu-depth-1">
-								<li id="nav-menu-item-1179" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../shop-list/index.html" class="menu-link sub-menu-link">Shop List</a></li>
-								<li id="nav-menu-item-1174" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="../shop-grid/index.html" class="menu-link sub-menu-link">Shop Grid</a>
-								<ul class="sub-menu menu-even sub-sub-menu menu-depth-2">
-									<li id="nav-menu-item-1180" class="sub-menu-item sub-sub-menu-item menu-item-even menu-item-depth-2 menu-item menu-item-type-post_type menu-item-object-page"><a href="../shop-grid-2-col/index.html" class="menu-link sub-menu-link">Shop Grid 2 Col</a></li>
-								</ul>
+								@foreach($productCategories as $cate)
+								<li id="nav-menu-item-1179" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="" class="menu-link sub-menu-link">{{ $cate->name }}</a>
+								</li>
+								@endforeach
 							</li>
 						</ul>
 					</li>
-					<li id="nav-menu-item-827" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="../blog/index.html" class="menu-link main-menu-link">Blog</a>
-					<ul class="sub-menu menu-odd  menu-depth-1">
+					<li id="nav-menu-item-827" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('home.blog') }}" class="menu-link main-menu-link">Blog</a>
+					<!-- <ul class="sub-menu menu-odd  menu-depth-1">
 						<li id="nav-menu-item-1122" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../blog-list/index.html" class="menu-link sub-menu-link">Blog List</a></li>
-					</ul>
+					</ul> -->
 				</li>
 				<li id="nav-menu-item-837" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="../about/index.html" class="menu-link main-menu-link">About</a></li>
 				<li id="nav-menu-item-836" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="../contact/index.html" class="menu-link main-menu-link">Contact</a></li>

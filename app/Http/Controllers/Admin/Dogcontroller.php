@@ -27,10 +27,10 @@ class Dogcontroller extends Controller
         $count_dogs 	= count($this->dog->getAllDogs($name, $category_id,$price, $begin_date, $end_date)->get());
         // dd($count_dogs);
 		$dogs 			= $this->dog->getAllDogs($name, $category_id, $price, $begin_date, $end_date)->paginate(10);
-		// dd($dogs);
+		// dd($category_id);
 		$dog_category   = $this->dog_category->getAllDogCategories()->get();
 		// dd($dog_category);
-		return view('admin.dog.index', compact('dogs','dog_category','count_dogs'));
+		return view('admin.dog.index', compact('dogs','dog_category','count_dogs','category_id'));
 	}
 
 	public function add()
@@ -42,14 +42,25 @@ class Dogcontroller extends Controller
 	public function store(AdminDogRequest $request)
 	{
 		$request->flash();
-		// dd($request->category_id);
 		$birthday = null;
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
 		}
+		$filename = null;
+		//kiem tra ton tai file hay k
+       	if($request->hasFile('photos')){
+       		
+       		$file 	  = $request->file('photos');
+       		$filename = $file->getClientOriginalName();
+            $file->move(public_path('/upload/dogs'), $filename);
+            // dd($filename);
+       	}
+       	else{
+       		echo 2; 
+       	}
 		$newDog = Dog::create([
                 'name'          => $request->get('name'),
-                'photos'		=> $request->get('photo'),
+                'photos'		=> $filename,
                 'description'   => $request->get('description'),
                 'id_dog_cate'   => $request->get('category_id'),
                 'price'         => $request->get('price'),
@@ -59,10 +70,10 @@ class Dogcontroller extends Controller
             ]);
 
 		if(!$newDog){
-			$request->session()->flash('alert-warning','Update fail');
+			$request->session()->flash('alert-warning','Insert fail');
 		}
 		else{
-			$request->session()->flash('alert-success','Update ' .$request->name. ' successfully');
+			$request->session()->flash('alert-success','Insert ' .$request->name. ' successfully');
 		}
         return redirect()->route('dog.index');
 	}
@@ -78,18 +89,26 @@ class Dogcontroller extends Controller
 		$request->flash();
 
 		$birthday = null;
-
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
 		}
 
+		$filename = null;
+		//kiem tra ton tai file hay k
+       	if($request->hasFile('photos')){
+       		$file 	  = $request->file('photos');
+       		$filename = $file->getClientOriginalName();
+            $file->move(public_path('/upload/dogs'), $filename);
+            // dd($filename);
+       	}
+       	// dd($birthday);
 		$update = Dog::query()->findOrFail($id);
 		$update->update([
 			'name'          => $request->name,
-			'photos'		=> $request->photo,
+			'photos'		=> $filename,
             'description'   => $request->description,
             'price'         => $request->price,
-            'birthday'      => $request->birthday,
+            'birthday'      => $birthday,
             'height'        => $request->height,
             'weight'        => $request->weight
 		]);

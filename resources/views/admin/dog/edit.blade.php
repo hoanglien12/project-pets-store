@@ -12,7 +12,7 @@
         </div>
     @endif
     
-    <form action="{{ route('dog.update',$dog->id) }}" method="POST">
+    <form action="{{ route('dog.update',$dog->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -28,8 +28,8 @@
             <input type="text" class="form-control" id="name" name="name" value="{{ $dog->name }}">
         </div>
         <div class="form-group">
-            <label for="email">Photo:</label>
-            <input type="file" class="form-control" id="photo" name="photo" value="{{ $dog->photos }}">
+            <label>Photos</label>
+            <input type="file" name="photos" class="form-control" multiple>
         </div>
         <div class="form-group">
             <label for="price">Price:</label>

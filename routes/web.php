@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::get('/', 'Client\HomeController@index');
+Route::get('admin', function () {
     return view('admin.layouts.home');
 });
 Route::get('/not-allow','Controller@not_allow')->name('not-allow');
@@ -53,8 +53,28 @@ Route::group(['prefix' => 'admin'], function(){
 	    Route::post('add', 'Admin\DogController@store')->name('dog.store');
 	    Route::get('/edit/{id}','Admin\DogController@edit')->name('dog.edit');
 	    Route::put('/edit/{id}','Admin\DogController@update')->name('dog.update');
-	    Route::delete('delete/{id}','Admin\DogCategoryController@delete')->name('dog.delete');
+	    Route::delete('delete/{id}','Admin\DogController@delete')->name('dog.delete');
+	});
+
+	Route::group(['prefix' => 'order',], function (){
+
+	    Route::get('', 'Admin\OrderController@index')->name('order.index');
 	});
 	
+});
+
+Route::group(['prefix' => '/'], function(){
+	Route::get('/', 'Client\HomeController@index')->name('home.index');
+
+	Route::group(['prefix' => 'dog'], function(){
+		Route::get('', 'Client\HomeController@dog')->name('home.dog');
+		Route::get('detail_dog','Client\HomeController@detail_dog')->name('home.detail_dog');
+	});
+
+	Route::group(['prefix' => 'blog'], function(){
+		Route::get('','Client\HomeController@blog')->name('home.blog');
+		Route::get('detail_blog','Client\HomeController@detail_blog')->name('home.detail_blog');
+	});
+
 });
  

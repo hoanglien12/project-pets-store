@@ -9,7 +9,7 @@
 								<div class="owl-wrapper" style="width: 2336px; left: 0px; display: block; transition: all 1000ms ease 0s; transform: translate3d(0px, 0px, 0px);">
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog1.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog1.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Bailey</h3>
 												<p class="desc">Husky &amp; Lab</p>
@@ -18,7 +18,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog2.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog2.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Biscuit</h3>
 												<p class="desc">Pomeranian</p>
@@ -27,7 +27,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog3.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog3.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Brandy</h3>
 												<p class="desc">Tzu Poodle</p>
@@ -36,7 +36,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog4.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog4.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Cannoly</h3>
 												<p class="desc">Mixed breed</p>
@@ -45,7 +45,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog5.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog5.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Corbin</h3>
 												<p class="desc">Chihuahuas</p>
@@ -54,7 +54,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog6.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog6.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Martini</h3>
 												<p class="desc">Havanese</p>
@@ -63,7 +63,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog7.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog7.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Mckenzie</h3>
 												<p class="desc">Royal Frenchel</p>
@@ -72,7 +72,7 @@
 									</div>
 									<div class="owl-item active" style="width: 146px;">
 										<div class="item-adv-footer  ">
-											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="asset/uploads/2018/01/dog8.png" class="attachment-full size-full" alt=""></a>
+											<a href="#" class="wobble-horizontal"><img width="150" height="185" src="{{ asset('asset/uploads/2018/01/dog8.png') }}" class="attachment-full size-full" alt=""></a>
 											<div class="info-adv-footer">
 												<h3 class="title18">Meela</h3>
 												<p class="desc">Labrado</p>

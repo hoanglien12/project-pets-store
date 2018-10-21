@@ -22,7 +22,7 @@ class DogCategory extends Model
     public function getAllDogCategories($name = null, $begin_date = null,$end_date = null)
     {
         $dogCategories = DogCategory::query();
-        if($name != null) {
+        if($name != null || $begin_date != null) {
             $dogCategories = DogCategory::where('name','like', "%$name%");
         }
         if($begin_date != null){
