@@ -1,7 +1,34 @@
 @extends('admin.layouts.master')
 @section('title','Product Category')
 @section('content')
-    @include('admin.layouts.success')
+    @include('admin.layouts.flash-msg')
+    <div class="portlet-body" style="border: 1px solid #ddd;
+    border-radius: 4px; padding:10px; margin-bottom:10px;">
+        <div class="table-toolbar">
+            <form action="" method="GET" class="form-horizontal form-bordered" id="filter_box">
+                <div class="row">
+                    <!-- Filter Name -->
+                    <div class="col-md-3">
+                        <input type="text" name="name" value="" placeholder="Name" class="form-control" value="{{ old('name') }}">
+                        <div class="help-block">Name</div>
+                    </div>
+                    <!-- Filter Date -->
+                    <div class="col-md-4">
+                        <div class="input-group input-large date-picker input-daterange">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Start" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> to </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
+                        </div>
+                        <div class="help-block">Created date</div>
+                    </div>
+                    <!-- Search Submit -->
+                    <div class="col-md-1">
+                        <input type="submit" name="search" class="btn btn-success" value="Filter" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 	<div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -34,6 +61,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <p>Total item:{{ $count_category }}</p>
                 </div>
                 <div class="pagination" style="padding-left: 300px;">
                     <p>{{ $cate->links() }}</p>

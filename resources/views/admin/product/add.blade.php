@@ -3,7 +3,7 @@
 @section('content')
 	<form role="form" method="POST" action="{{ route('product.add') }}" enctype="multipart/form-data">
         {{csrf_field()}}
-        @include('admin.layouts.errors')
+        @include('admin.layouts.flash-msg')
         <div class="form-group">
             <label>Name</label>
             <input name="name" class="form-control" placeholder="Enter name">
