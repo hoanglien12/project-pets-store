@@ -55,7 +55,7 @@ class DogCategoryController extends Controller
         return view('admin.dog-category.edit', compact('dogCategory'));
     }
 
-    public function update(Request $request,$id){
+    public function update(AdminDogCategoryRequest $request,$id){
         $request->flash();
         $update     = DogCategory::findOrFail($id);
         $update->update([

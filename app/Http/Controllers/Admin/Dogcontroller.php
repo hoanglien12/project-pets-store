@@ -8,7 +8,7 @@ use App\Models\Dog;
 use App\Models\DogCategory;
 use App\Http\Requests\AdminDogRequest;
 
-class Dogcontroller extends Controller
+class DogController extends Controller
 {
     protected $dog;
 	protected $dog_category;
