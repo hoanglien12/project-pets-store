@@ -43,10 +43,10 @@ class Dog extends Model
 
     public function getImage($id)
     {
-        $dog = Dog::find($id);
+        $dog    = Dog::find($id);
         $images = $dog->photos;
-        $imgs = json_decode($images);
-        
+        $imgs   = json_decode($images);
+        // var_dump($imgs); die;
         return $imgs;
     }
 }

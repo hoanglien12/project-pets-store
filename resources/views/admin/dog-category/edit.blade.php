@@ -3,15 +3,7 @@
 @section('content')
 
     <h2>Edit <span style="color: red;">{{ $dogCategory->name }}</span></h2>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('admin.layouts.flash-msg')
     
     <form action="{{ route('dog_category.update',$dogCategory->id) }}" method="POST">
         @csrf

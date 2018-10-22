@@ -3,15 +3,7 @@
 @section('content')
 
     <h2>Add Dog</h2>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('admin.layouts.flash-msg')
     <form action="{{ route('dog.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="form-group">
@@ -28,7 +20,7 @@
         </div>
         <div class="form-group">
             <label>Photos</label>
-            <input type="file" name="photos" class="form-control" multiple>
+            <input type="file" name="photos[]" class="form-control" multiple>
         </div>
         <div class="form-group">
             <label for="price">Price:</label>

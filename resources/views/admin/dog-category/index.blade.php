@@ -34,13 +34,7 @@
             </form>
         </div>
     </div>
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-       @if(Session::has('alert-' . $msg))
-      <div class="alert">
-          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      </div>
-        @endif
-    @endforeach
+    @include('admin.layouts.flash-msg')
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
