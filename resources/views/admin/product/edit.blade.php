@@ -3,7 +3,7 @@
 @section('content')
     <form role="form" method="POST" action="{{ route('product.edit', [$product->id]) }}" enctype="multipart/form-data">
         {{csrf_field()}}
-        @include('admin.layouts.errors')
+        @include('admin.layouts.flash-msg')
         <div class="form-group">
             <label>Name</label>
             <input name="name" class="form-control" value="{{ old('name') ? old('name') : $product->name }}">

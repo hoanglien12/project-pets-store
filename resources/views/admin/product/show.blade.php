@@ -1,29 +1,45 @@
 @extends('admin.layouts.master')
 @section('title','Product')
 @section('content')
-    @include('admin.layouts.success')
+    @include('admin.layouts.flash-msg')
     <div class="portlet-body" style="border: 1px solid #ddd;
     border-radius: 4px; padding:10px; margin-bottom:10px;">
         <div class="table-toolbar">
-            <form action="" method="GET" class="form-horizontal form-bordered" id="filter_box">
+            <form action="{{ route('product.show') }}" method="GET" class="form-horizontal form-bordered" id="filter_box">
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
-                        <input type="text" name="name" value="" placeholder="Tên" class="form-control">
-                        <div class="help-block">Tên</div>
+                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" class="form-control">
+                        <div class="help-block">Product's Name</div>
+                    </div>
+                    <!-- Filter Category Name -->
+                    <div class="col-md-3">
+                        <select name="category_id" class="form-control">
+                            <option value="">Product Category</option>
+                            @foreach($product_cate as $cate)
+                            <option value="{{ $cate->id }}"
+                                {{ (isset($category_id) && ($cate->id == $category_id)) ? "selected" : '' }}>{{ $cate->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="help-block">Product Category's Name</div>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="price" value="{{ old('price') }}" placeholder="Price" class="form-control">
+                        <div class="help-block">Price</div>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Bắt đầu" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
-                            <span class="input-group-addon"> đến </span>
-                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="Kết thúc" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Start" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> to </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
                         </div>
-                        <div class="help-block">Ngày tạo</div>
+                        <div class="help-block">Created date</div>
                     </div>
+                    
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn btn-success" value="Tìm kiếm" />
+                        <input type="submit" name="search" class="btn btn-success" value="Filter" />
                     </div>
                 </div>
             </form>
@@ -74,6 +90,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <p>Total items: {{ $count_products }}</p>
                 </div>
                 <div class="pagination" style="padding-left: 300px;">
                     <p>{{ $product->links() }}</p>
