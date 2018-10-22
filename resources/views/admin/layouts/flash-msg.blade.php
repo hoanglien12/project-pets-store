@@ -17,6 +17,12 @@
 	</div>
 @endif
 
+@if (session('fail'))
+    <div class="alert alert-danger">
+          <p>{{ session('fail') }}</p>
+    </div>
+@endif
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>

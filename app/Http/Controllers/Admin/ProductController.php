@@ -16,11 +16,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $product = Product::paginate(10);
+    public function __construct(){
+        $this->pro         = new Product();
+        $this->product_cate = new ProductCategory();
+    }
+    public function index(Request $request){
+        $name = $request->input('name');
+        $category_id = $request->input('category_id');
+        $price = $request->input('price');
+        $begin_date = $request->input('begin_date');
+        $end_date = $request->input('end_date');
+        $count_products = count($this->pro->getAllProducts($name, $category_id,$price, $begin_date, $end_date)->get());
+        $product = $this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->paginate(10);
+        $product_cate = $this->product_cate->getAllProductCategories()->get();
 
-        return view('admin.product.show', ['product' => $product]);
+        return view('admin.product.show', compact('product','product_cate','count_products','category_id', 'begin_date', 'end_date'));
     }
 
     /**

@@ -7,19 +7,27 @@ use App\Http\Requests\AdminAddProductCategoryRequest;
 use App\Http\Requests\AdminEditProductCategoryRequest;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
+use App\Models\Product;
 
 class ProductCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->productCategory = new ProductCategory();
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productCategory = ProductCategory::paginate(10);
-
-        return view('admin.product-category.show', ['cate' => $productCategory]);
+        $name = $request->input('name');
+        $begin_date = $request->input('begin_date');
+        $end_date = $request->input('end_date');
+        $count_category = count($this->productCategory->getAllProductCategories($name, $begin_date, $end_date)->get());
+        $cate = $this->productCategory->getAllProductCategories($name,$begin_date,$end_date)->paginate(10);
+        return view('admin.product-category.show',compact('cate','name','begin_date','end_date','count_category'));
     }
 
     /**
@@ -97,8 +105,17 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        ProductCategory::destroy($id);
+        $product = Product::where('id_product_cate', $id)->get();
+        $numProduct = count($product);
+        if($numProduct > 0)
+        {
+            return redirect()->back()->with('fail', 'You can not delete this product category because it has product!');
+        }
+        else{
+            $cate = ProductCategory::findOrFail($id);
+            $cate->delete();
 
-        return redirect()->route('product_category.show')->with('success', 'Delete successful!');
+            return redirect()->back()->with('success', 'Delete ' . $cate->name . ' successful!');
+        }
     }
 }
