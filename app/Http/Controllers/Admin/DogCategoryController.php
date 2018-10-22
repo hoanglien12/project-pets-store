@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DogCategory;
 use App\Http\Requests\AdminDogCategoryRequest;
+use App\Http\Requests\AdminEditDogCategoryRequest;
 
 class DogCategoryController extends Controller
 {
@@ -41,11 +42,11 @@ class DogCategoryController extends Controller
         ]);
         // dd($store);
         if (!$store) {
-            $request->session()->flash('alert-warning','Insert ' .$request->name. ' fail');
+            $request->session()->flash('warning','Insert ' .$request->name. ' fail');
         }
         else
         {
-            $request->session()->flash('alert-success','Insert ' .$request->name. ' successfully');
+            $request->session()->flash('success','Insert ' .$request->name. ' successfully');
         }
         return redirect()->route('dog_category.index');
     }
@@ -55,19 +56,19 @@ class DogCategoryController extends Controller
         return view('admin.dog-category.edit', compact('dogCategory'));
     }
 
-    public function update(AdminDogCategoryRequest $request,$id){
+    public function update(AdminEditDogCategoryRequest $request,$id){
         $request->flash();
-        $update     = DogCategory::findOrFail($id);
+        $update      = DogCategory::findOrFail($id);
         $update->update([
             'name'        => $request->name,
             'description' => $request->description,
             'origin'	  => $request->origin
         ]);
         if(!$update){
-            $request->session()->flash('alert-warning','Update fail');
+            $request->session()->flash('warning','Update fail');
         }
         else{
-            $request->session()->flash('alert-success','Update ' .$request->name. ' successfully');
+            $request->session()->flash('success','Update ' .$request->name. ' successfully');
         }
         return redirect()->route('dog_category.index');
     }
@@ -78,11 +79,11 @@ class DogCategoryController extends Controller
         $delete->delete();
         if (!$delete) {
             dd(1);
-            $request->session()->flash('alert-warning', 'Delete fail');
+            $request->session()->flash('warning', 'Delete fail');
         }
         else
         {
-            $request->session()->flash('alert-success', 'Delete ' .$delete->name. ' successfully!');
+            $request->session()->flash('success', 'Delete ' .$delete->name. ' successfully!');
         }
 
         return redirect()->route('dog_category.index');

@@ -45,13 +45,7 @@
             </form>
         </div>
     </div>
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-       @if(Session::has('alert-' . $msg))
-      <div class="alert">
-          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      </div>
-        @endif
-    @endforeach
+    @include('admin.layouts.flash-msg')
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -128,7 +122,14 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $dog->name }}</td>
                                 <td>
-                                    <img src="{{ asset('upload/dogs') .'/'. $dog->photos }}" alt="" width="120px" height="100px">
+                                    @php
+                                        $photos = $dog->getImage($dog->id);
+                                    @endphp
+                                    @if($photos != null)
+                                    @foreach ($photos as $photo)
+                                        <img src="{{ asset('upload/dogs/' . $photo) }}" alt="" style="max-width: 150px;max-height: 100px;">
+                                    @endforeach
+                                    @endif
                                 </td>
                                 <td>{{ $dog->dogcategory->name }}</td>
                                 <td>

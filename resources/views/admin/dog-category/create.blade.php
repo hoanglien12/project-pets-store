@@ -1,15 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Add Dog Categories')
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('admin.layouts.flash-msg')
     <form action="{{ route('dog_category.store') }}" method="POST">
         @csrf
         <div class="form-group">

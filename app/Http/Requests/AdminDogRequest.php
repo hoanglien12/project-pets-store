@@ -29,8 +29,9 @@ class AdminDogRequest extends FormRequest
     {
         return [
             'name'          =>  'required|unique:dogs|max:255',
-            'price'         =>  'required',
+            'price'         =>  'required|numeric',
             'category_id'   =>  'required',
+            'photos'        =>  'required',
         ];
     }
 
@@ -40,6 +41,7 @@ class AdminDogRequest extends FormRequest
             'name.required'         => 'You must type name',
             'category_id.required'  => 'The name has already exsit',
             'price.required'        => 'You must type description',
+            'photos'                => 'You must choose photos'
         ];
     }
 }
