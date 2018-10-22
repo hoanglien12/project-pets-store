@@ -11,16 +11,30 @@ use App\Models\ProductCategory;
 
 class ProductController extends Controller
 {
+    protected $pro;
+    protected $product_category;
+    public function __construct(){
+        $this->pro          = new Product();
+        $this->product_category = new ProductCategory();
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::paginate(10);
+        $name           = $request->input('name');
+        $category_id    = $request->input('category_id');
+        $price          = $request->input('price');
+        $begin_date     = $request->input('begin_date');
+        $end_date       = $request->input('end_date');
 
-        return view('admin.product.show', ['product' => $product]);
+        $count_products     = count($this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->get());
+        $product           = $this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->paginate(10);
+        $product_cate   = $this->product_category->getAllProductCategories()->get();
+
+        return view('admin.product.show', compact('product','product_cate','count_products','category_id'));
     }
 
     /**
@@ -127,8 +141,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
+        $pro = Product::findOrFail($id);
+        $pro->delete();
 
-        return redirect()->back()->with('success', 'Delete product successful!');
+        return redirect()->back()->with('success', 'Delete ' . $pro->name . ' successful!');
     }
 }

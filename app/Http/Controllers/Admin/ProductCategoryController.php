@@ -10,16 +10,26 @@ use App\Models\ProductCategory;
 
 class ProductCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->productCategory = new ProductCategory();
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productCategory = ProductCategory::paginate(10);
+        $name           = $request->input('name');
+        $begin_date     = $request->input('begin_date');
+        $end_date       = $request->input('end_date');
 
-        return view('admin.product-category.show', ['cate' => $productCategory]);
+        $count_category = count($this->productCategory->getAllProductCategories($name, $begin_date, $end_date)->get());
+        $cate  = $this->productCategory->getAllProductCategories($name,$begin_date,$end_date)->paginate(10);
+        
+        return view('admin.product-category.show',compact('cate','name','date','end_date','count_category'));
     }
 
     /**
@@ -86,7 +96,7 @@ class ProductCategoryController extends Controller
         $cate->description = $request->description;
         $cate->save();
 
-        return redirect()->route('product_category.show')->with('success', 'Edit '. $request->name . ' successful!');
+        return redirect()->route('product_category.show')->with('success', 'Edit ' . $request->name . ' successful!');
     }
 
     /**
@@ -97,8 +107,9 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        ProductCategory::destroy($id);
+        $pro_cate = ProductCategory::findOrFail($id);
+        $pro_cate->delete();
 
-        return redirect()->route('product_category.show')->with('success', 'Delete successful!');
+        return redirect()->route('product_category.show')->with('success', 'Delete '. $pro_cate->name . ' successful!');
     }
 }
