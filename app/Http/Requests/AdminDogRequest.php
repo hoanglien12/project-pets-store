@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
+use Illuminate\Http\Request;
 
 class AdminDogRequest extends FormRequest
 {
@@ -25,13 +26,15 @@ class AdminDogRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'name'          =>  'required|unique:dogs|max:255',
             'price'         =>  'required|numeric',
             'category_id'   =>  'required',
-            'photos'        =>  'required',
+            'photos.*'      =>  'required|mimes:jpeg,bmp,png,jpg|size:2048',
+            'height'        =>  'numeric',
+            'weight'        =>  'numeric',
         ];
     }
 
@@ -41,7 +44,7 @@ class AdminDogRequest extends FormRequest
             'name.required'         => 'You must type name',
             'category_id.required'  => 'The name has already exsit',
             'price.required'        => 'You must type description',
-            'photos'                => 'You must choose photos'
+            'photos.required'       => 'You must choose photos'
         ];
     }
 }

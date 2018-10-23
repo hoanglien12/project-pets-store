@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label>Photos</label>
-            <input type="file" name="photos" class="form-control" multiple>
+            <input type="file" name="photos[]" class="form-control" multiple>
         </div>
         <div class="form-group">
             <label for="price">Price:</label>

@@ -56,7 +56,6 @@
                         <tr>
                             <th>STT</th>
                             <th>Name</th>
-                            <th>Photo</th>
                             <th>Dog Category</th>
                             <th>Information</th>
                             <th>Price</th>
@@ -107,7 +106,18 @@
                                         <div class="modal-body" style="word-wrap: break-word;">
                                             <p>Height   : {{ $dog->height }}</p>
                                             <p>Weight   : {{ $dog->weight }}</p>
-                                            <p>Birthday : {{ date('Y-m-d',strtotime($dog->birthday)) }}</p>
+                                            <p>Birthday : {{ isset($dog->birthday) ? date('Y-m-d',strtotime($dog->birthday)) : null }}</p>
+                                            <p>List photos: </p>
+                                            @php
+                                                $photos = $dog->getImage($dog->id);
+                                            @endphp
+                                            @if($photos != null)
+                                            @foreach ($photos as $photo)
+                                                <img src="{{ asset('upload/dogs/' . $photo) }}" alt="" style="width: 150px;height: 100px;">
+                                            @endforeach
+                                            @else
+                                                <p>no photo</p>
+                                            @endif
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
@@ -121,16 +131,6 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $dog->name }}</td>
-                                <td>
-                                    @php
-                                        $photos = $dog->getImage($dog->id);
-                                    @endphp
-                                    @if($photos != null)
-                                    @foreach ($photos as $photo)
-                                        <img src="{{ asset('upload/dogs/' . $photo) }}" alt="" style="max-width: 150px;max-height: 100px;">
-                                    @endforeach
-                                    @endif
-                                </td>
                                 <td>{{ $dog->dogcategory->name }}</td>
                                 <td>
                                     <a class="btn-xs" data-toggle="modal" href="#info{{ $dog->id }}" title="Delete"><button class="btn-info btn blue btn-outline" >Chi tiết</button></a>
