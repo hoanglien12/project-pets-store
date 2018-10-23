@@ -41,15 +41,17 @@ class DogController extends Controller
 
 	public function store(AdminDogRequest $request)
 	{
+		// dd(1);
 		$request->flash();
 		$birthday 	  = null;
+
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
 		}
+
 		$filename_arr 	= [];
 		$i 			= 1;
 		//kiem tra ton tai file hay k
-
        	if($request->hasFile('photos')){
        		$files 	  = $request->file('photos');
        		foreach ($files as $file) {
@@ -84,7 +86,7 @@ class DogController extends Controller
 	}
 	public function edit($id)
 	{
-		$dog = Dog::findOrFail($id);
+		$dog 		  = Dog::findOrFail($id);
 		$dog_category = $this->dog_category->getAllDogCategories()->get();
 		return view('admin.dog.edit',compact('dog','dog_category'));
 	} 
@@ -98,19 +100,28 @@ class DogController extends Controller
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
 		}
 
-		$filename 	  = null;
+		$filename_arr = [];
+		$i 			  = 1;
 		//kiem tra ton tai file hay k
+
        	if($request->hasFile('photos')){
-       		$file 	  = $request->file('photos');
-       		$filename = $file->getClientOriginalName();
-            $file->move(public_path('/upload/dogs'), $filename);
-            // dd($filename);
+       		$files 	  = $request->file('photos');
+       		foreach ($files as $file) {
+       			$filename = $i . $file->getClientOriginalName();
+            	$file->move(public_path('/upload/dogs'), $filename);
+            	$filename_arr[] = $filename;
+            	$i++;
+			}
+       		// dd($filename_arr);
        	}
-       	// dd($birthday);
+       	else{
+       		echo 2; 
+       	}
+
 		$update       = Dog::query()->findOrFail($id);
 		$update->update([
 			'name'          => $request->name,
-			'photos'		=> $filename,
+			'photos'		=> json_encode($filename_arr),
             'description'   => $request->description,
             'price'         => $request->price,
             'birthday'      => $birthday,

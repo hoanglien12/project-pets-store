@@ -31,10 +31,10 @@
             <label for="pwd">Infomation:</label>
             <div class="input-group input-large date-picker input-daterange">
                 <div class="col-md-3">
-                    <input type="text" class="form-control" id="height" name="height" placeholder="height">
+                    <input type="text" class="form-control" id="height" name="height" placeholder="height:centimet">
                 </div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" id="weight" name="weight" placeholder="weight">
+                    <input type="text" class="form-control" id="weight" name="weight" placeholder="weight:kilogram">
                 </div>
                 <div class="col-md-3">
                     <div class="input-group input-large date-picker input-daterange">
