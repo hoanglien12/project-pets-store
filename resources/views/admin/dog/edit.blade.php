@@ -21,7 +21,18 @@
         </div>
         <div class="form-group">
             <label>Photos</label>
-            <input type="file" name="photos[]" class="form-control" multiple>
+            <input type="file" name="photos[]" class="form-control" multiple >
+            @php
+                $photos = $dog->getImage($dog->id);
+            @endphp
+            @if($photos != null)
+            @foreach ($photos as $photo)
+                <img src="{{ asset('upload/dogs/' . $photo) }}" alt="" style="width: 150px;height: 100px;">
+            @endforeach
+            @else
+                <p>no photo</p>
+            @endif
+            
         </div>
         <div class="form-group">
             <label for="price">Price:</label>

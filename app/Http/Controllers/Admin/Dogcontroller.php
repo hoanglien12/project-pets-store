@@ -41,7 +41,6 @@ class DogController extends Controller
 
 	public function store(AdminDogRequest $request)
 	{
-		// dd(1);
 		$request->flash();
 		$birthday 	  = null;
 
@@ -60,7 +59,6 @@ class DogController extends Controller
             	$filename_arr[] = $filename;
             	$i++;
 			}
-       		// dd($filename_arr);
        	}
        	else{
        		echo 2; 

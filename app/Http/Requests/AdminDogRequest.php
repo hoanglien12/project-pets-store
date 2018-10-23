@@ -26,13 +26,13 @@ class AdminDogRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(Request $request)
+    public function rules()
     {
         return [
             'name'          =>  'required|unique:dogs|max:255',
             'price'         =>  'required|numeric',
             'category_id'   =>  'required',
-            'photos.*'      =>  'required|mimes:jpeg,bmp,png,jpg|size:2048',
+            'photos.*'      =>  'required|image',
             'height'        =>  'numeric',
             'weight'        =>  'numeric',
         ];
