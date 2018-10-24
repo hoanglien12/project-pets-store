@@ -10,12 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Client\HomeController@index');
-Route::get('admin', function () {
-    return view('admin.layouts.home');
-});
 Route::get('/not-allow','Controller@not_allow')->name('not-allow');
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function(){
 	Route::get('', 'Admin\ProductCategoryController@admin')->name('indexAdmin');
 
 	Route::group(['prefix' => 'product-category'], function(){
@@ -77,4 +73,12 @@ Route::group(['prefix' => '/'], function(){
 	});
 
 });
+
+Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
+Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');
  
+Auth::routes();
+
+Route::group(['prefix' => '', 'middleware' => ['role']], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
