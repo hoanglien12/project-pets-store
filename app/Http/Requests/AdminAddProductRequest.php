@@ -24,7 +24,7 @@ class AdminAddProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|unique:products,name',
+            'name' => 'required',
             'price' => 'bail|required|numeric',
             'photos' => 'required'
         ];
