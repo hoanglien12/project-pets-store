@@ -75,9 +75,11 @@
                                         @php
                                             $photos = $pro->getImage($pro->id);
                                         @endphp
-                                        @foreach ($photos as $photo)
-                                            <img src="{{ asset('upload/product/' . $photo) }}" alt="" style="max-width: 150px;max-height: 100px;">
-                                        @endforeach
+                                        @if($photos)
+                                            @foreach ($photos as $photo)
+                                                <img src="{{ asset('upload/product/' . $photo) }}" alt="" style="max-width: 150px;max-height: 100px;">
+                                            @endforeach
+                                        @endif
                                     </td>
                                     <td>{{ $pro->productcategory->name }}</td>
                                     <td>{{ $pro->created_at }}</td>
