@@ -20,8 +20,7 @@
         </div>
         <div class="form-group">
             <label>Photos</label>
-            <input type="file" name="photos[]" class="form-control" multiple id="gallery-photo-add">
-            <div class="gallery"></div>
+            <input type="file" name="photos[]" class="form-control" multiple id="photos">
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
@@ -53,29 +52,63 @@
     </form>
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script>
-    $(function() {
-    // Multiple images preview in browser
-    var imagesPreview = function(input, placeToInsertImagePreview) {
+    $(document).ready(function() {
+        if (window.File && window.FileList && window.FileReader) {
+            $("#photos").on("change", function(e) {
+                var files = e.target.files,
+                filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) { 
+                    var f=files[i] 
+                    var fileReader=new FileReader(); 
+                    fileReader.onload=(function(e) { 
+                        var file=e.target; 
+                        $("<span class=\"pip\">" +
+                        "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\" />" +
+                        "<br /><span class=\"remove\">X</span>" +
+                        "</span>").insertAfter("#photos");
+                    // $(".remove").click(function(){
+                    // $(this).parent(".pip").remove();
+                    // });
+                        $(".remove").click(function(){
+                            $(this).parent(".pip").remove();
+                            $('#photos').val("");
+                        });
 
-        if (input.files) {
-            var filesAmount = input.files.length;
-
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-
-                reader.onload = function(event) {
-                    $($.parseHTML('<img width="140px" height="100px">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    });
+                    fileReader.readAsDataURL(f);
                 }
-
-                reader.readAsDataURL(input.files[i]);
-            }
+            });
+        } else {
+            alert("Your browser doesn't support to File API")
         }
-
-    };
-
-    $('#gallery-photo-add').on('change', function() {
-        imagesPreview(this, 'div.gallery');
     });
-});
 </script>
+<style>
+input[type="file"] {
+  display: block;
+}
+.imageThumb {
+  max-height: 100px;
+  max-width: 140px;
+  padding: 1px;
+  cursor: pointer;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+    display: block;
+    color: white;
+    text-align: right;
+    cursor: pointer;
+    margin-top: -80px;
+    margin-bottom: 50px;
+}
+.remove:hover {
+  background: white;
+  color: black;
+}
+</style>

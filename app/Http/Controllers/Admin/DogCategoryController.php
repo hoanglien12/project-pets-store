@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DogCategory;
+use App\Models\Dog;
 use App\Http\Requests\AdminDogCategoryRequest;
 use App\Http\Requests\AdminEditDogCategoryRequest;
 
@@ -75,17 +76,25 @@ class DogCategoryController extends Controller
 
     public function delete(Request $request,$id){
         $request->flash();
-        $delete = DogCategory::findOrFail($id);
-        $delete->delete();
-        if (!$delete) {
-            dd(1);
-            $request->session()->flash('warning', 'Delete fail');
-        }
-        else
-        {
-            $request->session()->flash('success', 'Delete ' .$delete->name. ' successfully!');
-        }
+        $dogs       = Dog::where('id_dog_cate', $id)->get();
+        $countDogs  = count($dogs);
+        // dd($countDogs);
 
+        if($countDogs > 0){
+            $request->session()->flash('warning', 'Delete fail because this category has dogs!');
+        }
+        else{
+            $delete = DogCategory::findOrFail($id);
+            $delete->delete();
+            if (!$delete) {
+                // dd(1);
+                $request->session()->flash('warning', 'Delete fail');
+            }
+            else
+            {
+                $request->session()->flash('success', 'Delete ' .$delete->name. ' successfully!');
+            }
+        }
         return redirect()->route('dog_category.index');
     }
 }
