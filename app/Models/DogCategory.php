@@ -11,7 +11,7 @@ class DogCategory extends Model
 	protected $table = 'dog_categories';
     protected $guarded = ['id'];
     protected $fillable = [
-        'name', 'description','origin','created_at', 'updated_at'
+        'name', 'description','created_at', 'updated_at'
     ];
     
     public function dog()

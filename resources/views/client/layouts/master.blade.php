@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="{{ asset('asset/bootstrap/css/hover.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/bootstrap/css/color.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/font-awesome/css/font-awesome.min.css') }}">
+
+
 
 <style>
 	.s7upf-slider.about-store-slider {

@@ -12,11 +12,6 @@
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Tên" class="form-control">
                         <div class="help-block">Tên</div>
                     </div>
-                    <!-- Filter Origin -->
-                    <div class="col-md-3">
-                        <input type="text" name="origin" value="" placeholder="Tên" class="form-control">
-                        <div class="help-block">Nguồn gốc</div>
-                    </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
@@ -46,7 +41,6 @@
                                 <th>STT</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Origin</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th colspan="2">Action</th>
@@ -85,7 +79,6 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $c->name }}</td>
                                     <td>{{ $c->description }}</td>
-                                    <td>{{ $c->origin }}</td>
                                     <td>{{ $c->created_at }}</td>
                                     <td>{{ $c->updated_at }}</td>
                                     <td>

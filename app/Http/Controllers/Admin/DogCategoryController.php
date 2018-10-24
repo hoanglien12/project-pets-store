@@ -22,7 +22,6 @@ class DogCategoryController extends Controller
         $name           = $request->input('name');
         $begin_date     = $request->input('begin_date');
         $end_date       = $request->input('end_date');
-        $origin			= $request->input('origin');
 
         $count_category = count($this->dogCategory->getAllDogCategories($name, $begin_date, $end_date)->get());
         $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->paginate(10);
@@ -38,8 +37,7 @@ class DogCategoryController extends Controller
     	// dd($request->origin);
         $store    		  = DogCategory::create([
             'name'        => $request->name,
-            'description' => $request->description,
-            'origin'	  => $request->origin
+            'description' => $request->description
         ]);
         // dd($store);
         if (!$store) {
@@ -62,8 +60,7 @@ class DogCategoryController extends Controller
         $update      = DogCategory::findOrFail($id);
         $update->update([
             'name'        => $request->name,
-            'description' => $request->description,
-            'origin'	  => $request->origin
+            'description' => $request->description
         ]);
         if(!$update){
             $request->session()->flash('warning','Update fail');

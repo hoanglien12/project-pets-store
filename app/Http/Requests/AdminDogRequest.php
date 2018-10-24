@@ -29,7 +29,7 @@ class AdminDogRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          =>  'required|unique:dogs|max:255',
+            'name'          =>  'required|max:255',
             'price'         =>  'required|numeric',
             'category_id'   =>  'required',
             'photos.*'      =>  'required|image',
