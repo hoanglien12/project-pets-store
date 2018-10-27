@@ -20,7 +20,7 @@
 							<li><a class="white push" href="#"><i class="icon ion-social-googleplus"></i></a></li>
 							<li><a class="white push" href="#"><i class="icon ion-social-twitter"></i></a></li>
 						</ul>
-						<ul class="top-link list-inline-block text-uppercase  inline-block text-upercase title12">
+						<ul class="nav navbar-top-links navbar-right">
 	                    @guest
 	                        <li class="nav-item">
 	                            <a class="nav-link white wobble-top" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -38,7 +38,6 @@
 	                            	<a class="dropdown-item" href="{{ route('editPass') }}">
 			                            {{ __('Change password') }}
 			                        </a>
-	                                <br>
 	                                <a class="dropdown-item" href="{{ route('logout') }}"
 	                                   onclick="event.preventDefault();
 	                                                 document.getElementById('logout-form').submit();">
