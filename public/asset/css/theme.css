@@ -4022,7 +4022,7 @@ div.table .product-info .product-title {
     z-index: 10001;
 }
 .main-header .mini-cart-box{
-	z-index: 10002;
+	z-index: 102;
 }
 .top-phone-number {
     padding: 8px 0;

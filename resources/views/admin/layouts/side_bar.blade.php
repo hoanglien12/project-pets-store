@@ -24,4 +24,7 @@
         <li>
             <a href="{{ route('order.index') }}"><i class="fa fa-dashboard fa-fw"></i> Orders</a>
         </li>
+        <li>
+            <a href="{{ route('post.index') }}"><i class="fa fa-dashboard fa-fw"></i> Posts</a>
+        </li>
     </ul>
