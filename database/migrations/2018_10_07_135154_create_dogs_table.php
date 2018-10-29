@@ -23,6 +23,7 @@ class CreateDogsTable extends Migration
             $table->double('height')->nullable();
             $table->double('weight')->nullable();
             $table->string('photos');
+            $table->string('slugs')->nullable();
             $table->integer('id_dog_cate')->unsigned();
             $table->foreign('id_dog_cate')->references('id')->on('dog_categories');
             $table->timestamps();

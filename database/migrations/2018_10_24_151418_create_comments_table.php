@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->integer('id_post')->unsigned()->nullable();
             $table->integer('id_user')->unsigned();
             $table->string('comment');
+            $table->string('slugs')->nullable();
             $table->foreign('id_dog')->references('id')->on('dogs');
             $table->foreign('id_product')->references('id')->on('products');
             $table->foreign('id_user')->references('id')->on('users');

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('description')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('slugs')->nullable();
             $table->integer('id_role')->unsigned()->default(2);
             $table->rememberToken();
             $table->timestamps();
