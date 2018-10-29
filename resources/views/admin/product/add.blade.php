@@ -19,7 +19,7 @@
         <div class="form-group">
             <label>Photos</label>
             <i style="color: blue; padding-left: 20px;">Keep Ctrl to select multiphotos!</i>
-            <input type="file" name="photos[]" class="form-control" multiple>
+            <input type="file" name="photos[]" id="photos" class="form-control" multiple>
         </div>
         <div class="form-group">
             <label>Product Category</label>
