@@ -17,7 +17,13 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('image');
+            $table->string('summary');
+            $table->integer('active'); //1 la co, 0 la khong
+            $table->integer('hot'); // 1 la co, 0 la khong
+            $table->string('source')->nullable();
+            $table->string('author')->nullable();
             $table->string('content');
+            $table->string('slugs')->nullable();
             $table->timestamps();
         });
     }

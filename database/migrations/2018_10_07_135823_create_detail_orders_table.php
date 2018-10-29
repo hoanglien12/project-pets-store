@@ -20,6 +20,7 @@ class CreateDetailOrdersTable extends Migration
             $table->integer('id_dog')->unsigned()->nullable();
             $table->integer('quantity');
             $table->bigInteger('amount');
+            $table->string('slugs')->nullable();
             $table->foreign('id_order')->references('id')->on('orders');
             $table->foreign('id_product')->references('id')->on('products');
             $table->foreign('id_dog')->references('id')->on('dogs');
