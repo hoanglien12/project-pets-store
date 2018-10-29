@@ -114,9 +114,7 @@
 			</ul>
 			<a href="#" class="toggle-mobile-menu"><span></span></a>
 		</nav>
-		<div class="link-profile  ">
-			<a class="color grow" href="http://7uptheme.com/wordpress/dogstore/my-account/"><i class="icon ion-person"></i></a>
-		</div>
+		
 		<div class="block-element block-search-element  ">
 			<form class="search-form search-hover   live-search-on" action="http://7uptheme.com/wordpress/haustiere/">
 				<input name="s" onblur="if (this.value=='') this.value = this.defaultValue" onfocus="if (this.value==this.defaultValue) this.value = ''" value="Search......" type="text">
@@ -131,7 +129,7 @@
 		</div>
 		<div class="mini-cart-box mini-cart1 aside-box ">
 			<a class="mini-cart-link bg-color" href="../cart/index.html">
-				<span class="mini-cart-icon title30 white"><i class="icon ion-android-cart"></i></span>
+				<span class="mini-cart-icon title30 white"><i class="fas fa-shopping-cart"></i></span>
 				<span class="mini-cart-text">
 					<strong class="mini-cart-title white">Shopping Cart</strong>
 					<span class="mini-cart-number white set-cart-number">0 </span>

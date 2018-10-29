@@ -12,10 +12,6 @@
             <label for="pwd">Description:</label>
             <input type="text" class="form-control" id="description" name="description">
         </div>
-        <div class="form-group">
-            <label for="pwd">Origin:</label>
-            <input type="text" class="form-control" id="origin" name="origin">
-        </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 @endsection

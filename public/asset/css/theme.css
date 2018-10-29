@@ -2789,12 +2789,11 @@ div.table .product-info .product-title {
   left: 0;
   bottom: 0;
   right: 0;
-  content: "";
+  content: "\f002";
   background: #333;
   text-align: center;
   color: #fff;
-  font-family: ionicons;
-  content: "\f21f";
+  font-family: fontAwesome;
   line-height: 40px;
   border-radius: 4px;
 }
@@ -3937,7 +3936,7 @@ div.table .product-info .product-title {
 }
 .mini-cart-box .mini-cart-link::before {
     position: absolute;
-    content: "";
+    /* content: "\f07a"; */
     background: rgba(0,0,0,0.1);
     border-radius: 10px;
     top: 5px;
