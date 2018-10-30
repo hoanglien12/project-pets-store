@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 	    Route::get('/edit/{id}','Admin\PostController@edit')->name('post.edit');
 	    Route::put('/edit/{id}','Admin\PostController@update')->name('post.update');
 	    Route::delete('delete/{id}','Admin\PostController@delete')->name('post.delete');
+	    Route::post('change-status/{id}','Admin\PostController@change_status')->name('post.change_status');
 	});
 	
 });

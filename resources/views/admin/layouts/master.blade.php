@@ -20,6 +20,7 @@
 
     <!-- Custom CSS -->
     <link href="{{ asset('asset/css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="{{ asset('asset/css/theme.css') }}" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('asset/themes/morrisjs/morris.css') }}" rel="stylesheet">
@@ -35,6 +36,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/DataTables/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.js') }}"/>
+    <link rel="stylesheet" href="{{ asset('asset/themes/plugin/plugins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/themes/plugin/bootstrap-switch.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/themes/plugin/bootstrap-fileinput.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/themes/plugin/component.min.css') }}">
+
 
     <script>
         $(document).ready( function () {
@@ -84,48 +90,16 @@
 
     <!-- Custom datepicker-->
     <script src="{{ asset('js/datepicker.js') }}"></script>
-    <script src="{{ asset('js/custom-js.js') }}"></script>
     
     <!-- CKeditor -->
-    <script src="{{ asset('asset/ckeditor5/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        if (window.File && window.FileList && window.FileReader) {
-            $("#photos").on("change", function(e) {
-                var files = e.target.files,
-                filesLength = files.length;
-                for (var i = 0; i < filesLength; i++) { 
-                    var f=files[i] 
-                    var fileReader=new FileReader(); 
-                    fileReader.onload=(function(e) { 
-                        var file=e.target; 
-                        $("<span class=\"pip\">" +
-                        "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\" />" +
-                        "<br /><span class=\"remove\">X</span>" +
-                        "</span>").insertAfter("#photos");
-                    // $(".remove").click(function(){
-                    // $(this).parent(".pip").remove();
-                    // });
-                        $(".remove").click(function(){
-                            $(this).parent(".pip").remove();
-                            $('#photos').val("");
-                        });
 
-                    });
-                    fileReader.readAsDataURL(f);
-                }
-            });
-        } else {
-            alert("Your browser doesn't support to File API")
-        }
-    });
-</script>
 <style>
 input[type="file"] {
   display: block;

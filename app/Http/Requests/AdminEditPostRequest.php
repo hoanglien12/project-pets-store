@@ -13,7 +13,7 @@ class AdminEditPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class AdminEditPostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'        =>  'bail|required|max:255',
+            'image.*'      =>  'required|image',
         ];
     }
 }

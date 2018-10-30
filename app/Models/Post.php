@@ -9,11 +9,17 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = ['id'];
 
-    public function getAllDogPosts($name = null, $begin_date = null,$end_date = null)
+    public function getAllDogPosts($title = null,$status = null, $type = null, $begin_date = null,$end_date = null)
     {
         $posts = Post::query();
-        if($name != null || $begin_date != null) {
-            $posts = Post::where('name','like', "%$name%");
+        if($title != null) {
+            $posts = Post::where('title','like', "%$title%");
+        }
+        if($status != null){
+            $posts = Post::where('active',$status);
+        }
+        if($type != null){
+            $posts = Post::where('hot',$type);
         }
         if($begin_date != null){
             $posts = Post::whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
@@ -23,5 +29,14 @@ class Post extends Model
         }
         
         return $posts;
+    }
+
+    public function getImage($id)
+    {
+        $post    = Post::find($id);
+        $images  = $post->image;
+        $imgs    = json_decode($images);
+        // var_dump($imgs); die;
+        return $imgs;
     }
 }
