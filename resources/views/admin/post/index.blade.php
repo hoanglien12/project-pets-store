@@ -8,8 +8,27 @@
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
-                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Tên" class="form-control">
-                        <div class="help-block">Post's Name</div>
+                        <input type="text" name="title" value="{{ old('title') }}" placeholder="Tên" class="form-control">
+                        <div class="help-block">Post's Title</div>
+                    </div>
+                    <!-- Filter Status -->
+                    <div class="col-md-3">
+                        <select name="type" class="bs-select form-control" data-style="blue">
+                            <option value="">Loại tin</option>
+                            
+                            <option value="1">HOT</option>
+                            <option value="2">Thường</option>
+                        </select>
+                        <div class="help-block">Loại tin</div>
+                    </div>
+                    <!-- Filter  -->
+                    <div class="col-md-3">
+                        <select name="status" class="bs-select form-control" data-style="green-meadow">
+                            <option value="">Trạng thái</option>
+                            <option value="1">Kích hoạt</option>
+                            <option value="2">Không kích hoạt</option>
+                        </select>
+                        <p class="help-block">Trạng thái</p>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
@@ -39,20 +58,91 @@
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Name</th>
+                            <th>Title</th>
                             <th>Status</th>
-                            <th>Show Slider</th>
+                            <th>Type</th>
+                            <th>Image</th>
                             <th>Date</th>
                             <th colspan="2">Action</th>
-                            
                         </tr>
                         </thead>
                         <tbody>
+                            @if($count_post > 0)
                             <input type="text" hidden value="{{$i=1}}">
+                            @foreach($posts as $post)
+                            <!-- BEGIN MODAL CONFIRM DELETE ITEM -->
+                            <div class="modal fade" id="delete{{$post->id}}" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" >
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title text-center">Confirm delete </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure to delete : {{$post->title}} ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{ route('post.delete',$post->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn-danger btn-delete">Delete</button>
+                                            </form>
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal"><i class="fa fa-remove"></i>Close</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- END MODAL -->
+                            <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>
+                                        <span>
+                                            {{ $post->active == 1 ? "Hiển thị" : "Không hiển thị" }}
+                                        </span>
+                                        <br>
+                                        <button type="submit" data="{{ $post->id }}" data-type="{{ $post->active }}" class="btn btn-circle bold change_status"><i class="fa fa-exchange"></i></button>
+                                    </td>
+                                    <td>
+                                        @if($post->hot == 1)
+                                            {{  "HOT" }}
+                                        
+                                        @else
+                                            {{  "Thường" }}
+                                        @endif
 
+                                    </td>
+                                    <td>
+                                        @php
+                                            $photos = $post->getImage($post->id);
+                                        @endphp
+                                        @if($photos != null)
+                                            @foreach ($photos as $photo)
+                                                <img src="{{ asset('upload/post/' . $photo) }}" alt="" style="width: 150px;height: 100px;">
+                                            @endforeach
+                                            @else
+                                                <p>no photo</p>
+                                            @endif
+                                    </td>
+                                    <td>{{ $post->created_at }}</td>
+                                    <td>
+                                        <a href="{{ route('post.edit', ['id' => $post->id]) }}"><button class="btn btn-success">Edit</button></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-xs" data-toggle="modal" href="#delete{{$post->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"> Delete</button></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @else
+                            <tr>
+                                <td colspan="6" style="text-align: center" >No data</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
-                    <p>Total items: </p>
+                    <p>Total items: {{ $count_post }}</p>
 
                 </div>
             </div>
@@ -60,3 +150,6 @@
     </div>
 
 @endsection
+<script type="text/javascript">
+    
+</script>

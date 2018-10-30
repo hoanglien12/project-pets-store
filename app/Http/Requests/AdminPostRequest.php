@@ -24,8 +24,8 @@ class AdminPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        =>  'required|unique:dog_categories|max:255',
-            'photos.*'    =>  'required|image',
+            'title'        =>  'required|max:255',
+            'image.*'      =>  'required|image',
         ];
     }
 }
