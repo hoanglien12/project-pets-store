@@ -10,12 +10,12 @@
 
 <!-- CSS -->
 <link href="{{ asset('asset/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link rel='stylesheet' id='font-awesome-css'  href="{{ asset('asset/font-awesome/css/font-awesome.min.css') }}" type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='{{ asset('asset/font-awesome/css/font-awesome.min.css') }}' type='text/css' media='all' />
 
-<link rel='stylesheet' href="{{ asset('asset/bootstrap/css/bootstrap-theme.min.css') }}" type='text/css' />
-<link rel='stylesheet' id='s7upf-theme-css'  href="{{ asset('asset/css/theme.css') }}" type='text/css' media='all' />
-<link rel='stylesheet' id='s7upf-theme-style-css'  href="{{ asset('asset/css/custom-style.css') }}" type='text/css' media='all' />
-<link rel="stylesheet" href="{{ asset('asset/css/style.css') }}" type='text/css' media='all'>
+<link rel='stylesheet' href='{{ asset('asset/bootstrap/css/bootstrap-theme.min.css') }}' type='text/css' />
+<link rel='stylesheet' id='s7upf-theme-css'  href='{{ asset('asset/css/theme.css') }}' type='text/css' media='all' />
+<link rel='stylesheet' id='s7upf-theme-style-css'  href='{{ asset('asset/css/custom-style.css') }}' type='text/css' media='all' />
+<link rel="stylesheet" href='{{ asset('asset/css/style.css') }}' type='text/css' media='all'>
 
 <link rel="stylesheet" href="{{ asset('asset/themes/plugin/js_composer/assets/css/js_composer.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
@@ -23,12 +23,8 @@
 <link rel="stylesheet" href="{{ asset('asset/bootstrap/css/hover.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/bootstrap/css/color.css') }}">
-<!-- jQuery -->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- <link rel="stylesheet" href="{{ asset('asset/fonts/ionicons.min.css') }}"> -->
+
 
 <style>
 	.s7upf-slider.about-store-slider {
@@ -56,7 +52,8 @@
 			</div>
 		</div>
 		@include('client.layouts.footer')
-		<a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+
 	</div>
 	
 </body>
