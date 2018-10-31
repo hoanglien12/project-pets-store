@@ -20,36 +20,12 @@
 							<li><a class="white push" href="#"><i class="icon ion-social-googleplus"></i></a></li>
 							<li><a class="white push" href="#"><i class="icon ion-social-twitter"></i></a></li>
 						</ul>
-						<ul class="nav navbar-top-links navbar-right">
-	                    @guest
-	                        <li class="nav-item">
-	                            <a class="nav-link white wobble-top" href="{{ route('login') }}">{{ __('Login') }}</a>
-	                        </li>
-	                        <li class="nav-item">
-	                            <a class="nav-link white wobble-top" href="{{ route('register') }}">{{ __('Register') }}</a>
-	                        </li>
-	                    @else
-	                        <li class="nav-item dropdown">
-	                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-	                                {{ Auth::user()->name }}<span class="caret"></span>
-	                            </a>
-
-	                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-	                            	<a class="dropdown-item" href="{{ route('editPass') }}">
-			                            {{ __('Change password') }}
-			                        </a>
-	                                <a class="dropdown-item" href="{{ route('logout') }}"
-	                                   onclick="event.preventDefault();
-	                                                 document.getElementById('logout-form').submit();">
-	                                    {{ __('Logout') }}
-	                                </a>
-	                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-	                                    @csrf
-	                                </form>
-	                            </div>
-	                        </li>
-	                    @endguest
-	                </ul>	
+						<ul class="top-link list-inline-block text-uppercase  inline-block text-upercase title12">
+							
+							<li><a class="white wobble-top" href="http://localhost/wordpress/dogstore/about/">About Us</a></li>
+							<li><a class="white wobble-top" href="http://localhost/wordpress/dogstore/contact/">Contact us</a></li>
+							
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -88,8 +64,7 @@
 								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="" class="menu-link main-menu-link">Dogs</a>
 								<ul class="sub-menu menu-odd  menu-depth-1">
 									@foreach($dogCategories as $cate)
-										<li id="nav-menu-item-1083" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
-											<a href="{{ route('home.dog') }}" class="menu-link sub-menu-link">{{ $cate->name }}</a>
+										<li id="nav-menu-item-1083" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('home.dog',$cate->id) }}" class="menu-link sub-menu-link">{{ $cate->name }}</a>
 										</li>
 									@endforeach
 								</ul>
@@ -98,7 +73,7 @@
 							<ul class="sub-menu menu-odd  menu-depth-1">
 								@foreach($productCategories as $cate)
 								<li id="nav-menu-item-1179" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
-									<a href="" class="menu-link sub-menu-link">{{ $cate->name }}</a>
+									<a href="{{ route('home.product',$cate->id) }}" class="menu-link sub-menu-link">{{ $cate->name }}</a>
 								</li>
 								@endforeach
 							</li>
@@ -114,7 +89,9 @@
 			</ul>
 			<a href="#" class="toggle-mobile-menu"><span></span></a>
 		</nav>
-		
+		<div class="link-profile  ">
+			<a class="color grow" href="http://7uptheme.com/wordpress/dogstore/my-account/"><i class="icon ion-person"></i></a>
+		</div>
 		<div class="block-element block-search-element  ">
 			<form class="search-form search-hover   live-search-on" action="http://7uptheme.com/wordpress/haustiere/">
 				<input name="s" onblur="if (this.value=='') this.value = this.defaultValue" onfocus="if (this.value==this.defaultValue) this.value = ''" value="Search......" type="text">
@@ -129,7 +106,7 @@
 		</div>
 		<div class="mini-cart-box mini-cart1 aside-box ">
 			<a class="mini-cart-link bg-color" href="../cart/index.html">
-				<span class="mini-cart-icon title30 white"><i class="fas fa-shopping-cart"></i></span>
+				<span class="mini-cart-icon title30 white"><i class="icon ion-android-cart"></i></span>
 				<span class="mini-cart-text">
 					<strong class="mini-cart-title white">Shopping Cart</strong>
 					<span class="mini-cart-number white set-cart-number">0 </span>
@@ -140,6 +117,7 @@
 						</span>
 					</span>
 				</a>
+				
 				<div class="mini-cart-content dropdown-list text-left">
 					<h2 class="title18 font-bold"><span class="set-cart-number">0</span> items</h2>
 					<div class="mini-cart-main-content">
