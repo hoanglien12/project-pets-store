@@ -27,4 +27,7 @@
         <li>
             <a href="{{ route('post.index') }}"><i class="fa fa-dashboard fa-fw"></i> Posts</a>
         </li>
+        <li>
+            <a href=""><i class="fa fa-dashboard fa-fw"></i> Users</a>
+        </li>
     </ul>

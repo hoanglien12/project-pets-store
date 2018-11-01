@@ -17,11 +17,14 @@
         </div>
         <div class="form-group">
             <label for="email">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $dog->name }}">
+            <input type="text" class="form-control" id="name" name="name" value="{{ $dog->name }}" onkeyup="ChangeToSlug();">
         </div>
         <div class="form-group">
+            <label >Slugs</label>
+                <input name="slugs" value="{{ $dog->slugs }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
+        <div class="form-group">
             <label>Photos</label>
-            <input type="file" name="photos[]" class="form-control" multiple >
+            <input type="file" name="photos[]" class="form-control" multiple value="{{ $dog->photos }}">
             @php
                 $photos = $dog->getImage($dog->id);
             @endphp

@@ -24,8 +24,12 @@ class AdminEditPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'        =>  'bail|required|max:255',
+            'title'        =>  'required|max:255',
             'image.*'      =>  'required|image',
+            'content'      =>  'required',
+            'summary'      =>  'required',
+            'active'       =>  'required',
+            'hot'          =>  'required'
         ];
     }
 }

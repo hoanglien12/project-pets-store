@@ -134,7 +134,7 @@ function ChangeToSlug()
         var title, slug;
      
         //Lấy text từ thẻ input title 
-        title = document.getElementById("title").value;
+        title = document.getElementById("name").value;
      
         //Đổi chữ hoa thành chữ thường
         slug = title.toLowerCase();
