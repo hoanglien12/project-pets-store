@@ -16,7 +16,11 @@
         </div>
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" onkeyup="ChangeToSlug();">
+        </div>
+        <div class="form-group">
+            <label>Slugs</label>
+            <input name="slugs" value="{{ old('slug') }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
         </div>
         <div class="form-group">
             <label>Photos</label>
