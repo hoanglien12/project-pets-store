@@ -1,19 +1,19 @@
 <div class="col-md-3 col-sm-4 col-xs-12">
     <div class="sidebar sidebar-left">
         <div id="sv_category_fillter-2" class="sidebar-widget widget widget_sv_category_fillter">
-            <h3 class="widget-title">Categories</h3>
+            <h3 class="widget-title">DogCategories</h3>
+            @foreach($dogCategories as $dogcat)
             <ul class="list-none list-attr">
-                <li><a data-cat="airedale-terrier" href="indexe9e9.html?product_cat=airedale-terrier" class="load-shop-ajax "> Airedale Terrier<span class="count">2</span></a></li>
-                <li><a data-cat="belgian-malinois" href="index29eb.html?product_cat=belgian-malinois" class="load-shop-ajax "> Belgian Malinois<span class="count">10</span></a></li>
-                <li><a data-cat="bichon-frise" href="indexccb5.html?product_cat=bichon-frise" class="load-shop-ajax "> Bichon Frise<span class="count">11</span></a></li>
-                <li><a data-cat="bloodhound" href="index97ae.html?product_cat=bloodhound" class="load-shop-ajax "> Bloodhound<span class="count">11</span></a></li>
-                <li><a data-cat="french-bulldog" href="indexf159.html?product_cat=french-bulldog" class="load-shop-ajax "> French Bulldog<span class="count">3</span></a></li>
-                <li><a data-cat="german-shepherd" href="index267e.html?product_cat=german-shepherd" class="load-shop-ajax "> German Shepherd<span class="count">6</span></a></li>
-                <li><a data-cat="golden-retriever" href="index6c79.html?product_cat=golden-retriever" class="load-shop-ajax "> Golden Retriever<span class="count">9</span></a></li>
-                <li><a data-cat="labrador-retriever" href="indexa5ae.html?product_cat=labrador-retriever" class="load-shop-ajax "> Labrador Retriever<span class="count">7</span></a></li>
-                <li><a data-cat="yorkshire-terrier" href="index3f96.html?product_cat=yorkshire-terrier" class="load-shop-ajax "> Yorkshire Terrier<span class="count">8</span></a></li>
+                <li><a data-cat="airedale-terrier" href="{{route('home.dog',$dogcat->id) }}" class="load-shop-ajax ">{{$dogcat->name}}<span class="count"></span></a></li>
             </ul>
-        </div>
+             @endforeach
+             <h3 class="widget-title">ProductCategories</h3>
+              @foreach($productCategories as $dogcat)
+            <ul class="list-none list-attr">
+                <li><a data-cat="airedale-terrier" href="{{route('home.product',$dogcat->id) }}" class="load-shop-ajax ">{{$dogcat->name}}<span class="count"></span></a></li>
+            </ul>
+             @endforeach
+        </div> 
         <div id="woocommerce_price_filter-2" class="sidebar-widget widget woocommerce s7upf_widget_price_filter">
             <h3 class="widget-title">Price</h3>
             <form method="get" action="http://7uptheme.com/wordpress/haustiere/product-category/golden-retriever/">
@@ -32,57 +32,18 @@
                 </div>
             </form>
         </div>
-        <div id="s7upf_attribute_filter-2" class="sidebar-widget widget widget_s7upf_attribute_filter">
-            <h3 class="widget-title">Color</h3>
-            <ul class="list-none list-attr list-attr-color tawcvs-swatches attribute-type-color">
-                <li><a class="swatch swatch-color  swatch-beige " title="Beige" href="index9224.html?filter_color=beige"><i style="background-color:#e36d55"></i>Beige<span class="count">8</span></a></li>
-                <li><a class="swatch swatch-color  swatch-black " title="Black" href="indexf9b2.html?filter_color=black"><i style="background-color:#000000"></i>Black<span class="count">6</span></a></li>
-                <li><a class="swatch swatch-color  swatch-bue " title="Bue" href="indexd4c6.html?filter_color=bue"><i style="background-color:#1476c6"></i>Bue<span class="count">6</span></a></li>
-                <li><a class="swatch swatch-color  swatch-cyan " title="Cyan" href="index2735.html?filter_color=cyan"><i style="background-color:#5be5ee"></i>Cyan<span class="count">6</span></a></li>
-                <li><a class="swatch swatch-color  swatch-red " title="Red" href="index6e6e.html?filter_color=red"><i style="background-color:#ff1b1b"></i>Red<span class="count">4</span></a></li>
-                <li><a class="swatch swatch-color class_white_bg_color swatch-white " title="White" href="indexae77.html?filter_color=white"><i style="background-color:#ffffff"></i>White<span class="count">4</span></a></li>
-                <li><a class="swatch swatch-color  swatch-yellow " title="Yellow" href="index416b.html?filter_color=yellow"><i style="background-color:#f1ca2d"></i>Yellow<span class="count">5</span></a></li>
-            </ul>
-        </div>
+      
         <div id="s7upf_attribute_filter-3" class="sidebar-widget widget widget_s7upf_attribute_filter">
             <h3 class="widget-title">Manufacturer</h3>
             <ul class="list-none list-attr">
+                  @foreach($dogCategories as $dogcat)
                 <li class="africa-inline">
                     <a data-attribute="manufacturer" data-term="africa" class="load-shop-ajax  bgcolor-africa" href="index2f1a.html?filter_manufacturer=africa">
-                        Africa
+                        {{$dogcat->origin}}
                         <span class="count">2</span>
                     </a>
                 </li>
-                <li class="africe-inline">
-                    <a data-attribute="manufacturer" data-term="africe" class="load-shop-ajax  bgcolor-africe" href="indexcae0.html?filter_manufacturer=africe">
-                        Africe
-                        <span class="count">1</span>
-                    </a>
-                </li>
-                <li class="america-inline">
-                    <a data-attribute="manufacturer" data-term="america" class="load-shop-ajax  bgcolor-america" href="indexb219.html?filter_manufacturer=america">
-                        America
-                        <span class="count">3</span>
-                    </a>
-                </li>
-                <li class="asian-inline">
-                    <a data-attribute="manufacturer" data-term="asian" class="load-shop-ajax  bgcolor-asian" href="index3b84.html?filter_manufacturer=asian">
-                        Asian
-                        <span class="count">2</span>
-                    </a>
-                </li>
-                <li class="australia-inline">
-                    <a data-attribute="manufacturer" data-term="australia" class="load-shop-ajax  bgcolor-australia" href="index87f0.html?filter_manufacturer=australia">
-                        Australia
-                        <span class="count">1</span>
-                    </a>
-                </li>
-                <li class="europe-inline">
-                    <a data-attribute="manufacturer" data-term="europe" class="load-shop-ajax  bgcolor-europe" href="index09e1.html?filter_manufacturer=europe">
-                        Europe
-                        <span class="count">2</span>
-                    </a>
-                </li>
+              @endforeach
             </ul>
         </div>
         <div id="woocommerce_product_tag_cloud-2" class="sidebar-widget widget woocommerce widget_product_tag_cloud">

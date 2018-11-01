@@ -1,8 +1,8 @@
 @extends('client.layouts.master')
 @section('title','Dogs')
 @section('content')
-	@include('client.layouts.sidebar')
-	<div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
+    @include('client.layouts.sidebar')
+    <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
 
     <div class="title-page clearfix">
         <h2 class="title30 font-bold dosis-font text-uppercase pull-left">Golden Retriever</h2>
@@ -23,7 +23,7 @@
                             <input type="hidden" name="paged" value="1">
                         </form>
                     </div>
-                </div>
+                </div> 
             </li>
             <li>
                 <div class="dropdown-box show-by">
@@ -47,30 +47,35 @@
     </div>
     <div class="product-grid-view   products-wrap js-content-wrap" data-load="{&quot;attr&quot;:{&quot;item_style&quot;:null,&quot;item_style_list&quot;:null,&quot;column&quot;:&quot;3&quot;,&quot;size&quot;:null,&quot;size_list&quot;:null,&quot;shop_style&quot;:null,&quot;animation&quot;:&quot;zoom-thumb&quot;,&quot;number&quot;:&quot;12&quot;,&quot;cats&quot;:&quot;golden-retriever&quot;}}">
         <div class="products row list-product-wrap js-content-main">
+             @foreach($dog_id as $dog_id) 
             <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
                 <div class="item-product item-product-grid">
                     <div class="product-thumb">
                         <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog') }} " class="product-thumb-link zoom-thumb">
-                            <img width="270" height="270" src="{{ asset('asset/uploads/2018/01/pet_store_dog_12-270x270.jpg') }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-
-                        </a>
-                        <div class="product-label"><span class="sale">-50%</span></div>
+                        <a href="{{ route('home.detail_dog',$dog_id->id)}} " class="product-thumb-link zoom-thumb">
+                        <img width="270" height="270" src="{{asset('asset/uploads/2018/img/'.$dog_id->photos)}}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px"></a>
+                        @if($dog_id->sale!=0)
+                        <div class="product-label"><span class="sale">-{{$dog_id->sale}}%</span></div>
+                        @endif
                         <div class="product-extra-link text-center">
                             <ul class="list-product-extra-link list-inline-block">
                                 <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
                                 <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
                                 <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
                             </ul>
-                            <a href="index63d4.html?add-to-cart=724" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
+                            <a href="" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
                         </div>
                     </div>
                     <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP23684</span>
+                        <span class="title12 text-uppercase color font-bold">ID:DSP{{$dog_id->id}}</span>
                         <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Bailey</a>
+                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Name: {{$dog_id->name}}</a>
                         </h3>
-                        <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>242.00</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>122.00</span></ins></div>
+                        @if($dog_id->promotion_price==0)
+                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_id->price}}</span></div>
+                        @else
+                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_id->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_id->promotion_price}}</span></ins></div>
+                         @endif
                         <ul class="wrap-rating list-inline-block">
                             <li>
                                 <div class="product-rate">
@@ -84,202 +89,13 @@
                     </div>
                 </div>
             </div>
-
-            <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
-                <div class="item-product item-product-grid">
-                    <div class="product-thumb">
-                        <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog') }} " class="product-thumb-link zoom-thumb">
-                            <img width="270" height="270" src="{{ asset('asset/uploads/2018/01/pet_store_dog_12-270x270.jpg') }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-
-                        </a>
-                        <div class="product-label"><span class="sale">-50%</span></div>
-                        <div class="product-extra-link text-center">
-                            <ul class="list-product-extra-link list-inline-block">
-                                <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
-                                <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
-                            </ul>
-                            <a href="index63d4.html?add-to-cart=724" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP23684</span>
-                        <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Bailey</a>
-                        </h3>
-                        <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>242.00</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>122.00</span></ins></div>
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
-                <div class="item-product item-product-grid">
-                    <div class="product-thumb">
-                        <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog') }} " class="product-thumb-link zoom-thumb">
-                            <img width="270" height="270" src="{{ asset('asset/uploads/2018/01/pet_store_dog_12-270x270.jpg') }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-
-                        </a>
-                        <div class="product-label"><span class="sale">-50%</span></div>
-                        <div class="product-extra-link text-center">
-                            <ul class="list-product-extra-link list-inline-block">
-                                <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
-                                <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
-                            </ul>
-                            <a href="index63d4.html?add-to-cart=724" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP23684</span>
-                        <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Bailey</a>
-                        </h3>
-                        <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>242.00</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>122.00</span></ins></div>
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
-                <div class="item-product item-product-grid">
-                    <div class="product-thumb">
-                        <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog') }} " class="product-thumb-link zoom-thumb">
-                            <img width="270" height="270" src="{{ asset('asset/uploads/2018/01/pet_store_dog_12-270x270.jpg') }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-
-                        </a>
-                        <div class="product-label"><span class="sale">-50%</span></div>
-                        <div class="product-extra-link text-center">
-                            <ul class="list-product-extra-link list-inline-block">
-                                <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
-                                <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
-                            </ul>
-                            <a href="index63d4.html?add-to-cart=724" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP23684</span>
-                        <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Bailey</a>
-                        </h3>
-                        <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>242.00</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>122.00</span></ins></div>
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
-                <div class="item-product item-product-grid">
-                    <div class="product-thumb">
-                        <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog') }} " class="product-thumb-link zoom-thumb">
-                            <img width="270" height="270" src="{{ asset('asset/uploads/2018/01/pet_store_dog_12-270x270.jpg') }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-
-                        </a>
-                        <div class="product-label"><span class="sale">-50%</span></div>
-                        <div class="product-extra-link text-center">
-                            <ul class="list-product-extra-link list-inline-block">
-                                <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
-                                <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
-                            </ul>
-                            <a href="index63d4.html?add-to-cart=724" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP23684</span>
-                        <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Bailey</a>
-                        </h3>
-                        <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>242.00</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>122.00</span></ins></div>
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
-                <div class="item-product item-product-grid">
-                    <div class="product-thumb">
-                        <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog') }} " class="product-thumb-link zoom-thumb">
-                            <img width="270" height="270" src="{{ asset('asset/uploads/2018/01/pet_store_dog_12-270x270.jpg') }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-
-                        </a>
-                        <div class="product-label"><span class="sale">-50%</span></div>
-                        <div class="product-extra-link text-center">
-                            <ul class="list-product-extra-link list-inline-block">
-                                <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
-                                <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
-                            </ul>
-                            <a href="index63d4.html?add-to-cart=724" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP23684</span>
-                        <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Bailey</a>
-                        </h3>
-                        <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>242.00</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>122.00</span></ins></div>
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            
-
-
+            @endforeach
+          
         </div>
-    </div>
 
+    </div>
+</div>
+
+</div>
 </div>
 @endsection

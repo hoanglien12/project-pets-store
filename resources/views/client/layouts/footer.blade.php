@@ -97,13 +97,13 @@
 							<div class="footer-box">
 								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Information</h2>
 								<ul class="list-none list-menu-footer">
-									<li><a class="white" href="#">About Dog Store</a></li>
-									<li><a class="white" href="#">Frequently Asked Questions</a></li>
-									<li><a class="white" href="#">Responsible Retailing</a></li>
-									<li><a class="white" href="#">Customer Service</a></li>
-									<li><a class="white" href="#">Delivery</a></li>
-									<li><a class="white" href="#">Returns</a></li>
-									<li><a class="white" href="#">Careers</a></li>
+									<li class="white">Hoàng Thi Liên</a></li>
+									<li class="white">Nguyễn Thị Cúc</a></li>
+									<li class="white">Nguyễn Thị Thanh Hoài</a></li>
+									<li class="white">Customer Service</a></li>
+									<li class="white">Delivery</a></li>
+									<li class="white">Returns</a></li>
+									<li class="white">Careers</a></li>
 								</ul>
 							</div>
 						</div>
@@ -117,13 +117,13 @@
 							<div class="footer-box">
 								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Shop for your pet</h2>
 								<ul class="list-none list-menu-footer">
-									<li><a class="white" href="#">Dogs</a></li>
-									<li><a class="white" href="#">Cats</a></li>
-									<li><a class="white" href="#">Puppies</a></li>
-									<li><a class="white" href="#">Kittens</a></li>
-									<li><a class="white" href="#">Small Animals</a></li>
-									<li><a class="white" href="#">Fish</a></li>
-									<li><a class="white" href="#">Fish</a></li>
+									  @foreach($dogCategories as $dogcat)
+									<li><a class="white" href="{{route('home.dog',$dogcat->id) }}">{{$dogcat->name}}</a></li>
+									@endforeach
+									  @foreach($productCategories as $dogcat)
+									<li><a class="white" href="{{route('home.product',$dogcat->id) }}">{{$dogcat->name}}</a></li>
+									@endforeach
+									
 								</ul>
 							</div>
 						</div>
@@ -137,8 +137,8 @@
 							<div class="footer-box">
 								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Contact</h2>
 								<div class="contact-footer">
-									<p class="desc white"><i class="icon ion-map"></i>5 Apollo Court, Radclive Road, Gawcott, Buckinghamshire MK18 4DF</p>
-									<p class="desc white"><i class="icon ion-ios-telephone"></i>Mobile: <b>01678 311 160</b>
+									<p class="desc white"><i class="icon ion-map"></i>45 Võ Chí Công</p>
+									<p class="desc white"><i class="icon ion-ios-telephone"></i>Mobile: <b>0971006294</b>
 									<br /> Tel: <b>0351 365 765</b></p>
 									<p class="desc white"><i class="icon ion-ios-email"></i><a class="white" href="mailto:contact.7uptheme@gmail.com">contact.7uptheme@gmail.com</a>
 									<br />

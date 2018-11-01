@@ -8,7 +8,7 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+| 
 */
 Route::get('/not-allow','Controller@not_allow')->name('not-allow');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function(){
@@ -72,12 +72,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 
 Route::group(['prefix' => '/'], function(){
 	Route::get('/', 'Client\HomeController@index')->name('home.index');
+	Route::get('dog_home','Client\HomeController@dog_home')->name('home.dog_home');
 
 	Route::group(['prefix' => 'dog'], function(){
-		Route::get('', 'Client\HomeController@dog')->name('home.dog');
-		Route::get('detail_dog','Client\HomeController@detail_dog')->name('home.detail_dog');
+		Route::get('list', 'Client\HomeController@list')->name('home.list');
+		Route::get('dogs/{id}', 'Client\HomeController@dog')->name('home.dog');
+		Route::get('detail_dog/{id}','Client\HomeController@detail_dog')->name('home.detail_dog');
 	});
-
+	Route::group(['prefix' => 'product'], function(){
+		Route::get('product/{id}', 'Client\HomeController@product')->name('home.product');
+		Route::get('detail_product/{id}','Client\HomeController@detail_product')->name('home.detail_product');
+	});
 	Route::group(['prefix' => 'blog'], function(){
 		Route::get('','Client\HomeController@blog')->name('home.blog');
 		Route::get('detail_blog','Client\HomeController@detail_blog')->name('home.detail_blog');

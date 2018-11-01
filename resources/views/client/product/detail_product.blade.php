@@ -45,9 +45,7 @@
 	                        @else
 	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->promotion_price}}</span></ins></div>
 	                         @endif
-	                          <div><p>Birthday: {{$dogs->birthday}}</p></div>
-	                         <div><p>Height:    {{$dogs->height}} cm</p></div>
-	                         <div><p>Weight:    {{$dogs->weight}} cm</p></div>
+	                          
 	                        <p></p>
 
 	                        <div class="woocommerce-product-rating">
@@ -124,8 +122,8 @@
 	                                <span class="sku in-stock">In stock</span>
 	                            </span>
 	                            <span class="posted_in"><label>Categories:</label>
-	                            	 @foreach($dogCategories as $dogcat)
-	                                <div class="meta-item-list"><a href="{{route('home.dog',$dogcat->id) }}" rel="tag">{{$dogcat->name}}</a> </div>
+	                             @foreach($productCategories as $dogcat)
+	                                <div class="meta-item-list"><a href="{{route('home.product',$dogcat->id) }}" rel="tag">{{$dogcat->name}}</a> </div>
 	                               @endforeach
 	                            </span>
 

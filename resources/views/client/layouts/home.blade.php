@@ -12,5 +12,5 @@
 	@include('client.about.people_say')
 
 	@include('client.blog.blog_home')
-                            
+   
 @endsection
