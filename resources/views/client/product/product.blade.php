@@ -1,5 +1,5 @@
 @extends('client.layouts.master')
-@section('title','Dogs')
+@section('title','Products')
 @section('content')
     @include('client.layouts.sidebar')
     <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">

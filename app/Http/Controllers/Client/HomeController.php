@@ -13,20 +13,20 @@ use App\Models\Cart;
 class HomeController extends Controller 
 {
 
-    public function index()
+    public function index() 
     {
     	$dogCategories 		 = DogCategory::all();
     	$productCategories	 = ProductCategory::all();
-    	return view('client.layouts.home',compact('dogCategories','productCategories'));
+        $dogs                = Dog::all();
+    	return view('client.layouts.home',compact('dogCategories','productCategories','dogs'));
     }
-   
- public function addtoCart(Request $req,$id){
-        $dog = Dog::find($id);
-        $oldCart = Session('cart')?Session::get('cart'):null;
-        $cart = new Cart($oldCart);
-        $cart->add($dog, $id);
-        $req->session()->put('cart',$cart);
-        return redirect()->back();
+    public function dog_home() 
+    {
+        $dogCategories       = DogCategory::all();
+        $productCategories   = ProductCategory::all();
+        $dogs                = Dog::all();
+        $dog_sale            = Dog::where('sale','<>',0)->get();
+        return view('client.dog.dog_home',compact('dogCategories','productCategories','dogs'));
     }
 
     public function dog($id)
@@ -34,7 +34,6 @@ class HomeController extends Controller
        
         $dog_id              = Dog::where('id_dog_cate',$id)->get();
         $dogCategories       = DogCategory::all();
-        $product             = Product::where('id_product_cate',$id)->get();
         $productCategories   = ProductCategory::all();
         return view('client.dog.dog',compact('dogs','dog_id','dogCategories','product','productCategories'));
     }
@@ -43,17 +42,17 @@ class HomeController extends Controller
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
         $dogs                = Dog::where('id',$id)->first();
-        $dog_rl              = Dog::where('id_dog_cate',$dogs->id_dog_cate)->paginate(3);
+        $dog_rl              = Dog::where('id_dog_cate',$dogs->id_dog_cate)->get();
         return view('client.dog.detail_dog',compact('dogCategories','dogs','productCategories','dog_rl'));
     }
 //product
       public function product($id)
     {
-        $dog_id          = Product::where('id_product_cate',$id)->get();
+        $dog_id              = Product::where('id_product_cate',$id)->get();
         $dogCategories       = DogCategory::all();
         $product             = Product::where('id_product_cate',$id)->get();
         $productCategories   = ProductCategory::all();
-        return view('client.dog.dog',compact('dogs','dog_id','dogCategories','product','productCategories'));
+        return view('client.product.product',compact('dogs','dog_id','dogCategories','product','productCategories'));
     }
     public function detail_product($id)
     {
@@ -61,7 +60,7 @@ class HomeController extends Controller
         $productCategories   = ProductCategory::all();
         $dogs                = Product::where('id',$id)->first();
         $dog_rl              = Product::where('id_product_cate',$dogs->id_product_cate)->paginate(3);
-        return view('client.dog.detail_product',compact('dogCategories','dogs','productCategories','dog_rl'));
+        return view('client.product.detail_product',compact('dogCategories','dogs','productCategories','dog_rl'));
     }
     //product
     public function blog()
