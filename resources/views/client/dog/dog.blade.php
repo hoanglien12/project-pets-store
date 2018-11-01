@@ -51,9 +51,16 @@
             <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
                 <div class="item-product item-product-grid">
                     <div class="product-thumb">
+
                         <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
                         <a href="{{ route('home.detail_dog',$dog_id->id)}} " class="product-thumb-link zoom-thumb">
-                        <img width="270" height="270" src="{{asset('asset/uploads/2018/img/'.$dog_id->photos)}}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px"></a>
+                            @php
+                                $photos = $dog_id->getImage($dog_id->id);
+                            @endphp
+                            
+                                <img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
+                                
+                        </a>
                         @if($dog_id->sale!=0)
                         <div class="product-label"><span class="sale">-{{$dog_id->sale}}%</span></div>
                         @endif

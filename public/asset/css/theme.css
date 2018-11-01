@@ -1098,6 +1098,7 @@ div.table .product-info .product-title {
   overflow: hidden;
 }
 .product-thumb-link img {
+  height: 260px;
   width: 100%;
   transition: all 0.3s ease-out 0s;
   -webkit-transition: all 0.3s ease-out 0s;

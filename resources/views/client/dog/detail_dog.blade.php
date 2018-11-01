@@ -10,7 +10,13 @@
 	                    <div class="detail-gallery">
 	                        <div class="wrap-detail-gallery images zoom-style2">
 	                            <div class="mid woocommerce-product-gallery__image">
-	                                <img width="500" height="500" src="{{asset('asset/uploads/2018/img/'.$dogs->photos)}}" >
+	                            	@php
+		                                $photos = $dogs->getImage($dogs->id);
+		                            @endphp
+		                            @foreach ($photos as $photo)
+		                                <img width="500" height="500" src="{{ asset('upload/dogs/' . $photo) }}" >
+		                            @endforeach
+	                                
 	                                @if($dogs->sale!=0)
 	                                <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>
 	                                @endif
