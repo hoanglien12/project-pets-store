@@ -19,6 +19,7 @@ body {
   margin: 0;
   padding: 0;
   font-weight: 400;
+  /* overflow: hidden; */
 }
 .wrap {
   overflow: hidden;
@@ -5617,4 +5618,12 @@ img.rss-widget-icon {
 .main-nav1 > ul > li.current_page_ancestor:hover > a, 
 .main-nav1 > ul > li.current-menu-item:hover > a{
 	color:#fff;
+}
+
+.post-thumb.banner-advs.zoom-image.overlay-image a img {
+    height: 300px;
+    width: 100%;
+}
+.post-info {
+    min-height: 300px;
 }

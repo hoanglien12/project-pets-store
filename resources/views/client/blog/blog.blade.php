@@ -27,27 +27,31 @@
     </div>
     <div class="js-content-wrap blog-list-view " data-column="3">
         <div class="js-content-main list-post-wrap row">
-
-
+            @foreach($blogs as $blog)
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="item-post item-post-large item-default">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="post-thumb banner-advs zoom-image overlay-image">
-                                <a href="{{ route('home.detail_blog') }}" class="adv-thumb-link">
-                                    <img width="870" height="400" src="asset/uploads/2018/01/dog_blog_12-870x400.jpg" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
+                                <a href="{{ route('home.detail_blog',$blog->id) }}" class="adv-thumb-link">
+                                    @php
+                                        $photo = $blog->getImage($blog->id);
+                                    @endphp
+                                    <img width="870" height="400" src="{{ asset('upload/post/' . $photo[0]) }}" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="post-info">
                                 <h3 class="title24 post-title dosis-font font-bold">
-                                    <a href="../flowing-studio-dress-2/index.html" class="black">
-                                        DOMESTIC ANIMALS CAN SAVE YOU FROM LONELINESS </a>
+                                    <a href="" class="black">
+                                        {{$blog->title}}
+                                    </a>
                                 </h3>
-                                <p class="desc">Different kinds of domestic animals have different characteristics and needs. Aquatic pets can provide a sense of tranquility to their owners and remove stress. They don’t need much of attention, and it’s easy to take care of them. Rodents are small yet vigorous animals </p>
+                                <p class="desc">
+                                    {{$blog->summary}}
+                                </p>
                                 <ul class="list-inline-block post-meta-data">
-                                    <li><i class="fa fa-user color" aria-hidden="true"></i><a href="../author/7uptheme/index.html">7uptheme</a></li>
-                                    <li><i class="fa fa-calendar color"></i><span class="gray">January 24, 2018</span></li>
+                                    <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
                                     <li><i aria-hidden="true" class="fa fa-comment color"></i>
                                         <a href="../flowing-studio-dress-2/index.html#respond">0
                                             Comments </a>
@@ -55,120 +59,21 @@
                                     <li><i class="fa fa-folder-open color" aria-hidden="true"></i>
                                         <a href="../category/french-bulldog/index.html" rel="category tag">French Bulldog</a> <a href="../category/accessories/index.html" rel="category tag">German Shepherd</a> </li>
                                 </ul>
-                                <a href="../flowing-studio-dress-2/index.html" class="shop-button">Read more</a>
+                                <a href="{{ route('home.detail_blog',$blog->id) }}" class="shop-button">Read more</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="item-post item-post-large item-default">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="post-thumb banner-advs zoom-image overlay-image">
-                                <a href="../nullam-at-tellus-vehicula-2/index.html" class="adv-thumb-link">
-                                    <img width="870" height="400" src="asset/uploads/2018/01/dog_blog_10-870x400.jpg" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="post-info">
-                                <h3 class="title24 post-title dosis-font font-bold">
-                                    <a href="../nullam-at-tellus-vehicula-2/index.html" class="black">
-                                        BETTER RELATIONSHIP BETWEEN PEOPLE &amp; DOGS </a>
-                                </h3>
-                                <p class="desc">Different kinds of domestic animals have different characteristics and needs. Aquatic pets can provide a sense of tranquility to their owners and remove stress. They don’t need much of attention, and it’s easy to take care of them. Rodents are small yet vigorous animals </p>
-                                <ul class="list-inline-block post-meta-data">
-                                    <li><i class="fa fa-user color" aria-hidden="true"></i><a href="../author/7uptheme/index.html">7uptheme</a></li>
-                                    <li><i class="fa fa-calendar color"></i><span class="gray">January 24, 2018</span></li>
-                                    <li><i aria-hidden="true" class="fa fa-comment color"></i>
-                                        <a href="../nullam-at-tellus-vehicula-2/index.html#respond">0
-                                            Comments </a>
-                                    </li>
-                                    <li><i class="fa fa-folder-open color" aria-hidden="true"></i>
-                                        <a href="../category/belgian-malinois/index.html" rel="category tag">Belgian Malinois</a> </li>
-                                </ul>
-                                <a href="../nullam-at-tellus-vehicula-2/index.html" class="shop-button">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="item-post item-post-large item-default">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="post-thumb banner-advs zoom-image overlay-image">
-                                <a href="../curabitur-porttitor-varius-leo/index.html" class="adv-thumb-link">
-                                    <img width="870" height="400" src="asset/uploads/2018/01/dog_blog_09-870x400.jpg" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="post-info">
-                                <h3 class="title24 post-title dosis-font font-bold">
-                                    <a href="../curabitur-porttitor-varius-leo/index.html" class="black">
-                                        HELPING YOU GET RID OF YOUR DOG’S BAD BEHAVIOR </a>
-                                </h3>
-                                <p class="desc">Different kinds of domestic animals have different characteristics and needs. Aquatic pets can provide a sense of tranquility to their owners and remove stress. They don’t need much of attention, and it’s easy to take care of them. Rodents are small yet vigorous animals </p>
-                                <ul class="list-inline-block post-meta-data">
-                                    <li><i class="fa fa-user color" aria-hidden="true"></i><a href="../author/7uptheme/index.html">7uptheme</a></li>
-                                    <li><i class="fa fa-calendar color"></i><span class="gray">January 24, 2018</span></li>
-                                    <li><i aria-hidden="true" class="fa fa-comment color"></i>
-                                        <a href="../curabitur-porttitor-varius-leo/index.html#respond">0
-                                            Comments </a>
-                                    </li>
-                                    <li><i class="fa fa-folder-open color" aria-hidden="true"></i>
-                                        <a href="../category/accessories/index.html" rel="category tag">German Shepherd</a> </li>
-                                </ul>
-                                <a href="../curabitur-porttitor-varius-leo/index.html" class="shop-button">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="item-post item-post-large item-default">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="post-thumb banner-advs zoom-image overlay-image">
-                                <a href="../flowing-studio-dress/index.html" class="adv-thumb-link">
-                                    <img width="870" height="400" src="asset/uploads/2018/01/dog_blog_08-870x400.jpg" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="post-info">
-                                <h3 class="title24 post-title dosis-font font-bold">
-                                    <a href="../flowing-studio-dress/index.html" class="black">
-                                        PROFESSIONAL DAYCARE, GROOMING &amp; TRAINING </a>
-                                </h3>
-                                <p class="desc">Different kinds of domestic animals have different characteristics and needs. Aquatic pets can provide a sense of tranquility to their owners and remove stress. They don’t need much of attention, and it’s easy to take care of them. Rodents are small yet vigorous animals </p>
-                                <ul class="list-inline-block post-meta-data">
-                                    <li><i class="fa fa-user color" aria-hidden="true"></i><a href="../author/7uptheme/index.html">7uptheme</a></li>
-                                    <li><i class="fa fa-calendar color"></i><span class="gray">January 24, 2018</span></li>
-                                    <li><i aria-hidden="true" class="fa fa-comment color"></i>
-                                        <a href="../flowing-studio-dress/index.html#respond">0
-                                            Comments </a>
-                                    </li>
-                                    <li><i class="fa fa-folder-open color" aria-hidden="true"></i>
-                                        <a href="../category/accessories/index.html" rel="category tag">German Shepherd</a> <a href="../category/headphone/index.html" rel="category tag">Golden Retriever</a> <a href="../category/audio/index.html" rel="category tag">Labrador Retriever</a> </li>
-                                </ul>
-                                <a href="../flowing-studio-dress/index.html" class="shop-button">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            @endforeach
         </div>
 
         <div class="pagi-nav text-center ">
             <span aria-current="page" class="page-numbers current">1</span>
             <a class="page-numbers" href="page/2/index.html">2</a>
             <a class="page-numbers" href="page/3/index.html">3</a>
-            <a class="next page-numbers" href="page/2/index.html"><i class="fa fa-angle-right" aria-hidden="true"></i></a> </div>
+            <a class="next page-numbers" href="page/2/index.html"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </div>
 
 
     </div>

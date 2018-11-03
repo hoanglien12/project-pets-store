@@ -80,6 +80,7 @@
 						</ul>
 					</li>
 					<li id="nav-menu-item-827" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('home.blog') }}" class="menu-link main-menu-link">Blog</a>
+						
 					<!-- <ul class="sub-menu menu-odd  menu-depth-1">
 						<li id="nav-menu-item-1122" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../blog-list/index.html" class="menu-link sub-menu-link">Blog List</a></li>
 					</ul> -->

@@ -85,7 +85,7 @@ Route::group(['prefix' => '/'], function(){
 	});
 	Route::group(['prefix' => 'blog'], function(){
 		Route::get('','Client\HomeController@blog')->name('home.blog');
-		Route::get('detail_blog','Client\HomeController@detail_blog')->name('home.detail_blog');
+		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
 	});
 
 });

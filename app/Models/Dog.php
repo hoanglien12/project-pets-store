@@ -12,7 +12,7 @@ class Dog extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'name','id_dog_cate','price','birthday','height','weight', 'description','photos','created_at', 'updated_at'
+        'name','id_dog_cate','price','sale','birthday','height','weight', 'description','photos','created_at', 'updated_at'
     ];
     public function dogcategory()
     {
@@ -28,8 +28,8 @@ class Dog extends Model
         if($category_id != null){
             $dogs = $dogs->where('id_dog_cate',$category_id);
         }
-        if($price != null){
-            $dogs = $dogs->where('price',$price);
+        if($price != null ){
+            $dogs = $dogs->where('price',$price)->orWhere('sale',$price);
         }
         
         if($begin_date != null){
