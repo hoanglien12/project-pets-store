@@ -59,6 +59,7 @@
                             <th>Dog Category</th>
                             <th>Information</th>
                             <th>Price</th>
+                            <th>Sale</th>
                             <th>Date</th>
                             <th colspan="2">Action</th>
                             
@@ -136,6 +137,7 @@
                                     <a class="btn-xs" data-toggle="modal" href="#info{{ $dog->id }}" title="Delete"><button class="btn-info btn blue btn-outline" >Chi tiết</button></a>
                                 </td>
                                 <td>{{ $dog->price }}</td>
+                                <td>{{ $dog->sale }}</td>
                                 <td>{{ date('Y-m-d',strtotime($dog->created_at)) }}</td>
                                 <td>
                                     <a href="{{ route('dog.edit',$dog->id)}}"><button class="btn btn-block">Edit</button></a>

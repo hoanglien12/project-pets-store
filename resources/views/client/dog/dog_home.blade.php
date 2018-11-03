@@ -47,7 +47,7 @@
 
 							                                            <div class="product-extra-link text-center">
 							                                                <ul class="list-product-extra-link list-inline-block">
-							                                                    <li><a title="Quick View" data-product-id="705" href="../product/meela/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
+							                                                    <li><a title="Quick View" data-product-id="705" href="{{ route('home.detail_dog',$dogs->id)}}" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
 							                                                </ul>
 							                                                <a href="index1f0d.html?add-to-cart=705" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart</span></a> </div>
 							                                        </div>

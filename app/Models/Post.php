@@ -36,7 +36,6 @@ class Post extends Model
         $post    = Post::find($id);
         $images  = $post->image;
         $imgs    = json_decode($images);
-        // var_dump($imgs); die;
         return $imgs;
     }
 }

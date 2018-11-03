@@ -67,8 +67,8 @@
             <div class="col-md-2">
                 <select name="type"  class="bs-select form-control" data-style="blue">
                     <option value="">Loại tin</option>
-                    <option value="{{ old('type') }}">HOT</option>
-                    <option value="{{ old('type') }}">Thường</option>
+                    <option value="1">HOT</option>
+                    <option value="2">Thường</option>
                 </select>
                 <p class="help-block">Mặc định: HOT</p>
             </div>

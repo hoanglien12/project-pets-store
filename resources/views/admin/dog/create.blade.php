@@ -22,15 +22,34 @@
             <label>Slugs</label>
             <input name="slugs" value="{{ old('slug') }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
         </div>
-        <div class="form-group">
-            <label>Photos</label>
-            <input type="file" name="photos[]" class="form-control" multiple id="photos">
-        </div>
+         <div class="form-group">
+            <label class="control-label">Ảnh</label>
+            <div class="">
+                <div style="height: 32px;">
+                    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-on bootstrap-switch-id-check_upload bootstrap-switch-animate" style="width: 204px;">
+                        <div class="bootstrap-switch-container" style="width: 303px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 101px;">Upload Ảnh</span><span class="bootstrap-switch-label" style="width: 101px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 101px;">Link Ảnh</span><input checked="" id="check_upload" name="check_upload" type="checkbox" class="make-switch" data-on-text="Upload Ảnh" data-off-text="Link Ảnh" data-check-upload="1" "=""></div></div>
+                </div>
+                <p class=" help-block">Hình thức upload</p>
+            </div>
+            <div id="select_image_to_upload" class="col-md-offset-3">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                    <div>
+                        <span class="btn green btn-file" id="img">
+                            <span class="fileinput-new"> Select file </span>
+                            <input type="file" name="photos[]" id="photos" multiple >
+                        </span>
+                    </div>
+                </div>
+            </div>
         <div class="form-group">
             <label for="price">Price:</label>
             <input type="text" class="form-control" id="price" name="price">
         </div>
-        
+        <div class="form-group">
+            <label for="sale">Sale:</label>
+            <input type="text" class="form-control" id="sale" name="sale">
+        </div>
         <div class="form-group">
             <label for="pwd">Infomation:</label>
             <div class="input-group input-large date-picker input-daterange">
