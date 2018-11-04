@@ -25,7 +25,8 @@ class AdminEditProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'bail|required|numeric'
+            'price' => 'bail|required|numeric',
+            'sale' => 'numeric|nullable'
         ];
     }
 }

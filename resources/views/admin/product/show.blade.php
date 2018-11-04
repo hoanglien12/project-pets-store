@@ -56,6 +56,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Price</th>
+                                <th>Sale</th>
                                 <th>Description</th>
                                 <th>Photos</th>
                                 <th>Product Category</th>
@@ -70,6 +71,7 @@
 	                                <td>{{ $pro->id }}</td>
 	                                <td>{{ $pro->name }}</td>
                                     <td>{{ $pro->price }}</td>
+                                    <td>{{ $pro->sale }}</td>
 	                                <td>{{ $pro->description }}</td>
                                     <td>
                                         @php

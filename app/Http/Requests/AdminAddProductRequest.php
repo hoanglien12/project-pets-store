@@ -26,7 +26,8 @@ class AdminAddProductRequest extends FormRequest
         return [
             'name' => 'required',
             'price' => 'bail|required|numeric',
-            'photos' => 'required'
+            'photos' => 'required',
+            'sale' => 'numeric|nullable'
         ];
     }
 }
