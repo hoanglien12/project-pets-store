@@ -27,9 +27,7 @@ class AdminEditPostRequest extends FormRequest
             'title'        =>  'required|max:255',
             'image.*'      =>  'required|image',
             'content'      =>  'required',
-            'summary'      =>  'required',
-            'active'       =>  'required',
-            'hot'          =>  'required'
+            'summary'      =>  'required'
         ];
     }
 }

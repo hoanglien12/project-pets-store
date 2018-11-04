@@ -53,15 +53,20 @@
                     <div class="product-thumb">
                         <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
                         <a href="{{ route('home.detail_product',$dog_id->id)}} " class="product-thumb-link zoom-thumb">
-                        <img width="270" height="270" src="{{asset('asset/uploads/2018/img/'.$dog_id->photos)}}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px"></a>
+                             @php
+                                $photos = $dog_id->getImage($dog_id->id);
+                            @endphp
+                            
+                                <img width="270" height="270" src="{{ asset('upload/product/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
+                        </a>
                         @if($dog_id->sale!=0)
                         <div class="product-label"><span class="sale">-{{$dog_id->sale}}%</span></div>
                         @endif
                         <div class="product-extra-link text-center">
                             <ul class="list-product-extra-link list-inline-block">
-                                <li><a href="index7bbe.html?add_to_wishlist=724" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="724" data-product-title="Bailey"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
+                                
                                 <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                <li><a href="index7b5d.html?action=yith-woocompare-add-product&amp;id=724" class="product-compare compare compare-link" data-product_id="724"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
+                                
                             </ul>
                             <a href="" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
                         </div>

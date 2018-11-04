@@ -11,7 +11,7 @@ class ProductCategory extends Model
 {
     public function product()
     {
-    	return $this->hasMany('Category', 'id_product_cate', 'id');
+    	return $this->hasMany('App\Models\Product', 'id_product_cate', 'id');
     }
 
     public function getAllProductCategories($name = null, $begin_date = null,$end_date = null)

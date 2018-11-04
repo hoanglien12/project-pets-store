@@ -91,10 +91,6 @@
 
 	                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-724">
 	                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-	                                <a href="index7bbe.html?add_to_wishlist=724" rel="nofollow" data-product-id="724" data-product-type="simple" class="add_to_wishlist">
-	                                    Add to Wishlist</a>
 	                                <img src="../../wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
 	                            </div>
 
@@ -115,7 +111,7 @@
 
 	                        </div>
 
-	                        <div class="clear"></div><a href="http://7uptheme.com/wordpress/haustiere?action=yith-woocompare-add-product&amp;id=724" class="compare button" data-product_id="724" rel="nofollow">Add To Compare</a>
+	                        <div class="clear"></div>
 	                        <div class="product_meta item-product-meta-info">
 
 
@@ -157,7 +153,7 @@
 	                                            	@php
 	                                            		$photo = $dog_rl->getImage($dog_rl->id)
 	                                            	@endphp
-	                                                <img width="270" height="270" src="{{asset('upload/dog/'.$photo[0])}}" >
+	                                                <img width="270" height="270" src="{{asset('upload/dogs/'.$photo[0])}}" >
 
 	                                            </a>
 	                                            <div class="product-extra-link text-center">

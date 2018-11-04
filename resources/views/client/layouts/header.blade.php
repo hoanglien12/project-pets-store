@@ -86,7 +86,7 @@
 						<nav class="main-nav  main-nav1 ">
 							<ul id="menu-main-menu" class="list-none">
 								<li id="nav-menu-item-826" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children"><a href="{{ route('home.index') }}" class="menu-link main-menu-link">Home</a></li>
-								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="" class="menu-link main-menu-link">Dogs</a>
+								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="{{ route('home.dog-category') }}" class="menu-link main-menu-link">Dogs</a>
 								<ul class="sub-menu menu-odd  menu-depth-1">
 									@foreach($dogCategories as $cate)
 										<li id="nav-menu-item-1083" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('home.dog',$cate->id) }}" class="menu-link sub-menu-link">{{ $cate->name }}</a>
@@ -94,7 +94,7 @@
 									@endforeach
 								</ul>
 							</li>
-							<li id="nav-menu-item-829" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="../shop/index.html" class="menu-link main-menu-link">Products</a>
+							<li id="nav-menu-item-829" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('home.product-category') }}" class="menu-link main-menu-link">Products</a>
 							<ul class="sub-menu menu-odd  menu-depth-1">
 								@foreach($productCategories as $cate)
 								<li id="nav-menu-item-1179" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
