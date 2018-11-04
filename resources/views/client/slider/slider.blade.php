@@ -27,7 +27,7 @@
                                                         <h4 class="title18 dosis-font">
                                                             {{$slider->summary}}
                                                         </h4>
-                                                        <p><a class="shop-button bg-color arrow-right" href="#">Read more</a></p>
+                                                        <p><a class="shop-button bg-color arrow-right" href="{{ route('home.detail_blog',$slider->id) }}">Read more</a></p>
                                                     </div>
                                                 </div>
                                             </div>

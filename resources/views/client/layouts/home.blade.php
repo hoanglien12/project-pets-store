@@ -9,8 +9,6 @@
 	
 	@include('client.dog.dog_home')
 	
-	@include('client.about.people_say')
-
 	@include('client.blog.blog_home')
    
 @endsection

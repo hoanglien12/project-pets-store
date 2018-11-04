@@ -14,12 +14,12 @@
                                 <div class="wpb_wrapper">
                                     <div class="item-adv2  ">
                                         <div class="adv-thumb">
-                                            <a href="#" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog2.png" class="attachment-full size-full" alt="" /></a>
+                                            <a href="{{ route('home.dog-category') }}" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog2.png" class="attachment-full size-full" alt="" /></a>
                                         </div>
                                         <div class="adv-info">
-                                            <h3 class="title14 font-bold text-uppercase"><a href="#" class="black">Dog Categories</a></h3>
+                                            <h3 class="title14 font-bold text-uppercase"><a href="{{ route('home.dog-category') }}" class="black">Dog Categories</a></h3>
                                             <p class="desc">All dog categories of us, click if you want to find some.</p>
-                                            <a href="" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
+                                            <a href="{{ route('home.dog-category') }}" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -30,12 +30,12 @@
                                 <div class="wpb_wrapper">
                                     <div class="item-adv2  ">
                                         <div class="adv-thumb">
-                                            <a href="#" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog3.png" class="attachment-full size-full" alt="" /></a>
+                                            <a href="{{ route('home.product-category') }}" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog3.png" class="attachment-full size-full" alt="" /></a>
                                         </div>
                                         <div class="adv-info">
                                             <h3 class="title14 font-bold text-uppercase"><a href="#" class="black">Product for Dog</a></h3>
                                             <p class="desc">How to care for, train and love your dog as he matures.</p>
-                                            <a href="#" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
+                                            <a href="{{ route('home.product-category') }}" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -46,12 +46,12 @@
                                 <div class="wpb_wrapper">
                                     <div class="item-adv2  ">
                                         <div class="adv-thumb">
-                                            <a href="#" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog4.png" class="attachment-full size-full" alt="" /></a>
+                                            <a href="{{ route('home.blog') }}" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog4.png" class="attachment-full size-full" alt="" /></a>
                                         </div>
                                         <div class="adv-info">
-                                            <h3 class="title14 font-bold text-uppercase"><a href="#" class="black">Some posts you can like</a></h3>
+                                            <h3 class="title14 font-bold text-uppercase"><a href="{{ route('home.blog') }}" class="black">Some posts you can like</a></h3>
                                             <p class="desc">Read and comment your opinion about posts.</p>
-                                            <a href="#" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
+                                            <a href="{{ route('home.blog') }}" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
                                         </div>
                                     </div>
                                 </div>

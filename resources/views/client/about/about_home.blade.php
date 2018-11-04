@@ -15,8 +15,8 @@
 	            <div class="wpb_wrapper">
 	                <div class="custom-information  ">
 	                    <div class="intro-about-store">
-	                        <h2 class="title30 dosis-font font-bold text-uppercase color">Haustiere About us</h2>
-	                        <p class="desc white">We are the UK’s largest organisation dedicated to protecting and promoting the health and welfare of all dogs.</p>
+	                        <h2 class="title30 dosis-font font-bold text-uppercase color">{{ $about_us[0]->title }}</h2>
+	                        <p class="desc white">{{ $about_us[0]->summary }}</p>
 	                    </div>
 	                </div>
 	                <div class="s7upf-slider about-store-slider ">
@@ -31,7 +31,7 @@
 	                                        <a href="#" class="shop-button bg-color arrow-right">Read More</a>
 	                                    </div>
 	                                </div>
-	                                <div class="owl-item active" style="width: 460px;">
+	                                <div class="owl-item" style="width: 460px;">
 	                                    <div class="item-about-store  ">
 	                                        <h3 class="title14 font-bold dosis-font text-uppercase"><a href="#" class="black">SHORTLY ABOUT US</a></h3>
 	                                        <p class="desc">We offer dog owners and those working with dogs an unparalleled source of educational experience and advice on dog health,training and breeding.</p>
@@ -47,7 +47,7 @@
 	                                </div>
 	                            </div>
 	                        </div>
-	                        
+	                        <div class="owl-controls clickable" style="display: block;"><div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
 	                    </div>
 	                </div>
 	            </div>
