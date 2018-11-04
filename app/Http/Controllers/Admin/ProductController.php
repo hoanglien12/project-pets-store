@@ -57,6 +57,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->sale = $request->sale;
         $files = $request->file('photos');
         $filename_arr = [];
         $i = 1;
@@ -111,6 +112,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->sale = $request->sale;
         if($files = $request->file('photos'))
         {
             $filename_arr = [];
