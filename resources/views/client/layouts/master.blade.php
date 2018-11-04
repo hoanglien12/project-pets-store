@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/bootstrap/css/color.css') }}">
 
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.jcarousellite.min.js') }}"></script>
 
 
 <style>
@@ -52,7 +54,7 @@
 			</div>
 		</div>
 		@include('client.layouts.footer')
-
+<a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
 	</div>
 	

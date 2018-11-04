@@ -1,53 +1,20 @@
+
+
 @extends('client.layouts.master')
-@section('title','Dogs')
+@section('title','Dog Categories')
 @section('content')
     @include('client.layouts.sidebar')
     <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
 
     <div class="title-page clearfix">
-        <h2 class="title30 font-bold dosis-font text-uppercase pull-left">{{ $cate->name }}</h2>
-        <ul class="sort-pagi-bar list-inline-block pull-right">
-            <li>
-                <div class="sort-by">
-                    <span class="gray">Sort:</span>
-                    <div class="select-box inline-block">
-                        <form class="woocommerce-ordering" method="get">
-                            <select name="orderby" class="orderby">
-                                <option value="menu_order">Default sorting</option>
-                                <option value="popularity">Sort by popularity</option>
-                                <option value="rating">Sort by average rating</option>
-                                <option value="date">Sort by newness</option>
-                                <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to low</option>
-                            </select>
-                            <input type="hidden" name="paged" value="1">
-                        </form>
-                    </div>
-                </div> 
-            </li>
-            <li>
-                <div class="dropdown-box show-by">
-                    <a href="#" class="dropdown-link"><span class="gray">Per Page:</span><span class="silver number">12</span></a>
-                    <ul class="dropdown-list list-none">
-                        <li><a data-number="9" class="load-shop-ajax" href="indexdf48.html?number=9">9</a></li>
-                        <li><a data-number="12" class="load-shop-ajax" href="indexcae9.html?number=12">12</a></li>
-                        <li><a data-number="18" class="load-shop-ajax" href="index151b.html?number=18">18</a></li>
-                        <li><a data-number="24" class="load-shop-ajax" href="indexf213.html?number=24">24</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="view-type">
-                    <span class="gray">View As:</span>
-                    <a data-type="grid" href="indexcc26.html?type=grid" class="grid-view load-shop-ajax active"><i class="fa fa-th-large"></i></a>
-                    <a data-type="list" href="indexbf35.html?type=list" class="list-view load-shop-ajax "><i class="fa fa-reorder"></i></a>
-                </div>
-            </li>
-        </ul>
+    	@foreach($dogCategories as $cate)
+    	<a href="{{ route('home.dog',$cate->id) }}"><h2 class="title30 font-bold dosis-font text-uppercase pull-left">{{ $cate->name }}</h2></a>
+        <a href="{{ route('home.dog',$cate->id) }}"><h5 class="font-bold pull-right">Xem thêm</h5></a>
     </div>
     <div class="product-grid-view   products-wrap js-content-wrap" data-load="{&quot;attr&quot;:{&quot;item_style&quot;:null,&quot;item_style_list&quot;:null,&quot;column&quot;:&quot;3&quot;,&quot;size&quot;:null,&quot;size_list&quot;:null,&quot;shop_style&quot;:null,&quot;animation&quot;:&quot;zoom-thumb&quot;,&quot;number&quot;:&quot;12&quot;,&quot;cats&quot;:&quot;golden-retriever&quot;}}">
         <div class="products row list-product-wrap js-content-main">
-             @foreach($dogs as $dog) 
+    	@foreach($cate->dog as $dog)
+
             <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
                 <div class="item-product item-product-grid">
                     <div class="product-thumb">
@@ -95,7 +62,7 @@
             @endforeach
           
         </div>
-
+		@endforeach
     </div>
 </div>
 

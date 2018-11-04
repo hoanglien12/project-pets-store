@@ -59,6 +59,8 @@ class PostController extends Controller
         else{
             $filename_arr  = [];
         }
+
+        // dd($request->type);
         $newPost = POST::create([
                 'title'         => $request->get('title'),
                 'image'         => json_encode($filename_arr),
@@ -91,7 +93,6 @@ class PostController extends Controller
     {
         // echo 1; die;
         $request->flash();
-
         $filename_arr = [];
         $i            = 1;
         //kiem tra ton tai file hay k
@@ -105,6 +106,7 @@ class PostController extends Controller
                 $i++;
             }
             // dd($filename_arr);
+            $post->photos = json_encode($filename_arr);
         }
         else{
             $filename_arr = [];
@@ -113,7 +115,7 @@ class PostController extends Controller
         $update       = Post::query()->findOrFail($id);
         $update->update([
                 'title'         => $request->get('title'),
-                'image'         => json_encode($filename_arr),
+                // 'image'         => json_encode($filename_arr),
                 'summary'       => $request->get('summary'),
                 'active'        => $request->get('status'),
                 'hot'           => $request->get('type'),

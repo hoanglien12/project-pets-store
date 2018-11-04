@@ -95,15 +95,11 @@
 					<div class="wpb_wrapper">
 						<div class="custom-information  ">
 							<div class="footer-box">
-								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Information</h2>
+								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Dog Categories</h2>
 								<ul class="list-none list-menu-footer">
-									<li class="white">Hoàng Thi Liên</a></li>
-									<li class="white">Nguyễn Thị Cúc</a></li>
-									<li class="white">Nguyễn Thị Thanh Hoài</a></li>
-									<li class="white">Customer Service</a></li>
-									<li class="white">Delivery</a></li>
-									<li class="white">Returns</a></li>
-									<li class="white">Careers</a></li>
+									@foreach($dogCategories as $dogcat)
+									<li><a class="white" href="{{route('home.dog',$dogcat->id) }}">{{$dogcat->name}}</a></li>
+									@endforeach
 								</ul>
 							</div>
 						</div>
@@ -115,11 +111,9 @@
 					<div class="wpb_wrapper">
 						<div class="custom-information  ">
 							<div class="footer-box">
-								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Shop for your pet</h2>
+								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Product Categories</h2>
 								<ul class="list-none list-menu-footer">
-									  @foreach($dogCategories as $dogcat)
-									<li><a class="white" href="{{route('home.dog',$dogcat->id) }}">{{$dogcat->name}}</a></li>
-									@endforeach
+									  
 									  @foreach($productCategories as $dogcat)
 									<li><a class="white" href="{{route('home.product',$dogcat->id) }}">{{$dogcat->name}}</a></li>
 									@endforeach

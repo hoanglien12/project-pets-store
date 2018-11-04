@@ -74,10 +74,16 @@ Route::group(['prefix' => '/'], function(){
 	Route::get('/', 'Client\HomeController@index')->name('home.index');
 	Route::get('dog_home','Client\HomeController@dog_home')->name('home.dog_home');
 
+	Route::group(['prefix' => 'dog-category'], function(){
+		Route::get('dog-category', 'Client\HomeController@dog_category')->name('home.dog-category');
+	});
 	Route::group(['prefix' => 'dog'], function(){
 		Route::get('list', 'Client\HomeController@list')->name('home.list');
 		Route::get('dogs/{id}', 'Client\HomeController@dog')->name('home.dog');
 		Route::get('detail_dog/{id}','Client\HomeController@detail_dog')->name('home.detail_dog');
+	});
+	Route::group(['prefix' => 'product-category'], function(){
+		Route::get('product-category', 'Client\HomeController@product_category')->name('home.product-category');
 	});
 	Route::group(['prefix' => 'product'], function(){
 		Route::get('product/{id}', 'Client\HomeController@product')->name('home.product');
@@ -85,7 +91,7 @@ Route::group(['prefix' => '/'], function(){
 	});
 	Route::group(['prefix' => 'blog'], function(){
 		Route::get('','Client\HomeController@blog')->name('home.blog');
-		Route::get('detail_blog','Client\HomeController@detail_blog')->name('home.detail_blog');
+		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
 	});
 
 });

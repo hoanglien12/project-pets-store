@@ -69,6 +69,7 @@ class DogController extends Controller
                 'description'   => $request->get('description'),
                 'id_dog_cate'   => $request->get('category_id'),
                 'price'         => $request->get('price'),
+                'sale'			=> $request->get('sale'),
                 'height'        => $request->get('height'),
                 'weight'        => $request->get('weight'),
                 'birthday'      => $birthday,
@@ -110,7 +111,7 @@ class DogController extends Controller
             	$filename_arr[] = $filename;
             	$i++;
 			}
-       		// dd($filename_arr);
+			$dog->photos = json_encode($filename_arr);
        	}
        	else{
        		echo 2; 
@@ -119,9 +120,10 @@ class DogController extends Controller
 		$update       = Dog::query()->findOrFail($id);
 		$update->update([
 			'name'          => $request->name,
-			'photos'		=> json_encode($filename_arr),
+			// 'photos'		=> json_encode($filename_arr),
             'description'   => $request->description,
             'price'         => $request->price,
+            'sale'			=> $request->sale,
             'birthday'      => $birthday,
             'height'        => $request->height,
             'weight'        => $request->weight

@@ -8,7 +8,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">Tiêu đề bài viết</label>
             <div class="col-md-8">
-                <input name="title" id="title" placeholder="Nhập tiêu đề bài viết" type="text" class="form-control" value="{{ old('title') }}" onkeyup="ChangeToSlug();">
+                <input name="title" id="name" placeholder="Nhập tiêu đề bài viết" type="text" class="form-control" value="{{ old('title') }}" onkeyup="ChangeToSlug();">
                 
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">Slugs</label>
             <div class="col-md-8">
-                <input name="slugs" value="{{ old('slug') }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
+                <input name="slugs" value="{{ old('slugs') }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
                 
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <div>
                         <span class="btn green btn-file" id="img">
                             <span class="fileinput-new"> Select file </span>
-                            <input type="file" name="photos[]" id="photos" multiple value="{{ old('photos') }}">
+                            <input type="file" name="photos[]" id="photos" multiple >
                         </span>
                     </div>
                 </div>
@@ -48,14 +48,14 @@
         <div class="form-group">
             <label class="col-md-3 control-label">Tóm tắt</label>
             <div class="col-md-8">
-                <textarea class="form-control" placeholder="Nhập tóm tắt bài viết" value="{{ old('summary') }}" name="summary" rows="3"></textarea>
+                <textarea class="form-control" placeholder="Nhập tóm tắt bài viết" name="summary" rows="3">{{ old('summary') }}</textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label">Nội dung</label>
             <div class="col-md-8">
-                <textarea class="ckeditor form-control" id="content" name="content" value="{{ old('content') }}" rows="6"></textarea>
+                <textarea class="ckeditor form-control" id="content" name="content" rows="6">{{ old('content') }}</textarea>
                 <script>
                     CKEDITOR.replace( 'content' );
                 </script>
@@ -65,7 +65,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">Loại tin, Trạng thái</label>
             <div class="col-md-2">
-                <select name="type" class="bs-select form-control" data-style="blue">
+                <select name="type"  class="bs-select form-control" data-style="blue">
                     <option value="">Loại tin</option>
                     <option value="1">HOT</option>
                     <option value="2">Thường</option>

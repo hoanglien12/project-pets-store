@@ -8,17 +8,26 @@
                             <div class="owl-wrapper-outer">
                                 <div class="owl-wrapper" style="width: 2698px; left: 0px; display: block;">
                                     <div class="owl-item active" style="width: 1349px;">
-                                        <div class="item-slider item-slider2  " style="background-position: center 0px; background-image: url(asset/uploads/2018/01/slide1-1.jpg);">
+                                        @php
+                                            $photos = $slider->getImage($slider->id);
+                                        @endphp
+                                        <div class="item-slider item-slider2  " style="background-position: center 0px; background-image: url({{ asset('upload/post/' . $photos[0]) }});">
                                             <div class="banner-thumb">
-                                                <a href="#"><img width="1920" height="892" src="asset/uploads/2018/01/slide1-1.jpg" class="attachment-full size-full" alt="" style="height: 892px;"></a>
+                                                <a href="#">
+                                                    
+                                                    <img width="1920" height="892" src="{{ asset('upload/post/' . $photos[0]) }}" class="attachment-full size-full" alt="" style="height: 892px;">
+                                                </a>
                                             </div>
                                             <div class="banner-info" style="height: 186px;">
                                                 <div class="container">
                                                     <div class="slider-content-text white text-center text-uppercase animated bounceIn" data-animated="bounceIn">
-                                                        <h3 class="title30 dosis-font font-bold">Haustiere</h3>
-                                                        <h2 class="title48 dosis-font font-bold">Pet trade and exchange</h2>
-                                                        <h4 class="title18 dosis-font">Join the club with us, experience the best things with your pet</h4>
-                                                        <p><a class="shop-button bg-color arrow-right" href="#">Read more</a> <a class="shop-button bg-color2 arrow-right" href="#">join Club</a></p>
+                                                        <h3 class="title30 dosis-font font-bold">
+                                                            {{$slider->title}}
+                                                        </h3>
+                                                        <h4 class="title18 dosis-font">
+                                                            {{$slider->summary}}
+                                                        </h4>
+                                                        <p><a class="shop-button bg-color arrow-right" href="{{ route('home.detail_blog',$slider->id) }}">Read more</a></p>
                                                     </div>
                                                 </div>
                                             </div>

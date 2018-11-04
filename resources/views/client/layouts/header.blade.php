@@ -21,11 +21,36 @@
 							<li><a class="white push" href="#"><i class="icon ion-social-twitter"></i></a></li>
 						</ul>
 						<ul class="top-link list-inline-block text-uppercase  inline-block text-upercase title12">
-							
-							<li><a class="white wobble-top" href="http://localhost/wordpress/dogstore/about/">About Us</a></li>
-							<li><a class="white wobble-top" href="http://localhost/wordpress/dogstore/contact/">Contact us</a></li>
-							
-						</ul>
+		                    @guest
+		                        <li class="nav-item">
+		                            <a class="nav-link white wobble-top" href="{{ route('login') }}">{{ __('Login') }}</a>
+		                        </li>
+		                        <li class="nav-item">
+		                            <a class="nav-link white wobble-top" href="{{ route('register') }}">{{ __('Register') }}</a>
+		                        </li>
+		                    @else
+		                        <li class="nav-item dropdown">
+		                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+		                                {{ Auth::user()->name }}<span class="caret"></span>
+		                            </a>
+
+		                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+		                            	<a class="dropdown-item" href="{{ route('editPass') }}">
+				                            {{ __('Change password') }}
+				                        </a>
+		                                <br>
+		                                <a class="dropdown-item" href="{{ route('logout') }}"
+		                                   onclick="event.preventDefault();
+		                                                 document.getElementById('logout-form').submit();">
+		                                    {{ __('Logout') }}
+		                                </a>
+		                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+		                                    @csrf
+		                                </form>
+		                            </div>
+		                        </li>
+		                    @endguest
+		                </ul>	
 					</div>
 				</div>
 			</div>
@@ -61,7 +86,7 @@
 						<nav class="main-nav  main-nav1 ">
 							<ul id="menu-main-menu" class="list-none">
 								<li id="nav-menu-item-826" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children"><a href="{{ route('home.index') }}" class="menu-link main-menu-link">Home</a></li>
-								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="" class="menu-link main-menu-link">Dogs</a>
+								<li id="nav-menu-item-831" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="{{ route('home.dog-category') }}" class="menu-link main-menu-link">Dogs</a>
 								<ul class="sub-menu menu-odd  menu-depth-1">
 									@foreach($dogCategories as $cate)
 										<li id="nav-menu-item-1083" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('home.dog',$cate->id) }}" class="menu-link sub-menu-link">{{ $cate->name }}</a>
@@ -69,7 +94,7 @@
 									@endforeach
 								</ul>
 							</li>
-							<li id="nav-menu-item-829" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="../shop/index.html" class="menu-link main-menu-link">Products</a>
+							<li id="nav-menu-item-829" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('home.product-category') }}" class="menu-link main-menu-link">Products</a>
 							<ul class="sub-menu menu-odd  menu-depth-1">
 								@foreach($productCategories as $cate)
 								<li id="nav-menu-item-1179" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page">
@@ -80,6 +105,7 @@
 						</ul>
 					</li>
 					<li id="nav-menu-item-827" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('home.blog') }}" class="menu-link main-menu-link">Blog</a>
+						
 					<!-- <ul class="sub-menu menu-odd  menu-depth-1">
 						<li id="nav-menu-item-1122" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../blog-list/index.html" class="menu-link sub-menu-link">Blog List</a></li>
 					</ul> -->
