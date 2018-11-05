@@ -35,9 +35,9 @@
 							                                            	@php
 												                                $photos = $dogs->getImage($dogs->id);
 												                            @endphp
-												                            
+												                            @if($photos != null)
 												                            	<img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-		                                		                            
+		                                		                            @endif
 							                                                </a>
 														                    @if($dogs->sale!=0)
 														                    <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>

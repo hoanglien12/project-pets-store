@@ -10,7 +10,9 @@
 	            @php
                     $photo = $blog->getImage($blog->id);
                 @endphp
+                @if($photo != null)
                 <img width="870" height="400" src="{{ asset('upload/post/' . $photo[0]) }}" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
+                @endif
 	        </div>
 	        <ul class="list-inline-block post-meta-data">
 	            <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
