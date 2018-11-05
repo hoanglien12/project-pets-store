@@ -14,8 +14,9 @@
                                         <div class="item-slider item-slider2  " style="background-position: center 0px; background-image: url({{ asset('upload/post/' . $photos[0]) }});">
                                             <div class="banner-thumb">
                                                 <a href="#">
-                                                    
+                                                    @if($photos != null)
                                                     <img width="1920" height="892" src="{{ asset('upload/post/' . $photos[0]) }}" class="attachment-full size-full" alt="" style="height: 892px;">
+                                                    @endif
                                                 </a>
                                             </div>
                                             <div class="banner-info" style="height: 186px;">
