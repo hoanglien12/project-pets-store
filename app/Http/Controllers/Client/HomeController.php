@@ -69,19 +69,19 @@ class HomeController extends Controller
     }
       public function product($id)
     {
-        $dog_id              = Product::where('id_product_cate',$id)->get();
+        $products            = Product::where('id_product_cate',$id)->get();
         $dogCategories       = DogCategory::all();
         $product             = Product::where('id_product_cate',$id)->get();
         $productCategories   = ProductCategory::all();
-        return view('client.product.product',compact('dogs','dog_id','dogCategories','product','productCategories'));
+        return view('client.product.product',compact('dogs','products','dogCategories','product','productCategories'));
     }
     public function detail_product($id)
     {
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
         $dogs                = Product::where('id',$id)->first();
-        $dog_rl              = Product::where('id_product_cate',$dogs->id_product_cate)->paginate(3);
-        return view('client.product.detail_product',compact('dogCategories','dogs','productCategories','dog_rl'));
+        $product_other       = Product::where('id_product_cate',$dogs->id_product_cate)->paginate(3);
+        return view('client.product.detail_product',compact('dogCategories','dogs','productCategories','product_other'));
     }
 
     public function blog()

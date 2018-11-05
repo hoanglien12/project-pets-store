@@ -37,7 +37,9 @@
                                     @php
                                         $photo = $blog->getImage($blog->id);
                                     @endphp
+                                    @if($photo != null)
                                     <img width="870" height="400" src="{{ asset('upload/post/' . $photo[0]) }}" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
+                                    @endif
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">

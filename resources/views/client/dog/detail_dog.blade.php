@@ -14,7 +14,9 @@
 		                                $photos = $dogs->getImage($dogs->id);
 		                            @endphp
 		                            @foreach ($photos as $photo)
+		                            	@if($photo != null)
 		                                <img width="500" height="500" src="{{ asset('upload/dogs/' . $photo) }}" >
+		                                @endif
 		                            @endforeach
 	                                
 	                                @if($dogs->sale!=0)

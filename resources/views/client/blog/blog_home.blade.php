@@ -19,7 +19,9 @@
 	                                                    	@php
 	                                                    	$photo = $blog->getImage($blog->id)
 	                                                    	@endphp
+	                                                    	@if($photo != null)
 	                                                        <img src="{{ asset('upload/post/' . $photo[0]) }}">
+	                                                        @endif
 	                                                    </a>
 	                                                </div>
 	                                                <div class="post-info">

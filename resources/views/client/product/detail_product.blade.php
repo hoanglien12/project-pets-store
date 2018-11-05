@@ -10,7 +10,12 @@
 	                    <div class="detail-gallery">
 	                        <div class="wrap-detail-gallery images zoom-style2">
 	                            <div class="mid woocommerce-product-gallery__image">
-	                                <img width="500" height="500" src="{{asset('asset/uploads/2018/img/'.$dogs->photos)}}" >
+	                            	@php
+		                                $photos = $dogs->getImage($dogs->id);
+		                            @endphp
+		                            @if($photos != null)
+		                                <img width="500" height="500" src="{{ asset('upload/product/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
+		                            @endif
 	                                @if($dogs->sale!=0)
 	                                <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>
 	                                @endif
@@ -40,10 +45,10 @@
 	                        <h2 class="product-title title24 dosis-font font-bold text-uppercase">Name : {{$dogs->name}}</h2>
 	                        
 	                        <p class="price"></p>
-	                        @if($dogs->promotion_price==0)
+	                        @if($dogs->sale==0)
 	                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></div>
 	                        @else
-	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->promotion_price}}</span></ins></div>
+	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->sale}}</span></ins></div>
 	                         @endif
 	                          
 	                        <p></p>
@@ -272,14 +277,19 @@
 	                <div class="wrap-item group-navi smart-slider owl-carousel owl-theme" data-item="" data-speed="" data-itemres="0:1,480:2,990:3" data-prev="" data-next="" data-pagination="" data-navigation="true" style="opacity: 1; display: block;">
 	                    <div class="owl-wrapper-outer">
 	                        <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
-	                           @foreach($dog_rl  as $dog_rl)
+	                           @foreach($product_other  as $product)
 	                            <div class="owl-item active" style="width: 300px;">
 	                                <div class="post-716 product type-product status-publish has-post-thumbnail product_cat-belgian-malinois product_cat-bichon-frise product_cat-bloodhound last instock featured shipping-taxable purchasable product-type-simple">
 	                                    <div class="item-product item-product-grid">
 	                                        <div class="product-thumb">
 	                                            <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
 	                                            <a href="../cannoly/index.html" class="product-thumb-link zoom-thumb">
-	                                                <img width="270" height="270" src="{{asset('asset/uploads/2018/img/'.$dog_rl->photos)}}" >
+	                                                @php
+						                                $photos = $product->getImage($product->id);
+						                            @endphp
+						                            @if($photos != null)
+						                                <img width="270" height="270" src="{{ asset('upload/product/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
+						                            @endif
 
 	                                            </a>
 	                                            <div class="product-extra-link text-center">
@@ -292,14 +302,14 @@
 	                                            </div>
 	                                        </div>
 	                                        <div class="product-info">
-	                                            <span class="title12 text-uppercase color font-bold">ID:DSP{{$dog_rl->id}}</span>
+	                                            <span class="title12 text-uppercase color font-bold">ID:DSP{{$product->id}}</span>
 	                                            <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-	                                                <a title="Cannoly" href="../cannoly/index.html" class="black">name :{{$dog_rl->name}}</a>
+	                                                <a title="Cannoly" href="../cannoly/index.html" class="black">name :{{$product->name}}</a>
 	                                            </h3>
-	                                            @if($dog_rl->promotion_price==0)
-	                                            <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->price}}</span></div>
+	                                            @if($product->sale==0)
+	                                            <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->price}}</span></div>
 	                                            @else
-	                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->promotion_price}}</span></ins></div>
+	                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->sale}}</span></ins></div>
 	                                            @endif
 
 	                                            <ul class="wrap-rating list-inline-block">
