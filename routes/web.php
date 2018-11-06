@@ -57,6 +57,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 	    Route::get('', 'Admin\OrderController@index')->name('order.index');
 	});
 
+	Route::group(['prefix' => 'user',], function (){
+
+	    Route::get('', 'Admin\UserController@index')->name('user.index');
+	    Route::get('add', 'Admin\UserController@add')->name('user.add');
+	    Route::post('add', 'Admin\UserController@store')->name('user.store');
+	    Route::get('/edit/{id}','Admin\UserController@edit')->name('user.edit');
+	    Route::put('/edit/{id}','Admin\UserController@update')->name('user.update');
+	    Route::delete('delete/{id}','Admin\UserController@delete')->name('user.delete');
+	});
+
 	Route::group(['prefix' => 'post',], function (){
 
 	    Route::get('', 'Admin\PostController@index')->name('post.index');
@@ -66,6 +76,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 	    Route::put('/edit/{id}','Admin\PostController@update')->name('post.update');
 	    Route::delete('delete/{id}','Admin\PostController@delete')->name('post.delete');
 	    Route::post('change-status/{id}','Admin\PostController@change_status')->name('post.change_status');
+	});
+
+	Route::group(['prefix' => 'site-config',], function (){
+
+	    Route::get('', 'Admin\SiteConfigController@index')->name('site_config.index');
+	    Route::get('add', 'Admin\SiteConfigController@add')->name('site_config.add');
+	    Route::post('add', 'Admin\SiteConfigController@store')->name('site_config.store');
+	    Route::get('/edit/{id}','Admin\SiteConfigController@edit')->name('site_config.edit');
+	    Route::put('/edit/{id}','Admin\SiteConfigController@update')->name('site_config.update');
+	    Route::delete('delete/{id}','Admin\SiteConfigController@delete')->name('site_config.delete');
 	});
 	
 });

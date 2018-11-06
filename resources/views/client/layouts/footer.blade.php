@@ -131,9 +131,8 @@
 							<div class="footer-box">
 								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Contact</h2>
 								<div class="contact-footer">
-									<p class="desc white"><i class="icon ion-map"></i>45 Võ Chí Công</p>
-									<p class="desc white"><i class="icon ion-ios-telephone"></i>Mobile: <b>0971006294</b>
-									<br /> Tel: <b>0351 365 765</b></p>
+									<p class="desc white"><i class="icon ion-map"></i>{{ $site_address[0]->value }}</p>
+									<p class="desc white"><i class="icon ion-ios-telephone"></i>Mobile: <b>{{ $site_phone[0]->value }}</b>
 									<p class="desc white"><i class="icon ion-ios-email"></i><a class="white" href="mailto:contact.7uptheme@gmail.com">contact.7uptheme@gmail.com</a>
 									<br />
 									<a class="white" href="mailto:thanphamngoc@gmail.com">thanphamngoc@gmail.com</a></p>
@@ -176,53 +175,7 @@
 	</div>
 	<div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row footer-bottom footer-bottom2 vc_custom_1516171781582 vc_row-has-fill">
 		<div class="container">
-			<div class="wpb_column column_container col-sm-8">
-				<div class="vc_column-inner ">
-					<div class="wpb_wrapper">
-						<div class="custom-information  ">
-							<div class="table-custom copy-right-footer">
-								<div class="logo">
-									<a href="../index.html"><img class="alignnone size-full wp-image-870" src="asset/uploads/2018/01/logo-2.png" alt="" width="51" height="46" /></a>
-								</div>
-								<div class="policy-footer">
-									<ul class="list-inline-block menu-footer">
-										<li><a class="white" href="#">Privacy Policy</a></li>
-										<li><a class="white" href="#">Terms &amp; Conditions</a></li>
-										<li><a class="white" href="#">Cookies</a></li>
-										<li><a class="white" href="../bog.html">Blog</a></li>
-										<li><a class="white" href="../about/index.html">About</a></li>
-										<li><a class="white" href="../contact/index.html">Contact</a></li>
-										<li><a class="white" href="#">Site Map</a></li>
-									</ul>
-									<p class="desc copyright white">@2018 - Design by: <a class="white" href="http://7uptheme.com/">7uptheme.com</a></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="wpb_column column_container col-sm-4">
-				<div class="vc_column-inner ">
-					<div class="wpb_wrapper">
-						<div class="payment-method text-right">
-							<ul class="list-inline-block">
-								<li>
-									<a class="wobble-top" href="#"><img width="36" height="22" src="asset/uploads/2018/01/pay1.jpg" class="attachment-full size-full" alt="" /></a>
-								</li>
-								<li>
-									<a class="wobble-top" href="#"><img width="49" height="22" src="asset/uploads/2018/01/pay2.jpg" class="attachment-full size-full" alt="" /></a>
-								</li>
-								<li>
-									<a class="wobble-top" href="#"><img width="37" height="22" src="asset/uploads/2018/01/pay3.jpg" class="attachment-full size-full" alt="" /></a>
-								</li>
-								<li>
-									<a class="wobble-top" href="#"><img width="36" height="22" src="asset/uploads/2018/01/pay4.jpg" class="attachment-full size-full" alt="" /></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+			<p class="desc copyright white text-center">@2018 - Design by: <a class="white" href="http://7uptheme.com/">7uptheme.com</a></p>
 		</div>
 	</div>
 </footer>
