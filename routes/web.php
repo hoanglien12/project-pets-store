@@ -93,11 +93,11 @@ Route::group(['prefix' => '/'], function(){
 		Route::get('','Client\HomeController@blog')->name('home.blog');
 		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
 	});
-
 });
 Route::get('add-to-cart/{id}','Client\HomeController@addtocart')->name('home.cart');
-
 Route::get('del-cart/{id}','Client\HomeController@getdelitem')->name('home.del');
+Route::get('checkout','Client\HomeController@getcheckout')->name('home.checkout');
+
 Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
 Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');
  

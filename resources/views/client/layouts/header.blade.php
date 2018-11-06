@@ -151,7 +151,7 @@
         </div>
         <div class="cart-btns">
           <a href="#">View Cart</a>
-          <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="{{route('home.checkout')}}">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       
     </ul>
