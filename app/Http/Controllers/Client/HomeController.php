@@ -17,7 +17,6 @@ class HomeController extends Controller
 
     public function index() 
     {
-        $dog_add = Dog::all();
     	$dogCategories 		 = DogCategory::all();
     	$productCategories	 = ProductCategory::all();
         $dog_ft              = Dog::all();
@@ -30,7 +29,6 @@ class HomeController extends Controller
 
     public function dog_category()
     {   
-        $dog_add             = Dog::all();
         $dog_ft              = Dog::all();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
@@ -38,7 +36,6 @@ class HomeController extends Controller
     }
     public function dog_home() 
     {
-        $dog_add             = Dog::all();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
         $dogs                = Dog::all();
@@ -48,7 +45,6 @@ class HomeController extends Controller
 
     public function dog($idCate = null)
     {   
-         $dog_add = Dog::find($idCate);
         $dog_ft              = Dog::all();
         $dogs                = Dog::where('id_dog_cate',$idCate)->get();
         $dogCategories       = DogCategory::all();
@@ -59,7 +55,6 @@ class HomeController extends Controller
     }
     public function detail_dog($id)
     {
-        $dog_add             = Dog::find($id);
         $dog_ft              = Dog::all();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
@@ -70,7 +65,6 @@ class HomeController extends Controller
 //product
     public function product_category()
     {
-        $dog_add             = Dog::all();
         $dog_ft              = Dog::all();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
@@ -79,7 +73,6 @@ class HomeController extends Controller
     }
       public function product($id)
     {
-        $dog_add             = Dog::find($id);
         $dog_ft              = Dog::all();
         $products            = Product::where('id_product_cate',$id)->get();
         $dogCategories       = DogCategory::all();
@@ -88,7 +81,6 @@ class HomeController extends Controller
     }
     public function detail_product($id)
     {
-        $dog_add             = Dog::find($id);
         $dog_ft              = Dog::all();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
@@ -118,12 +110,20 @@ class HomeController extends Controller
      public function addtocart(Request $req,$id){
         
         $dog_add             = Dog::find($id);
+        $product_add         = Product::find($id);
         $oldCart             = Session('cart')?Session::get('cart'):null;
         $cart                = new Cart($oldCart);
-        $cart->add($dog_add, $id);
+        $cart->add($dog_add, $id,$product_add,$id);
         //dd($cart);
         $req->session()->put('cart',$cart);
         return redirect()->back();
     }
+    public function getcheckout(){
+        $dog_ft              = Dog::all();
+        $dogCategories       = DogCategory::all();
+        $productCategories   = ProductCategory::all();
+        return view('client.cart.checkout',compact('dogCategories','productCategories','dog_ft'));
+    }
+    
 
 }
