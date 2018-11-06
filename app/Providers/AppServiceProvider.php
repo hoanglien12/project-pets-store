@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Schema;
-
+use App\Models\Cart;
+use Session;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -14,7 +15,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        view()->composer('client.layouts.header',function($view){
+            if(Session('cart')){
+                $oldCart = Session::get('cart');
+                $cart = new Cart($oldCart);
+                $view->with(['cart'=>Session::get('cart'), 'dog_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
+            }
+        });
         Schema::defaultStringLength(191);
+        
     }
 
     /**

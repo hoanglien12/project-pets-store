@@ -14,13 +14,13 @@
 		                                $photos = $dogs->getImage($dogs->id);
 		                            @endphp
 		                            @foreach ($photos as $photo)
-		                            	@if($photo != null)
+		                            	@if($photos != null)
 		                                <img width="500" height="500" src="{{ asset('upload/dogs/' . $photo) }}" >
 		                                @endif
 		                            @endforeach
 	                                
 	                                @if($dogs->sale!=0)
-	                                <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>
+	                                <div class="product-label"><span class="sale">sale</span></div>
 	                                @endif
 	                            </div>
 	                           
@@ -48,10 +48,10 @@
 	                        <h2 class="product-title title24 dosis-font font-bold text-uppercase">Name : {{$dogs->name}}</h2>
 	                        
 	                        <p class="price"></p>
-	                        @if($dogs->promotion_price==0)
+	                        @if($dogs->sale==0)
 	                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></div>
 	                        @else
-	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->promotion_price}}</span></ins></div>
+	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->sale}}</span></ins></div>
 	                         @endif
 	                          <div><p>Birthday: {{$dogs->birthday}}</p></div>
 	                         <div><p>Height:    {{$dogs->height}} cm</p></div>
@@ -168,10 +168,10 @@
 	                                            <h3 class="title18 text-uppercase product-title dosis-font font-bold">
 	                                                <a title="Cannoly" href="../cannoly/index.html" class="black">name :{{$dog_rl->name}}</a>
 	                                            </h3>
-	                                            @if($dog_rl->promotion_price==0)
+	                                            @if($dog_rl->sale==0)
 	                                            <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->price}}</span></div>
 	                                            @else
-	                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->promotion_price}}</span></ins></div>
+	                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog_rl->sale}}</span></ins></div>
 	                                            @endif
 
 	                                            <ul class="wrap-rating list-inline-block">

@@ -24,7 +24,7 @@
 							            <div class="wrap-item smart-slider group-navi  owl-carousel owl-theme" data-item="4" data-speed="" data-itemres="0:1,480:2,768:3,990:4" data-prev="" data-next="" data-pagination="" data-navigation="group-navi" style="opacity: 1; display: block;">
 							                <div class="owl-wrapper-outer">
 							                    <div class="owl-wrapper" style="width: 4800px; left: 0px; display: block;">
-							                    	@foreach($dogs as $dogs)
+							                    	@foreach($dog_ft as $dogs)
 							                       <div class="owl-item active" style="width: 300px;">
 							                            <div class="item">
 							                                <div class="post-705 product type-product status-publish has-post-thumbnail product_cat-bloodhound product_cat-french-bulldog product_cat-german-shepherd last instock featured shipping-taxable purchasable product-type-simple">
@@ -40,7 +40,7 @@
 		                                		                            @endif
 							                                                </a>
 														                    @if($dogs->sale!=0)
-														                    <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>
+														                    <div class="product-label"><span class="sale">sale</span></div>
 														                    @endif
 
 							                                            </a>
@@ -49,18 +49,18 @@
 							                                                <ul class="list-product-extra-link list-inline-block">
 							                                                    <li><a title="Quick View" data-product-id="705" href="{{ route('home.detail_dog',$dogs->id)}}" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
 							                                                </ul>
-							                                                <a href="index1f0d.html?add-to-cart=705" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart</span></a> </div>
+							                                                <a href="{{route('home.cart',$dogs->id)}}" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart</span></a> </div>
 							                                        </div>
 							                                        <div class="product-info">
 							                                            <span class="title12 text-uppercase color font-bold">ID:DSP{{$dogs->id}}</span>
 							                                            <h3 class="title18 text-uppercase product-title dosis-font font-bold">
 																			<a title="Meela" href="../product/meela/index.html" class="black">{{$dogs->name}}</a>
 																		</h3>
-																		@if($dogs->promotion_price)
+																		@if($dogs->sale==0)
 							                                            <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span>
 							                                            </div>
 							                                            @else
-							                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->promotion_price}}</span></ins></div>
+							                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->sale}}</span></ins></div>
 							                                            @endif
 							                                            <ul class="wrap-rating list-inline-block">
 							                                                <li>
