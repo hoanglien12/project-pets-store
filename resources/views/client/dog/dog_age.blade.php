@@ -33,7 +33,7 @@
                                             <a href="{{ route('home.product-category') }}" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog3.png" class="attachment-full size-full" alt="" /></a>
                                         </div>
                                         <div class="adv-info">
-                                            <h3 class="title14 font-bold text-uppercase"><a href="#" class="black">Product for Dog</a></h3>
+                                            <h3 class="title14 font-bold text-uppercase"><a href="{{ route('home.product-category') }}" class="black">Product for Dog</a></h3>
                                             <p class="desc">How to care for, train and love your dog as he matures.</p>
                                             <a href="{{ route('home.product-category') }}" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
                                         </div>

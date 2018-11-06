@@ -1,19 +1,19 @@
-
-
 @extends('client.layouts.master')
-@section('title','Dog Categories')
+@section('title','Product Categories')
 @section('content')
-    @include('client.layouts.sidebar')
+
+
+@include('client.layouts.sidebar')
     <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
 
     <div class="title-page clearfix">
-    	   @foreach($productCategories as $cate)
-    	<a href="{{ route('home.dog',$cate->id) }}"><h2 class="title30 font-bold dosis-font text-uppercase pull-left">{{ $cate->name }}</h2></a>
-        <a href="{{ route('home.dog',$cate->id) }}"><h5 class="font-bold pull-right">Xem thêm</h5></a>
+    	@foreach($productCategories as $cate)
+    	<a href="{{ route('home.product',$cate->id) }}"><h2 class="title30 font-bold dosis-font text-uppercase pull-left">{{ $cate->name }}</h2></a>
+        <a href="{{ route('home.product',$cate->id) }}"><h5 class="font-bold pull-right">Xem thêm</h5></a>
     </div>
     <div class="product-grid-view   products-wrap js-content-wrap" data-load="{&quot;attr&quot;:{&quot;item_style&quot;:null,&quot;item_style_list&quot;:null,&quot;column&quot;:&quot;3&quot;,&quot;size&quot;:null,&quot;size_list&quot;:null,&quot;shop_style&quot;:null,&quot;animation&quot;:&quot;zoom-thumb&quot;,&quot;number&quot;:&quot;12&quot;,&quot;cats&quot;:&quot;golden-retriever&quot;}}">
         <div class="products row list-product-wrap js-content-main">
-    	 @foreach($cate->product as $product)
+    	@foreach($cate->product as $product)
 
             <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
                 <div class="item-product item-product-grid">
@@ -29,7 +29,7 @@
                             @endif
                         </a>
                         @if($product->sale!=0)
-                        <div class="product-label"><span class="sale">sale</span></div>
+                        <div class="product-label"><span class="sale">-{{$product->sale}}</span></div>
                         @endif
                         <div class="product-extra-link text-center">
                             

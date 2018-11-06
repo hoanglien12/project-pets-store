@@ -26,7 +26,7 @@ class DogController extends Controller
 
         $count_dogs 	= count($this->dog->getAllDogs($name, $category_id,$price, $begin_date, $end_date)->get());
         // dd($count_dogs);
-		$dogs 			= $this->dog->getAllDogs($name, $category_id, $price, $begin_date, $end_date)->paginate(10);
+		$dogs 			= $this->dog->getAllDogs($name, $category_id, $price, $begin_date, $end_date)->get();
 		// dd($category_id);
 		$dog_category   = $this->dog_category->getAllDogCategories()->get();
 		// dd($dog_category);
@@ -93,6 +93,7 @@ class DogController extends Controller
 	public function update(Request $request,$id)
 	{
 		$request->flash();
+		$update       = Dog::query()->findOrFail($id);
 
 		$birthday     = null;
 		if(!empty($request->get('birthday'))) {
@@ -103,7 +104,7 @@ class DogController extends Controller
 		$i 			  = 1;
 		//kiem tra ton tai file hay k
 
-       	if($request->hasFile('photos')){
+       	if($files = $request->file('photos')){
        		$files 	  = $request->file('photos');
        		foreach ($files as $file) {
        			$filename = $i . $file->getClientOriginalName();
@@ -111,13 +112,13 @@ class DogController extends Controller
             	$filename_arr[] = $filename;
             	$i++;
 			}
-			$dog->photos = json_encode($filename_arr);
+			// dd($filename_arr);
+			$update->photos = json_encode($filename_arr);
        	}
        	else{
        		echo 2; 
        	}
 
-		$update       = Dog::query()->findOrFail($id);
 		$update->update([
 			'name'          => $request->name,
 			// 'photos'		=> json_encode($filename_arr),

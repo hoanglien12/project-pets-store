@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\DogCategory;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class Dog extends Model
 {
@@ -48,5 +50,14 @@ class Dog extends Model
         $imgs   = json_decode($images);
         // var_dump($imgs); die;
         return $imgs;
+    }
+
+    public function new_dog()
+    {
+        $dogs = Dog::query();
+        $today = Carbon::today();
+        $date  = $today->subweek();
+        $dogs  = $dogs->whereDate('created_at','>=',date('Y-m-d', strtotime($date)));
+        return $dogs;
     }
 }

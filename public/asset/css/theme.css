@@ -4426,6 +4426,9 @@ div.table .product-info .product-title {
 }
 .title-tab.title-tab2{
 	margin:0 -3px;
+      width: 50%;
+    float: right;
+    margin-bottom: 30px;
 }
 .item-client-review .client-thumb {
     margin-bottom: 55px;
