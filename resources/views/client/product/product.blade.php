@@ -61,15 +61,11 @@
                             @endif
                         </a>
                         @if($product->sale!=0)
-                        <div class="product-label"><span class="sale">-{{$product->sale}}%</span></div>
+                        <div class="product-label"><span class="sale">sale</span></div>
                         @endif
                         <div class="product-extra-link text-center">
-                            <ul class="list-product-extra-link list-inline-block">
-                                
-                                <li><a title="Quick View" data-product-id="724" href="../../product/bailey/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-                                
-                            </ul>
-                            <a href="" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
+                           
+                            <a href="{{route('home.cart',$product->id)}}" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
                         </div>
                     </div>
                     <div class="product-info">

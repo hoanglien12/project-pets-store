@@ -1,4 +1,6 @@
+<style type="text/css">
 
+</style>
 <header id="header" class="header-page">
 	<!-- <div class="container"> -->
 	<div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row top-header vc_custom_1516164851430 vc_row-has-fill" style="background-color: #727272">
@@ -128,33 +130,30 @@
 				</div>
 			</form>
 		</div>
-		<div class="mini-cart-box mini-cart1 aside-box ">
-			<a class="mini-cart-link bg-color" href="../cart/index.html">
-				<span class="mini-cart-icon title30 white"><i class="icon ion-android-cart"></i></span>
-				<span class="mini-cart-text">
-					<strong class="mini-cart-title white">Shopping Cart</strong>
-					<span class="mini-cart-number white set-cart-number">0 </span>
-					<span class="white mini-cart-space">items - </span>
-					<span class="mini-cart-total-price set-cart-price white">
-						<span class="woocommerce-Price-amount amount">
-							<span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</span>
-						</span>
-					</span>
-				</a>
-				
-				<div class="mini-cart-content dropdown-list text-left">
-					<h2 class="title18 font-bold"><span class="set-cart-number">0</span> items</h2>
-					<div class="mini-cart-main-content">
-						<div class="mini-cart-empty">No products in the cart.</div>
-					</div>
-					<div class="total-default hidden">
-						<span class="woocommerce-Price-amount amount">
-							<span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div class="dropdown" >
+    <button class="btn btn-primary dropdown-toggle" type="button" style="100px" data-toggle="dropdown" > 
+          @if(Session::has('cart')){{Session('cart')->totalQty}}@else 0 @endif 
+          <span class="white mini-cart-space" >items - </span> @if(Session::has('cart')){{number_format($totalPrice)}} @else 0.00 @endif
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+    	@if(Session::has('cart'))
+        @foreach($dog_cart as $dog_add)
+        <div>
+              <a href="#">Name:{{$dog_add['item']['name']}}</a>
+              <span>{{$dog_add['qty']}}x</span>@if($dog_add['item']['sale']==0){{number_format($dog_add['item']['price'])}} @else {{number_format($dog_add['item']['sale'])}}@endif</h4>
+            </div>
+        @endforeach
+        @endif
+        <div class="cart-summary">
+            <h5>SUBTOTAL: @if(Session::has('cart')){{number_format($totalPrice)}} @else 0 @endif</h5>
+        </div>
+        <div class="cart-btns">
+          <a href="#">View Cart</a>
+          <a href="{{route('home.checkout')}}">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      
+    </ul>
+  </div>
 	</div>
 </div>
 </div>
