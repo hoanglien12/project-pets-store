@@ -26,10 +26,10 @@
 
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/jquery.jcarousellite.min.js') }}"></script>
-
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+		<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
 
 
 <style>
@@ -58,8 +58,11 @@
 			</div>
 		</div>
 		@include('client.layouts.footer')
-<a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
+
+<a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+		
+		
 	</div>
 	
 </body>

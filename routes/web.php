@@ -95,7 +95,9 @@ Route::group(['prefix' => '/'], function(){
 	});
 
 });
+Route::get('add-to-cart/{id}','Client\HomeController@addtocart')->name('home.cart');
 
+Route::get('del-cart/{id}','Client\HomeController@getdelitem')->name('home.del');
 Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
 Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');
  

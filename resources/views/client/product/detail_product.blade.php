@@ -11,13 +11,13 @@
 	                        <div class="wrap-detail-gallery images zoom-style2">
 	                            <div class="mid woocommerce-product-gallery__image">
 	                            	@php
-		                                $photos = $dogs->getImage($dogs->id);
+		                                $photos = $products->getImage($products->id);
 		                            @endphp
 		                            @if($photos != null)
 		                                <img width="500" height="500" src="{{ asset('upload/product/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
 		                            @endif
-	                                @if($dogs->sale!=0)
-	                                <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>
+	                                @if($products->sale!=0)
+	                                <div class="product-label"><span class="sale">sale</span></div>
 	                                @endif
 	                            </div>
 	                           
@@ -42,13 +42,13 @@
 	                </div>
 	                <div class="col-md-7 col-sm-12 col-xs-12">
 	                    <div class="summary entry-summary detail-info">
-	                        <h2 class="product-title title24 dosis-font font-bold text-uppercase">Name : {{$dogs->name}}</h2>
+	                        <h2 class="product-title title24 dosis-font font-bold text-uppercase">Name : {{$products->name}}</h2>
 	                        
 	                        <p class="price"></p>
-	                        @if($dogs->sale==0)
-	                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></div>
+	                        @if($products->sale==0)
+	                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$products->price}}</span></div>
 	                        @else
-	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->sale}}</span></ins></div>
+	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$products->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$products->sale}}</span></ins></div>
 	                         @endif
 	                          
 	                        <p></p>
@@ -119,7 +119,7 @@
 
 	                            <span class="sku_wrapper">
 	                                <label>Product Code:</label>
-	                                <span class="sku">DSP{{$dogs->id}}</span>
+	                                <span class="sku">DSP{{$products->id}}</span>
 	                            </span>
 
 	                            <span class="sku_wrapper">
@@ -138,137 +138,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="detail-tabs ">
-	            <div class="detail-tab-title">
-	                <ul class="list-tag-detail list-none text-uppercase font-bold" role="tablist">
-	                    <li class="description_tab active" id="tab-title-description">
-	                        <a href="#tab-description" data-toggle="tab" aria-expanded="false">
-	                            Description </a>
-	                    </li>
-	                    <li class="reviews_tab " id="tab-title-reviews">
-	                        <a href="#tab-reviews" data-toggle="tab" aria-expanded="false">
-	                            Reviews (1) </a>
-	                    </li>
-	                </ul>
-	            </div>
-	            <div class="detail-tab-content">
-	                <div class="tab-content">
-	                    <div id="tab-description" class="tab-pane active">
-	                        <div class="detail-tab-desc">
-
-	                            <h2>Description</h2>
-
-	                            <div class="vc_row wpb_row vc_custom_1516000793699">
-	                                <div class="wpb_column column_container col-sm-6">
-	                                    <div class="vc_column-inner ">
-	                                        <div class="wpb_wrapper">
-	                                            <div class="wpb_text_column wpb_content_element ">
-	                                                <div class="wpb_wrapper">
-	                                                    <p class="desc">Our planet is something unbelievable. It is so diverse and beautiful, so unique and controversial. Earth is worth our admiring. The easiest way to explore all wonders and unique places of our planet is travelling. It is very romantic and it takes one’s breath away because new emotions are always</p>
-	                                                    <ul class="silver">
-	                                                        <li>The globe and the map are the small model of our world. Nowadays maps are very useful thing especially when you want to explore some wild spots.</li>
-	                                                        <li>Of course you can rely on your GPS system but we must never forget our</li>
-	                                                    </ul>
-
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <div class="wpb_column column_container col-sm-6">
-	                                    <div class="vc_column-inner vc_custom_1516000416258">
-	                                        <div class="wpb_wrapper">
-	                                            <div class="wpb_single_image wpb_content_element vc_align_right  vc_custom_1516000427454">
-
-	                                                <figure class="wpb_wrapper vc_figure">
-	                                                    <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="{{asset('asset/uploads/2018/img/'.$dogs->photos)}}" width="300" height="400" alt="detail" title="detail"></div>
-	                                                </figure>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div id="tab-reviews" class="tab-pane ">
-	                        <div class="detail-tab-desc">
-	                            <div id="reviews" class="woocommerce-Reviews">
-	                                <div id="comments">
-	                                    <h2 class="woocommerce-Reviews-title">1 review for <span>Bailey</span></h2>
-
-
-	                                    <ol class="commentlist">
-	                                        <li class="comment byuser comment-author-7uptheme bypostauthor even thread-even depth-1" id="li-comment-10">
-
-	                                            <div id="comment-10" class="comment_container">
-
-	                                                <img alt="" src="http://0.gravatar.com/avatar/60f6d6108e6ae3128aa21e0909f1d020?s=60&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/60f6d6108e6ae3128aa21e0909f1d020?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60">
-	                                                <div class="comment-text">
-
-	                                                    <ul class="wrap-rating list-inline-block">
-	                                                        <li>
-	                                                            <div class="product-rate">
-	                                                                <div class="product-rating" style="width:80%"></div>
-	                                                            </div>
-	                                                        </li>
-	                                                        <li>
-	                                                            <span class="number-rate silver">(1s)</span>
-	                                                        </li>
-	                                                    </ul>
-	                                                    <p class="meta">
-	                                                        <strong class="woocommerce-review__author">7uptheme</strong> <span class="woocommerce-review__dash">–</span> <time class="woocommerce-review__published-date" datetime="2018-01-12T08:35:58+00:00">January 12, 2018</time>
-	                                                    </p>
-
-	                                                    <div class="description">
-	                                                        <p>Porem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua.</p>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                        </li><!-- #comment-## -->
-	                                    </ol>
-
-
-	                                </div>
-
-
-	                                <div id="review_form_wrapper">
-	                                    <div id="review_form">
-	                                        <div id="respond" class="comment-respond">
-	                                            <span id="reply-title" class="comment-reply-title">Add a review <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></span>
-	                                            <form action="http://7uptheme.com/wordpress/haustiere/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
-	                                                <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
-
-	                                                <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2ab0b06726"></p>
-	                                                <p style="display: none;"></p>
-	                                                <p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true" required=""></p>
-	                                                <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" aria-required="true" required=""></p>
-	                                                <div class="comment-form-rating"><label for="rating">Your rating</label>
-	                                                    <p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span></p><select name="rating" id="rating" aria-required="true" required="" style="display: none;">
-	                                                        <option value="">Rate…</option>
-	                                                        <option value="5">Perfect</option>
-	                                                        <option value="4">Good</option>
-	                                                        <option value="3">Average</option>
-	                                                        <option value="2">Not that bad</option>
-	                                                        <option value="1">Very poor</option>
-	                                                    </select>
-	                                                </div>
-	                                                <p class="comment-form-comment"><label for="comment">Your review <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required=""></textarea></p>
-	                                                <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit"> <input type="hidden" name="comment_post_ID" value="724" id="comment_post_ID">
-	                                                    <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-	                                                </p> <input type="hidden" id="ak_js" name="ak_js" value="1540112426894">
-	                                            </form>
-	                                        </div><!-- #respond -->
-	                                    </div>
-	                                </div>
-
-
-	                                <div class="clear"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+	      
 
 
 	        <div class="related-product">
