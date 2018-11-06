@@ -17,8 +17,7 @@
                         <select name="category_id" class="form-control">
                             <option value="">Giống chó</option>
                             @foreach($dog_category as $cat)
-                            <option value="{{ $cat->id }}"
-                                {{ (isset($category_id) && ($cat->id == $category_id)) ? "selected" : '' }}>{{ $cat->name }}</option>
+                            <option value="{{ $cat->id }}" {{ (isset($category_id) && ($cat->id == $category_id)) ? "selected" : '' }}>{{ $cat->name }}</option>
                             @endforeach
                         </select>
                         <div class="help-block">Dog Category's Name</div>
@@ -51,7 +50,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('dog.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="table_id">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                         <tr>
                             <th>STT</th>
@@ -160,7 +159,6 @@
                     <p>Total items: {{$count_dogs}}</p>
 
                     <div class="text-right">
-                        {{ $dogs->links() }}
                     </div>
                 </div>
             </div>
@@ -172,3 +170,8 @@
         text-align: center;
     }
 </style>
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
+</script>

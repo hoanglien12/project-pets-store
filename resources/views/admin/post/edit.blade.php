@@ -77,11 +77,8 @@
             <div class="col-md-2">
                 <select name="type" class="bs-select form-control" data-style="blue">
                     <option value="">Loại tin</option>
-                    @if($post->hot == 1)
-                    <option selected value="1">HOT</option>
-                    @else
-                    <option selected value="2">Thường</option>
-                    @endif
+                    <option value="1" {{ $post->hot==1 ? "selected" : "" }}>HOT</option>
+                    <option value="2" {{ $post->hot==2 ? "selected" : "" }}>Thường</option>
                 </select>
                 <p class="help-block">Mặc định: HOT</p>
             </div>
@@ -89,11 +86,8 @@
             <div class="col-md-2">
                 <select name="status" class="bs-select form-control" data-style="green-meadow">
                     <option value="">Trạng thái</option>
-                    @if($post->active == 1)
-                    <option selected value="1">Kích hoạt</option>
-                    @else
-                    <option value="2">Không kích hoạt</option>
-                    @endif
+                    <option value="1" {{ $post->active==1 ? "selected" : "" }}>Kích hoạt</option>
+                    <option value="2" {{ $post->active==2 ? "selected" : "" }}>Không kích hoạt</option>
                 </select>
                 <p class="help-block">Mặc định: Kích hoạt</p>
             </div>
