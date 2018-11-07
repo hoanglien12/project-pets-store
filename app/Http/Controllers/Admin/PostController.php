@@ -26,7 +26,7 @@ class PostController extends Controller
         $end_date       = $request->input('end_date');
 
         $count_post 	= count($this->post->getAllDogPosts($title,$status,$type, $begin_date, $end_date)->get());
-        $posts 			= $this->post->getAllDogPosts($title,$status,$type,$begin_date,$end_date)->paginate(10);
+        $posts 			= $this->post->getAllDogPosts($title,$status,$type,$begin_date,$end_date)->get();
         // dd($posts);
     	return view('admin.post.index',compact('posts','count_post','status','type'));
     }

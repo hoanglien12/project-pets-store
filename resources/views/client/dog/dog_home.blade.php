@@ -1,6 +1,7 @@
 
-	<!-- row-3 -->
-	<div data-vc-full-width="true" data-vc-full-width-init="true" class="vc_row wpb_row block-product2" style="position: relative; left: -74.5px; box-sizing: border-box; width: 1349px; padding-left: 74.5px; padding-right: 74.5px;">
+
+
+<div data-vc-full-width="true" data-vc-full-width-init="true" class="vc_row wpb_row block-product2" style="position: relative; left: -74.5px; box-sizing: border-box; width: 1349px; padding-left: 74.5px; padding-right: 74.5px;">
 		<div class="wpb_column column_container col-sm-12">
 		    <div class="vc_column-inner ">
 		        <div class="wpb_wrapper">
@@ -17,7 +18,7 @@
 		                        </li>
 		                    </ul>
 		                </div>
-		                <div class="tab-content  ">
+		                <div class="tab-content carousel slide " id="myCarousel" >
 							<div id="tab1" class="tab-pane active">
 							    <div class="block-element  product-slider-view  default gap-30 js-content-wrap">
 							        <div class="list-product-wrap">
@@ -69,9 +70,17 @@
 							                        </div>
 							                        @endforeach
 							                    </div>
-							                    
 							                </div>
-							                
+							                <div class="owl-controls clickable" style="display: block;">
+						                    	<div class="owl-buttons">
+						                    		<div class="owl-prev">
+						                    			<i class="fas fa-chevron-left"></i>
+						                    		</div>
+						                    		<div class="owl-next">
+						                    			<i class="fas fa-chevron-right"></i>
+						                    		</div>
+						                    	</div>
+						                    </div>
 							            </div>
 							        </div>
 							    </div>
@@ -134,7 +143,16 @@
 							                    </div>
 							                    
 							                </div>
-							                
+							                <div class="owl-controls clickable" style="display: block;">
+						                    	<div class="owl-buttons">
+						                    		<div class="owl-prev">
+						                    			<i class="fas fa-chevron-left"></i>
+						                    		</div>
+						                    		<div class="owl-next">
+						                    			<i class="fas fa-chevron-right"></i>
+						                    		</div>
+						                    	</div>
+						                    </div>
 							            </div>
 							        </div>
 							    </div>

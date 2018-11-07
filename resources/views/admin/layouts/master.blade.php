@@ -35,24 +35,38 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/DataTables/css/dataTables.bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('js/datatables.js') }}"/>
     <link rel="stylesheet" href="{{ asset('asset/themes/plugin/plugins.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/themes/plugin/bootstrap-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/themes/plugin/bootstrap-fileinput.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/themes/plugin/component.min.css') }}">
-
-
-    <!-- data table -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-  
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-
-    <script>
-        $(document).ready( function () {
-            $('#table_id').DataTable();
-        } );
-    </script>
+    <style>
+        input[type="file"] {
+          display: block;
+        }
+        .imageThumb {
+          max-height: 100px;
+          max-width: 140px;
+          padding: 1px;
+          cursor: pointer;
+        }
+        .pip {
+          display: inline-block;
+          margin: 10px 10px 0 0;
+        }
+        .remove {
+            display: block;
+            color: white;
+            text-align: right;
+            cursor: pointer;
+            margin-top: -80px;
+            margin-bottom: 50px;
+        }
+        .remove:hover {
+          background: white;
+          color: black;
+        }
+    </style>
+ 
 
 </head>
 
@@ -76,6 +90,7 @@
         <a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
     </div>
     <!-- /#wrapper -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- jQuery -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -100,39 +115,24 @@
     <!-- CKeditor -->
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
 
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
 
+    <!-- data table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <!-- <script rel="stylesheet" type="text/javascript" src="{{ asset('js/datatables.js') }}"/></script> -->
 
-<style>
-input[type="file"] {
-  display: block;
-}
-.imageThumb {
-  max-height: 100px;
-  max-width: 140px;
-  padding: 1px;
-  cursor: pointer;
-}
-.pip {
-  display: inline-block;
-  margin: 10px 10px 0 0;
-}
-.remove {
-    display: block;
-    color: white;
-    text-align: right;
-    cursor: pointer;
-    margin-top: -80px;
-    margin-bottom: 50px;
-}
-.remove:hover {
-  background: white;
-  color: black;
-}
-</style>
+@yield('script')
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
+
+</script>
+
 </body>
 
 </html>
