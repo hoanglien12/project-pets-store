@@ -35,7 +35,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('dog_category.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="table_id">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -43,7 +43,8 @@
                                 <th>Description</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
-                                <th colspan="2">Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,18 +98,10 @@
                         </tbody>
                     </table>
                     <p>Total items: {{$count_category}}</p>
-
-                    <div class="text-right">
-                        {{ $dogCategories->links() }}
-                    </div>
                 </div>
                 
             </div>
         </div>
-    </div>
-    
-
-    <div class="text-right">
     </div>
 @endsection
 <script>

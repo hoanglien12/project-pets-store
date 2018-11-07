@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('title','Dogs')
+ 
 @section('content')
 
     <div class="portlet-body" style="border: 1px solid #ddd;
@@ -50,19 +51,21 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('dog.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
+                     
                     <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Name</th>
-                            <th>Dog Category</th>
-                            <th>Information</th>
-                            <th>Price</th>
-                            <th>Sale</th>
-                            <th>Date</th>
-                            <th colspan="2">Action</th>
+                            <tr>
+                                <th>STT</th>
+                                <th>Name</th>
+                                <th>Dog Category</th>
+                                <th>Information</th>
+                                <th>Price</th>
+                                <th>Sale</th>
+                                <th>Date</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
                             
-                        </tr>
                         </thead>
                         <tbody>
                             @if($count_dogs > 0)
@@ -170,8 +173,3 @@
         text-align: center;
     }
 </style>
-<script>
-    $(document).ready(function() {
-        $('#datatable').DataTable();
-    });
-</script>

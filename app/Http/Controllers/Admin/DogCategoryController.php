@@ -24,7 +24,7 @@ class DogCategoryController extends Controller
         $end_date       = $request->input('end_date');
 
         $count_category = count($this->dogCategory->getAllDogCategories($name, $begin_date, $end_date)->get());
-        $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->paginate(10);
+        $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->get();
         return view('admin.dog-category.index',compact('dogCategories','name','date','end_date','count_category'));
     }
 

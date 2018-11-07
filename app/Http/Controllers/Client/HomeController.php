@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Cart; 
 use App\Models\Post;
 use App\Models\SiteConfig;
+use Session;
  
 class HomeController extends Controller 
 {
@@ -32,7 +33,7 @@ class HomeController extends Controller
         // dd($slider);
         $sale_dogs           = Dog::where('sale','<>',0)->get();
         $new_dogs            = $this->dog->new_dog()->get();
-        // dd($new_dogs);
+        // dd($sale_dogs);
 
     	return view('client.layouts.home',compact(
             'dogCategories','productCategories','dogs','blogs','slider','about_us',
@@ -55,7 +56,7 @@ class HomeController extends Controller
         $site_address        = SiteConfig::where('label','site_address')->get();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
-        $dogs                = Dog::all();
+        $dogs                = Dog::orderBy('created_at','desc')->get();
         $dogs_sale            = Dog::where('sale','<>',0)->get();
         // dd($dog_sale);
         return view('client.dog.dog_home',compact('dogCategories','productCategories','dogs','dogs_sale','site_phone','site_address'));
@@ -65,7 +66,7 @@ class HomeController extends Controller
     {
         $site_phone          = SiteConfig::where('label','site_phone')->get();
         $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogs                = Dog::where('id_dog_cate',$idCate)->get();
+        $dogs                = Dog::where('id_dog_cate',$idCate)->orderBy('created_at','desc')->get();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
         $cate                = DogCategory::where('id',$idCate)->first();
@@ -139,14 +140,14 @@ class HomeController extends Controller
 
      public function addtocart(Request $req,$id){
                     
-        $dog_add             = Dog::find($id);          $dog_add             = Dog::find($id);
+        $dog_add             = Dog::find($id);
         $product_add         = Product::find($id);
-        $oldCart             = Session('cart')?Session::get('cart'):null;           $oldCart             = Session('cart')?Session::get('cart'):null;
-        $cart                = new Cart($oldCart);          $cart                = new Cart($oldCart);
-        $cart->add($dog_add, $id);          $cart->add($dog_add, $id,$product_add,$id);
+        $oldCart             = Session('cart')?Session::get('cart'):null;
+        $cart                = new Cart($oldCart);  
+        $cart->add($dog_add, $id);
         //dd($cart);            //dd($cart);
-        $req->session()->put('cart',$cart);         $req->session()->put('cart',$cart);
-        return redirect()->back();          return redirect()->back();
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
     } 
     public function getcheckout(){
         $site_phone          = SiteConfig::where('label','site_phone')->get();

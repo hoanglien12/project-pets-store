@@ -35,7 +35,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('site_config.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="table_id">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -43,7 +43,8 @@
                                 <th>Type</th>
                                 <th>Value</th>
                                 <th>Created at</th>
-                                <th colspan="2">Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
