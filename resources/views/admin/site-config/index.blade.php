@@ -4,37 +4,52 @@
 
     <div class="portlet-body" style="border: 1px solid #ddd;
     border-radius: 4px; padding:10px; margin-bottom:10px;">
+
         <div class="table-toolbar">
             <form action="" method="GET" class="form-horizontal form-bordered" id="filter_box">
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
-                        <input type="text" name="label" value="{{ old('label') }}" placeholder="Tên" class="form-control">
-                        <div class="help-block">Nhãn</div>
+                        <input type="text" name="label" value="{{ old('label') }}" placeholder="Label" class="form-control">
+                        <div class="help-block">Label</div>
+                    </div>
+                    <!-- Filter Name -->
+                    <div class="col-md-3">
+                            <select name="type" class="form-control">
+                                <option value="">Type</option>
+                                <option value="0">String</option>
+                                <option value="1">Number</option>
+                                <option value="2">JSON</option>
+                            </select>
+                            <div class="help-block">Type</div>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Bắt đầu" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
-                            <span class="input-group-addon"> đến </span>
-                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="Kết thúc" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Start" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> To </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
                         </div>
-                        <div class="help-block">Ngày tạo</div>
+                        <div class="help-block">Created date</div>
                     </div>
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn blue-steel" value="Tìm kiếm" />
+                        <input type="submit" name="search" class="btn blue-steel" value="Search" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <div class="add-new-item">
+        <a href="{{ route('site_config.add') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i>Add new item</button></a>
+    </div>
+    
     @include('admin.layouts.flash-msg')
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="{{ route('site_config.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
+                    
                     <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                             <tr>
@@ -86,7 +101,7 @@
                                             <p>{{$config->value}}</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -100,30 +115,28 @@
 
                                 <td>
                                     @if($config->type == 0)
-                                    {{ "Chuỗi" }}
+                                    {{ "String" }}
                                     @elseif($config->type == 1)
-                                    {{ "Số" }}
+                                    {{ "Number" }}
                                     @else
                                     {{"JSON"}}
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn-xs" data-toggle="modal" href="#value{{ $config->id }}" title="Chi tiết"><button class="btn-info btn blue btn-outline" >Chi tiết</button></a>
+                                    <a class="btn-xs" data-toggle="modal" href="#value{{ $config->id }}" title="Chi tiết"><button class="btn-info btn blue btn-outline" >Detail</button></a>
                                 </td>                                
                                 <td>{{ $config->created_at }}</td>
                                 <td>
-                                        <a href="{{ route('site_config.edit', ['id' => $config->id]) }}"><button class="btn btn-success">Edit</button></a>
+                                        <a href="{{ route('site_config.edit', ['id' => $config->id]) }}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit</button></a>
                                     </td>
                                     <td>
-                                        <a class="btn-xs" data-toggle="modal" href="#delete{{$config->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"> Delete</button></a>
+                                        <a class="btn-xs" data-toggle="modal" href="#delete{{$config->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"><i class="fa fa-trash-o"></i>Delete</button></a>
                                     </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-
-                    <div class="text-right">
-                    </div>
+                    <p>Total items: {{ $count_configs }}</p>
                 </div>
                 
             </div>

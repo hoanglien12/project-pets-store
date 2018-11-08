@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 @section('title','Product')
 @section('content')
-    @include('admin.layouts.flash-msg')
     <div class="portlet-body" style="border: 1px solid #ddd;
     border-radius: 4px; padding:10px; margin-bottom:10px;">
         <div class="table-toolbar">
@@ -39,18 +38,22 @@
                     
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn btn-success" value="Filter" />
+                        <input type="submit" name="search" class="btn blue-steel" value="Search" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <div class="add-new-item">
+        <a href="{{ route('product.add') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i>Add new item</button></a>
+    </div>
+    @include('admin.layouts.flash-msg')
+
 	<div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                	<a href="{{ route('product.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -61,8 +64,8 @@
                                 <th>Photos</th>
                                 <th>Product Category</th>
                                 <th>Created at</th>
-                                <th>Updated at</th>
-                                <th>Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,10 +88,11 @@
                                     </td>
                                     <td>{{ $pro->productcategory->name }}</td>
                                     <td>{{ $pro->created_at }}</td>
-                                    <td>{{ $pro->updated_at }}</td>
 	                                <td>
-	                                	<a href="{{ route('product.edit', ['id' => $pro->id]) }}"><button class="btn btn-success">Edit</button></a>
-	                                	<a href="{{ route('product.delete', ['id' => $pro->id]) }}" onclick="return confirm('Are you sure delete {{ $pro->name }}?')"><button class="btn btn-danger">Delete</button></a>
+	                                	<a href="{{ route('product.edit', ['id' => $pro->id]) }}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit</button></a>
+                                    </td>
+                                    <td>
+	                                	<a href="{{ route('product.delete', ['id' => $pro->id]) }}" onclick="return confirm('Are you sure delete {{ $pro->name }}?')"><button class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</button></a>
 	                                </td>
 	                            </tr>
                             @endforeach
@@ -96,9 +100,7 @@
                     </table>
                     <p>Total items: {{ $count_products }}</p>
                 </div>
-                <div class="pagination" style="padding-left: 300px;">
-                    <p>{{ $product->links() }}</p>
-                </div>
+                
             </div>
         </div>
     </div>

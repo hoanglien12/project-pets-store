@@ -16,7 +16,7 @@
                     <!-- Filter Category Name -->
                     <div class="col-md-3">
                         <select name="category_id" class="form-control">
-                            <option value="">Giống chó</option>
+                            <option value="">Dog Category</option>
                             @foreach($dog_category as $cat)
                             <option value="{{ $cat->id }}" {{ (isset($category_id) && ($cat->id == $category_id)) ? "selected" : '' }}>{{ $cat->name }}</option>
                             @endforeach
@@ -30,28 +30,30 @@
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Bắt đầu" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
-                            <span class="input-group-addon"> đến </span>
-                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="Kết thúc" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Start" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> To </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
                         </div>
-                        <div class="help-block">Ngày tạo</div>
+                        <div class="help-block">Created date</div>
                     </div>
                     
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn blue-steel" value="Tìm kiếm" />
+                        <input type="submit" name="search" class="btn blue-steel" value="Search" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <div class="add-new-item">
+        <a href="{{ route('dog.add') }}"><button class="btn btn-primary"><i class="fa fa-plus"></i>Add new item</button></a>
+    </div>
+    
     @include('admin.layouts.flash-msg')
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="{{ route('dog.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
-                     
                     <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                             <tr>
@@ -142,11 +144,11 @@
                                 <td>{{ $dog->sale }}</td>
                                 <td>{{ date('Y-m-d',strtotime($dog->created_at)) }}</td>
                                 <td>
-                                    <a href="{{ route('dog.edit',$dog->id)}}"><button class="btn btn-block">Edit</button></a>
+                                    <a href="{{ route('dog.edit',$dog->id)}}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit</button></a>
                                 </td>
                                 <td>
                                     <a class="btn-xs" data-toggle="modal" href="#delete{{$dog->id}}" data-toggle="tooltip" title="Delete">
-                                        <button class="btn-danger btn-delete" ><i class="glyphicon glyphicon-trash"></i> Delete</button>
+                                        <button class="btn btn-danger" ><i class="fa fa-trash-o"></i>Delete</button>
                                     </a>
                                 </td>
                             </tr>
@@ -168,8 +170,4 @@
         </div>
     </div>
 @endsection
-<style>
-    th , td{
-        text-align: center;
-    }
-</style>
+

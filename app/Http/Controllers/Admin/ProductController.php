@@ -27,7 +27,7 @@ class ProductController extends Controller
         $begin_date = $request->input('begin_date');
         $end_date = $request->input('end_date');
         $count_products = count($this->pro->getAllProducts($name, $category_id,$price, $begin_date, $end_date)->get());
-        $product = $this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->paginate(10);
+        $product = $this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->get();
         $product_cate = $this->product_cate->getAllProductCategories()->get();
 
         return view('admin.product.show', compact('product','product_cate','count_products','category_id', 'begin_date', 'end_date'));

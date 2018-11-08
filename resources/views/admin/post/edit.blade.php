@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Edit Posts ')
 @section('content')
+<hr>
     <h2>Edit <span style="color: red;">{{ $post->title }}</span></h2>
     @include('admin.layouts.flash-msg')
     <form action="{{ route('post.update',$post->id) }}" method="POST" enctype="multipart/form-data" >
@@ -21,14 +22,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Ảnh</label>
-            <div class="col-md-9">
-                <div style="height: 32px;">
-                    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-on bootstrap-switch-id-check_upload bootstrap-switch-animate" style="width: 204px;">
-                        <div class="bootstrap-switch-container" style="width: 303px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 101px;">Upload Ảnh</span><span class="bootstrap-switch-label" style="width: 101px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 101px;">Link Ảnh</span><input checked="" id="check_upload" name="check_upload" type="checkbox" class="make-switch" data-on-text="Upload Ảnh" data-off-text="Link Ảnh" data-check-upload="1" "=""></div></div>
-                </div>
-                <p class=" help-block">Hình thức upload</p>
-            </div>
+            <label class="control-label col-md-3">Photos</label>
+            
             <div id="select_image_to_upload" class="col-md-9 col-md-offset-3">
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
@@ -43,9 +38,11 @@
                         @php
                             $photos = $post->getImage($post->id);
                         @endphp
+                        @if($photos != null)
                         @foreach ($photos as $photo)
                             <img src="{{ asset('upload/post/' . $photo) }}" alt="" style="width: 150px;height: 100px;">
                         @endforeach
+                        @endif
                     </div>
                             
             </div>

@@ -8,52 +8,55 @@
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
-                        <input type="text" name="title" value="{{ old('title') }}" placeholder="Tên" class="form-control">
+                        <input type="text" name="title" value="{{ old('title') }}" placeholder="Title" class="form-control">
                         <div class="help-block">Post's Title</div>
                     </div>
                     <!-- Filter Status -->
                     <div class="col-md-3">
                         <select name="type" class="bs-select form-control" data-style="blue">
-                            <option value="">Loại tin</option>
+                            <option value="">Type</option>
                             
                             <option value="1">HOT</option>
-                            <option value="2">Thường</option>
+                            <option value="2">Normal</option>
                         </select>
-                        <div class="help-block">Loại tin</div>
+                        <div class="help-block">Type</div>
                     </div>
                     <!-- Filter  -->
                     <div class="col-md-3">
                         <select name="status" class="bs-select form-control" data-style="green-meadow">
-                            <option value="">Trạng thái</option>
-                            <option value="1">Kích hoạt</option>
-                            <option value="2">Không kích hoạt</option>
+                            <option value="">Status</option>
+                            <option value="1">ON</option>
+                            <option value="2">Off</option>
                         </select>
-                        <p class="help-block">Trạng thái</p>
+                        <p class="help-block">Status</p>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Bắt đầu" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
-                            <span class="input-group-addon"> đến </span>
-                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="Kết thúc" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Begin" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> To </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
                         </div>
-                        <div class="help-block">Ngày tạo</div>
+                        <div class="help-block">Created date</div>
                     </div>
                     
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn blue-steel" value="Tìm kiếm" />
+                        <input type="submit" name="search" class="btn blue-steel" value="Search" />
                     </div>
                 </div>
             </form>
         </div>
+    </div>
+    <div class="add-new-item">
+        <a href="{{ route('post.add') }}"><button class="btn btn-primary"><i class="fa fa-plus"></i>Add new item</button></a>
     </div>
     @include('admin.layouts.flash-msg')
 	<div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="{{ route('post.add') }}"><button class="btn btn-primary" style="margin-bottom: 20px;">Add</button></a>
+                    
                     <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                         <thead>
                         <tr>
@@ -100,11 +103,10 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>
-                                        <span>
+                                        <p class="text-active">
                                             {{ $post->active == 1 ? "Hiển thị" : "Không hiển thị" }}
-                                        </span>
-                                        <br>
-                                        <button type="submit" data="{{ $post->id }}" data-type="{{ $post->active }}" class="btn btn-circle bold change_status"><i class="fa fa-exchange"></i></button>
+                                        </p>
+                                        <span data="{{ $post->id }}" data-type="{{ $post->active }}" class="btn btn-circle bold change_status"><i class="fa fa-exchange"></i></span>
                                     </td>
                                     <td>
                                         @if($post->hot == 1)
@@ -151,6 +153,4 @@
     </div>
 
 @endsection
-<script type="text/javascript">
-    
-</script>
+

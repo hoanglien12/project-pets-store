@@ -12,7 +12,7 @@
             <label>Description</label>
             <input name="description" class="form-control" value="{{ $cate->description }}">
         </div>
-        <button type="submit" name="btnAdd" class="btn btn-success">Edit</button>
+        <button type="submit" name="btnAdd" class="btn btn-success btn-outline green"><i class="fa fa-check"></i>Submit</button>
         <button type="reset" class="btn btn-primary">Reset</button>
     </form>
 @endsection
