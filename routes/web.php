@@ -9,12 +9,12 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 | 
-*/
+*/ 
 Route::get('/not-allow','Controller@not_allow')->name('not-allow');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function(){
 	Route::get('', 'Admin\ProductCategoryController@admin')->name('indexAdmin');
 
-	Route::group(['prefix' => 'product-category'], function(){
+	Route::group(['prefix' => 'product-category'], function(){ 
 		Route::get('/', 'Admin\ProductCategoryController@index')->name('product_category.show');
 		Route::get('add', 'Admin\ProductCategoryController@create')->name('product_category.add');
 		Route::post('add', 'Admin\ProductCategoryController@store')->name('product_category.store');
@@ -114,9 +114,13 @@ Route::group(['prefix' => '/'], function(){
 		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
 	});
 });
-Route::get('add-to-cart/{id}','Client\HomeController@addtocart')->name('home.cart');
-Route::get('del-cart/{id}','Client\HomeController@getdelitem')->name('home.del');
+Route::get('add-to-dog/{id}','Client\HomeController@addtocart')->name('home.cart');
+Route::get('add-to-product/{id}','Client\HomeController@addtoproduct')->name('home.productcart');
+Route::get('del-cart/{id}','Client\HomeController@delitem')->name('home.del');
 Route::get('checkout','Client\HomeController@getcheckout')->name('home.checkout');
+Route::get('viewcart','Client\HomeController@viewcart')->name('home.viewcart');
+Route::get('viewproduct','Client\HomeController@viewproduct');
+
 
 Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
 Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');

@@ -15,7 +15,7 @@
 }
 .bt1:hover{
 	background: #3F3F3F;
-	color: white;
+	color: white; 
 }
 </style>
 <header id="header" class="header-page">
@@ -154,21 +154,22 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu" style="width: 245px; margin-left: -80px">
     	@if(Session::has('cart'))
-        @foreach($dog_cart as $dog_add)
+        @foreach($dog_cart as $product_add)
         <div class="product-thumb">
 		<a href="" class="product-thumb-link">
 		<img width="50px" height="50px" src="" />
 			 </a></div>
-		<div class="product-info"><h3 class="title14 product-title"><a href="">{{$dog_add['item']['name']}}</a></h3>
+		<div class="product-info"><h3 class="title14 product-title"><a href="">{{$product_add['item']['name']}}</a></h3>
 		<div class="mini-cart-qty"> <span>
-		<span class="qty-num">{{$dog_add['qty']}}</span> x <span class="color">
+		<span class="qty-num">{{$product_add['qty']}}</span> x <span class="color">
 		<span class="woocommerce-Price-amount amount">
-		<span class="woocommerce-Price-currencySymbol">&#36;</span>@if($dog_add['item']['sale']==0){{number_format($dog_add['item']['price'])}} @else {{number_format($dog_add['item']['sale'])}}@endif</span></span></span></div></div>
+		<span class="woocommerce-Price-currencySymbol">&#36;</span>@if($product_add['item']['sale']==0){{number_format($product_add['item']['price'])}} @else {{number_format($product_add['item']['sale'])}}@endif</span></span></span></div></div>
 		<div class="product-delete text-right">
-		<a href="{{route('home.del',$dog_add['item']['id'])}}" class="remove-product"><i class="fa fa-trash"></i></a></div>
+		<a href="{{route('home.del',$product_add['item']['id'])}}" class="remove-product"><i class="fa fa-trash"></i></a></div>
+		
 		@endforeach
         @endif
-        @yield('client.cart.viewproduct')
+		
 		<div
 		class="mini-cart-total text-uppercase title18 clearfix">
 		<span
