@@ -24,13 +24,14 @@
 <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/bootstrap/css/color.css') }}">
 
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/jquery.jcarousellite.min.js') }}"></script>
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-		<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
- 
 
+<script src="{{ asset('asset/themes/plugin/owl.carousel.min.js') }}"></script>
 
 <style>
 	.s7upf-slider.about-store-slider {

@@ -12,11 +12,14 @@ class SiteConfig extends Model
         'type', 'value','label','created_at', 'updated_at'
     ];
 
-    public function getAllConfigs($label=null, $begin_date=null, $end_date=null)
+    public function getAllConfigs($label=null,$type=null, $begin_date=null, $end_date=null)
     {
         $configs = SiteConfig::query();
         if($label != null){
             $configs = $configs->where('label','like',"%$label%");
+        }
+        if($type != null){
+            $configs = $configs->where('type',$type);
         }
         
         if($begin_date != null){

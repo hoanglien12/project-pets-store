@@ -19,7 +19,6 @@ body {
     position: inherit;
     margin: 0 0 0 250px;
     padding: 0 30px;
-    border-left: 1px solid #e7e7e7;
   }
 }
 .navbar-top-links {
@@ -75,10 +74,11 @@ body {
   padding: 15px;
 }
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid #3d4957;
 }
 .sidebar ul li a.active {
   background-color: #eeeeee;
+  color: black !important;
 }
 .sidebar .arrow {
   float: right;
@@ -434,9 +434,12 @@ table.dataTable thead .sorting:after {
 }
 .page-footer {
   height: 40px;
-  background-color: #cdcdcd;
+  background-color: #364150;
   text-align: center;
   padding-top: 10px;
+}
+.page-footer .page-footer-inner {
+    color: #98a6ba;
 }
 button.btn-danger.btn-delete {
     border-radius: 3px;
@@ -464,4 +467,94 @@ button.btn.dark.btn-outline:hover{
 }
 .navbar-default.sidebar {
     margin-top: 0px;
+   height: 100%;
+}
+li.nav-item.dropdown{
+  padding-top: 5px;
+}
+li.nav-item.dropdown img {
+    float: left;
+    border-radius:50% !important;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width: 40px;
+    height: 40px;
+}
+li.nav-item.dropdown #navbarDropdown {
+    float: right;
+    padding-left: 5px;
+    padding-top: 10px;
+    color: white;
+}
+.navbar-default {
+    background-color: #364150;
+    border-color: none;
+}
+.navbar-default .navbar-brand {
+    color: white;
+}
+i {
+    margin-right: 5px;
+
+}
+ul#side-menu li a i {
+    margin-right: 10px;
+}
+ul#side-menu li a {
+    color: #b4bcc8;
+}
+.page-header{
+    margin-top: 0px;
+    text-transform: uppercase;
+    font-weight: 700;
+    /* font-size: 20px; */
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+h4.dashboard {
+    color: #708096;
+    font-size: 15px;
+    padding-left: 17px;
+}
+.col-lg-12 {
+    margin-top: 20px;
+}
+
+div#datatable_wrapper div#datatable_length {
+    margin: 10px 0px 10px 0px;
+}
+.form-horizontal select.form-control {
+    background-color: #1bbc9b;
+    color: white;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    height: 25px;
+}
+div.dataTables_wrapper div.dataTables_filter input{
+  width: 145px !important;
+  box-shadow: none!important;
+    vertical-align: middle;
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+        border: 1px solid #c2cad8;
+}
+.add-new-item {
+  padding-top: 10px;
+
+}
+.add-new-item button{
+  background-color: #32c5d2;
+  border: none;
+}
+.add-new-item button i{
+  padding-right: 4px;
+}
+
+.btn.btn-outline.green {
+    border-color: #32c5d2;
+    color: #32c5d2;
+    background: 0 0;
 }

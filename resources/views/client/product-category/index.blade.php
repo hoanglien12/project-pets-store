@@ -29,7 +29,7 @@
                             @endif
                         </a>
                         @if($product->sale!=0)
-                        <div class="product-label"><span class="sale">-{{$product->sale}}</span></div>
+                        <div class="product-label"><span class="sale">sale</span></div>
                         @endif
                         <div class="product-extra-link text-center">
                             

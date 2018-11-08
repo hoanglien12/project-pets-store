@@ -1,18 +1,14 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+        <img class="" src="{{ asset('asset/uploads/2018/01/logo-2.png') }}" alt="" width="51" height="46" />
         <a class="navbar-brand" href="{{ route('indexAdmin') }}">Pet Shop Admin</a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
         <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <img src="{{ asset('asset/uploads/2018/01/av1.jpg') }}" alt="img" class="image-user">
+            <span id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
+            </span>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('editPass') }}">
                     {{ __('Change password') }}

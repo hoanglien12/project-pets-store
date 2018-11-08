@@ -26,7 +26,7 @@ class PostController extends Controller
         $end_date       = $request->input('end_date');
 
         $count_post 	= count($this->post->getAllDogPosts($title,$status,$type, $begin_date, $end_date)->get());
-        $posts 			= $this->post->getAllDogPosts($title,$status,$type,$begin_date,$end_date)->paginate(10);
+        $posts 			= $this->post->getAllDogPosts($title,$status,$type,$begin_date,$end_date)->get();
         // dd($posts);
     	return view('admin.post.index',compact('posts','count_post','status','type'));
     }
@@ -107,6 +107,7 @@ class PostController extends Controller
             }
             // dd($filename_arr);
             $post->photos = json_encode($filename_arr);
+            // dd(json_encode($filename_arr));
         }
         else{
             $filename_arr = [];
@@ -148,35 +149,35 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    public function change_status(Request $request,$id)
+    public function change_status(Request $request)
     {
-        $data     = array();
-        $request  = $this->input->server('REQUEST_METHOD');
-        if($request === 'POST'){
-            $get_id     = $request->input('get_id');
-            $get_type   = $request->input('get_type');
-            if($get_type == 1)
-            {
-                $arr_data =array(
-                 'status' => '2'
-             );
-            }
-            else
-            {
-                $arr_data =array(
-                    'status' => '1'
-                );
-            }
-            $check_update       = Post::query()->findOrFail($id);
-            $check_update->update([
-                'active'        => $request->get('status')
-            ]);
-            $result = json_encode(array(
-                'status' => $arr_data['status'],
-                'request' => $check_update
-            ));
-            echo $result;
-        }   
+        $data     = $request->all();
+        if(!isset($data['get_id'])) {
+            return response()->json([
+                        'code' => 0,
+                        'data' => [],
+                        'mes' => 'Xảy ra lỗi trong quá trình thực hiện.'
+                    ]);
+        }
+       
+        $get_id     = $data['get_id'];
+        $get_type   = $data['get_type'];
+        $check      = Post::query()->findOrFail($get_id);
+        // console($check->active);
+        if($get_type == 1){
+            $check->active = 2;
+        }
+        else{
+            $check->active = 1;
+        }
+        
+        $check->save();
+
+        return response()->json([
+                    'code' => 1,
+                    'data' => [],
+                    'mes' => 'Cập nhật thành công'
+                ]);
 
     }
 }

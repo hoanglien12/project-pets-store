@@ -7,14 +7,14 @@
     <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
 
     <div class="title-page clearfix">
-    	@foreach($dogCategories as $cate)
+    	@foreach($dogCategories as  $cate)
     	<a href="{{ route('home.dog',$cate->id) }}"><h2 class="title30 font-bold dosis-font text-uppercase pull-left">{{ $cate->name }}</h2></a>
         <a href="{{ route('home.dog',$cate->id) }}"><h5 class="font-bold pull-right">Xem thêm</h5></a>
     </div>
     <div class="product-grid-view   products-wrap js-content-wrap" data-load="{&quot;attr&quot;:{&quot;item_style&quot;:null,&quot;item_style_list&quot;:null,&quot;column&quot;:&quot;3&quot;,&quot;size&quot;:null,&quot;size_list&quot;:null,&quot;shop_style&quot;:null,&quot;animation&quot;:&quot;zoom-thumb&quot;,&quot;number&quot;:&quot;12&quot;,&quot;cats&quot;:&quot;golden-retriever&quot;}}">
         <div class="products row list-product-wrap js-content-main">
-    	@foreach($cate->dog as $dog)
-
+    	@foreach($cate->dog as $item_dog => $dog)
+            @if($item_dog < 3)
             <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
                 <div class="item-product item-product-grid">
                     <div class="product-thumb">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP{{$dog->id}}</span>
+                        <span class="title12 text-uppercase color font-bold">{{$dog->dogcategory->name}}</span>
                         <h3 class="title18 text-uppercase product-title dosis-font font-bold">
                             <a title="Bailey" href="../../product/bailey/index.html" class="black">Name: {{$dog->name}}</a>
                         </h3>
@@ -59,7 +59,8 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @endif
+        @endforeach
           
         </div>
 		@endforeach

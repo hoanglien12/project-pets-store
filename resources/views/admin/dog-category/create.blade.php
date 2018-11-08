@@ -1,9 +1,10 @@
 @extends('admin.layouts.master')
 @section('title','Add Dog Categories')
 @section('content')
-    @include('admin.layouts.flash-msg')
     <form action="{{ route('dog_category.store') }}" method="POST">
         @csrf
+        @include('admin.layouts.flash-msg')
+
         <div class="form-group">
             <label for="email">Name:</label>
             <input type="text" class="form-control" id="name" name="name">
@@ -12,6 +13,8 @@
             <label for="pwd">Description:</label>
             <input type="text" class="form-control" id="description" name="description">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" name="btnAdd" class="btn btn-outline green"><i class="fa fa-check"></i>Add</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+
     </form>
 @endsection

@@ -26,7 +26,7 @@ class ProductCategoryController extends Controller
         $begin_date = $request->input('begin_date');
         $end_date = $request->input('end_date');
         $count_category = count($this->productCategory->getAllProductCategories($name, $begin_date, $end_date)->get());
-        $cate = $this->productCategory->getAllProductCategories($name,$begin_date,$end_date)->paginate(10);
+        $cate = $this->productCategory->getAllProductCategories($name,$begin_date,$end_date)->get();
         return view('admin.product-category.show',compact('cate','name','begin_date','end_date','count_category'));
     }
 
