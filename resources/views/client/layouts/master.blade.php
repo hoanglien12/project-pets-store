@@ -10,12 +10,12 @@
 
 <!-- CSS -->
 <link href="{{ asset('asset/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link rel='stylesheet' id='font-awesome-css'  href='{{ asset('asset/font-awesome/css/font-awesome.min.css') }}' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href="{{ asset('asset/font-awesome/css/font-awesome.min.css') }}" type='text/css' media='all' />
 
-<link rel='stylesheet' href='{{ asset('asset/bootstrap/css/bootstrap-theme.min.css') }}' type='text/css' />
-<link rel='stylesheet' id='s7upf-theme-css'  href='{{ asset('asset/css/theme.css') }}' type='text/css' media='all' />
-<link rel='stylesheet' id='s7upf-theme-style-css'  href='{{ asset('asset/css/custom-style.css') }}' type='text/css' media='all' />
-<link rel="stylesheet" href='{{ asset('asset/css/style.css') }}' type='text/css' media='all'>
+<link rel='stylesheet' href="{{ asset('asset/bootstrap/css/bootstrap-theme.min.css') }}" type='text/css' />
+<link rel='stylesheet' id='s7upf-theme-css'  href="{{ asset('asset/css/theme.css') }}" type='text/css' media='all' />
+<link rel='stylesheet' id='s7upf-theme-style-css'  href="{{ asset('asset/css/custom-style.css') }}" type='text/css' media='all' />
+<link rel="stylesheet" href="{{ asset('asset/css/style.css') }}" type='text/css' media='all'>
 
 <link rel="stylesheet" href="{{ asset('asset/themes/plugin/js_composer/assets/css/js_composer.min.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
