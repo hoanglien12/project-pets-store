@@ -16,11 +16,13 @@ class SiteConfigController extends Controller
     {
         $request->flash();
         $label          = $request->input('label');
+        $type           = $request->input('type');
         $begin_date     = $request->input('begin_date');
         $end_date       = $request->input('end_date');
-        $configs        = $this->config->getAllConfigs($label, $begin_date, $end_date)->get();
+        $configs        = $this->config->getAllConfigs($label,$type, $begin_date, $end_date)->get();
+        $count_configs  = count($configs);
     	// dd($configs);
-    	return view('admin.site-config.index',compact('configs'));
+    	return view('admin.site-config.index',compact('configs','count_configs','type'));
     }
 
     public function add(Request $request)

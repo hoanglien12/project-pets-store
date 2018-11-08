@@ -16,6 +16,7 @@
             <label for="pwd">Description:</label>
             <input type="text" class="form-control" id="description" placeholder="Enter password" name="description" value="{{ $dogCategory->description }}">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default btn-outline green"><i class="fa fa-check"></i>Submit</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
     </form>
 @endsection

@@ -31,11 +31,8 @@ class AdminDogRequest extends FormRequest
         return [
             'name'          =>  'required|max:255',
             'price'         =>  'required|numeric',
-            'sale'          =>  'numeric',
             'category_id'   =>  'required',
-            'photos.*'      =>  'required|image',
-            'height'        =>  'numeric',
-            'weight'        =>  'numeric',
+            'photos.*'      =>  'required|image'
         ];
     }
 

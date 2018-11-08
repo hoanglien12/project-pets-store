@@ -28,16 +28,14 @@ class AdminDogCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>  'required|unique:dog_categories|max:255',
-            'description' => 'required'
+            'name' =>  'required|unique:dog_categories|max:255'
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'You must type name',
-            'name.unique' => 'The name has already exsit',
-            'description.required'  => 'You must type description',
+            'name.unique' => 'The name has already exsit'
         ];
     }
 }
