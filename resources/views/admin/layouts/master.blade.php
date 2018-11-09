@@ -145,14 +145,14 @@
             if(get_type == '1')
             {
                 $(this).attr('data-type',2);
-                $(this).prev().text('Không hiển thị');
-                $(this).prev().css('color','black');
+                $(this).prev().text('Off');
+                // $(this).prev().css('color','black');
             }
             else
             {
                 $(this).attr('data-type',1);
-                $(this).prev().text('Hiển thị');
-                $(this).prev().css('color','red');
+                $(this).prev().text('ON');
+                // $(this).prev().css('color','red');
 
             }
             $.ajax({
@@ -167,6 +167,9 @@
         });    
     });
 </script>
+<style>
+    
+</style>
 </body>
 
 </html>

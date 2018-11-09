@@ -24,17 +24,17 @@
         <div class="form-group">
             <label class="control-label col-md-3">Photos</label>
             
-            <div id="select_image_to_upload" class="col-md-9 col-md-offset-3">
+            <div id="select_image_to_upload" class="col-md-9">
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                     <div>
                         <span class="btn green btn-file" id="img">
                             <span class="fileinput-new"> Select file </span>
-                            <input type="file" name="photos[]" id="photos" multiple value="{{ $post->image }}">
+                            <input type="file" name="photos[]" id="photos" multiple onclick="hideImg();">
                         </span>
                     </div>
                 </div>
-                    <div>
+                    <div id="image-old">
                         @php
                             $photos = $post->getImage($post->id);
                         @endphp
