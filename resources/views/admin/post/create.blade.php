@@ -71,7 +71,7 @@
         <div class="form-group">
             <div class="col-md-3"></div>
             <div class="col-md-9">
-                <button type="submit" class="btn btn-outline green"><i class="fa fa-check"></i>Add</button>
+                <button type="submit" class="btn btn-outline green"><i class="fa fa-check"></i>Submit</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
             </div>
         </div>

@@ -16,8 +16,8 @@
                         <select name="type" class="bs-select form-control" data-style="blue">
                             <option value="">Type</option>
                             
-                            <option value="1">HOT</option>
-                            <option value="2">Normal</option>
+                            <option value="1" {{ (isset($type) && $type == 1) ? 'selected' : '' }}>HOT</option>
+                            <option value="2" {{ (isset($type) && $type == 2) ? 'selected' : '' }}>Normal</option>
                         </select>
                         <div class="help-block">Type</div>
                     </div>
@@ -25,8 +25,8 @@
                     <div class="col-md-3">
                         <select name="status" class="bs-select form-control" data-style="green-meadow">
                             <option value="">Status</option>
-                            <option value="1">ON</option>
-                            <option value="2">Off</option>
+                            <option value="1" {{ (isset($status) && $type == 1) ? 'selected' : '' }}>ON</option>
+                            <option value="2" {{ (isset($status) && $type == 2) ? 'selected' : '' }}>Off</option>
                         </select>
                         <p class="help-block">Status</p>
                     </div>
@@ -104,7 +104,7 @@
                                     <td>{{ $post->title }}</td>
                                     <td>
                                         <p class="text-active">
-                                            {{ $post->active == 1 ? "Hiển thị" : "Không hiển thị" }}
+                                            {{ $post->active == 1 ? "ON" : "Off" }}
                                         </p>
                                         <span data="{{ $post->id }}" data-type="{{ $post->active }}" class="btn btn-circle bold change_status"><i class="fa fa-exchange"></i></span>
                                     </td>
@@ -113,7 +113,7 @@
                                             {{  "HOT" }}
                                         
                                         @else
-                                            {{  "Thường" }}
+                                            {{  "Normal" }}
                                         @endif
 
                                     </td>
@@ -131,10 +131,10 @@
                                     </td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>
-                                        <a href="{{ route('post.edit', ['id' => $post->id]) }}"><button class="btn btn-success">Edit</button></a>
+                                        <a href="{{ route('post.edit', ['id' => $post->id]) }}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit</button></a>
                                     </td>
                                     <td>
-                                        <a class="btn-xs" data-toggle="modal" href="#delete{{$post->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"> Delete</button></a>
+                                        <a class="btn-xs" data-toggle="modal" href="#delete{{$post->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"><i class="fa fa-trash-o"></i>Delete</button></a>
                                     </td>
                                 </tr>
                             @endforeach

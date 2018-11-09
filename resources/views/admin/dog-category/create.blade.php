@@ -13,7 +13,7 @@
             <label for="pwd">Description:</label>
             <input type="text" class="form-control" id="description" name="description">
         </div>
-        <button type="submit" name="btnAdd" class="btn btn-outline green"><i class="fa fa-check"></i>Add</button>
+        <button type="submit" name="btnAdd" class="btn btn-outline green"><i class="fa fa-check"></i>Submit</button>
         <button type="reset" class="btn btn-primary">Reset</button>
 
     </form>

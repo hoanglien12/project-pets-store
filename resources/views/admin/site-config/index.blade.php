@@ -16,10 +16,11 @@
                     <!-- Filter Name -->
                     <div class="col-md-3">
                             <select name="type" class="form-control">
+
                                 <option value="">Type</option>
-                                <option value="0">String</option>
-                                <option value="1">Number</option>
-                                <option value="2">JSON</option>
+                                <option value="0" {{ (isset($type) && $type == 0) ? 'selected' : '' }}>String</option>
+                                <option value="1" {{ (isset($type) && $type == 1) ? 'selected' : '' }}>Number</option>
+                                <option value="2" {{ (isset($type) && $type == 2) ? 'selected' : '' }}>JSON</option>
                             </select>
                             <div class="help-block">Type</div>
                     </div>
