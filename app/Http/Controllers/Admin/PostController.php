@@ -95,6 +95,8 @@ class PostController extends Controller
         $request->flash();
         $filename_arr = [];
         $i            = 1;
+
+        $update       = Post::query()->findOrFail($id);
         //kiem tra ton tai file hay k
 
         if($request->hasFile('photos')){
@@ -106,14 +108,13 @@ class PostController extends Controller
                 $i++;
             }
             // dd($filename_arr);
-            $post->photos = json_encode($filename_arr);
+            $update->image = json_encode($filename_arr);
             // dd(json_encode($filename_arr));
         }
         else{
             $filename_arr = [];
         }
 
-        $update       = Post::query()->findOrFail($id);
         $update->update([
                 'title'         => $request->get('title'),
                 // 'image'         => json_encode($filename_arr),

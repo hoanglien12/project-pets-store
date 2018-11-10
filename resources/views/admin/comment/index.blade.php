@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Users')
+@section('title','Comments')
 @section('content')
 
     <div class="portlet-body" style="border: 1px solid #ddd;
@@ -10,20 +10,20 @@
                     <!-- Filter Name -->
                     <div class="col-md-3">
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" class="form-control">
-                        <div class="help-block">Name</div>
+                        <div class="help-block">Tên</div>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Begin" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
-                            <span class="input-group-addon"> To </span>
-                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Bắt đầu" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> đến </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="Kết thúc" type="text" class="form-control">
                         </div>
-                        <div class="help-block">Created date</div>
+                        <div class="help-block">Ngày tạo</div>
                     </div>
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn blue-steel" value="Search" />
+                        <input type="submit" name="search" class="btn blue-steel" value="Tìm kiếm" />
                     </div>
                 </div>
             </form>
@@ -39,18 +39,19 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Role</th>
-                                <th>Created at</th>
+                                <th>Dog</th>
+                                <th>Product</th>
+                                <th>Post</th>
+                                <th>User</th>
+                                <th>Comment</th>
+                                <th>Created_at</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                           @foreach($comments as $comment)
                             <!-- BEGIN MODAL CONFIRM DELETE ITEM -->
-                            <div class="modal fade" id="delete{{$user->id}}" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" >
+                            <div class="modal fade" id="delete{{$comment->id}}" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" >
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -58,10 +59,10 @@
                                             <h4 class="modal-title text-center">Confirm delete </h4>
                                         </div>
                                         <div class="modal-body">
-                                            Are you sure to delete : {{$user->name}} ?
+                                            Are you sure to delete : {{$comment->name}} ?
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{ route('user.delete',$user->id) }}" method="POST">
+                                            <form action="{{ route('comment.delete',$comment->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn-danger btn-delete">Delete</button>
@@ -74,15 +75,28 @@
                                 <!-- /.modal-dialog -->
                             </div>
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>ON</td>
-                                <td>{{ $user->id_role }}</td>
-                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $comment->id }}</td>
+                                <td>
+                                    @if($comment->id_dog != null)
+                                    {{ $comment->dog->name }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($comment->id_product != null)
+                                    {{ $comment->product->name }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($comment->id_post != null)
+                                    {{ $comment->post->title }}
+                                    @endif
+                                </td>
+                                <td>{{ $comment->user->name }}</td>
+                                <td>{{ $comment->comment }}</td>
+                                <td>{{ $comment->created_at }}</td>
                                 
                                 <td>
-                                    <a class="btn-xs" data-toggle="modal" href="#delete{{$user->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"> Delete</button></a>
+                                    <a class="btn-xs" data-toggle="modal" href="#delete{{$comment->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"> Delete</button></a>
                                 </td>
                             </tr>
                             @endforeach

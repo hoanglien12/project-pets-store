@@ -10,11 +10,11 @@
 		                <div class="tab-header">
 		                    <ul class="nav nav-pills nav-tabs nav-justified list-package title-tab font-bold text-right title-tab2 text-uppercase list-inline-block">
 		                        <li class="active">
-		                            <a href="#tab1" data-toggle="tab" aria-expanded="true">Best seller</a>
+		                            <a href="#tab1" data-toggle="tab" aria-expanded="true">Sale</a>
 		                        </li>
 		                        <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false">New Arrival</a>
 		                        </li>
-		                        <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false">Special</a>
+		                        <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false">Best seller</a>
 		                        </li>
 		                    </ul>
 		                </div>
@@ -74,10 +74,10 @@
 							                <div class="owl-controls clickable" style="display: block;">
 						                    	<div class="owl-buttons">
 						                    		<div class="owl-prev">
-						                    			<i class="fas fa-chevron-left"></i>
+						                    			<i class="fa fa-chevron-left"></i>
 						                    		</div>
 						                    		<div class="owl-next">
-						                    			<i class="fas fa-chevron-right"></i>
+						                    			<i class="fa fa-chevron-right"></i>
 						                    		</div>
 						                    	</div>
 						                    </div>
