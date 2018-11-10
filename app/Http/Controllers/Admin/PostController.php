@@ -60,7 +60,6 @@ class PostController extends Controller
             $filename_arr  = [];
         }
 
-        // dd($request->type);
         $newPost = POST::create([
                 'title'         => $request->get('title'),
                 'image'         => json_encode($filename_arr),

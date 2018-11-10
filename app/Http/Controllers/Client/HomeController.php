@@ -187,14 +187,21 @@ class HomeController extends Controller
         return view ('client.cart.viewcart',['dog_add'=> $cart->items,'product_add'=> $cart->items,
             'totalPrice'=>$cart->totalPrice],compact('site_phone','site_address','dogCategories','productCategories'));
 
-       
     }
     public function getcheckout(){
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-       
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
-        return view('client.cart.checkout',compact('dogCategories','productCategories','site_address','site_phone'));
+        if(Session::has('cart'))
+        {
+            $site_phone          = SiteConfig::where('label','site_phone')->get();
+            $site_address        = SiteConfig::where('label','site_address')->get();
+           
+            $dogCategories       = DogCategory::all();
+            $productCategories   = ProductCategory::all();
+
+            return view('client.cart.checkout',compact('dogCategories','productCategories','site_address','site_phone'));
+        }
+        else{
+            return redirect()->back()->with('error', 'Ban chua co san pham trong gio hang');
+        }
+        
     }
 }

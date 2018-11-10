@@ -59,11 +59,6 @@
 			</div>
 		</div>
 		@include('client.layouts.footer')
-
-
-<a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-		
-		
+		<a href="#" class="scroll-top dark active"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 	</div>
-	
 </body>
