@@ -4206,13 +4206,7 @@ div.table .product-info .product-title {
     max-width: 280px;
     margin-top: 30px;
 }
-.arrow-right::after {
-    content: "\f3d1";
-    font-family: ionicons;
-    font-weight: 400;
-    margin-left: 10px;
-	display:inline-block;
-}
+
 .form-newsletter input[type="submit"] {
     width: 50px;
     border: 1px dashed #fff;

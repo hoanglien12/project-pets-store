@@ -34,7 +34,7 @@
         <a href="{{ route('user.index') }}" class="{{ ($segment == 'user') ? 'active' : '' }}"><i class="fa fa-users"></i></i>Users</a>
     </li>
     <li>
-        <a href="{{ route('user.index') }}" class="{{ ($segment == 'user') ? 'active' : '' }}"><i class="fa fa-commenting"></i></i>Comments</a>
+        <a href="{{ route('comment.index') }}" class="{{ ($segment == 'comment') ? 'active' : '' }}"><i class="fa fa-commenting"></i></i>Comments</a>
     </li>
     
 </ul>

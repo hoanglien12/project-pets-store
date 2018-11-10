@@ -564,3 +564,6 @@ a.navbar-brand img {
     float: left;
     margin-right: 10px;
 }
+.cke_reset{
+  height: 100% !important;
+}
