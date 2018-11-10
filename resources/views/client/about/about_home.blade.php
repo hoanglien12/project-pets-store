@@ -15,8 +15,8 @@
 	            <div class="wpb_wrapper">
 	                <div class="custom-information  ">
 	                    <div class="intro-about-store">
-	                        <h2 class="title30 dosis-font font-bold text-uppercase color">{{ $about_us[0]->title }}</h2>
-	                        <p class="desc white">{{ $about_us[0]->summary }}</p>
+	                        {{-- <h2 class="title30 dosis-font font-bold text-uppercase color">{{ $about_us[0]->title }}</h2> --}}
+	                        {{-- <p class="desc white">{{ $about_us[0]->summary }}</p> --}}
 	                    </div>
 	                </div>
 	                <div class="s7upf-slider about-store-slider ">
