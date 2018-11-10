@@ -1,6 +1,6 @@
 <div class="col-md-3 col-sm-4 col-xs-12">
     <div class="sidebar sidebar-left">
-        <div id="sv_category_fillter-2" class="sidebar-widget widget widget_sv_category_fillter">
+        {{-- <div id="sv_category_fillter-2" class="sidebar-widget widget widget_sv_category_fillter">
             <h3 class="widget-title">DogCategories</h3>
             @foreach($dogCategories as $dogcat)
             <ul class="list-none list-attr">
@@ -54,7 +54,7 @@
                 <a href="../../product-tag/food/index.html" class="tag-cloud-link tag-link-45 tag-link-position-4" style="font-size: 8pt;" aria-label="food (1 product)">food</a>
                 <a href="../../product-tag/hourse/index.html" class="tag-cloud-link tag-link-47 tag-link-position-5" style="font-size: 8pt;" aria-label="hourse (1 product)">hourse</a>
                 <a href="../../product-tag/pet/index.html" class="tag-cloud-link tag-link-46 tag-link-position-6" style="font-size: 8pt;" aria-label="pet (1 product)">pet</a></div>
-        </div>
+        </div> --}}
         <div id="woocommerce_product_search-2" class="sidebar-widget widget woocommerce widget_product_search">
             <h3 class="widget-title">Search</h3>
             <form role="search" method="get" class="woocommerce-product-search" action="http://7uptheme.com/wordpress/haustiere/">
