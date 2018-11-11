@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 
-
 class CommentController extends Controller
 {
     function __construct()

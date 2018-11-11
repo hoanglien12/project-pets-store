@@ -110,10 +110,12 @@ Route::group(['prefix' => '/'], function(){
 	Route::group(['prefix' => 'product'], function(){
 		Route::get('product/{id}', 'Client\HomeController@product')->name('home.product');
 		Route::get('detail_product/{id}','Client\HomeController@detail_product')->name('home.detail_product');
+		Route::post('comment/{id}', 'Client\CommentController@comment_product')->name('home.comment_product');
 	});
 	Route::group(['prefix' => 'blog'], function(){
 		Route::get('','Client\HomeController@blog')->name('home.blog');
 		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
+		Route::post('comment/{id}', 'Client\CommentController@comment_post')->name('home.comment_post');
 	});
 });
 Route::get('add-to-dog/{id}','Client\HomeController@addtocart')->name('home.cart');

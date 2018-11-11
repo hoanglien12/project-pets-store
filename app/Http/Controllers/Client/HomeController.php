@@ -10,6 +10,7 @@ use App\Models\ProductCategory;
 use App\Models\Product; 
 use App\Models\Cart;  
 use App\Models\Post;
+use App\Models\Comment;
 use App\Models\SiteConfig;
 use Session;
    
@@ -81,7 +82,9 @@ class HomeController extends Controller
         $productCategories   = ProductCategory::all();
         $dogs                = Dog::where('id',$id)->first();
         $dog_orther          = Dog::where('id_dog_cate',$dogs->id_dog_cate)->get();
-        return view('client.dog.detail_dog',compact('dogCategories','dogs','productCategories','dog_orther','site_phone','site_address'));
+        $comment_dog         = Comment::where('id_dog', '<>', '')->get();
+
+        return view('client.dog.detail_dog',compact('dogCategories','dogs','productCategories','dog_orther','site_phone','site_address', 'comment_dog'));
     }
 //product
     public function product_category()
@@ -111,7 +114,9 @@ class HomeController extends Controller
         $productCategories   = ProductCategory::all();
         $products            = Product::where('id',$id)->first();
         $product_other       = Product::where('id_product_cate',$products->id_product_cate)->paginate(3);
-        return view('client.product.detail_product',compact('dogCategories','products','productCategories','product_other','site_phone','site_address'));
+        $comment_product     = Comment::where('id_product', '<>', '')->get();
+
+        return view('client.product.detail_product',compact('dogCategories','products','productCategories','product_other','site_phone','site_address', 'comment_product'));
     }
 
     public function blog()
@@ -121,6 +126,7 @@ class HomeController extends Controller
     	$dogCategories 		 = DogCategory::all();
     	$productCategories	 = ProductCategory::all();
         $blogs               = Post::all();
+        
         
     	return view('client.blog.blog',compact('dogCategories','productCategories','blogs','site_phone','site_address'));
     }
@@ -134,8 +140,9 @@ class HomeController extends Controller
 
         $blog                = Post::where('id',$id)->first();
         $blogs_other         = Post::where('id','<>',$id)->get();
+        $comment_post        = Comment::where('id_post', '<>', '')->get();
         // dd($blogs_other);
-    	return view('client.blog.detail_blog', compact('dogCategories','productCategories','blog','blogs_other','site_phone','site_address'));
+    	return view('client.blog.detail_blog', compact('dogCategories','productCategories','blog','blogs_other','site_phone','site_address', 'comment_post'));
     }
 
      public function addtocart(Request $req,$id){
