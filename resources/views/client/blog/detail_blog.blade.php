@@ -46,8 +46,56 @@
 	                </div>
 	            </div>
 	        </div>
-	    </div>
-	    <div class="clear"></div>
+	    </div><div class="clear"></div>
+		    <div class="single-related-post">
+		        <h2 class="title18 font-bold text-uppercase title-single-related-post">
+		            COMMENTS
+		        </h2>
+		        <div class="related-post-slider">
+		            <div class="wrap-item smart-slider owl-carousel owl-theme" data-item="" data-speed="" data-itemres="0:1,480:2,990:3" data-prev="" data-next="" data-pagination="" data-navigation="" style="opacity: 1; display: block;">
+		                <div class="owl-wrapper-outer">
+		                    <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
+		                        <div class="owl-item active" style="width: 300px;">
+		                            <div class="item-post item-post-default">
+		                                <div class="post-thumb banner-advs zoom-image fly-hoz">
+		                                    <a href="#">
+			                                    <img width="270" height="180" src="" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
+		                                </div>
+		                                <div class="post-info">
+		                                	@foreach($comment_post as $cmt)
+		                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">{{ $cmt->user->name }}</a></h3>
+		                                    <ul class="list-inline-block post-meta-data">
+		                                        <li><i aria-hidden="true" class="fa fa-comment color"></i>
+		                                            <h6 style="display: inline; font-size: 17px;">{{ $cmt->comment }}</h6>
+		                                        </li>
+		                                    </ul>
+		                                    @endforeach
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div id="comments" class="comments-area comments blog-comment-detail">
+		    </div><!-- #comments -->
+
+		    @if(Auth::check())
+		    	<div class="leave-comments contact-form reply-comment" style="margin-bottom: 50px;">
+			        <div id="respond" class="comment-respond">
+			            <h3 id="reply-title" class="comment-reply-title">Leave Comments</h3>
+			            <form action="{{ url('blog/comment/'. $blog->id) }}" method="POST" id="commentform" class="comment-form" novalidate="">
+			            	@csrf
+			               	<input type="hidden" name="id_post" id="" value="{{ $blog->id }}">
+			                <textarea name="comment" id="" cols="30" rows="8"></textarea>
+			                <br>
+			                <button type="submit" class="btn btn-primary">Post a comment</button>
+			            </form>
+			        </div><!-- #respond -->
+			    </div>
+		    @endif
+		<div class="clear"></div>
 		    <div class="single-related-post">
 		        <h2 class="title18 font-bold text-uppercase title-single-related-post">
 		            COMMENTS

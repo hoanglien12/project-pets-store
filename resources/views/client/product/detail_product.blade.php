@@ -155,18 +155,14 @@
 			                                    <img width="270" height="180" src="" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
 		                                </div>
 		                                <div class="post-info">
-		                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">Hoai</a></h3>
+		                                	@foreach($comment_product as $cmt)
+		                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">{{ $cmt->user->name }}</a></h3>
 		                                    <ul class="list-inline-block post-meta-data">
 		                                        <li><i aria-hidden="true" class="fa fa-comment color"></i>
-		                                            <h6 style="display: inline; font-size: 17px;">Yeu lam</h6>
+		                                            <h6 style="display: inline; font-size: 17px;">{{ $cmt->comment }}</h6>
 		                                        </li>
 		                                    </ul>
-		                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">Hoai</a></h3>
-		                                    <ul class="list-inline-block post-meta-data">
-		                                        <li><i aria-hidden="true" class="fa fa-comment color"></i>
-		                                            <h6 style="display: inline; font-size: 17px;">Yeu lam</h6>
-		                                        </li>
-		                                    </ul>
+		                                    @endforeach
 		                                </div>
 		                            </div>
 		                        </div>
@@ -177,22 +173,21 @@
 		    </div>
 		    <div id="comments" class="comments-area comments blog-comment-detail">
 		    </div><!-- #comments -->
-		    <div class="leave-comments contact-form reply-comment" style="margin-bottom: 50px;">
-		        <div id="respond" class="comment-respond">
-		            <h3 id="reply-title" class="comment-reply-title">Leave Comments <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
-		            <form action="http://7uptheme.com/wordpress/haustiere/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
 
-		                <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8dcf859500"></p>
-		                <p style="display: none;"></p>
-		                <p class="contact-message">
-		                    <textarea id="comment" class="border" rows="5" name="comment" aria-required="true" placeholder="Your comment"></textarea>
-		                </p>
-		                <p class="form-submit"><input name="submit" type="submit" id="submit" class="shop-button" value="Post a comment"> <input type="hidden" name="comment_post_ID" value="1005" id="comment_post_ID">
-		                    <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-		                </p> <input type="hidden" id="ak_js" name="ak_js" value="1540111048901">
-		            </form>
-		        </div><!-- #respond -->
-		    </div>
+		    @if(Auth::check())
+		    	<div class="leave-comments contact-form reply-comment" style="margin-bottom: 50px;">
+			        <div id="respond" class="comment-respond">
+			            <h3 id="reply-title" class="comment-reply-title">Leave Comments</h3>
+			            <form action="{{ url('product/comment/'. $products->id) }}" method="POST" id="commentform" class="comment-form" novalidate="">
+			            	@csrf
+			               	<input type="hidden" name="id_product" id="" value="{{ $products->id }}">
+			                <textarea name="comment" id="" cols="30" rows="8"></textarea>
+			                <br>
+			                <button type="submit" class="btn btn-primary">Post a comment</button>
+			            </form>
+			        </div><!-- #respond -->
+			    </div>
+		    @endif
 
 	        <div class="related-product">
 	            <h2 class="title18 font-bold text-uppercase single-title">Related products</h2>

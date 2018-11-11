@@ -9,6 +9,10 @@ use App\Models\Dog;
 
 class Comment extends Model
 {
+    protected $fillable = [
+        'id_user', 'comment', 'id_product', 'id_dog', 'id_post', 'created_at', 'updated_at'
+    ];
+
     public function user()
     {
     	return $this->belongsTo('App\Models\User', 'id_user');
