@@ -47,7 +47,7 @@
 	                                </div>
 	                            </div>
 	                        </div>
-	                        <div class="owl-controls clickable" style="display: block;"><div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
+	                        
 	                    </div>
 	                </div>
 	            </div>

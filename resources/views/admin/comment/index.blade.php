@@ -9,21 +9,21 @@
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
-                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" class="form-control">
-                        <div class="help-block">Tên</div>
+                        <input type="text" name="ID" value="{{ old('name') }}" placeholder="ID" class="form-control">
+                        <div class="help-block">ID</div>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Bắt đầu" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
-                            <span class="input-group-addon"> đến </span>
-                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="Kết thúc" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Begin" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <span class="input-group-addon"> To </span>
+                            <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
                         </div>
-                        <div class="help-block">Ngày tạo</div>
+                        <div class="help-block">Created date</div>
                     </div>
                     <!-- Search Submit -->
                     <div class="col-md-1">
-                        <input type="submit" name="search" class="btn blue-steel" value="Tìm kiếm" />
+                        <input type="submit" name="search" class="btn blue-steel" value="Search" />
                     </div>
                 </div>
             </form>
@@ -74,6 +74,27 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
+
+                            <!-- BEGIN MODAL -->
+                            <div class="modal fade" id="info{{ $comment->id }}" tabindex="-1" role="basic" aria-hidden="true" data-target="#info{{$comment->id}}" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title text-center">Information</h4>
+                                        </div>
+                                        <div class="modal-body" style="word-wrap: break-word;">
+                                            <p>{{ $comment->comment }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- END MODAL -->
                             <tr>
                                 <td>{{ $comment->id }}</td>
                                 <td>
@@ -92,7 +113,9 @@
                                     @endif
                                 </td>
                                 <td>{{ $comment->user->name }}</td>
-                                <td>{{ $comment->comment }}</td>
+                                <td>
+                                    <a class="btn-xs" data-toggle="modal" href="#info{{ $comment->id }}" title="Delete"><button class="btn-info btn blue btn-outline" >Detail</button></a>
+                                </td>
                                 <td>{{ $comment->created_at }}</td>
                                 
                                 <td>

@@ -27,4 +27,13 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\Post', 'id_post');
     }
+
+    public function getAllComments($id=null, $begin_date = null, $end_date = null)
+    {
+        $comments = Comment::query();
+        if($id != null){
+            $comments = Comment::where('id_dog',$id);
+        }
+        return $comments;
+    }
 }

@@ -2,6 +2,9 @@
 body {
     background-color:#f5f5f5
 }
+.wap {
+    overflow: -webkit-paged-x;
+}
  a:hover,a:focus,a:active,.color,.desc.color,.product-title a:hover,.popup-icon,.main-nav > ul > li:hover > a,.item-contact-page .contact-thumb:hover,.list-about-page > li.current > a,.about-title-number a.readmore,.item-price-table .btn-purchase,.chosen a,.range-filter .ui-slider-handle span::after,.product-price > span, .product-price ins,.list-product-extra-link > li > a,.widget_product_categories .product-categories li.current-cat > a,.detail-info .compare.button::before,.detail-info .yith-wcwl-add-to-wishlist .add_to_wishlist::before,.list-tag-detail li.active a,.search-form.search-hover .submit-form::after,.contact-footer .desc .icon,.main-header2 .link-profile a:hover,.title-tab2 li a,.block-element.product-tab1 > h2,.inner-adv-toggle .arrow-right,.product-extra-link2 > a,.top-like-slider .title-circle-slider::after {
     color:#f7b639
 }
@@ -83,4 +86,18 @@ body {
 }
 .wrap-item.sv-slider.pagi-nav-style.owl-carousel.owl-theme {
     margin: 30px auto;
+}
+
+.vc_row.wpb_row.top-header.vc_custom_1516164851430.vc_row-has-fill a#navbarDropdown {
+    color: white;
+}
+
+.vc_row.wpb_row.top-header.vc_custom_1516164851430.vc_row-has-fill .dropdown-menu.dropdown-menu-right{
+    padding: 10px;
+}
+.vc_row.wpb_row.vc_row-no-padding {
+    margin-bottom: 40px;
+}
+.vc_row.wpb_row.block-product2 {
+    margin-bottom: 30px;
 }

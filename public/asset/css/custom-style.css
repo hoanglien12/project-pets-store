@@ -2249,9 +2249,7 @@ td.product-thumbnail {
 .item-contact-page .contact-thumb {
     margin-bottom: 23px !important;
 }
-.banner-slider .banner-info {
-    height: auto;
-}
+
 .about-customer li::before{
     content: "\f00c";
     font-family: "FontAwesome";

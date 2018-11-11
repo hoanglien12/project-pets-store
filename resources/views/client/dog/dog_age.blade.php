@@ -17,7 +17,7 @@
                                             <a href="{{ route('home.dog-category') }}" class="push"><img width="150" height="185" src="asset/uploads/2018/01/dog2.png" class="attachment-full size-full" alt="" /></a>
                                         </div>
                                         <div class="adv-info">
-                                            <h3 class="title14 font-bold text-uppercase"><a href="{{ route('home.dog-category') }}" class="black">Dog Categories</a></h3>
+                                            <h3 class="title14 font-bold text-uppercase"><a href="{{ route('home.dog-category') }}" class="black">Dogs</a></h3>
                                             <p class="desc">All dog categories of us, click if you want to find some.</p>
                                             <a href="{{ route('home.dog-category') }}" class="wobble-horizontal font-bold text-uppercase color">Read More<i class="icon ion-ios-arrow-forward"></i></a>
                                         </div>

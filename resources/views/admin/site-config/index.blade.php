@@ -27,7 +27,7 @@
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
-                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Start" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
+                            <input value="{{old('begin_date')}}" readonly name="begin_date" placeholder="Begin" data-toggle="datepicker" data-provide="datepicker" type="text" class="form-control">
                             <span class="input-group-addon"> To </span>
                             <input value="{{old('end_date')}}" name="end_date" data-toggle="datepicker" readonly placeholder="End" type="text" class="form-control">
                         </div>

@@ -25,22 +25,7 @@
 	                            </div>
 	                           
 	                        </div>
-	                        <div class="single-list-social" data-id="724">
-	                            <ul class="list-inline-block">
-	                                <li><a target="_blank" data-social="envelope" title="" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon envelope-social"><i class="fa fa-envelope" aria-hidden="true"></i><span class="number">1</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="facebook" title="" href="http://www.facebook.com/sharer.php?u=http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon facebook-social"><i class="fa fa-facebook" aria-hidden="true"></i><span class="number">1</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="twitter" title="" href="http://www.twitter.com/share?url=http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon twitter-social"><i class="fa fa-twitter" aria-hidden="true"></i><span class="number">0</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="pinterest" title="" href="../../../../../pinterest.com/pin/create/button/index13bb.html?url=http://7uptheme.com/wordpress/haustiere/product/bailey/&amp;media=http://7uptheme.com/wordpress/haustiere/wp-content/uploads/2018/01/pet_store_dog_12.jpg">
-	                                        <span class="share-icon pinterest-social"><i class="fa fa-pinterest" aria-hidden="true"></i><span class="number">0</span></span>
-	                                    </a></li>
-	                            </ul>
-	                        </div>
+	                        
 	                    </div>
 	                </div>
 	                <div class="col-md-7 col-sm-12 col-xs-12">
@@ -260,6 +245,6 @@
 	@include('client.layouts.sidebar')
 
 
-	<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:89.5px;top:955px;height:345px;width:345px;"><div class="zoomLens" style="background-position: 0px 0px; float: right; overflow: hidden; z-index: 999; transform: translateZ(0px); opacity: 0.4; zoom: 1; width: 276px; height: 276px; background-color: white; cursor: default; border: 1px solid rgb(0, 0, 0); background-repeat: no-repeat; position: absolute; left: 0px; top: 69px; display: none;">&nbsp;</div><div class="zoomWindowContainer" style="width: 400px;"><div style="overflow: hidden; background-position: 0px -108px; text-align: center; background-color: rgb(255, 255, 255); width: 400px; height: 400px; float: left; background-size: 500px 500px; z-index: 100; border: 4px solid rgb(136, 136, 136); background-repeat: no-repeat; position: absolute; background-image: url(&quot;../../wp-content/uploads/2018/01/pet_store_dog_12.jpg&quot;); top: 0px; left: 345px; display: none;" class="zoomWindow">&nbsp;</div></div></div>
+	<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:89.5px;top:955px;height:345px;width:345px;"><div class="zoomLens" style="background-position: 0px 0px; float: right; overflow: hidden; z-index: 999; transform: translateZ(0px); opacity: 0.4; zoom: 1; width: 276px; height: 276px; background-color: white; cursor: default; border: 1px solid rgb(0, 0, 0); background-repeat: no-repeat; position: absolute; left: 0px; top: 69px; display: none;">&nbsp;</div><div class="zoomWindowContainer" style="width: 400px;"><div style="overflow: hidden; background-position: 0px -108px; text-align: center; background-color: rgb(255, 255, 255); width: 400px; height: 400px; float: left; background-size: 500px 500px; z-index: 100; border: 4px solid rgb(136, 136, 136); background-repeat: no-repeat; position: absolute; background-image: url('{{ asset('upload/dogs/1corgi2.jpg')  }}'); top: 0px; left: 345px; display: none;" class="zoomWindow">&nbsp;</div></div></div>
 	
 @endsection

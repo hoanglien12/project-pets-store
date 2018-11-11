@@ -5,7 +5,7 @@
     <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
 
     <div class="title-page clearfix">
-        <h2 class="title30 font-bold dosis-font text-uppercase pull-left">Golden Retriever</h2>
+        <h2 class="title30 font-bold dosis-font text-uppercase pull-left">{{ $cate->name }}</h2>
         <ul class="sort-pagi-bar list-inline-block pull-right">
             <li>
                 <div class="sort-by">
@@ -14,9 +14,7 @@
                         <form class="woocommerce-ordering" method="get">
                             <select name="orderby" class="orderby">
                                 <option value="menu_order">Default sorting</option>
-                                <option value="popularity">Sort by popularity</option>
-                                <option value="rating">Sort by average rating</option>
-                                <option value="date">Sort by newness</option>
+                                <option value="popularity">Sort by name</option>
                                 <option value="price">Sort by price: low to high</option>
                                 <option value="price-desc">Sort by price: high to low</option>
                             </select>
@@ -24,24 +22,6 @@
                         </form>
                     </div>
                 </div> 
-            </li>
-            <li>
-                <div class="dropdown-box show-by">
-                    <a href="#" class="dropdown-link"><span class="gray">Per Page:</span><span class="silver number">12</span></a>
-                    <ul class="dropdown-list list-none">
-                        <li><a data-number="9" class="load-shop-ajax" href="indexdf48.html?number=9">9</a></li>
-                        <li><a data-number="12" class="load-shop-ajax" href="indexcae9.html?number=12">12</a></li>
-                        <li><a data-number="18" class="load-shop-ajax" href="index151b.html?number=18">18</a></li>
-                        <li><a data-number="24" class="load-shop-ajax" href="indexf213.html?number=24">24</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="view-type">
-                    <span class="gray">View As:</span>
-                    <a data-type="grid" href="indexcc26.html?type=grid" class="grid-view load-shop-ajax active"><i class="fa fa-th-large"></i></a>
-                    <a data-type="list" href="indexbf35.html?type=list" class="list-view load-shop-ajax "><i class="fa fa-reorder"></i></a>
-                </div>
             </li>
         </ul>
     </div>
@@ -92,8 +72,13 @@
                 </div>
             </div>
             @endforeach
+
         </div>
     </div>
+    <div class="text-right">
+        {{ $dogs->links() }}
+    </div>
+
     
 </div>
 </div>
