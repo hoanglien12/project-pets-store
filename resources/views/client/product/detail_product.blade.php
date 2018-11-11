@@ -1,5 +1,5 @@
 @extends('client.layouts.master')
-@section('title','Detail Dog')
+@section('title','Detail Product')
 @section('content')
 	<div class="main-wrap-shop content-wrap content-sidebar-right col-md-9 col-sm-8 col-xs-12">
 
@@ -73,7 +73,8 @@
 	                        </div> --}}
 
 
-	                        <form class="cart" action="http://7uptheme.com/wordpress/haustiere/product/bailey/" method="post" enctype="multipart/form-data">
+	                        <form class="cart" action="{{route('home.productcart',$products->id)}}" method="get">
+	                        	@csrf
 	                            <label class="qty-label">Qty:</label>
 	                            <div class="detail-qty info-qty border radius6">
 	                                <a href="#" class="qty-down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
