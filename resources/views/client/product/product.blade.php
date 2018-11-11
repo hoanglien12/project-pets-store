@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP{{$product->id}}</span>
+                        <span class="title12 text-uppercase color font-bold">ID:{{$product->id}}</span>
                         <h3 class="title18 text-uppercase product-title dosis-font font-bold">
                             <a title="Bailey" href="../../product/bailey/index.html" class="black">Name: {{$product->name}}</a>
                         </h3>
@@ -57,7 +57,6 @@
                         @else
                          <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->sale}}</span></ins></div>
                          @endif
-                       
                     </div>
                 </div>
             </div>

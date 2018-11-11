@@ -22,10 +22,10 @@
 						</thead>
 						@if(Session::has('cart'))
 								<tbody>
-									@foreach($product as $product_add)
+									@foreach($items as $item)
 										<tr class="woocommerce-cart-form__cart-item cart_item">
 											<td class="product-remove">
-												<a href="{{route('home.del',$product_add['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
+												<a href="{{route('home.del',$item['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
 													<i class="fa fa-trash" style="margin-left: 15px; color: red; font-size: 20px;"></i>
 												</a>
 											</td>
@@ -39,26 +39,26 @@
 												</a>
 											</td>
 											<td class="product-name" data-title="Product">
-												<a href="">{{$product_add['item']['name']}}</a>
+												<a href="">{{$item['item']['name']}}</a>
 											</td>
 											<td class="product-price" data-title="Price">
 												<span class="woocommerce-Price-amount amount">
 													<span class="woocommerce-Price-currencySymbol">&#36;
-													@if ($product_add['item']['sale']==0) 
-														{{$product_add['item']['price']}} 
+													@if ($item['item']['sale']==0) 
+														{{$item['item']['price']}} 
 													@else 
-														{{$product_add['item']['sale']}} 
+														{{$item['item']['sale']}} 
 													@endif 
 												</span>
 											</td>
 											<td class="product-quantity" data-title="Quantity">
 												<label class="qty-label">Qty:</label>
 												<div class="detail-qty info-qty border radius6" style="color: black;">
-													<a href="{{route('home.del',$product_add['item']['id'])}}" class="qty-down" style="color: black;">
+													<a href="{{route('home.del',$item['item']['id'])}}" class="qty-down" style="color: black;">
 														<i class="fa fa-angle-down" aria-hidden="true"></i>
 													</a>
-													<input type="text" step="1" min="0" max="" name="" value="{{$product_add['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
-													<a href="{{route('home.cart',$product_add['item']['id'])}}" class="qty-up">
+													<input type="text" step="1" min="0" max="" name="" value="{{$item['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
+													<a href="{{route('home.cart',$item['item']['id'])}}" class="qty-up">
 														<i class="fa fa-angle-up" aria-hidden="true"></i>
 													</a>
 												</div>
@@ -66,7 +66,7 @@
 											<td class="product-subtotal" data-title="Total" style="color: black;">
 												<span class="woocommerce-Price-amount amount">
 													<span class="woocommerce-Price-currencySymbol">&#36;
-													</span>{{$product_add['price']}}
+													</span>{{$item['price']}}
 												</span>
 											</td>
 										</tr>
