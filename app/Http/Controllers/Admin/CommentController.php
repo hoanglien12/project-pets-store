@@ -13,10 +13,14 @@ class CommentController extends Controller
 	    $this->comment = new Comment();
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
-		$comments		= Comment::all();
-		// dd($users);
+		$name 			= $request->input('ID');
+		$begin_date		= $request->input('begin_date');
+		$end_date		= $request->input('end_date');
+		$comments		= $this->comment->getAllComments($name,$begin_date,$end_date)->get();
+
+		// dd($comments);
 		return view('admin.comment.index',compact('comments'));
 	}
 }

@@ -67,7 +67,7 @@ class HomeController extends Controller
     {
         $site_phone          = SiteConfig::where('label','site_phone')->get();
         $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogs                = Dog::where('id_dog_cate',$idCate)->get();
+        $dogs                = Dog::where('id_dog_cate',$idCate)->paginate(6);
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
         $cate                = DogCategory::where('id',$idCate)->first();
@@ -100,11 +100,12 @@ class HomeController extends Controller
     {
         $site_phone          = SiteConfig::where('label','site_phone')->get();
         $site_address        = SiteConfig::where('label','site_address')->get();
-        $products            = Product::where('id_product_cate',$id)->get();
+        $products            = Product::where('id_product_cate',$id)->paginate(6);
         $dogCategories       = DogCategory::all();
-        $product             = Product::where('id_product_cate',$id)->get();
+        // $product             = Product::where('id_product_cate',$id)->get();
         $productCategories   = ProductCategory::all();
-        return view('client.product.product',compact('dogs','products','dogCategories','product','productCategories','site_phone','site_address'));
+        $cate                = ProductCategory::where('id',$id)->first();
+        return view('client.product.product',compact('dogs','products','dogCategories','productCategories','site_phone','site_address','cate'));
     }
     public function detail_product($id)
     {
@@ -125,7 +126,7 @@ class HomeController extends Controller
         $site_address        = SiteConfig::where('label','site_address')->get();
     	$dogCategories 		 = DogCategory::all();
     	$productCategories	 = ProductCategory::all();
-        $blogs               = Post::all();
+        $blogs               = Post::paginate(3);
         
         
     	return view('client.blog.blog',compact('dogCategories','productCategories','blogs','site_phone','site_address'));

@@ -6,7 +6,7 @@
 		    <div class="vc_column-inner ">
 		        <div class="wpb_wrapper">
 		            <div class="tabs-block block-element tab-product2  7up-style tab-ajax-off">
-		                <h2 class="title30 font-bold text-uppercase">Haustiere</h2>
+		                <h2 class="title30 font-bold text-uppercase">Dogs</h2>
 		                <div class="tab-header">
 		                    <ul class="nav nav-pills nav-tabs nav-justified list-package title-tab font-bold text-right title-tab2 text-uppercase list-inline-block">
 		                        <li class="active">
@@ -32,7 +32,7 @@
 							                                    <div class="item-product item-product-grid">
 							                                        <div class="product-thumb">
 							                                            <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-							                                            <a href="{{ route('home.detail_dog',$dog->id)}}" class="product-thumb-link ">
+							                                            <a href="{{ route('home.detail_dog',$dog->id)}}" class="product-thumb-link " title="{{ $dog->name . '-' . $dog->dogcategory->name }}">
 							                                            	@php
 												                                $photos = $dog->getImage($dog->id);
 												                            @endphp
@@ -43,10 +43,7 @@
 							                                            </a>
 
 							                                            <div class="product-extra-link text-center">
-							                                                <ul class="list-product-extra-link list-inline-block">
-							                                                    <li><a title="Quick View" data-product-id="705" href="{{ route('home.detail_dog',$dog->id)}}" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-							                                                </ul>
-							                                                <a href="index1f0d.html?add-to-cart=705" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart</span></a> </div>
+							                                                <a href="index1f0d.html?add-to-cart=705" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart <i class="fa fa-chevron-right"></i></span></a> </div>
 							                                        </div>
 							                                        <div class="product-info">
 							                                            <span class="title12 text-uppercase color font-bold">{{$dog->dogcategory->name}}</span>
@@ -71,16 +68,7 @@
 							                        @endforeach
 							                    </div>
 							                </div>
-							                <div class="owl-controls clickable" style="display: block;">
-						                    	<div class="owl-buttons">
-						                    		<div class="owl-prev">
-						                    			<i class="fa fa-chevron-left"></i>
-						                    		</div>
-						                    		<div class="owl-next">
-						                    			<i class="fa fa-chevron-right"></i>
-						                    		</div>
-						                    	</div>
-						                    </div>
+							                
 							            </div>
 							        </div>
 							    </div>
@@ -98,12 +86,12 @@
 							                                    <div class="item-product item-product-grid">
 							                                        <div class="product-thumb">
 							                                            <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-							                                            <a href="{{ route('home.detail_dog',$dog->id)}}" class="product-thumb-link ">
+							                                            <a href="{{ route('home.detail_dog',$dog->id)}}" class="product-thumb-link " title="{{ $dog->name . '-' . $dog->dogcategory->name }}">
 							                                            	@php
 												                                $photos = $dog->getImage($dog->id);
 												                            @endphp
 												                            @if($photos != null)
-												                            	<img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
+												                            	<img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image"  alt="" sizes="(max-width: 270px) 100vw, 270px">
 		                                		                            @endif
 							                                                </a>
 														                  
@@ -111,10 +99,8 @@
 							                                            </a>
 
 							                                            <div class="product-extra-link text-center">
-							                                                <ul class="list-product-extra-link list-inline-block">
-							                                                    <li><a title="Quick View" data-product-id="705" href="{{ route('home.detail_dog',$dog->id)}}" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-							                                                </ul>
-							                                                <a href="index1f0d.html?add-to-cart=705" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart</span></a> </div>
+							                                                
+							                                                <a href="index1f0d.html?add-to-cart=705" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart <i class="fa fa-chevron-right"></i></span></a> </div>
 							                                        </div>
 							                                        <div class="product-info">
 							                                            <span class="title12 text-uppercase color font-bold">{{$dog->dogcategory->name}}</span>
