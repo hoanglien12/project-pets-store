@@ -27,7 +27,9 @@ class CommentController extends Controller
 	        
 	        return redirect()->back();  
 		}
-		return redirect()->back();
+		else{
+			return redirect()->back();
+		}
 	}
 
 	public function comment_post(Request $request)
@@ -43,7 +45,9 @@ class CommentController extends Controller
 	        
 	        return redirect()->back();  
 		}
-		return redirect()->back();
+		else{
+			return redirect()->back();
+		}
 	}
 
 	public function comment_product(Request $request)
@@ -59,6 +63,8 @@ class CommentController extends Controller
 	        
 	        return redirect()->back();  
 		}
-		return redirect()->back();
+		else{
+			return redirect()->back();
+		}
 	}
 }

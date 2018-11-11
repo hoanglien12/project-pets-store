@@ -12,6 +12,7 @@ use App\Models\Cart;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\SiteConfig;
+use Illuminate\Support\Facades\Auth;
 use Session;
    
 class HomeController extends Controller 
@@ -82,7 +83,7 @@ class HomeController extends Controller
         $productCategories   = ProductCategory::all();
         $dogs                = Dog::where('id',$id)->first();
         $dog_orther          = Dog::where('id_dog_cate',$dogs->id_dog_cate)->get();
-        $comment_dog         = Comment::where('id_dog', '<>', '')->get();
+        $comment_dog         = Comment::where('id_dog', $id)->get();
 
         return view('client.dog.detail_dog',compact('dogCategories','dogs','productCategories','dog_orther','site_phone','site_address', 'comment_dog'));
     }
@@ -114,7 +115,7 @@ class HomeController extends Controller
         $productCategories   = ProductCategory::all();
         $products            = Product::where('id',$id)->first();
         $product_other       = Product::where('id_product_cate',$products->id_product_cate)->paginate(3);
-        $comment_product     = Comment::where('id_product', '<>', '')->get();
+        $comment_product     = Comment::where('id_product', $id)->get();
 
         return view('client.product.detail_product',compact('dogCategories','products','productCategories','product_other','site_phone','site_address', 'comment_product'));
     }
@@ -126,7 +127,6 @@ class HomeController extends Controller
     	$dogCategories 		 = DogCategory::all();
     	$productCategories	 = ProductCategory::all();
         $blogs               = Post::all();
-        
         
     	return view('client.blog.blog',compact('dogCategories','productCategories','blogs','site_phone','site_address'));
     }
@@ -140,59 +140,81 @@ class HomeController extends Controller
 
         $blog                = Post::where('id',$id)->first();
         $blogs_other         = Post::where('id','<>',$id)->get();
-        $comment_post        = Comment::where('id_post', '<>', '')->get();
-        // dd($blogs_other);
+        $comment_post        = Comment::where('id_post', $id)->get();
+
     	return view('client.blog.detail_blog', compact('dogCategories','productCategories','blog','blogs_other','site_phone','site_address', 'comment_post'));
     }
 
      public function addtocart(Request $req,$id){
-                    
-        $dog_add             = Dog::find($id);          
-        $oldCart             = Session('cart')?Session::get('cart'):null;
-        $cart                = new Cart($oldCart);                   
-        $cart->add($dog_add, $id);
-        //dd($cart);            
-        $req->session()->put('cart',$cart);
-        return redirect()->back();         
+        if(Auth::check())
+        {
+            $dog_add             = Dog::find($id);          
+            $oldCart             = Session('cart')?Session::get('cart'):null;
+            $cart                = new Cart($oldCart);                   
+            $cart->add($dog_add, $id);
+
+            $req->session()->put('cart',$cart);
+
+            return redirect()->back();    
+        } 
+        else{
+            return redirect()->route('login');
+        }
+             
     } 
 
      public function addtoproduct(Request $req,$id){
-                    
-        $product_add         = Product::find($id);
-        $oldCart             = Session('cart')?Session::get('cart'):null;
-        $cart                = new Cart($oldCart);                   
-        $cart->add($product_add,$id);
-        //dd($cart);            
-        $req->session()->put('cart',$cart);
-        return redirect()->back();         
-    } 
-    public function delitem($id){
-        $oldCart = Session::has('cart')?Session::get('cart'):null;
-        $cart = new Cart($oldCart);
-        $cart->reduceByOne($id);
-        if(count($cart->items)>0){
-            Session::put('cart',$cart);
+        if(Auth::check())
+        {        
+            $product_add         = Product::find($id);
+            $oldCart             = Session('cart')?Session::get('cart'):null;
+            $cart                = new Cart($oldCart);                   
+            $cart->add($product_add,$id);
+            //dd($cart);            
+            $req->session()->put('cart',$cart);
+
+            return redirect()->back();  
         }
         else{
+            return redirect()->route('login');
+        }       
+    } 
+    public function delitem($id){
+        $old = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($old);
+        $cart->removeItem($id);
+        if(count($cart->items) > 0)
+        {
+            Session::put('cart',$cart);
+        }
+        else
+        {
             Session::forget('cart');
         }
+        
         return redirect()->back();
     }
+
+    public function deleteAll(Request $request)
+    {
+        $request->session()->forget('cart');
+
+        return redirect()->back();
+    }
+
     public function viewcart(){
-        $product_add         = Product::all();
-        $dog_add             = Dog::all();
         $site_phone          = SiteConfig::where('label','site_phone')->get();
         $site_address        = SiteConfig::where('label','site_address')->get();
         $dogCategories       = DogCategory::all();
         $productCategories   = ProductCategory::all();
         if(!Session::has('cart')){
-            return view('client.cart.viewcart',['dog_add'=>null,'product_add'=>null],compact('site_phone','site_address','dogCategories','productCategories'));
+            return view('client.cart.viewcart',['product'=>null],compact('site_phone','site_address','dogCategories','productCategories'));
 
         }
         $oldCart=Session::get('cart');
         $cart=new Cart($oldCart);
-        return view ('client.cart.viewcart',['dog_add'=> $cart->items,'product_add'=> $cart->items,
-            'totalPrice'=>$cart->totalPrice],compact('site_phone','site_address','dogCategories','productCategories'));
+        // dd($cart->items);
+        return view ('client.cart.viewcart',['product'=> $cart->items, 'totalPrice'=>$cart->totalPrice],compact('site_phone','site_address','dogCategories','productCategories'));
 
     }
     public function getcheckout(){
@@ -207,7 +229,7 @@ class HomeController extends Controller
             return view('client.cart.checkout',compact('dogCategories','productCategories','site_address','site_phone'));
         }
         else{
-            return redirect()->back()->with('error', 'Ban chua co san pham trong gio hang');
+            return redirect()->back()->with('error', 'You have not anything in cart!');
         }
         
     }

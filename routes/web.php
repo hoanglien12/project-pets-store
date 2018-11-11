@@ -103,6 +103,7 @@ Route::group(['prefix' => '/'], function(){
 		Route::get('list', 'Client\HomeController@list')->name('home.list');
 		Route::get('dogs/{id}', 'Client\HomeController@dog')->name('home.dog');
 		Route::get('detail_dog/{id}','Client\HomeController@detail_dog')->name('home.detail_dog');
+		Route::post('comment/{id}', 'Client\CommentController@comment_dog')->name('home.comment_dog');
 	});
 	Route::group(['prefix' => 'product-category'], function(){
 		Route::get('product-category', 'Client\HomeController@product_category')->name('home.product-category');
@@ -123,6 +124,7 @@ Route::get('add-to-product/{id}','Client\HomeController@addtoproduct')->name('ho
 Route::get('del-cart/{id}','Client\HomeController@delitem')->name('home.del');
 Route::get('checkout','Client\HomeController@getcheckout')->name('home.checkout');
 Route::get('viewcart','Client\HomeController@viewcart')->name('home.viewcart');
+Route::get('deleteAll', 'Client\HomeController@deleteAll')->name('home.deleteAll');
 Route::get('viewproduct','Client\HomeController@viewproduct');
 
 

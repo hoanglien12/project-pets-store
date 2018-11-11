@@ -78,16 +78,7 @@
                         @else
                          <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$product->sale}}</span></ins></div>
                          @endif
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
+                       
                     </div>
                 </div>
             </div>

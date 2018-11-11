@@ -77,7 +77,8 @@
 	                        </div> --}}
 
 
-	                        <form class="cart" action="http://7uptheme.com/wordpress/haustiere/product/bailey/" method="post" enctype="multipart/form-data">
+	                        <form class="cart" action="{{route('home.cart',$dogs->id)}}" method="get">
+	                        	@csrf
 	                            <label class="qty-label">Qty:</label>
 	                            <div class="detail-qty info-qty border radius6">
 	                                <a href="#" class="qty-down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -188,6 +189,7 @@
 			        </div><!-- #respond -->
 			    </div>
 		    @endif
+
 		    
 
 	        <div class="related-product">
