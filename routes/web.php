@@ -119,14 +119,12 @@ Route::group(['prefix' => '/'], function(){
 		Route::post('comment/{id}', 'Client\CommentController@comment_post')->name('home.comment_post');
 	});
 });
-Route::get('add-to-dog/{id}','Client\HomeController@addtocart')->name('home.cart');
-Route::get('add-to-product/{id}','Client\HomeController@addtoproduct')->name('home.productcart');
-Route::get('del-cart/{id}','Client\HomeController@delitem')->name('home.del');
-Route::get('checkout','Client\HomeController@getcheckout')->name('home.checkout');
-Route::get('viewcart','Client\HomeController@viewcart')->name('home.viewcart');
-Route::get('deleteAll', 'Client\HomeController@deleteAll')->name('home.deleteAll');
-Route::get('viewproduct','Client\HomeController@viewproduct');
-
+Route::get('add-to-dog/{id}','Client\CartController@addDogToCart')->name('home.cart');
+Route::get('add-to-product/{id}','Client\CartController@addProductToCart')->name('home.productcart');
+Route::get('del-cart/{id}','Client\CartController@removeItem')->name('home.del');
+Route::get('checkout','Client\CartController@getCheckout')->name('home.checkout');
+Route::get('viewcart','Client\CartController@viewCart')->name('home.viewcart');
+Route::get('deleteAll', 'Client\CartController@deleteAll')->name('home.deleteAll');
 
 Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
 Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');
