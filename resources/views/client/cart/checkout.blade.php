@@ -14,7 +14,7 @@
 </script>
 <div class="section">
 	<div class="container">
-		<form action="" method="POST" name="myForm">
+		<form action="{{ route('home.order') }}" method="POST" name="myForm">
 			@csrf
 			<div class="row">
 				<div class="col-md-7">
@@ -32,15 +32,15 @@
 							<label for="address">Address</label>
 							<input class="input" type="text" id="address" name="address" value="{{ Auth::user()->address }}">
 						</div>
-
-						<div class="form-group">
-							<label for="other_address">Other address</label>
-							<input class="input" type="text" id="other_address" name="other_address" placeholder="Other Address">
-						</div>
 						
 						<div class="form-group">
 							<label for="phone">Phone</label>
 							<input class="input" type="text" id="phone" name="phone" value="{{ Auth::user()->phone }}">
+						</div>
+
+						<div class="form-group">
+							<label for="address">Email</label>
+							<input class="input" type="text" id="email" name="email" value="{{ Auth::user()->email }}">
 						</div>
 
 						<div class="form-group">
@@ -80,6 +80,7 @@
 							<div><strong>TOTAL</strong></div>
 							<div><strong class="order-total" id="total">$ {{number_format($total)}}
 							</strong></div>
+							<input type="hidden" name="total" id="" value="{{ $total }}">
 						</div>
 					</div>
 					<div class="payment-method">

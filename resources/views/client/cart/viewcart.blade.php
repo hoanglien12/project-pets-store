@@ -23,12 +23,14 @@
 						@if(Session::has('cart'))
 								<tbody>
 									@foreach($dog_add as $dog)
+
 										<tr class="woocommerce-cart-form__cart-item cart_item">
 											<td class="product-remove">
 												<a href="{{route('home.del',$dog['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
 													<i class="fa fa-trash" style="margin-left: 15px; color: red; font-size: 20px;"></i>
 												</a>
 											</td>
+											@if(isset($dog['item']['id_dog_cate']))
 											@php
 												$img = $dog['item']->getImage($dog['item']['id']);
 											@endphp
@@ -37,6 +39,17 @@
 													<img width="100px" height="100px" src="{{ asset('upload/dogs/' . $img[0]) }}" />
 												</a>
 											</td>
+											@else
+												@php
+													$img = $dog['item']->getImage($dog['item']['id']);
+												@endphp
+												<td class="product-thumbnail"> 
+													<a href="#">
+														<img width="100px" height="100px" src="{{ asset('upload/product/' . $img[0]) }}" />
+													</a>
+												</td>
+											@endif
+
 											<td class="product-name" data-title="Product">
 												<a href="">{{$dog['item']['name']}}</a>
 											</td>
@@ -70,56 +83,6 @@
 											</td>
 										</tr>
 									@endforeach
-
-
-									@foreach($product_add as $product)
-										<tr class="woocommerce-cart-form__cart-item cart_item">
-											<td class="product-remove">
-												<a href="{{route('home.del',$product['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
-													<i class="fa fa-trash" style="margin-left: 15px; color: red; font-size: 20px;"></i>
-												</a>
-											</td>
-											@php
-												$img = $product['item']->getImage($product['item']['id']);
-											@endphp
-											<td class="product-thumbnail"> 
-												<a href="#">
-													<img width="100px" height="100px" src="{{ asset('upload/product/' . $img[0]) }}" />
-												</a>
-											</td>
-											<td class="product-name" data-title="Product">
-												<a href="">{{$product['item']['name']}}</a>
-											</td>
-											<td class="product-price" data-title="Price">
-												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;
-													@if ($product['item']['sale']==0) 
-														{{$product['item']['price']}} 
-													@else 
-														{{$product['item']['sale']}} 
-													@endif 
-												</span>
-											</td>
-											<td class="product-quantity" data-title="Quantity">
-												<label class="qty-label">Qty:</label>
-												<div class="detail-qty info-qty border radius6" style="color: black;">
-													<a href="{{route('home.del',$product['item']['id'])}}" class="qty-down" style="color: black;">
-														<i class="fa fa-angle-down" aria-hidden="true"></i>
-													</a>
-													<input type="text" step="1" min="0" max="" name="" value="{{$product['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
-													<a href="{{route('home.cart',$product['item']['id'])}}" class="qty-up">
-														<i class="fa fa-angle-up" aria-hidden="true"></i>
-													</a>
-												</div>
-											</td>
-											<td class="product-subtotal" data-title="Total" style="color: black;">
-												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;
-													</span>{{$product['price']}}
-												</span>
-											</td>
-										</tr>
-										@endforeach
 									<tr>
 										<td colspan="3" class="actions">
 											<strong style="color: black;">Total: @if(Session::has('cart')){{number_format($totalPrice)}} @else 0.00 @endif</strong></br>

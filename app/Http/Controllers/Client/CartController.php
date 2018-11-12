@@ -13,16 +13,23 @@ use App\Models\Post;
 use App\Models\SiteConfig;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use App\Models\Order;
+use App\Models\DetailOrder;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->order = new Order();
+        $this->detailOrder = new DetailOrder();
+    }
+
     public function addDogToCart(Request $req,$id){
         if(Auth::check()){
-            $dog_add             = Dog::find($id);          
+            $dog_add             = Dog::find($id); 
             $oldCart             = Session('cart')?Session::get('cart'):null;
-            $cart                = new Cart($oldCart);                   
-            $cart->add($dog_add, $id);
-            //dd($cart);            
+            $cart                = new Cart($oldCart);     
+            $cart->add($dog_add, $dog_add->name);
             $req->session()->put('cart',$cart);
 
             return redirect()->back();       
@@ -102,5 +109,54 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Ban chua co san pham trong gio hang');
         }
         
+    }
+    public function order(Request $request)
+    {
+        $cart = Session::get('cart');
+
+        $att = array(
+            'id_user' => Auth::user()->id,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'other_address' => $request->other_address,
+            'note' => $request->description,
+            'address' => $request->address,
+            'status' => 1,
+            'total' => $request->total,
+            'shipping' => $request->payment,
+            'date' => date('Y-m-d'),
+        );
+        $order = $this->order->create($att);
+
+        foreach($cart->items as $key => $value)
+        {
+            if (isset($value['item']['id_dog_cate'])) {
+                $data = array(
+                    'id_order' => $order->id,
+                    'id_dog' => $value['item']['id'],
+                    'price' => $value['price'],
+                    'quantity' => $value['qty'],
+                    'amount' => $value['price']*$value['qty'],
+                );
+            }
+            else if(isset($value['item']['id_product_cate']))
+            {
+                $data = array(
+                    'id_order' => $order->id,
+                    'id_product' => $value['item']['id'],
+                    'price' => $value['price'],
+                    'quantity' => $value['qty'],
+                    'amount' => $value['price']*$value['qty'],
+                );
+            }
+            
+
+            $this->detailOrder->create($data);
+        }
+
+        Session::forget('cart');
+        \Session::flash('status','Order successful!');
+        return redirect()->route('home.index');
     }
 }
