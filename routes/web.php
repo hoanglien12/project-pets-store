@@ -129,6 +129,7 @@ Route::get('del-cart/{id}','Client\CartController@removeItem')->name('home.del')
 Route::get('checkout','Client\CartController@getCheckout')->name('home.checkout');
 Route::get('viewcart','Client\CartController@viewCart')->name('home.viewcart');
 Route::get('deleteAll', 'Client\CartController@deleteAll')->name('home.deleteAll');
+Route::post('order', 'Client\CartController@order')->name('home.order');
 
 Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
 Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');

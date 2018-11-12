@@ -6,11 +6,15 @@
 	function handleClick(payment) {
 	    var feeship = payment.value;
 	   	$("#feeship").html(feeship);
+	   	var fee = $('#feeship').html();
+	   	var priceTotal = $('#totalPrice').html();
+	   	var total = Number(feeship) + Number(priceTotal);
+	   	$('#total').html(total);
 	}
 </script>
 <div class="section">
 	<div class="container">
-		<form action="" method="POST" name="myForm">
+		<form action="{{ route('home.order') }}" method="POST" name="myForm">
 			@csrf
 			<div class="row">
 				<div class="col-md-7">
@@ -21,22 +25,22 @@
 
 						<div class="form-group">
 							<label for="name">Name</label>
-							<input class="input" type="text" id="name" name="name" placeholder="Name">
+							<input class="input" type="text" id="name" name="name" value="{{ Auth::user()->name }}">
 						</div>
 
 						<div class="form-group">
 							<label for="address">Address</label>
-							<input class="input" type="text" id="address" name="address" placeholder="Address">
-						</div>
-
-						<div class="form-group">
-							<label for="other_address">Other address</label>
-							<input class="input" type="text" id="other_address" name="other_address" placeholder="Other Address">
+							<input class="input" type="text" id="address" name="address" value="{{ Auth::user()->address }}">
 						</div>
 						
 						<div class="form-group">
 							<label for="phone">Phone</label>
-							<input class="input" type="text" id="phone" name="phone" placeholder="Telephone">
+							<input class="input" type="text" id="phone" name="phone" value="{{ Auth::user()->phone }}">
+						</div>
+
+						<div class="form-group">
+							<label for="address">Email</label>
+							<input class="input" type="text" id="email" name="email" value="{{ Auth::user()->email }}">
 						</div>
 
 						<div class="form-group">
@@ -52,7 +56,7 @@
 					<div class="order-summary">
 						<div class="order-col">
 							<div><strong>PRODUCT</strong></div>
-							<div><strong>30000000 VND</strong></div>
+							<div> $ <strong id="totalPrice">{{ $totalPrice }}</strong></div>
 						</div>
 						@if(Session::has('cart'))
 	                        @foreach($dog_cart as $dog_add)
@@ -67,24 +71,28 @@
 						@endif
 						<div class="order-col">
 							<div>SHIPPING</div>
-							<div><strong id="feeship">15000</strong> VND</div>
+							<div>$ <strong id="feeship">1</strong></div>
 						</div>
 						<div class="order-col">
+							@php
+								$total = $totalPrice+1;
+							@endphp
 							<div><strong>TOTAL</strong></div>
-							<div><strong class="order-total">@if(Session::has('cart')){{number_format($totalPrice)}}@else 0 @endif VND
+							<div><strong class="order-total" id="total">$ {{number_format($total)}}
 							</strong></div>
+							<input type="hidden" name="total" id="" value="{{ $total }}">
 						</div>
 					</div>
 					<div class="payment-method">
 						<div class="input-radio">
-							<input type="radio" name="payment" onclick="handleClick(this);" id="payment-1" checked="" value="15000">
+							<input type="radio" name="payment" onclick="handleClick(this);" id="payment-1" checked="" value="1">
 							<label for="payment-1">
 								<span></span>
 								Shipping
 							</label>
 						</div>
 						<div class="input-radio">
-							<input type="radio" name="payment" onclick="handleClick(this);" id="payment-2" value="20000">
+							<input type="radio" name="payment" onclick="handleClick(this);" id="payment-2" value="2">
 							<label for="payment-2">
 								<span></span>
 								Cod
