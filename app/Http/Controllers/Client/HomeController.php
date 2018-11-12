@@ -32,6 +32,8 @@ class HomeController extends Controller
         $blogs               = Post::all();
         $slider              = Post::where('type','post_top')->first();
         $about_us            = Post::where('type','about-us')->first();
+        // $slider              = Post::where('hot',1)->first();
+        // $about_us            = Post::where('hot',1)->first();
         // dd($about_us);
         $sale_dogs           = Dog::where('sale','<>',0)->get();
         $new_dogs            = $this->dog->new_dog()->get();
