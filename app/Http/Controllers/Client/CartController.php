@@ -154,9 +154,8 @@ class CartController extends Controller
 
             $this->detailOrder->create($data);
         }
-
         Session::forget('cart');
-        \Session::flash('status','Order successful!');
-        return redirect()->route('home.index');
+
+        return redirect()->route('home.viewcart')->with('success', 'Order successful!');
     }
 }
