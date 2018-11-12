@@ -184,7 +184,6 @@ class HomeController extends Controller
                         ->select('products.*')->get();
         $blogs     = Post::where('title','like',"%$value%")
                         ->orWhere('summary','like',"%$value%")
-                        ->orWhere('type','like',"%$value%")
                         ->orWhere('source','like',"%$value%")
                         ->orWhere('author','like',"%$value%")                      
                         ->orWhere('content','like',"%$value%")->get();

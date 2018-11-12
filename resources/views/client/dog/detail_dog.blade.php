@@ -42,26 +42,6 @@
 	                         <div><p>Weight:    {{$dogs->weight}} cm</p></div>
 	                        <p></p>
 
-	                        {{-- <div class="woocommerce-product-rating">
-	                            <ul class="wrap-rating list-inline-block">
-	                                <li>
-	                                    <div class="product-rate">
-	                                        <div class="product-rating" style="width:80%"></div>
-	                                    </div>
-	                                </li>
-	                                <li>
-	                                    <span class="number-rate silver">(1s)</span>
-	                                </li>
-	                            </ul> <a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count">1</span> customer review)</a>
-	                        </div>
-
-	                        <div class="woocommerce-product-details__short-description">
-	                            <div class="product-desc">
-	                                <p>Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We’ve quickly become the Iowa’s and Midwest’s biggest online retailers.</p>
-	                            </div>
-	                        </div> --}}
-
-
 	                        <form class="cart" action="{{route('home.cart',$dogs->id)}}" method="get">
 	                        	@csrf
 	                            <label class="qty-label">Qty:</label>
@@ -70,7 +50,7 @@
 	                                <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text text qty qty-val" size="4">
 	                                <a href="#" class="qty-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 	                            </div>
-	                            <button type="submit" name="add-to-cart" value="724" class="single_add_to_cart_button button alt">Add to cart</button>
+	                            <button type="submit" name="add-to-cart" value="724" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple">Add to cart</button>
 
 	                        </form>
 
@@ -80,24 +60,6 @@
 	                            <div class="yith-wcwl-add-button show" style="display:block">
 	                                <img src="../../wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
 	                            </div>
-
-	                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-	                                <span class="feedback">Product added!</span>
-	                                <a href="../../wishlist/index.html" rel="nofollow">
-	                                    Browse Wishlist </a>
-	                            </div>
-
-	                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-	                                <span class="feedback">The product is already in the wishlist!</span>
-	                                <a href="../../wishlist/index.html" rel="nofollow">
-	                                    Browse Wishlist </a>
-	                            </div>
-
-	                            <div style="clear:both"></div>
-	                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-	                        </div>
-
 	                        <div class="clear"></div>
 	                        <div class="product_meta item-product-meta-info">
 
@@ -131,8 +93,7 @@
 		            COMMENTS
 		        </h2>
 		        <div class="related-post-slider">
-		            <div class="wrap-item smart-slider owl-carousel owl-theme" data-item="" data-speed="" data-itemres="0:1,480:2,990:3" data-prev="" data-next="" data-pagination="" data-navigation="" style="opacity: 1; display: block;">
-		                <div class="owl-wrapper-outer">
+		            
 		                    <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
 		                        <div class="owl-item active" style="width: 300px;">
 		                            <div class="item-post item-post-default">
@@ -153,7 +114,7 @@
 		                            </div>
 		                        </div>
 		                    </div>
-		                </div>
+		               
 		            </div>
 		        </div>
 		    </div>

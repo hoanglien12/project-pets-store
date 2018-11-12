@@ -2340,6 +2340,7 @@ div.table .product-info .product-title {
   flex-grow: 1;
 }
 .detail-qty {
+  float: left;
   border-radius: 4px;
   height: 40px;
   width: 100px;
