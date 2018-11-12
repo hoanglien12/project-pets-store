@@ -43,6 +43,7 @@
 							<li><a class="white push" href="#"><i class="icon ion-social-twitter"></i></a></li>
 						</ul>
 						<ul class="top-link list-inline-block text-uppercase  inline-block text-upercase title12">
+							<li></li>
 		                    @guest
 		                        <li class="nav-item">
 		                            <a class="nav-link white wobble-top" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -130,16 +131,16 @@
 						<li id="nav-menu-item-1122" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../blog-list/index.html" class="menu-link sub-menu-link">Blog List</a></li>
 					</ul> -->
 				</li>
-				<li id="nav-menu-item-837" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="../about/index.html" class="menu-link main-menu-link">About</a></li>
-				<li id="nav-menu-item-836" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="../contact/index.html" class="menu-link main-menu-link">Contact</a></li>
+				<li id="nav-menu-item-837" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="" class="menu-link main-menu-link">About</a></li>
+				<li id="nav-menu-item-836" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="" class="menu-link main-menu-link">Contact</a></li>
 			</ul>
 			<a href="#" class="toggle-mobile-menu"><span></span></a>
 		</nav>
 		
 		<div class="block-element block-search-element  ">
-			<form class="search-form search-hover   live-search-on" action="http://7uptheme.com/wordpress/haustiere/">
-				<input name="s" onblur="if (this.value=='') this.value = this.defaultValue" onfocus="if (this.value==this.defaultValue) this.value = ''" value="Search......" type="text">
-				<input type="hidden" name="post_type" value="product" />
+			<form class="search-form search-hover   live-search-on" action="{{ route('home.search') }}">
+				<input name="search" placeholder="Search......" type="text">
+				<input type="hidden" name="post_type" placeholder="product" />
 				<div class="submit-form">
 					<input type="submit" value="">
 				</div>

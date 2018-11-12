@@ -29,7 +29,7 @@
         <div class="form-group">
             <label class="col-md-3">Slugs</label>
                 <div class="col-md-9">
-                    <input name="slugs" value="{{ $dog->slugs }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
+                    <input name="slugs" value="" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
                 </div>
             </div>
         <div class="form-group">

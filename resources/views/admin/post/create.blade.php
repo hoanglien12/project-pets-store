@@ -49,12 +49,18 @@
                 </script>
             </div>
         </div>
-
         <div class="form-group">
-            <label class="col-md-3 control-label">Type, Status</label>
+            <label class="col-md-3 control-label">Source</label>
+            <div class="col-md-8">
+                <input type="text" name="source" class="form-control" placeholder="Source" value="{{ old('source') }}">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">HOT, Active, Type</label>
             <div class="col-md-2">
                 <select name="type"  class="bs-select form-control" data-style="blue">
-                    <option value="">Type</option>
+                    <!-- <option value="">HOT</option> -->
                     <option value="1">HOT</option>
                     <option value="2">Normal</option>
                 </select>
@@ -62,17 +68,23 @@
 
             <div class="col-md-2">
                 <select name="status" class="bs-select form-control" data-style="green-meadow">
-                    <option value="">Status</option>
+                    <!-- <option value="">Active</option> -->
                     <option value="1">ON</option>
                     <option value="2">Off</option>
                 </select>
             </div>
+            <div class="col-md-3">
+                <input type="text" name="type-1" placeholder="Type" class="form-control" />
+            </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <button type="submit" class="btn btn-outline green"><i class="fa fa-check"></i>Submit</button>
-                <button type="reset" class="btn btn-primary">Reset</button>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" class="btn green btn-outline">
+                        <i class="fa fa-check"></i> Submit
+                    </button>
+                    <button type="reset" name="reset" class="btn default">Cancel</button>
+                </div>
             </div>
         </div>
 
