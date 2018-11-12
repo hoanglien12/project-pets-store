@@ -55,6 +55,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 	Route::group(['prefix' => 'order',], function (){
 
 	    Route::get('', 'Admin\OrderController@index')->name('order.index');
+	    Route::get('detail/{id}', 'Admin\OrderController@detail_order')->name('order.detail');
+	    Route::delete('delete/{id}','Admin\OrderController@delete')->name('order.delete');
+	    Route::post('change-status','Admin\OrderController@change_status')->name('order.change_status');
+
 	});
 
 	Route::group(['prefix' => 'user',], function (){

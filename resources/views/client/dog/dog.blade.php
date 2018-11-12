@@ -39,7 +39,7 @@
                                 <img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
                                 @endif
                         </a>
-                         @if($dog->sale!=0)
+                        @if($dog->sale!=0)
                         <div class="product-label"><span class="sale">sale</span></div>
                         @endif
                         <div class="product-extra-link text-center">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">ID:DSP{{$dog->id}}</span>
+                        <span class="title12 text-uppercase color font-bold">{{$dog->dogcategory->name}}</span>
                         <h3 class="title18 text-uppercase product-title dosis-font font-bold">
                             <a title="Bailey" href="../../product/bailey/index.html" class="black">Name: {{$dog->name}}</a>
                         </h3>
