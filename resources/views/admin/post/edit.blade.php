@@ -76,7 +76,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label">HOT, Active, Type</label>
+            <label class="col-md-3 control-label">HOT, Active</label>
             <div class="col-md-2">
                 <select name="type" class="bs-select form-control" data-style="blue">
                     <option value="1" {{ $post->hot==1 ? "selected" : "" }}>HOT</option>
@@ -90,9 +90,7 @@
                     <option value="2" {{ $post->active==2 ? "selected" : "" }}>Không kích hoạt</option>
                 </select>
             </div>
-            <div class="col-md-3">
-                <input type="text" name="type-1" placeholder="Type" class="form-control" value="{{ $post->type }}">
-            </div>
+            
         </div>
         <!-- Form action buttons -->
         <div class="form-actions">

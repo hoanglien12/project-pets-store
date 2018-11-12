@@ -66,7 +66,7 @@ class PostController extends Controller
                 'summary'       => $request->get('summary'),
                 'active'        => $request->get('status'),
                 'hot'           => $request->get('type'),
-                'type'          => $request->get('type-1'),
+                
                 'source'        => $request->get('source'),
                 'source'        => $request->get('source'),
                 'content'       => $request->get('content'),
@@ -122,7 +122,7 @@ class PostController extends Controller
                 'summary'       => $request->get('summary'),
                 'active'        => $request->get('status'),
                 'hot'           => $request->get('type'),
-                'type'          => $request->get('type-1'),
+                
                 'source'        => $request->get('source'),
                 'source'        => $request->get('source'),
                 'content'       => $request->get('content'),

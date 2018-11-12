@@ -1,7 +1,11 @@
 @extends('client.layouts.master')
 @section('title','Results search')
 @section('content')
-<h1>Results for key: {{ $value }}</h1>
+
+@include('client.layouts.sidebar')
+<div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
+    <h1>Results for key: {{ $value }}</h1>
+@include('admin.layouts.flash-msg')
 <div class="product-grid-view   products-wrap js-content-wrap" data-load="{&quot;attr&quot;:{&quot;item_style&quot;:null,&quot;item_style_list&quot;:null,&quot;column&quot;:&quot;3&quot;,&quot;size&quot;:null,&quot;size_list&quot;:null,&quot;shop_style&quot;:null,&quot;animation&quot;:&quot;zoom-thumb&quot;,&quot;number&quot;:&quot;12&quot;,&quot;cats&quot;:&quot;golden-retriever&quot;}}">
     <div class="products row list-product-wrap js-content-main">
     	@if(count($dogs) > 0)
@@ -14,9 +18,9 @@
                         @php
                             $photos = $dog->getImage($dog->id);
                         @endphp
-                            @if($photos != null)
-                            <img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-                            @endif
+                        @if($photos != null)
+                        <img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
+                        @endif
                     </a>
                      @if($dog->sale!=0)
                     <div class="product-label"><span class="sale">sale</span></div>
@@ -98,8 +102,52 @@
         </div>
         @endforeach
         @endif
+        @if(count($blogs) > 0)
+        @foreach($blogs as $blog)
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="item-post item-post-large item-default">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="post-thumb banner-advs zoom-image overlay-image">
+                            <a href="{{ route('home.detail_blog',$blog->id) }}" class="adv-thumb-link">
+                                @php
+                                    $photo = $blog->getImage($blog->id);
+                                @endphp
+                                @if($photo != null)
+                                <img width="870" height="400" src="{{ asset('upload/post/' . $photo[0]) }}" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
+                                @endif
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="post-info">
+                            <h3 class="title24 post-title dosis-font font-bold">
+                                <a href="" class="black">
+                                    {{$blog->title}}
+                                </a>
+                            </h3>
+                            <p class="desc">
+                                {{$blog->summary}}
+                            </p>
+                            <ul class="list-inline-block post-meta-data">
+                                <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
+                                <li><i aria-hidden="true" class="fa fa-comment color"></i>
+                                    <a href="../flowing-studio-dress-2/index.html#respond">0
+                                        Comments </a>
+                                </li>
+                                <li><i class="fa fa-folder-open color" aria-hidden="true"></i>
+                                    <a href="../category/french-bulldog/index.html" rel="category tag">French Bulldog</a> <a href="../category/accessories/index.html" rel="category tag">German Shepherd</a> </li>
+                            </ul>
+                            <a href="{{ route('home.detail_blog',$blog->id) }}" class="shop-button">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
     </div>
 
+</div>
 </div>
 
 @endsection

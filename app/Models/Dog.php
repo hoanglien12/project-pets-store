@@ -46,6 +46,7 @@ class Dog extends Model
     public function getImage($id)
     {
         $dog    = Dog::find($id);
+        // dd($dog);
         $images = $dog->photos;
         $imgs   = json_decode($images);
         // var_dump($imgs); die;
@@ -60,4 +61,11 @@ class Dog extends Model
         $dogs  = $dogs->whereDate('created_at','>=',date('Y-m-d', strtotime($date)));
         return $dogs;
     }
+
+    public function count_dogs($id){
+        $dogs = Dog::select(Dog::raw("COUNT(*) as count_row"))
+                ->groupBy(Dog::raw('id_dog_cate'))
+                ->get();
+    }
+
 }
