@@ -18,6 +18,8 @@ class DogCategory extends Model
     {
     	return $this->hasMany('App\Models\Dog', 'id_dog_cate', 'id');
     }
+
+    
     
     public function getAllDogCategories($name = null, $begin_date = null,$end_date = null)
     {

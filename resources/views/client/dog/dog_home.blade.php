@@ -24,8 +24,6 @@
 		                        
 		                    </ul>
 		                    
-		                        
-		                    
 		                </div>
 		                <div class="tab-content carousel slide " id="myCarousel" >
 							<div id="tab1" class="tab-pane active">
@@ -152,7 +150,61 @@
 							<div id="tab3" class="tab-pane">
 							    <div class="block-element  product-slider-view  default gap-30 js-content-wrap">
 							        <div class="list-product-wrap">
-							            <h1>tab 3</h1>
+							            <div class="wrap-item smart-slider group-navi  owl-carousel owl-theme" data-item="4" data-speed="" data-itemres="0:1,480:2,768:3,990:4" data-prev="" data-next="" data-pagination="" data-navigation="group-navi" style="opacity: 1; display: block;">
+							                <div class="owl-wrapper-outer">
+							                    <div class="owl-wrapper" style="width: 4800px; left: 0px; display: block;">
+							                    	@foreach($dogs as $dog)
+							                       <div class="owl-item active" style="width: 300px;">
+							                            <div class="item">
+							                                <div class="post-705 product type-product status-publish has-post-thumbnail product_cat-bloodhound product_cat-french-bulldog product_cat-german-shepherd last instock featured shipping-taxable purchasable product-type-simple">
+							                                    <div class="item-product item-product-grid">
+							                                        <div class="product-thumb">
+							                                            <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
+							                                            <a href="{{ route('home.detail_dog',$dog->id)}}" class="product-thumb-link " title="{{ $dog->name . '-' . $dog->dogcategory->name }}">
+							                                            	@php
+												                                $photos = $dog->getImage($dog->id);
+												                            @endphp
+												                            @if($photos != null)
+												                            	<img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image"  alt="" sizes="(max-width: 270px) 100vw, 270px">
+		                                		                            @endif
+							                                                </a>
+														                  
+
+							                                            </a>
+
+							                                            <div class="product-extra-link text-center">
+							                                                
+							                                                <a href="index1f0d.html?add-to-cart=705" rel="nofollow" data-product_id="705" data-product_sku="DSP93768" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Meela"><span>Add to cart <i class="fa fa-chevron-right"></i></span></a> </div>
+							                                        </div>
+							                                        <div class="product-info">
+							                                            <span class="title12 text-uppercase color font-bold">{{$dog->dogcategory->name}}</span>
+							                                            <h3 class="title18 text-uppercase product-title dosis-font font-bold">
+																			<a title="Meela" href="../product/meela/index.html" class="black">{{$dog->name}}</a>
+																		</h3>
+																		@if($dog->promotion_price)
+							                                            <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog->price}}</span>
+							                                            </div>
+							                                            @else
+							                                            <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog->promotion_price}}</span></ins></div>
+							                                            @endif
+							                                            <ul class="wrap-rating list-inline-block">
+							                                                <li>
+							                                                    <div class="product-rate">
+							                                                        <div class="product-rating" style="width:0%"></div>
+							                                                    </div>
+							                                                </li>
+							                                            </ul>
+							                                        </div>
+							                                    </div>
+							                                </div>
+							                            </div>
+							                        </div>
+							                        @endforeach
+							                    </div>
+							                    
+							                </div>
+							                
+							            </div>
 							        </div>
 							    </div>
 							</div>
