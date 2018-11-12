@@ -3,6 +3,9 @@
 @section('content')
 <article style="background: white" id="post-1084" class="post-1084 page type-page status-publish hentry">
 	<div class="entry-content clearfix">
+		<br>
+		@include('admin.layouts.flash-msg')
+
 		<div class="title-page clearfix">
 			<h1 class="title30 dosis-font font-bold text-uppercase">Cart</h1>
 		</div>
@@ -101,6 +104,8 @@
 				<div  class="wc-proceed-to-checkout">
 					<a href="{{route('home.checkout')}}" class="checkout-button button alt wc-forward">
 					Proceed to checkout</a>
+
+					<a href="{{ route('home.index') }}"><button type="button" class="btn btn-primary">Return home</button></a>
 				</div>
 			</div>
 		</div>
