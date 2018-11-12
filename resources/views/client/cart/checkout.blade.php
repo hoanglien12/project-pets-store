@@ -13,6 +13,7 @@
 	}
 </script>
 <div class="section">
+
 	<div class="container">
 		<form action="{{ route('home.order') }}" method="POST" name="myForm">
 			@csrf
