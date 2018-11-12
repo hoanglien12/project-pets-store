@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('title','Detail Product')
 @section('content')
+
 	<div class="main-wrap-shop content-wrap content-sidebar-right col-md-9 col-sm-8 col-xs-12">
 
 	    <div id="product-724" class="post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
@@ -22,22 +23,7 @@
 	                            </div>
 	                           
 	                        </div>
-	                        <div class="single-list-social" data-id="724">
-	                            <ul class="list-inline-block">
-	                                <li><a target="_blank" data-social="envelope" title="" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon envelope-social"><i class="fa fa-envelope" aria-hidden="true"></i><span class="number">1</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="facebook" title="" href="http://www.facebook.com/sharer.php?u=http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon facebook-social"><i class="fa fa-facebook" aria-hidden="true"></i><span class="number">1</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="twitter" title="" href="http://www.twitter.com/share?url=http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon twitter-social"><i class="fa fa-twitter" aria-hidden="true"></i><span class="number">0</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="pinterest" title="" href="../../../../../pinterest.com/pin/create/button/index13bb.html?url=http://7uptheme.com/wordpress/haustiere/product/bailey/&amp;media=http://7uptheme.com/wordpress/haustiere/wp-content/uploads/2018/01/pet_store_dog_12.jpg">
-	                                        <span class="share-icon pinterest-social"><i class="fa fa-pinterest" aria-hidden="true"></i><span class="number">0</span></span>
-	                                    </a></li>
-	                            </ul>
-	                        </div>
+	                        
 	                    </div>
 	                </div>
 	                <div class="col-md-7 col-sm-12 col-xs-12">
@@ -51,28 +37,6 @@
 	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$products->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$products->sale}}</span></ins></div>
 	                         @endif
 	                          
-	                        <p></p>
-
-	                       {{--  <div class="woocommerce-product-rating">
-	                            <ul class="wrap-rating list-inline-block">
-	                                <li>
-	                                    <div class="product-rate">
-	                                        <div class="product-rating" style="width:80%"></div>
-	                                    </div>
-	                                </li>
-	                                <li>
-	                                    <span class="number-rate silver">(1s)</span>
-	                                </li>
-	                            </ul> <a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count">1</span> customer review)</a>
-	                        </div> --}}
-{{-- 
-	                        <div class="woocommerce-product-details__short-description">
-	                            <div class="product-desc">
-	                                <p>Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We’ve quickly become the Iowa’s and Midwest’s biggest online retailers.</p>
-	                            </div>
-	                        </div> --}}
-
-
 	                        <form class="cart" action="{{route('home.productcart',$products->id)}}" method="get">
 	                        	@csrf
 	                            <label class="qty-label">Qty:</label>
@@ -81,52 +45,20 @@
 	                                <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text text qty qty-val" size="4">
 	                                <a href="#" class="qty-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 	                            </div>
-	                            <button type="submit" name="add-to-cart" value="724" class="single_add_to_cart_button button alt">Add to cart</button>
+	                            <button type="submit" name="add-to-cart" value="724" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple">Add to cart</button>
 
 	                        </form>
-
-
-
-	                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-724">
+							<div class="yith-wcwl-add-to-wishlist add-to-wishlist-724">
 	                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-	                                <a href="index7bbe.html?add_to_wishlist=724" rel="nofollow" data-product-id="724" data-product-type="simple" class="add_to_wishlist">
-	                                    Add to Wishlist</a>
 	                                <img src="../../wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
 	                            </div>
-
-	                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-	                                <span class="feedback">Product added!</span>
-	                                <a href="../../wishlist/index.html" rel="nofollow">
-	                                    Browse Wishlist </a>
-	                            </div>
-
-	                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-	                                <span class="feedback">The product is already in the wishlist!</span>
-	                                <a href="../../wishlist/index.html" rel="nofollow">
-	                                    Browse Wishlist </a>
-	                            </div>
-
-	                            <div style="clear:both"></div>
-	                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-	                        </div>
-
-	                        <div class="clear"></div><a href="http://7uptheme.com/wordpress/haustiere?action=yith-woocompare-add-product&amp;id=724" class="compare button" data-product_id="724" rel="nofollow">Add To Compare</a>
-	                        <div class="product_meta item-product-meta-info">
-
-
-
+	                        <div class="clear"></div>
+	                        <div class="product_meta item-product-meta-info">	
 	                            <span class="sku_wrapper">
 	                                <label>Product Code:</label>
 	                                <span class="sku">DSP{{$products->id}}</span>
 	                            </span>
 
-	                            <span class="sku_wrapper">
-	                                <label>Availability:</label>
-	                                <span class="sku in-stock">In stock</span>
-	                            </span>
 	                            <span class="posted_in"><label>Categories:</label>
 	                             @foreach($productCategories as $dogcat)
 	                                <div class="meta-item-list"><a href="{{route('home.product',$dogcat->id) }}" rel="tag">{{$dogcat->name}}</a> </div>
@@ -146,7 +78,7 @@
 		            COMMENTS
 		        </h2>
 		        <div class="related-post-slider">
-		            <div class="wrap-item smart-slider owl-carousel owl-theme" data-item="" data-speed="" data-itemres="0:1,480:2,990:3" data-prev="" data-next="" data-pagination="" data-navigation="" style="opacity: 1; display: block;">
+		            
 		                <div class="owl-wrapper-outer">
 		                    <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
 		                        <div class="owl-item active" style="width: 300px;">
@@ -169,7 +101,7 @@
 		                        </div>
 		                    </div>
 		                </div>
-		            </div>
+		           
 		        </div>
 		    </div>
 		    <div id="comments" class="comments-area comments blog-comment-detail">
@@ -211,14 +143,6 @@
 						                            @endif
 
 	                                            </a>
-	                                            <div class="product-extra-link text-center">
-	                                                <ul class="list-product-extra-link list-inline-block">
-	                                                    <li><a href="index7eba.html?add_to_wishlist=716" class="add_to_wishlist wishlist-link" rel="nofollow" data-product-id="716" data-product-title="Cannoly"><i class="icon ion-android-favorite-outline" aria-hidden="true"></i><span>Wishlist</span></a></li>
-	                                                    <li><a title="Quick View" data-product-id="716" href="../cannoly/index.html" class="product-quick-view quickview-link "><i class="icon ion-search"></i><span>Quick view</span></a></li>
-	                                                    <li><a href="indexdcd7.html?action=yith-woocompare-add-product&amp;id=716" class="product-compare compare compare-link" data-product_id="716"><i aria-hidden="true" class="icon ion-android-sync"></i><span>Compare</span></a></li>
-	                                                </ul>
-	                                                <a href="index58aa.html?add-to-cart=716" rel="nofollow" data-product_id="716" data-product_sku="DSP92037" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Cannoly"><span>Add to cart</span></a>
-	                                            </div>
 	                                        </div>
 	                                        <div class="product-info">
 	                                            <span class="title12 text-uppercase color font-bold">ID:DSP{{$product->id}}</span>
@@ -258,6 +182,7 @@
 
 	    </div><!-- #product-724 -->
 	</div>
+</div>
 	@include('client.layouts.sidebar')
 
 
