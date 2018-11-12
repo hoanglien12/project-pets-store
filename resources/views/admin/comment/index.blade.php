@@ -1,28 +1,16 @@
 @extends('admin.layouts.master')
-@section('title','Site config')
+@section('title','Comments')
 @section('content')
 
     <div class="portlet-body" style="border: 1px solid #ddd;
     border-radius: 4px; padding:10px; margin-bottom:10px;">
-
         <div class="table-toolbar">
             <form action="" method="GET" class="form-horizontal form-bordered" id="filter_box">
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
-                        <input type="text" name="label" value="{{ old('label') }}" placeholder="Label" class="form-control">
-                        <div class="help-block">Label</div>
-                    </div>
-                    <!-- Filter Name -->
-                    <div class="col-md-3">
-                            <select name="type" class="form-control">
-
-                                <option value="">Type</option>
-                                <option value="0" {{ (isset($type) && $type == 0) ? 'selected' : '' }}>String</option>
-                                <option value="1" {{ (isset($type) && $type == 1) ? 'selected' : '' }}>Number</option>
-                                <option value="2" {{ (isset($type) && $type == 2) ? 'selected' : '' }}>JSON</option>
-                            </select>
-                            <div class="help-block">Type</div>
+                        <input type="text" name="ID" value="{{ old('name') }}" placeholder="ID" class="form-control">
+                        <div class="help-block">ID</div>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
@@ -41,10 +29,6 @@
             </form>
         </div>
     </div>
-    <div class="add-new-item">
-        <a href="{{ route('site_config.add') }}"><button class="btn btn-primary" ><i class="fa fa-plus"></i>Add new item</button></a>
-    </div>
-    
     @include('admin.layouts.flash-msg')
     <div class="row">
         <div class="col-lg-12">
@@ -55,18 +39,19 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Label</th>
-                                <th>Type</th>
-                                <th>Value</th>
-                                <th>Created at</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Dog</th>
+                                <th>Product</th>
+                                <th>Post</th>
+                                <th>User</th>
+                                <th>Comment</th>
+                                <th>Created_at</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($configs as $config)
+                           @foreach($comments as $comment)
                             <!-- BEGIN MODAL CONFIRM DELETE ITEM -->
-                            <div class="modal fade" id="delete{{$config->id}}" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" >
+                            <div class="modal fade" id="delete{{$comment->id}}" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" >
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -74,10 +59,10 @@
                                             <h4 class="modal-title text-center">Confirm delete </h4>
                                         </div>
                                         <div class="modal-body">
-                                            Are you sure to delete : {{$config->label}} ?
+                                            Are you sure to delete : {{$comment->name}} ?
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{ route('site_config.delete',$config->id) }}" method="POST">
+                                            <form action="{{ route('comment.delete',$comment->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn-danger btn-delete">Delete</button>
@@ -91,7 +76,7 @@
                             </div>
 
                             <!-- BEGIN MODAL -->
-                            <div class="modal fade" id="value{{ $config->id }}" tabindex="-1" role="basic" aria-hidden="true" data-target="#value{{$config->id}}" style="display: none;">
+                            <div class="modal fade" id="info{{ $comment->id }}" tabindex="-1" role="basic" aria-hidden="true" data-target="#info{{$comment->id}}" style="display: none;">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -99,10 +84,10 @@
                                             <h4 class="modal-title text-center">Information</h4>
                                         </div>
                                         <div class="modal-body" style="word-wrap: break-word;">
-                                            <p>{{$config->value}}</p>
+                                            <p>{{ $comment->comment }}</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -111,33 +96,38 @@
                             </div>
                             <!-- END MODAL -->
                             <tr>
-                                <td>{{ $config->id }}</td>
-                                <td>{{ $config->label }}</td>
-
+                                <td>{{ $comment->id }}</td>
                                 <td>
-                                    @if($config->type == 0)
-                                    {{ "String" }}
-                                    @elseif($config->type == 1)
-                                    {{ "Number" }}
-                                    @else
-                                    {{"JSON"}}
+                                    @if($comment->id_dog != null)
+                                    {{ $comment->dog->name }}
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn-xs" data-toggle="modal" href="#value{{ $config->id }}" title="Chi tiết"><button class="btn-info btn blue btn-outline" >Detail</button></a>
-                                </td>                                
-                                <td>{{ $config->created_at }}</td>
+                                    @if($comment->id_product != null)
+                                    {{ $comment->product->name }}
+                                    @endif
+                                </td>
                                 <td>
-                                        <a href="{{ route('site_config.edit', ['id' => $config->id]) }}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit</button></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-xs" data-toggle="modal" href="#delete{{$config->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"><i class="fa fa-trash-o"></i>Delete</button></a>
-                                    </td>
+                                    @if($comment->id_post != null)
+                                    {{ $comment->post->title }}
+                                    @endif
+                                </td>
+                                <td>{{ $comment->user->name }}</td>
+                                <td>
+                                    <a class="btn-xs" data-toggle="modal" href="#info{{ $comment->id }}" title="Delete"><button class="btn-info btn blue btn-outline" >Detail</button></a>
+                                </td>
+                                <td>{{ $comment->created_at }}</td>
+                                
+                                <td>
+                                    <a class="btn-xs" data-toggle="modal" href="#delete{{$comment->id}}" data-toggle="tooltip" title="Delete"><button class="btn-danger btn"> Delete</button></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <p>Total items: {{ $count_configs }}</p>
+
+                    <div class="text-right">
+                    </div>
                 </div>
                 
             </div>

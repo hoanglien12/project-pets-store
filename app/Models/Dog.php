@@ -16,9 +16,15 @@ class Dog extends Model
     protected $fillable = [
         'name','id_dog_cate','price','sale','birthday','height','weight', 'description','photos','created_at', 'updated_at'
     ];
+
     public function dogcategory()
     {
     	return $this->belongsTo('App\Models\DogCategory', 'id_dog_cate','id');
+    }
+
+    public function detail_order()
+    {
+        return $this->belongsTo('App\Models\DetailOrder', 'id_order','id');
     }
 
     public function getAllDogs($name=null, $category_id=null,$price=null, $begin_date=null, $end_date=null)
@@ -46,6 +52,7 @@ class Dog extends Model
     public function getImage($id)
     {
         $dog    = Dog::find($id);
+        // dd($dog);
         $images = $dog->photos;
         $imgs   = json_decode($images);
         // var_dump($imgs); die;
@@ -60,4 +67,11 @@ class Dog extends Model
         $dogs  = $dogs->whereDate('created_at','>=',date('Y-m-d', strtotime($date)));
         return $dogs;
     }
+
+    public function count_dogs($id){
+        $dogs = Dog::select(Dog::raw("COUNT(*) as count_row"))
+                ->groupBy(Dog::raw('id_dog_cate'))
+                ->get();
+    }
+
 }

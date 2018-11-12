@@ -5,17 +5,7 @@
     <div class="title-page clearfix">
         <h2 class="title30 font-bold dosis-font text-uppercase pull-left">Blog</h2>
         <ul class="sort-pagi-bar list-inline-block pull-right">
-            <li>
-                <div class="dropdown-box show-by">
-                    <a href="#" class="dropdown-link"><span class="gray">Per Page:</span><span class="silver number">12</span></a>
-                    <ul class="dropdown-list list-none">
-                        <li><a data-number="12" class="" href="indexcae9.html?number=12">12</a></li>
-                        <li><a data-number="16" class="" href="index76a2.html?number=16">16</a></li>
-                        <li><a data-number="20" class="" href="index5167.html?number=20">20</a></li>
-                        <li><a data-number="24" class="" href="indexf213.html?number=24">24</a></li>
-                    </ul>
-                </div>
-            </li>
+            
             <li>
                 <div class="view-type">
                     <span class="gray">View As:</span>
@@ -70,11 +60,8 @@
             @endforeach
         </div>
 
-        <div class="pagi-nav text-center ">
-            <span aria-current="page" class="page-numbers current">1</span>
-            <a class="page-numbers" href="page/2/index.html">2</a>
-            <a class="page-numbers" href="page/3/index.html">3</a>
-            <a class="next page-numbers" href="page/2/index.html"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <div class="text-right">
+            {{ $blogs->links() }}
         </div>
 
 

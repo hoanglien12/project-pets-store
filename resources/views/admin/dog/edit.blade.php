@@ -29,26 +29,40 @@
         <div class="form-group">
             <label class="col-md-3">Slugs</label>
                 <div class="col-md-9">
-                    <input name="slugs" value="{{ $dog->slugs }}" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
+                    <input name="slugs" value="" placeholder="Slugs" id="slug" type="text" readonly class="form-control" >
                 </div>
             </div>
         <div class="form-group">
-            <label class="col-md-3">Photos</label>
-            <div class="col-md-9">
-                <input type="file" name="photos[]" class="form-control" multiple">
-                @php
-                    $photos = $dog->getImage($dog->id);
-                @endphp
-                @if($photos != null)
-                @foreach ($photos as $photo)
-                    <img src="{{ asset('upload/dogs/' . $photo) }}" alt="" style="width: 150px;height: 100px;">
-                @endforeach
-                @else
-                    <p>no photo</p>
-                @endif
-            </div>
+            <label class="control-label col-md-3">Photos</label>
             
+            <div id="select_image_to_upload" class="col-md-9">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                    <div>
+                        <span class="btn green btn-file" id="img" >
+                            <span class="fileinput-new" > Select file </span>
+                            <input type="file" name="photos[]" id="photos" multiple onclick="hideImg();">
+                        </span>
+                    </div>
+                </div>
+                    <div id="image-old">
+                        @php
+                            $photos = $dog->getImage($dog->id);
+                        @endphp
+                        @if($photos != null)
+                        @foreach ($photos as $photo)
+                            <img  src="{{ asset('upload/dogs/' . $photo) }}" alt="" style="width: 150px;height: 100px;" >
+                        @endforeach
+                        @endif
+                    </div>
+                            
+            </div>
+            <div id="paste_url_image" class="col-md-8 col-md-offset-3" style="display: none;">
+                <input name="url_image" placeholder="Nhập link ảnh" type="text" class="form-control">
+                <p class="help-block">Link ảnh</p>
+            </div>
         </div>
+        
         <div class="form-group">
             <label for="price" class="col-md-3">Price:</label>
             <div class="col-md-9">

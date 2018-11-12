@@ -2,7 +2,6 @@
 @section('title','Detail Dog')
 @section('content')
 	<div class="main-wrap-shop content-wrap content-sidebar-right col-md-9 col-sm-8 col-xs-12">
-
 	    <div id="product-724" class="post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
 	        <div class="product-detail">
 	            <div class="row">
@@ -25,22 +24,7 @@
 	                            </div>
 	                           
 	                        </div>
-	                        <div class="single-list-social" data-id="724">
-	                            <ul class="list-inline-block">
-	                                <li><a target="_blank" data-social="envelope" title="" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon envelope-social"><i class="fa fa-envelope" aria-hidden="true"></i><span class="number">1</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="facebook" title="" href="http://www.facebook.com/sharer.php?u=http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon facebook-social"><i class="fa fa-facebook" aria-hidden="true"></i><span class="number">1</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="twitter" title="" href="http://www.twitter.com/share?url=http://7uptheme.com/wordpress/haustiere/product/bailey/">
-	                                        <span class="share-icon twitter-social"><i class="fa fa-twitter" aria-hidden="true"></i><span class="number">0</span></span>
-	                                    </a></li>
-	                                <li><a target="_blank" data-social="pinterest" title="" href="../../../../../pinterest.com/pin/create/button/index13bb.html?url=http://7uptheme.com/wordpress/haustiere/product/bailey/&amp;media=http://7uptheme.com/wordpress/haustiere/wp-content/uploads/2018/01/pet_store_dog_12.jpg">
-	                                        <span class="share-icon pinterest-social"><i class="fa fa-pinterest" aria-hidden="true"></i><span class="number">0</span></span>
-	                                    </a></li>
-	                            </ul>
-	                        </div>
+	                        
 	                    </div>
 	                </div>
 	                <div class="col-md-7 col-sm-12 col-xs-12">
@@ -58,34 +42,15 @@
 	                         <div><p>Weight:    {{$dogs->weight}} cm</p></div>
 	                        <p></p>
 
-	                        <div class="woocommerce-product-rating">
-	                            <ul class="wrap-rating list-inline-block">
-	                                <li>
-	                                    <div class="product-rate">
-	                                        <div class="product-rating" style="width:80%"></div>
-	                                    </div>
-	                                </li>
-	                                <li>
-	                                    <span class="number-rate silver">(1s)</span>
-	                                </li>
-	                            </ul> <a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count">1</span> customer review)</a>
-	                        </div>
-
-	                        <div class="woocommerce-product-details__short-description">
-	                            <div class="product-desc">
-	                                <p>Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We’ve quickly become the Iowa’s and Midwest’s biggest online retailers.</p>
-	                            </div>
-	                        </div>
-
-
-	                        <form class="cart" action="http://7uptheme.com/wordpress/haustiere/product/bailey/" method="post" enctype="multipart/form-data">
+	                        <form class="cart" action="{{route('home.cart',$dogs->id)}}" method="get">
+	                        	@csrf
 	                            <label class="qty-label">Qty:</label>
 	                            <div class="detail-qty info-qty border radius6">
 	                                <a href="#" class="qty-down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 	                                <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text text qty qty-val" size="4">
 	                                <a href="#" class="qty-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 	                            </div>
-	                            <button type="submit" name="add-to-cart" value="724" class="single_add_to_cart_button button alt">Add to cart</button>
+	                            <button type="submit" name="add-to-cart" value="724" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple">Add to cart</button>
 
 	                        </form>
 
@@ -95,24 +60,6 @@
 	                            <div class="yith-wcwl-add-button show" style="display:block">
 	                                <img src="../../wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
 	                            </div>
-
-	                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-	                                <span class="feedback">Product added!</span>
-	                                <a href="../../wishlist/index.html" rel="nofollow">
-	                                    Browse Wishlist </a>
-	                            </div>
-
-	                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-	                                <span class="feedback">The product is already in the wishlist!</span>
-	                                <a href="../../wishlist/index.html" rel="nofollow">
-	                                    Browse Wishlist </a>
-	                            </div>
-
-	                            <div style="clear:both"></div>
-	                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-	                        </div>
-
 	                        <div class="clear"></div>
 	                        <div class="product_meta item-product-meta-info">
 
@@ -139,6 +86,58 @@
 	                </div>
 	            </div>
 	        </div>
+
+			<div class="clear"></div>
+		    <div class="single-related-post">
+		        <h2 class="title18 font-bold text-uppercase title-single-related-post">
+		            COMMENTS
+		        </h2>
+		        <div class="related-post-slider">
+		            
+		                    <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
+		                        <div class="owl-item active" style="width: 300px;">
+		                            <div class="item-post item-post-default">
+		                                <div class="post-thumb banner-advs zoom-image fly-hoz">
+		                                    <a href="#">
+			                                    <img width="270" height="180" src="" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
+		                                </div>
+		                                <div class="post-info">
+		                                	@foreach($comment_dog as $cmt)
+		                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">{{ $cmt->user->name }}</a></h3>
+		                                    <ul class="list-inline-block post-meta-data">
+		                                        <li><i aria-hidden="true" class="fa fa-comment color"></i>
+		                                            <h6 style="display: inline; font-size: 17px;">{{ $cmt->comment }}</h6>
+		                                        </li>
+		                                    </ul>
+		                                    @endforeach
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		               
+		            </div>
+		        </div>
+		    </div>
+		    <div id="comments" class="comments-area comments blog-comment-detail">
+		    </div><!-- #comments -->
+
+		    @if(Auth::check())
+		    	<div class="leave-comments contact-form reply-comment" style="margin-bottom: 50px;">
+			        <div id="respond" class="comment-respond">
+			            <h3 id="reply-title" class="comment-reply-title">Leave Comments</h3>
+			            <form action="{{ url('dog/comment/'. $dogs->id) }}" method="POST" id="commentform" class="comment-form" novalidate="">
+			            	@csrf
+			               	<input type="hidden" name="id_dog" id="" value="{{ $dogs->id }}">
+			                <textarea name="comment" id="" cols="30" rows="8"></textarea>
+			                <br>
+			                <button type="submit" class="btn btn-primary">Post a comment</button>
+			            </form>
+			        </div><!-- #respond -->
+			    </div>
+		    @endif
+
+		    
+
 	        <div class="related-product">
 	            <h2 class="title18 font-bold text-uppercase single-title">Related products</h2>
 	            <div class="product-slider">
@@ -204,6 +203,6 @@
 	@include('client.layouts.sidebar')
 
 
-	<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:89.5px;top:955px;height:345px;width:345px;"><div class="zoomLens" style="background-position: 0px 0px; float: right; overflow: hidden; z-index: 999; transform: translateZ(0px); opacity: 0.4; zoom: 1; width: 276px; height: 276px; background-color: white; cursor: default; border: 1px solid rgb(0, 0, 0); background-repeat: no-repeat; position: absolute; left: 0px; top: 69px; display: none;">&nbsp;</div><div class="zoomWindowContainer" style="width: 400px;"><div style="overflow: hidden; background-position: 0px -108px; text-align: center; background-color: rgb(255, 255, 255); width: 400px; height: 400px; float: left; background-size: 500px 500px; z-index: 100; border: 4px solid rgb(136, 136, 136); background-repeat: no-repeat; position: absolute; background-image: url(&quot;../../wp-content/uploads/2018/01/pet_store_dog_12.jpg&quot;); top: 0px; left: 345px; display: none;" class="zoomWindow">&nbsp;</div></div></div>
+	<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:89.5px;top:955px;height:345px;width:345px;"><div class="zoomLens" style="background-position: 0px 0px; float: right; overflow: hidden; z-index: 999; transform: translateZ(0px); opacity: 0.4; zoom: 1; width: 276px; height: 276px; background-color: white; cursor: default; border: 1px solid rgb(0, 0, 0); background-repeat: no-repeat; position: absolute; left: 0px; top: 69px; display: none;">&nbsp;</div><div class="zoomWindowContainer" style="width: 400px;"><div style="overflow: hidden; background-position: 0px -108px; text-align: center; background-color: rgb(255, 255, 255); width: 400px; height: 400px; float: left; background-size: 500px 500px; z-index: 100; border: 4px solid rgb(136, 136, 136); background-repeat: no-repeat; position: absolute; background-image: url('{{ asset('upload/dogs/1corgi2.jpg')  }}'); top: 0px; left: 345px; display: none;" class="zoomWindow">&nbsp;</div></div></div>
 	
 @endsection

@@ -164,10 +164,10 @@
 					<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Follow Us</h2>
 				</div>
 				<div class="link-profile  ">
-					<a class="color hover-shadow" href="#"><i class="icon ion-social-facebook"></i></a>
-					<a class="color hover-shadow" href="#"><i class="icon ion-social-googleplus"></i></a>
-					<a class="color hover-shadow" href="#"><i class="icon ion-social-twitter"></i></a>
-					<a class="color hover-shadow" href="#"><i class="icon ion-social-vimeo"></i></a>
+					<a class="color hover-shadow" href="#"><i class="fa fa-facebook-f"></i></a>
+					<a class="color hover-shadow" href="#"><i class="fa fa-instagram"></i></i></a>
+					<a class="color hover-shadow" href="#"><i class="fa fa-twitter"></i></a>
+					<a class="color hover-shadow" href="#"><i class="fa fa-google"></i></a>
 				</div>
 			</div>
 		</div>

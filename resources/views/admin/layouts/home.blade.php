@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
-@section('title','Admin Pets shop')
+@section('title','Pets Store Admin ')
 @section('content')
-	<h1>Các order đang chờ xử lý</h1>
 	<hr>
+
+	<h1>Orders are waiting for processing</h1>
 @endsection

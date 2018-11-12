@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <img class="" src="{{ asset('asset/uploads/2018/01/logo-2.png') }}" alt="" width="51" height="46" />
-        <a class="navbar-brand" href="{{ route('indexAdmin') }}">Pet Shop Admin</a>
+        
+        <a class="navbar-brand" href="{{ route('indexAdmin') }}"><img class="" src="{{ asset('asset/uploads/2018/01/logo-1.png') }}" alt="" width="51" height="46" />Pets Store Admin</a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
         <li class="nav-item dropdown">

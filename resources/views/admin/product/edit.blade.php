@@ -41,8 +41,18 @@
                     <div>
                         <span class="btn green btn-file" id="img">
                             <span class="fileinput-new"> Select file </span>
-                            <input type="file" name="photos[]" id="photos" multiple >
+                            <input type="file" name="photos[]" id="photos" multiple onclick="hideImg();">
                         </span>
+                    </div>
+                    <div id="image-old">
+                        @php
+                            $photos = $product->getImage($product->id);
+                        @endphp
+                        @if($photos != null)
+                        @foreach ($photos as $photo)
+                            <img  src="{{ asset('upload/product/' . $photo) }}" alt="" style="width: 150px;height: 100px;" >
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -56,7 +66,7 @@
         <div class="form-group">
             <div class="col-md-3"></div>
             <div class="col-md-9">
-                <button type="submit" name="btnAdd" class="btn btn-outline green">Edit</button>
+                <button type="submit" name="btnAdd" class="btn btn-outline green">Submit</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
             </div>
             

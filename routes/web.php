@@ -55,16 +55,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 	Route::group(['prefix' => 'order',], function (){
 
 	    Route::get('', 'Admin\OrderController@index')->name('order.index');
+	    Route::get('detail/{id}', 'Admin\OrderController@detail_order')->name('order.detail');
+	    Route::delete('delete/{id}','Admin\OrderController@delete')->name('order.delete');
+	    Route::post('change-status','Admin\OrderController@change_status')->name('order.change_status');
+
 	});
 
 	Route::group(['prefix' => 'user',], function (){
 
 	    Route::get('', 'Admin\UserController@index')->name('user.index');
-	    Route::get('add', 'Admin\UserController@add')->name('user.add');
-	    Route::post('add', 'Admin\UserController@store')->name('user.store');
-	    Route::get('/edit/{id}','Admin\UserController@edit')->name('user.edit');
-	    Route::put('/edit/{id}','Admin\UserController@update')->name('user.update');
 	    Route::delete('delete/{id}','Admin\UserController@delete')->name('user.delete');
+	});
+
+	Route::group(['prefix' => 'comment',], function (){
+
+	    Route::get('', 'Admin\CommentController@index')->name('comment.index');
+	    Route::delete('delete/{id}','Admin\CommentController@delete')->name('comment.delete');
 	});
 
 	Route::group(['prefix' => 'post',], function (){
@@ -91,6 +97,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 });
 
 Route::group(['prefix' => '/'], function(){
+
+	Route::get('search','Client\HomeController@search')->name('home.search');
+
 	Route::get('/', 'Client\HomeController@index')->name('home.index');
 	Route::get('dog_home','Client\HomeController@dog_home')->name('home.dog_home');
 
@@ -101,6 +110,7 @@ Route::group(['prefix' => '/'], function(){
 		Route::get('list', 'Client\HomeController@list')->name('home.list');
 		Route::get('dogs/{id}', 'Client\HomeController@dog')->name('home.dog');
 		Route::get('detail_dog/{id}','Client\HomeController@detail_dog')->name('home.detail_dog');
+		Route::post('comment/{id}', 'Client\CommentController@comment_dog')->name('home.comment_dog');
 	});
 	Route::group(['prefix' => 'product-category'], function(){
 		Route::get('product-category', 'Client\HomeController@product_category')->name('home.product-category');
@@ -108,19 +118,22 @@ Route::group(['prefix' => '/'], function(){
 	Route::group(['prefix' => 'product'], function(){
 		Route::get('product/{id}', 'Client\HomeController@product')->name('home.product');
 		Route::get('detail_product/{id}','Client\HomeController@detail_product')->name('home.detail_product');
+		Route::post('comment/{id}', 'Client\CommentController@comment_product')->name('home.comment_product');
 	});
 	Route::group(['prefix' => 'blog'], function(){
 		Route::get('','Client\HomeController@blog')->name('home.blog');
 		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
+		Route::post('comment/{id}', 'Client\CommentController@comment_post')->name('home.comment_post');
 	});
-});
-Route::get('add-to-dog/{id}','Client\HomeController@addtocart')->name('home.cart');
-Route::get('add-to-product/{id}','Client\HomeController@addtoproduct')->name('home.productcart');
-Route::get('del-cart/{id}','Client\HomeController@delitem')->name('home.del');
-Route::get('checkout','Client\HomeController@getcheckout')->name('home.checkout');
-Route::get('viewcart','Client\HomeController@viewcart')->name('home.viewcart');
-Route::get('viewproduct','Client\HomeController@viewproduct');
 
+});
+Route::get('add-to-dog/{id}','Client\CartController@addDogToCart')->name('home.cart');
+Route::get('add-to-product/{id}','Client\CartController@addProductToCart')->name('home.productcart');
+Route::get('del-cart/{id}','Client\CartController@removeItem')->name('home.del');
+Route::get('checkout','Client\CartController@getCheckout')->name('home.checkout');
+Route::get('viewcart','Client\CartController@viewCart')->name('home.viewcart');
+Route::get('deleteAll', 'Client\CartController@deleteAll')->name('home.deleteAll');
+Route::post('order', 'Client\CartController@order')->name('home.order');
 
 Route::get('/editPass', 'Auth\ChangePasswordController@edit')->name('editPass');
 Route::put('/updatePass', 'Auth\ChangePasswordController@update')->name('updatePass');

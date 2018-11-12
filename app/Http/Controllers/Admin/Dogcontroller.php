@@ -121,6 +121,7 @@ class DogController extends Controller
 
 		$update->update([
 			'name'          => $request->name,
+			'id_dog_cate'   => $request->get('category'),
 			// 'photos'		=> json_encode($filename_arr),
             'description'   => $request->description,
             'price'         => $request->price,
