@@ -136,37 +136,7 @@
     });
 
 </script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".change_status").click(function(){
-            var get_id = $(this).attr('data');
-            var get_type = $(this).attr('data-type');
-            var get_value = $(this).attr('value');
-            if(get_type == '1')
-            {
-                $(this).attr('data-type',2);
-                $(this).prev().text('Off');
-                // $(this).prev().css('color','black');
-            }
-            else
-            {
-                $(this).attr('data-type',1);
-                $(this).prev().text('ON');
-                // $(this).prev().css('color','red');
 
-            }
-            $.ajax({
-                type: 'post',
-                data: {get_id:get_id,get_type:get_type,"_token": "{{ csrf_token() }}"},
-                url: '{{ route('post.change_status') }}',
-                dataType: 'json',
-                success:function(result){
-                    
-                }
-            }); 
-        });    
-    });
-</script>
 <style>
     
 </style>

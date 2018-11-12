@@ -10,7 +10,7 @@
     <div class="products row list-product-wrap js-content-main">
     	@if(count($dogs) > 0)
         @foreach($dogs as $dog) 
-        <div class="list-col-item list-4-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
+        <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
             <div class="item-product item-product-grid">
                 <div class="product-thumb">
                     <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
@@ -57,7 +57,7 @@
         @endif
 		@if(count($products) > 0)
          @foreach($products as $product) 
-        <div class="list-col-item list-4-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
+        <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
             <div class="item-product item-product-grid">
                 <div class="product-thumb">
                     <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
@@ -131,11 +131,10 @@
                             <ul class="list-inline-block post-meta-data">
                                 <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
                                 <li><i aria-hidden="true" class="fa fa-comment color"></i>
-                                    <a href="../flowing-studio-dress-2/index.html#respond">0
+                                    <a href="../flowing-studio-dress-2/index.html#respond">
                                         Comments </a>
                                 </li>
-                                <li><i class="fa fa-folder-open color" aria-hidden="true"></i>
-                                    <a href="../category/french-bulldog/index.html" rel="category tag">French Bulldog</a> <a href="../category/accessories/index.html" rel="category tag">German Shepherd</a> </li>
+                                
                             </ul>
                             <a href="{{ route('home.detail_blog',$blog->id) }}" class="shop-button">Read more</a>
                         </div>

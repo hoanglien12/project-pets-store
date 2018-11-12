@@ -14,6 +14,11 @@ class Product extends Model
     	return $this->belongsTo('App\Models\ProductCategory', 'id_product_cate', 'id');
     }
 
+    public function detail_order()
+    {
+        return $this->belongsTo('App\Models\DetailOrder', 'id_order','id');
+    }
+    
     public function getAllProducts($name=null, $category_id=null,$price=null, $begin_date=null, $end_date=null)
     {
         $products = Product::query();

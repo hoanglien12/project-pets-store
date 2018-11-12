@@ -2,7 +2,7 @@
     <div class="sidebar sidebar-left">
         <div id="woocommerce_product_search-2" class="sidebar-widget widget woocommerce widget_product_search">
             <h3 class="widget-title">Search</h3>
-            <form role="search" method="get" class="woocommerce-product-search" action="http://7uptheme.com/wordpress/haustiere/">
+            <form role="search" method="get" class="woocommerce-product-search" action="{{ route('home.search') }}">
                 <label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
                 <input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products…" value="" name="s">
                 <button type="submit" value="Search">Search</button>

@@ -16,9 +16,15 @@ class Dog extends Model
     protected $fillable = [
         'name','id_dog_cate','price','sale','birthday','height','weight', 'description','photos','created_at', 'updated_at'
     ];
+
     public function dogcategory()
     {
     	return $this->belongsTo('App\Models\DogCategory', 'id_dog_cate','id');
+    }
+
+    public function detail_order()
+    {
+        return $this->belongsTo('App\Models\DetailOrder', 'id_order','id');
     }
 
     public function getAllDogs($name=null, $category_id=null,$price=null, $begin_date=null, $end_date=null)
