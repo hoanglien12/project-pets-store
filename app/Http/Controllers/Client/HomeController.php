@@ -30,9 +30,9 @@ class HomeController extends Controller
     	$productCategories	 = ProductCategory::all();
         // $dogs                = Dog::all();
         $blogs               = Post::all();
-        $slider              = Post::where('hot',1)->first();
-        $about_us            = Post::where('slugs','ve-chung-toi')->get();
-        // dd($slider);
+        $slider              = Post::where('type','post_top')->first();
+        $about_us            = Post::where('type','about-us')->first();
+        // dd($about_us);
         $sale_dogs           = Dog::where('sale','<>',0)->get();
         $new_dogs            = $this->dog->new_dog()->get();
         // dd($new_dogs);
@@ -144,5 +144,34 @@ class HomeController extends Controller
         $comment_post        = Comment::where('id_post', $id)->get();
 
     	return view('client.blog.detail_blog', compact('dogCategories','productCategories','blog','blogs_other','site_phone','site_address', 'comment_post'));
+    }
+
+    public function search(Request $request)
+    {
+        $site_phone          = SiteConfig::where('label','site_phone')->get();
+        $site_address        = SiteConfig::where('label','site_address')->get();
+        $dogCategories       = DogCategory::all();
+        $productCategories   = ProductCategory::all();
+
+        $value     = $request->input('search');
+        $dogs      = Dog::join('dog_categories','dog_categories.id','=','dog.id_dog_cate')
+                        ->where('name','like',"%$value%")
+                        ->orWhere('price','$value')
+                        ->orWhere('sale','$value')
+                        ->orWhere('dog_categories.name','like',"%$value%")
+                        ->orWhere('description','like',"%$value%")->get();
+                        // dd($dogs);
+        $products  = Product::where('name','like',"%$value%")
+                        ->orWhere('price','$value')
+                        ->orWhere('sale','$value')
+                        ->orWhere('description','like',"%$value%")->get();
+        $posts     = Post::where('title','like',"%$value%")
+                        ->orWhere('summary','like',"%$value%")
+                        ->orWhere('type','like',"%$value%")
+                        ->orWhere('source','like',"%$value%")
+                        ->orWhere('author','like',"%$value%")                      
+                        ->orWhere('content','like',"%$value%")->get();
+        return view('client.layouts.search',compact('site_address','site_phone','dogCategories','productCategories','value','dogs','products'));
+
     }
 }

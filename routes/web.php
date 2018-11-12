@@ -93,6 +93,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function()
 });
 
 Route::group(['prefix' => '/'], function(){
+
+	Route::get('search','Client\HomeController@search')->name('home.search');
+
 	Route::get('/', 'Client\HomeController@index')->name('home.index');
 	Route::get('dog_home','Client\HomeController@dog_home')->name('home.dog_home');
 
@@ -118,6 +121,7 @@ Route::group(['prefix' => '/'], function(){
 		Route::get('detail_blog/{id}','Client\HomeController@detail_blog')->name('home.detail_blog');
 		Route::post('comment/{id}', 'Client\CommentController@comment_post')->name('home.comment_post');
 	});
+
 });
 Route::get('add-to-dog/{id}','Client\CartController@addDogToCart')->name('home.cart');
 Route::get('add-to-product/{id}','Client\CartController@addProductToCart')->name('home.productcart');

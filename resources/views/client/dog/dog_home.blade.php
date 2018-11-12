@@ -8,7 +8,12 @@
 		            <div class="tabs-block block-element tab-product2  7up-style tab-ajax-off">
 		                <h2 class="title30 font-bold text-uppercase">Dogs</h2>
 		                <div class="tab-header">
-		                    <ul class="nav nav-pills nav-tabs nav-justified list-package title-tab font-bold text-right title-tab2 text-uppercase list-inline-block">
+
+		                        	<a style="float: right;
+    color: white;
+    margin-right: -120px;
+    margin-left: 10px;" href="{{ route('home.dog-category') }}" class="text-right shop-button bg-color arrow-right">Read more</a>
+		                    <ul class="nav nav-pills nav-tabs nav-justified list-package title-tab font-bold  title-tab2 text-uppercase list-inline-block">
 		                        <li class="active">
 		                            <a href="#tab1" data-toggle="tab" aria-expanded="true">Sale</a>
 		                        </li>
@@ -16,7 +21,11 @@
 		                        </li>
 		                        <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false">Best seller</a>
 		                        </li>
+		                        
 		                    </ul>
+		                    
+		                        
+		                    
 		                </div>
 		                <div class="tab-content carousel slide " id="myCarousel" >
 							<div id="tab1" class="tab-pane active">
@@ -70,7 +79,13 @@
 							                </div>
 							                
 							            </div>
+
 							        </div>
+									<div class="text-right">
+									<a href="{{ route('home.dog-category') }}">Read more</a>
+										
+									</div>
+
 							    </div>
 							</div>
 							<div id="tab2" class="tab-pane">
@@ -129,16 +144,7 @@
 							                    </div>
 							                    
 							                </div>
-							                <div class="owl-controls clickable" style="display: block;">
-						                    	<div class="owl-buttons">
-						                    		<div class="owl-prev">
-						                    			<i class="fas fa-chevron-left"></i>
-						                    		</div>
-						                    		<div class="owl-next">
-						                    			<i class="fas fa-chevron-right"></i>
-						                    		</div>
-						                    	</div>
-						                    </div>
+							                
 							            </div>
 							        </div>
 							    </div>
