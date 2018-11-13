@@ -30,7 +30,7 @@ class ProductController extends Controller
         $product = $this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->get();
         $product_cate = $this->product_cate->getAllProductCategories()->get();
         $orders_waiting  = Order::where('status',1)->get();
-        return view('admin.product.show', compact('product','product_cate','count_products','category_id', 'begin_date', 'end_date','orders_waiting'));
+        return view('admin.product.show', compact('product','product_cate','count_products','category_id', 'begin_date', 'end_date','sale','orders_waiting'));
     }
 
     /**
@@ -53,11 +53,18 @@ class ProductController extends Controller
      */
     public function store(AdminAddProductRequest $request)
     {
+        $sale         = null;
+        if(empty($request->get('sale'))) {
+            $sale = 0;
+        }
+
         $product = new Product;
+
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->sale = $request->sale;
+        $product->sale = $sale;
+
         $files = $request->file('photos');
         $filename_arr = [];
         $i = 1;
@@ -109,10 +116,14 @@ class ProductController extends Controller
     public function update(AdminEditProductRequest $request, $id)
     {
         $product = Product::find($id);
+        $sale         = null;
+        if(empty($request->get('sale'))) {
+            $sale = 0;
+        }
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->sale = $request->sale;
+        $product->sale = $sale;
         if($files = $request->file('photos'))
         {
             $filename_arr = [];

@@ -45,7 +45,10 @@ class DogController extends Controller
 	{
 		$request->flash();
 		$birthday 	  = null;
-
+		$sale 	      = null;
+		if(empty($request->get('sale'))) {
+			$sale = 0;
+		}
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
 		}
@@ -71,7 +74,7 @@ class DogController extends Controller
                 'description'   => $request->get('description'),
                 'id_dog_cate'   => $request->get('category_id'),
                 'price'         => $request->get('price'),
-                'sale'			=> $request->get('sale'),
+                'sale'			=> $sale,
                 'height'        => $request->get('height'),
                 'weight'        => $request->get('weight'),
                 'birthday'      => $birthday,
@@ -97,6 +100,10 @@ class DogController extends Controller
 		$request->flash();
 		$update       = Dog::query()->findOrFail($id);
 
+		$sale 	      = null;
+		if(empty($request->get('sale'))) {
+			$sale = 0;
+		}
 		$birthday     = null;
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
@@ -127,7 +134,7 @@ class DogController extends Controller
 			// 'photos'		=> json_encode($filename_arr),
             'description'   => $request->description,
             'price'         => $request->price,
-            'sale'			=> $request->sale,
+            'sale'			=> $sale,
             'birthday'      => $birthday,
             'height'        => $request->height,
             'weight'        => $request->weight
