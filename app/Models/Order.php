@@ -21,7 +21,7 @@ class Order extends Model
             $orders = $orders->where('name','like',"%$name%");
         }
         if($phone != null){
-            $orders = $orders->where('phone',$phone);
+            $orders = $orders->where('phone','like',"%$phone%");
         }
         if($address != null ){
             $orders = $orders->where('address','like',"%$address%");
