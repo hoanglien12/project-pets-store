@@ -129,6 +129,10 @@ Route::group(['prefix' => '/'], function(){
 		Route::post('comment/{id}', 'Client\CommentController@comment_post')->name('home.comment_post');
 	});
 
+	Route::get('about-us','Client\HomeController@about_us')->name('home.about-us');
+	Route::get('contact','Client\HomeController@contact')->name('home.contact');
+
+
 });
 Route::get('add-to-dog/{id}','Client\CartController@addDogToCart')->name('home.cart');
 Route::get('add-to-product/{id}','Client\CartController@addProductToCart')->name('home.productcart');

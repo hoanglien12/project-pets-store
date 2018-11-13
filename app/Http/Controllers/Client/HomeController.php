@@ -232,4 +232,26 @@ class HomeController extends Controller
         } 
         return view('client.product.reload-products',compact('products'));
     }
+
+    public function about_us()
+    {
+        $site_phone          = SiteConfig::where('label','site_phone')->get();
+        $site_address        = SiteConfig::where('label','site_address')->get();
+        $dogCategories       = DogCategory::all();
+        $productCategories   = ProductCategory::all();
+
+        $about_us            = Post::where('slugs','about-us')->first();
+
+        return view('client.about', compact('site_address','site_phone','dogCategories','productCategories','about_us'));
+    }
+    public function contact()
+    {
+        $site_phone          = SiteConfig::where('label','site_phone')->get();
+        $site_address        = SiteConfig::where('label','site_address')->get();
+        $site_mail           = SiteConfig::where('label','site_mail')->get();
+        $dogCategories       = DogCategory::all();
+        $productCategories   = ProductCategory::all();
+
+        return view('client.contact', compact('site_address','site_phone','dogCategories','productCategories','site_mail'));
+    }
 }

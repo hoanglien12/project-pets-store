@@ -131,8 +131,8 @@
 						<li id="nav-menu-item-1122" class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-post_type menu-item-object-page"><a href="../blog-list/index.html" class="menu-link sub-menu-link">Blog List</a></li>
 					</ul> -->
 				</li>
-				<li id="nav-menu-item-837" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="" class="menu-link main-menu-link">About</a></li>
-				<li id="nav-menu-item-836" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="" class="menu-link main-menu-link">Contact</a></li>
+				<li id="nav-menu-item-837" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('home.about-us') }}" class="menu-link main-menu-link">About</a></li>
+				<li id="nav-menu-item-836" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('home.contact') }}" class="menu-link main-menu-link">Contact</a></li>
 			</ul>
 			<a href="#" class="toggle-mobile-menu"><span></span></a>
 		</nav>
