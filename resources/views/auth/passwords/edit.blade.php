@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+@extends('client.layouts.master')
+@section('title','Edit Password')
 @section('content')
     <div class="container" style="width: 60%; margin-left: 30%">
         <h3 style="text-align: center; color: blue; padding-bottom: 40px;">{{ __('Change Password') }}</h3>
