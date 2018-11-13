@@ -29,7 +29,7 @@ class CartController extends Controller
             $dog_add             = Dog::find($id); 
             $oldCart             = Session('cart')?Session::get('cart'):null;
             $cart                = new Cart($oldCart);     
-            $cart->add($dog_add, $dog_add->name);
+            $cart->add($dog_add, $id);
             $req->session()->put('cart',$cart);
 
             return redirect()->back();       
@@ -44,7 +44,7 @@ class CartController extends Controller
         if(Auth::check())
         {
             $product_add         = Product::find($id);
-            $oldCart             = Session('cart')?Session::get('cart'):null;
+            $oldCart             = Session('cart') ? Session::get('cart'):null;
             $cart                = new Cart($oldCart);                   
             $cart->add($product_add,$id);
             //dd($cart);            
@@ -57,7 +57,7 @@ class CartController extends Controller
         }       
                
     } 
-    public function removeItem($id){
+    public function reduceOne($id){
         $oldCart = Session::has('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
@@ -69,6 +69,24 @@ class CartController extends Controller
         }
         return redirect()->back();
     }
+
+    public function removeItem($id)
+    {
+        $old = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($old);
+        $cart->removeItem($id);
+        if(count($cart->items) > 0)
+        {
+            Session::put('cart',$cart);
+        }
+        else
+        {
+            Session::forget('cart');
+        }
+        
+        return redirect()->back();
+    }
+
     public function viewCart(){
         $product_add = Product::all();
         $dog_add = Dog::all();

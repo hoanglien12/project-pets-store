@@ -28,24 +28,29 @@
 									@foreach($dog_add as $dog)
 
 										<tr class="woocommerce-cart-form__cart-item cart_item">
+											@if(isset($dog['item']['id_dog_cate']))
 											<td class="product-remove">
-												<a href="{{route('home.del',$dog['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
+ 												<a href="{{route('home.del',$dog['item']['name'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
 													<i class="fa fa-trash" style="margin-left: 15px; color: red; font-size: 20px;"></i>
 												</a>
 											</td>
-											@if(isset($dog['item']['id_dog_cate']))
+											@else
+											<td class="product-remove">
+ 												<a href="{{route('home.del',$dog['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
+													<i class="fa fa-trash" style="margin-left: 15px; color: red; font-size: 20px;"></i>
+												</a>
+											</td>
+											@endif
 											@php
 												$img = $dog['item']->getImage($dog['item']['id']);
 											@endphp
+											@if(isset($dog['item']['id_dog_cate']))
 											<td class="product-thumbnail"> 
 												<a href="#">
 													<img width="100px" height="100px" src="{{ asset('upload/dogs/' . $img[0]) }}" />
 												</a>
 											</td>
 											@else
-												@php
-													$img = $dog['item']->getImage($dog['item']['id']);
-												@endphp
 												<td class="product-thumbnail"> 
 													<a href="#">
 														<img width="100px" height="100px" src="{{ asset('upload/product/' . $img[0]) }}" />
@@ -66,18 +71,33 @@
 													@endif 
 												</span>
 											</td>
-											<td class="product-quantity" data-title="Quantity">
-												<label class="qty-label">Qty:</label>
-												<div class="detail-qty info-qty border radius6" style="color: black;">
-													<a href="{{route('home.del',$dog['item']['id'])}}" class="qty-down" style="color: black;">
-														<i class="fa fa-angle-down" aria-hidden="true"></i>
-													</a>
-													<input type="text" step="1" min="0" max="" name="" value="{{$dog['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
-													<a href="{{route('home.cart',$dog['item']['id'])}}" class="qty-up">
-														<i class="fa fa-angle-up" aria-hidden="true"></i>
-													</a>
-												</div>
-											</td>
+											@if(isset($dog['item']['id_dog_cate']))
+												<td class="product-quantity" data-title="Quantity">
+													<label class="qty-label">Qty:</label>
+													<div class="detail-qty info-qty border radius6" style="color: black;">
+														<a href="{{route('home.reduce',$dog['item']['name'])}}" class="qty-down" style="color: black;">
+															<i class="fa fa-angle-down" aria-hidden="true"></i>
+														</a>
+														<input type="text" step="1" min="0" max="" name="" value="{{$dog['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
+														<a href="{{route('home.cart',$dog['item']['id'])}}" class="qty-up">
+															<i class="fa fa-angle-up" aria-hidden="true"></i>
+														</a>
+													</div>
+												</td>
+											@else
+												<td class="product-quantity" data-title="Quantity">
+													<label class="qty-label">Qty:</label>
+													<div class="detail-qty info-qty border radius6" style="color: black;">
+														<a href="{{route('home.reduce',$dog['item']['id'])}}" class="qty-down" style="color: black;">
+															<i class="fa fa-angle-down" aria-hidden="true"></i>
+														</a>
+														<input type="text" step="1" min="0" max="" name="" value="{{$dog['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
+														<a href="{{route('home.productcart',$dog['item']['id'])}}" class="qty-up">
+															<i class="fa fa-angle-up" aria-hidden="true"></i>
+														</a>
+													</div>
+												</td>
+											@endif
 											<td class="product-subtotal" data-title="Total" style="color: black;">
 												<span class="woocommerce-Price-amount amount">
 													<span class="woocommerce-Price-currencySymbol">&#36;

@@ -133,6 +133,7 @@ Route::group(['prefix' => '/'], function(){
 Route::get('add-to-dog/{id}','Client\CartController@addDogToCart')->name('home.cart');
 Route::get('add-to-product/{id}','Client\CartController@addProductToCart')->name('home.productcart');
 Route::get('del-cart/{id}','Client\CartController@removeItem')->name('home.del');
+Route::get('reduceOne/{id}','Client\CartController@reduceOne')->name('home.reduce');
 Route::get('checkout','Client\CartController@getCheckout')->name('home.checkout');
 Route::get('viewcart','Client\CartController@viewCart')->name('home.viewcart');
 Route::get('deleteAll', 'Client\CartController@deleteAll')->name('home.deleteAll');

@@ -14,7 +14,7 @@ class Cart
 			$this->totalQty = $oldCart->totalQty;
 			$this->totalPrice = $oldCart->totalPrice;
 		}
-	}
+	} 
 
 	public function add($item, $id){
 		if($item->sale == 0){
@@ -47,7 +47,6 @@ class Cart
 	}
 	//xóa 1
 	public function reduceByOne($id){
-
 		$this->items[$id]['qty']--;
 		if($this->items[$id]['item']['sale']==0){
 			$this->items[$id]['price'] -= $this->items[$id]['item']['price'];
