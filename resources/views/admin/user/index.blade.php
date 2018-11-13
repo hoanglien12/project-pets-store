@@ -12,6 +12,15 @@
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" class="form-control">
                         <div class="help-block">Name</div>
                     </div>
+                    
+                    <div class="col-md-3">
+                        <select name="role" id="" class="form-control">
+                          <option value="">Role</option>
+                          <option value="1" {{ (isset($role) && $role == 1) ? 'selected' : '' }}>Admin</option>
+                          <option value="2" {{ (isset($role) && $role == 2) ? 'selected' : '' }}>User</option>
+                        </select>
+                        <div class="help-block">Role</div>
+                    </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
                         <div class="input-group input-large date-picker input-daterange">
@@ -41,7 +50,6 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Status</th>
                                 <th>Role</th>
                                 <th>Created at</th>
                                 <th>Action</th>
@@ -77,8 +85,13 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>ON</td>
-                                <td>{{ $user->id_role }}</td>
+                                <td>
+                                    @if($user->id_role ==1)
+                                    {{ "Admin" }}
+                                    @else
+                                    {{ "User" }}
+                                    @endif
+                                </td>
                                 <td>{{ $user->created_at }}</td>
                                 
                                 <td>

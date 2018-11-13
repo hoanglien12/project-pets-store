@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Order;
+
 
 class CommentController extends Controller
 {
@@ -13,14 +15,13 @@ class CommentController extends Controller
 	    $this->comment = new Comment();
 	}
 
-	public function index(Request $request)
+	public function index()
 	{
-		$name 			= $request->input('ID');
-		$begin_date		= $request->input('begin_date');
-		$end_date		= $request->input('end_date');
-		$comments		= $this->comment->getAllComments($name,$begin_date,$end_date)->get();
-
+		
+		$comments		= Comment::all();
+		$orders_waiting = Order::where('status',1)->get();
 		// dd($comments);
-		return view('admin.comment.index',compact('comments'));
+		
+		return view('admin.comment.index',compact('comments','orders_waiting'));
 	}
 }

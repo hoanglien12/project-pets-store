@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-
+use App\Models\Order;
 class UserController extends Controller
 {
 	function __construct()
@@ -13,10 +13,16 @@ class UserController extends Controller
 	    $this->user = new User();
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
-		$users		= User::all();
+		$name 		 = $request->input('name');
+		$role 		 = $request->input('role');
+		$begin_date  = $request->input('begin_date');
+		$end_date 	 = $request->input('end_date');
+		// dd($request->all());
+		$users		 = $this->user->getAllUsers($name,$role,$begin_date,$end_date)->get();
 		// dd($users);
-		return view('admin.user.index',compact('users'));
+		$orders_waiting  = Order::where('status',1)->get();
+		return view('admin.user.index',compact('users','orders_waiting'));
 	}
 }

@@ -8,7 +8,7 @@ use App\Http\Requests\AdminEditProductCategoryRequest;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
 use App\Models\Product;
-
+use App\Models\Order;
 class ProductCategoryController extends Controller
 {
     public function __construct()
@@ -27,7 +27,8 @@ class ProductCategoryController extends Controller
         $end_date = $request->input('end_date');
         $count_category = count($this->productCategory->getAllProductCategories($name, $begin_date, $end_date)->get());
         $cate = $this->productCategory->getAllProductCategories($name,$begin_date,$end_date)->get();
-        return view('admin.product-category.show',compact('cate','name','begin_date','end_date','count_category'));
+        $orders_waiting  = Order::where('status',1)->get();
+        return view('admin.product-category.show',compact('cate','name','begin_date','end_date','count_category','orders_waiting'));
     }
 
     /**
