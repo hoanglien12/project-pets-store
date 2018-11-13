@@ -37,6 +37,7 @@ class HomeController extends Controller
         // dd($about_us);
         $dogs_in_order       = DetailOrder::where('id_dog','<>','')->get();
         // dd($dogs_in_order[1]->id_dog);
+        $dog_id = [];
         foreach ($dogs_in_order as $value) {
             $dog_id[]        = $value->id_dog;
         }

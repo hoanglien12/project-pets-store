@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->integer('hot'); // 1 la co, 0 la khong
             $table->string('source')->nullable();
             $table->string('author')->nullable();
-            $table->string('content');
+            $table->text('content');
             $table->string('slugs')->nullable();
             $table->timestamps();
         });
