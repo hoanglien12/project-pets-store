@@ -199,20 +199,37 @@ class HomeController extends Controller
 
     }
 
-    public function sort(Request $request,$idCate)
+    public function sort_dog(Request $request)
     {
-        dd(1);
 
         $data          = $request->all();
         $get_value     = $data['get_value'];
         $get_id        = $data['get_id'];
+        // dd($get_id);
         // console($check->active);
         if($get_value == 'price'){
-            $dogs     = Dog::where('id_dog_cate',$idCate)->orderBy('price', 'desc')->paginate(6);
+            $dogs     = Dog::where('id_dog_cate',$get_id)->orderBy('price', 'asc')->paginate(6);
         }
         else{
-            $dogs     = Dog::where('id_dog_cate',$idCate)->orderBy('price', 'asc')->paginate(6);
+            $dogs     = Dog::where('id_dog_cate',$get_id)->orderBy('price', 'desc')->paginate(6);
+        } 
+        return view('client.dog.reload-dogs',compact('dogs'));
+    }
+
+    public function sort_product(Request $request)
+    {
+
+        $data          = $request->all();
+        $get_value     = $data['get_value'];
+        $get_id        = $data['get_id'];
+        // dd($get_id);
+        // console($check->active);
+        if($get_value == 'price'){
+            $products     = Product::where('id_product_cate',$get_id)->orderBy('price', 'asc')->paginate(6);
         }
-        return view('client.dog.dog',compact('dogs'));
+        else{
+            $products     = Product::where('id_product_cate',$get_id)->orderBy('price', 'desc')->paginate(6);
+        } 
+        return view('client.product.reload-products',compact('products'));
     }
 }
