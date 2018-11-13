@@ -6,14 +6,27 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\DogCategory; 
+use App\Models\ProductCategory;
+use App\Models\SiteConfig;
 
 class ChangePasswordController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('site_phone', SiteConfig::where('label','site_phone')->get());
+        view()->share('site_address', SiteConfig::where('label','site_address')->get());
+        view()->share('site_mail', SiteConfig::where('label','site_mail')->get());
+        view()->share('dogCategories', DogCategory::all());
+        view()->share('productCategories', ProductCategory::all());
+    }
+
     public function edit()
     {
         $user = Auth::user();
 
         return view('auth.passwords.edit', compact('user'));
+
     }
 
     public function update(Request $request)

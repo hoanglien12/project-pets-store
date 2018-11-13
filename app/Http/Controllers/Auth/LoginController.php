@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\SiteConfig;
+use App\Models\Dog;
+use App\Models\DogCategory; 
+use App\Models\ProductCategory;
+use App\Models\Product;
 
 class LoginController extends Controller
 {
@@ -35,5 +40,9 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        view()->share('site_phone', SiteConfig::where('label','site_phone')->get());
+        view()->share('site_address', SiteConfig::where('label','site_address')->get());
+        view()->share('dogCategories', DogCategory::all());
+        view()->share('productCategories', ProductCategory::all());
     }
 }
