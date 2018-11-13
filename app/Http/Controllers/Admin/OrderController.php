@@ -10,11 +10,28 @@ use App\Models\DetailOrder;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-    	$orders 		= Order::all();
+        $this->order    = new Order();
+    }
+    public function index(Request $request)
+    {
+        $name           = $request->input('name');
+        $phone          = $request->input('phone');
+        $address        = $request->input('address');
+        $ship           = $request->input('ship');
+        $status         = $request->input('status');
+        $begin_date     = $request->input('name');
+        $end_date       = $request->input('name');
+
+        // dd($request->all());
+
+    	$orders 		= $this->order->getAllOrders($name, $phone,$address,$ship, $status,  $begin_date, $end_date)->get();
+
+        $orders_waiting  = Order::where('status',1)->get();
+        // dd($orders);
     	$count_orders   = count($orders);
-    	return view('admin.order.index', compact('orders','count_orders'));
+    	return view('admin.order.index', compact('orders','count_orders','ship','status','orders_waiting'));
     }
     public function detail_order($id)
     {

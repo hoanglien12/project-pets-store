@@ -22,7 +22,7 @@ class Post extends Model
             $posts = Post::where('hot',$type);
         }
         if($begin_date != null){
-            $posts = Post::whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+            $posts = Post::whereDate('created_at','>=',date('Y-m-d', strtotime($begin_date)));
         }
         if($begin_date != null && $end_date != null){
             $posts = Post::whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));

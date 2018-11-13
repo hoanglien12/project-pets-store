@@ -33,7 +33,7 @@ class Product extends Model
         }
         
         if($begin_date != null){
-            $products = $products->whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+            $products = $products->whereDate('created_at','>=',date('Y-m-d', strtotime($begin_date)));
         }
         if($begin_date != null && $end_date != null){
             $products = $products->whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));

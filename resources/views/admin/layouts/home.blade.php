@@ -3,5 +3,6 @@
 @section('content')
 	<hr>
 
-	<h1>Orders are waiting for processing</h1>
+	<h1>Welcome to Pets Store Admin</h1>
+
 @endsection

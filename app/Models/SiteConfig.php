@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\DB;
 class SiteConfig extends Model
 {
     protected $table = 'site_config';
@@ -23,7 +23,7 @@ class SiteConfig extends Model
         }
         
         if($begin_date != null){
-            $configs = $configs->whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+            $configs = $configs->whereDate('created_at','>=',date('Y-m-d', strtotime($begin_date)));
         }
         if($begin_date != null && $end_date != null){
             $configs = $configs->whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));
