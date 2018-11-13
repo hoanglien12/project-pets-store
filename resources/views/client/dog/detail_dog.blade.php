@@ -88,34 +88,31 @@
 	        </div>
 
 			<div class="clear"></div>
+			<div class="des " style="margin-top: 20px;
+    margin-bottom: 30px;">
+				<h2 class="title18 font-bold text-uppercase title-single-related-post">Description</h2>
+				<div>
+					<p>{{$dogs->description}}</p>
+				</div>
+			</div>
+			<hr>
 		    <div class="single-related-post">
 		        <h2 class="title18 font-bold text-uppercase title-single-related-post">
 		            COMMENTS
 		        </h2>
 		        <div class="related-post-slider">
 		            
-		                    <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
-		                        <div class="owl-item active" style="width: 300px;">
-		                            <div class="item-post item-post-default">
-		                                <div class="post-thumb banner-advs zoom-image fly-hoz">
-		                                    <a href="#">
-			                                    <img width="270" height="180" src="" class="attachment-870x400 size-870x400 wp-post-image" alt=""> </a>
-		                                </div>
-		                                <div class="post-info">
-		                                	@foreach($comment_dog as $cmt)
-		                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">{{ $cmt->user->name }}</a></h3>
-		                                    <ul class="list-inline-block post-meta-data">
-		                                        <li><i aria-hidden="true" class="fa fa-comment color"></i>
-		                                            <h6 style="display: inline; font-size: 17px;">{{ $cmt->comment }}</h6>
-		                                        </li>
-		                                    </ul>
-		                                    @endforeach
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		               
-		            </div>
+                    <div class="post-info">
+                    	@foreach($comment_dog as $cmt)
+                        <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="../flowing-studio-dress/index.html" class="black">{{ $cmt->user->name }}</a></h3>
+                        <ul class="list-inline-block post-meta-data">
+                            <li><i aria-hidden="true" class="fa fa-comment color"></i>
+                                <h6 style="display: inline; font-size: 17px;">{{ $cmt->comment }}</h6>
+                            </li>
+                        </ul>
+                        @endforeach
+                    </div>
+		                            
 		        </div>
 		    </div>
 		    <div id="comments" class="comments-area comments blog-comment-detail">
