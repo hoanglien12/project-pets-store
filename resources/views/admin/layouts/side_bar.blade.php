@@ -25,7 +25,7 @@
         <a href="{{ route('dog.index') }}" class="{{ ($segment == 'dog') ? 'active' : '' }}"><i class="fa fa-object-ungroup"></i>Dogs</a>
     </li>
     <li>
-        <a href="{{ route('order.index') }}" class="{{ ($segment == 'order') ? 'active' : '' }}"><i class="fa fa-shopping-cart"></i>Orders <span>({{ count($orders_waiting) }})</span></a>
+        <a href="{{ route('order.index') }}" class="{{ ($segment == 'order') ? 'active' : '' }}"><i class="fa fa-shopping-cart"></i>Orders <span>()</span></a>
     </li>
     <li>
         <a href="{{ route('post.index') }}" class="{{ ($segment == 'post') ? 'active' : '' }}"><i class="fa fa-file-text"></i>Posts</a>
