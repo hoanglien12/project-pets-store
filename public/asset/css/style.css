@@ -101,3 +101,42 @@ body {
 .vc_row.wpb_row.block-product2 {
     margin-bottom: 30px;
 }
+
+.hvr-icon-buzz {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.contact .icon-circle {
+    border: 1px solid #0c90ce;
+    color: #0c90ce;
+}
+.icon-circle {
+    font-size: 50px;
+    border: 1px solid #d5d5d5;
+    height: 89px;
+    width: 89px;
+    text-align: center;
+    line-height: 89px;
+    margin: 0 auto;
+    border-radius: 100%;
+    display: block;
+}
+.maps {
+    margin-top: 40px;
+}
+.mt-15 {
+    margin-top: 20px;
+}
+
+section.ptb.ptb-xs-60 .col-md-8.col-lg-8.offset-md-2.container.text-center {
+    margin-bottom: 30px;
+}
+
+p.desc.summary {
+    font-weight: 700;
+}
