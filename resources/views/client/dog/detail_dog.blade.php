@@ -84,8 +84,9 @@
 	                        </div>
 	                    </div>
 	                </div>
-	            </div>
-	        </div>
+	            	</div>
+	        	</div>
+	   	 	</div>
 
 			<div class="clear"></div>
 			<div class="des " style="margin-top: 20px;

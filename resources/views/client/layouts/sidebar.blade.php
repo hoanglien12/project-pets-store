@@ -23,24 +23,7 @@
             </ul>
              @endforeach
         </div> 
-        <div id="woocommerce_price_filter-2" class="sidebar-widget widget woocommerce s7upf_widget_price_filter">
-            <h3 class="widget-title">Price</h3>
-            <form method="get" action="http://7uptheme.com/wordpress/haustiere/product-category/golden-retriever/">
-                <div class="range-filter">
-                    <div class="price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-symbol="$">
-
-
-                        <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 100%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"><span class="min-price">$122</span></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 100%;"><span class="max-price">$1450</span></span>
-                    </div>
-                    <div class="price-amount">
-                        <input type="hidden" name="min_price" value="122" data-min="122">
-                        <input type="hidden" name="max_price" value="1450" data-max="1450">
-                        <button type="submit" class="button">Filter</button>
-
-                    </div>
-                </div>
-            </form>
-        </div>
+        
       
         
     </div>
