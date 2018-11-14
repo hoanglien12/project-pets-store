@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\Dog;
 use App\Models\DogCategory; 
@@ -43,7 +44,7 @@ class HomeController extends Controller
         }
         
         $best_dogs           = Dog::whereIn('id',$dog_id)->get();
-        
+
         $sale_dogs           = Dog::where('sale','<>',0)->get();
         $new_dogs            = $this->dog->new_dog()->get();
 
@@ -101,7 +102,6 @@ class HomeController extends Controller
     }
     public function detail_product($id)
     {
-        
         $products            = Product::where('id',$id)->first();
         $product_other       = Product::where('id_product_cate',$products->id_product_cate)->paginate(3);
         $comment_product     = Comment::where('id_product', $id)->get();
@@ -112,9 +112,9 @@ class HomeController extends Controller
     public function blog()
     {
         
-        $blogs               = Post::paginate(3);
-        
-    	return view('client.blog.blog',compact('dogCategories','productCategories','blogs','site_phone','site_address'));
+        $blogs                = Post::paginate(3);
+        // $comment_product     = Comment::where('id_product', $id)->get();
+    	return view('client.blog.blog',compact('dogCategories','productCategories','blogs','site_phone','site_address','all_blogs','comment_post'));
     }
 
     public function detail_blog($id)
@@ -208,4 +208,6 @@ class HomeController extends Controller
     {
         return view('client.contact', compact('site_address','site_phone','dogCategories','productCategories','site_mail'));
     }
+
+    
 }

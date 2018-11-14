@@ -88,6 +88,7 @@ input:hover {
   border-radius: 50%;
 }
 .desc {
+  height: 90px;
   color: #555;
   margin: 0;
   line-height: 24px;
@@ -1916,7 +1917,7 @@ div.table .product-info .product-title {
   margin-right: 0;
 }
 .blog-list-view .item-post-large {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .item-post-large .post-thumb {
   margin-bottom: 22px;

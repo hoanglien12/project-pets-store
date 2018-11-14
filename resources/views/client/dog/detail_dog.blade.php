@@ -186,12 +186,7 @@
 	                        </div>
 	                        
 	                    </div>
-			         <div class="owl-controls clickable" style="display: block;">
-	                        <div class="owl-buttons">
-	                            <div class="owl-prev"><i class="icon ion-ios-arrow-left"></i></div>
-	                            <div class="owl-next"><i class="icon ion-ios-arrow-right"></i></div>
-	                        </div>
-	                    </div>
+			         
 	                </div>
 	            </div>
 	        </div>
