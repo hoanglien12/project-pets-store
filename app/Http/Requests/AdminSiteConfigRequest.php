@@ -4,7 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
-class AdminEditDogCategoryRequest extends FormRequest
+
+class AdminSiteConfigRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,10 @@ class AdminEditDogCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if(Auth::user()) {
+           return true;
+       }
+        return redirect()->route('not-allow');
     }
 
     /**
@@ -24,14 +28,8 @@ class AdminEditDogCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|unique:dog_categories,name,' .$this->segment(4)
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.unique' => 'The name has already exsit'
+            'label'  => 'required|unique:site_config|max:255',
+            'value' =>  'required'
         ];
     }
 }

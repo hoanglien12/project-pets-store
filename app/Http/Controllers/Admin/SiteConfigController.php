@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SiteConfig;
 use App\Models\Order;
+use App\Http\Requests\AdminSiteConfigRequest;
+use App\Http\Requests\AdminEditSiteConfigRequest;
+
+
+
 class SiteConfigController extends Controller
 {
     function __construct()
@@ -28,12 +33,12 @@ class SiteConfigController extends Controller
     	return view('admin.site-config.index',compact('configs','count_configs','type','orders_waiting'));
     }
 
-    public function add(Request $request)
+    public function add()
     {
     	return view('admin.site-config.create',compact('orders_waiting'));
     }
 
-    public function store(Request $request){
+    public function store(AdminSiteConfigRequest $request){
     	// dd($request->type);
         $store    		= SiteConfig::create([
             'label'     => $request->label,
@@ -58,7 +63,7 @@ class SiteConfigController extends Controller
         return view('admin.site-config.edit', compact('site_config','type','orders_waiting'));
     }
 
-    public function update(Request $request,$id){
+    public function update(AdminEditSiteConfigRequest $request,$id){
         $request->flash();
         $update      = SiteConfig::findOrFail($id);
         $update->update([

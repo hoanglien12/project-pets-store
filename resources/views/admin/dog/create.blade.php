@@ -11,7 +11,7 @@
         <div class="form-group col-md-9">
             <select name="category_id" id="category" class="form-control">
                 @foreach($dog_category as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}"  {{ old('category_id') == $category->id ? 'selected' : '' }} >{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>

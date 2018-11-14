@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminDogRequest extends FormRequest
+class AdminEditSiteConfigRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,7 @@ class AdminDogRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          =>  'required|max:255',
-            'price'         =>  'required|numeric',
-            'category_id'   =>  'required',
-            'photos.*'      =>  'required|image',
-            'sale'          =>  'numeric|nullable',
-            'heigt'         =>  'numeric|nullable',
-            'weight'        =>  'numeric|nullable',
+            'name' => 'required|unique|max:255'
         ];
     }
 }
