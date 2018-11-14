@@ -31,7 +31,7 @@
                                     </a>
                                 </h3>
                                 <p class="desc">
-                                    {{$blog->summary}}
+                                    {{\Illuminate\Support\Str::words($blog->summary,25)}}
                                 </p>
                                 <ul class="list-inline-block post-meta-data">
                                     <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>

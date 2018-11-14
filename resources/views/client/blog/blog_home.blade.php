@@ -35,8 +35,8 @@
 	                                                            </a>
 	                                                        </li>
 	                                                    </ul>
-	                                                    <p class="desc">
-	                                                    	{{$blog->summary}}
+	                                                    <p class="desc" style="text-overflow: ellipsis;">
+	                                                    	{{ \Illuminate\Support\Str::words($blog->summary,25)}}
 	                                                    </p> <a href="{{ route('home.detail_blog',$blog->id) }}" class="readmore text-uppercase font-bold color wobble-horizontal">Read more<i class="fa fa-angle-right"></i></a>
 	                                                </div>
 	                                            </div>

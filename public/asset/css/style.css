@@ -59,6 +59,7 @@ body {
 
 /* copy style */
 .footer-page{
+    margin-top: 30px;
     background-color: #434343  !important;
 }
 /* footer style */
@@ -156,4 +157,14 @@ p.desc.summary {
     width: 20%;
 }button.btn.btn-primary.btn-success.center {
     width: 100%;
+}
+@mixin excerpt($font-size: $paragraph-font-size, $line-height: 1.4, $lines-to-show: 5, $excerpt-bg: transparent) {
+  background: $excerpt-bg;
+  display: -webkit-box;
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

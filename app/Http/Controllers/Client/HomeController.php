@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\Dog;
 use App\Models\DogCategory; 
