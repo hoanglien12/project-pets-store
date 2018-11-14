@@ -29,7 +29,8 @@ class Product extends Model
             $products = $products->where('id_product_cate',$category_id);
         }
         if($price != null){
-            $products = $products->where('price',$price);
+            $products = $products->where('price',$price)
+                                ->orWhere('sale',$price);
         }
         
         if($begin_date != null){

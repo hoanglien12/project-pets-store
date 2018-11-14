@@ -23,13 +23,14 @@ class HomeController extends Controller
     function __construct()
     {
         $this->dog          = new Dog();
+        view()->share('site_phone', SiteConfig::where('label','site_phone')->get());
+        view()->share('site_address', SiteConfig::where('label','site_address')->get());
+        view()->share('site_mail', SiteConfig::where('label','site_mail')->get());
+        view()->share('dogCategories', DogCategory::all());
+        view()->share('productCategories', ProductCategory::all());
     }
     public function index() 
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-    	$dogCategories 		 = DogCategory::all();
-    	$productCategories	 = ProductCategory::all();
         // $dogs                = Dog::all();
         $blogs               = Post::all();
         $slider              = Post::where('hot',1)->first();
@@ -56,19 +57,10 @@ class HomeController extends Controller
 
     public function dog_category()
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-        // dd($site_phone);
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
         return view('client.dog-category.index', compact('dogCategories','productCategories','site_phone','site_address'))   ;
     }
     public function dog_home() 
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
         $dogs                = Dog::all();
         $dogs_sale           = Dog::where('sale','<>',0)->get();
 
@@ -77,11 +69,8 @@ class HomeController extends Controller
 
     public function dog($idCate = null)
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
+        
         $dogs                = Dog::where('id_dog_cate',$idCate)->paginate(6);
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
         $cate                = DogCategory::where('id',$idCate)->first();
         // dd($cate);
       
@@ -89,10 +78,7 @@ class HomeController extends Controller
     }
     public function detail_dog($id)
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
+        
         $dogs                = Dog::where('id',$id)->first();
         $dog_orther          = Dog::where('id_dog_cate',$dogs->id_dog_cate)->get();
         $comment_dog         = Comment::where('id_dog', $id)->get();
@@ -102,30 +88,20 @@ class HomeController extends Controller
 //product
     public function product_category()
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
         $products            = Product::all();
         return view('client.product-category.index', compact('dogCategories','productCategories','products','site_phone','site_address'))   ;
     }
-      public function product($id)
+    public function product($id)
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
+        
         $products            = Product::where('id_product_cate',$id)->paginate(6);
-        $dogCategories       = DogCategory::all();
-        // $product             = Product::where('id_product_cate',$id)->get();
         $productCategories   = ProductCategory::all();
         $cate                = ProductCategory::where('id',$id)->first();
         return view('client.product.product',compact('dogs','products','dogCategories','productCategories','site_phone','site_address','cate'));
     }
     public function detail_product($id)
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
+        
         $products            = Product::where('id',$id)->first();
         $product_other       = Product::where('id_product_cate',$products->id_product_cate)->paginate(3);
         $comment_product     = Comment::where('id_product', $id)->get();
@@ -135,10 +111,7 @@ class HomeController extends Controller
 
     public function blog()
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-    	$dogCategories 		 = DogCategory::all();
-    	$productCategories	 = ProductCategory::all();
+        
         $blogs               = Post::paginate(3);
         
     	return view('client.blog.blog',compact('dogCategories','productCategories','blogs','site_phone','site_address'));
@@ -146,10 +119,6 @@ class HomeController extends Controller
 
     public function detail_blog($id)
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-    	$dogCategories 		 = DogCategory::all();
-    	$productCategories	 = ProductCategory::all();
 
         $blog                = Post::where('id',$id)->first();
         $blogs_other         = Post::where('id','<>',$id)->get();
@@ -160,10 +129,6 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $site_phone          = SiteConfig::where('label','site_phone')->get();
-        $site_address        = SiteConfig::where('label','site_address')->get();
-        $dogCategories       = DogCategory::all();
-        $productCategories   = ProductCategory::all();
 
         $value     = $request->input('search');
 
@@ -199,20 +164,48 @@ class HomeController extends Controller
 
     }
 
-    public function sort(Request $request,$idCate)
+    public function sort_dog(Request $request)
     {
-        dd(1);
 
         $data          = $request->all();
         $get_value     = $data['get_value'];
         $get_id        = $data['get_id'];
+        // dd($get_id);
         // console($check->active);
         if($get_value == 'price'){
-            $dogs     = Dog::where('id_dog_cate',$idCate)->orderBy('price', 'desc')->paginate(6);
+            $dogs     = Dog::where('id_dog_cate',$get_id)->orderBy('price', 'asc')->paginate(6);
         }
         else{
-            $dogs     = Dog::where('id_dog_cate',$idCate)->orderBy('price', 'asc')->paginate(6);
+            $dogs     = Dog::where('id_dog_cate',$get_id)->orderBy('price', 'desc')->paginate(6);
+        } 
+        return view('client.dog.reload-dogs',compact('dogs'));
+    }
+
+    public function sort_product(Request $request)
+    {
+
+        $data          = $request->all();
+        $get_value     = $data['get_value'];
+        $get_id        = $data['get_id'];
+        // dd($get_id);
+        // console($check->active);
+        if($get_value == 'price'){
+            $products     = Product::where('id_product_cate',$get_id)->orderBy('price', 'asc')->paginate(6);
         }
-        return view('client.dog.dog',compact('dogs'));
+        else{
+            $products     = Product::where('id_product_cate',$get_id)->orderBy('price', 'desc')->paginate(6);
+        } 
+        return view('client.product.reload-products',compact('products'));
+    }
+
+    public function about_us()
+    {
+
+        $about_us            = Post::where('slugs','about-us')->first();
+        return view('client.about', compact('site_address','site_phone','dogCategories','productCategories','about_us'));
+    }
+    public function contact()
+    {
+        return view('client.contact', compact('site_address','site_phone','dogCategories','productCategories','site_mail'));
     }
 }

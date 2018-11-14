@@ -12,7 +12,7 @@
 */ 
 Route::get('/not-allow','Controller@not_allow')->name('not-allow');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function(){
-	Route::get('', 'Admin\ProductCategoryController@admin')->name('indexAdmin');
+	Route::get('', 'HomeController@index')->name('indexAdmin');
 
 	Route::group(['prefix' => 'product-category'], function(){ 
 		Route::get('/', 'Admin\ProductCategoryController@index')->name('product_category.show');
@@ -100,7 +100,8 @@ Route::group(['prefix' => '/'], function(){
 
 	Route::get('search','Client\HomeController@search')->name('home.search');
 
-	Route::post('sort-price','Client\HomeController@sort')->name('home.sort-price');
+	Route::post('sort-price-dog','Client\HomeController@sort_dog')->name('home.sort-dog');
+	Route::post('sort-price-product','Client\HomeController@sort_product')->name('home.sort-product');
 
 	Route::get('/', 'Client\HomeController@index')->name('home.index');
 	Route::get('dog_home','Client\HomeController@dog_home')->name('home.dog_home');
@@ -128,10 +129,15 @@ Route::group(['prefix' => '/'], function(){
 		Route::post('comment/{id}', 'Client\CommentController@comment_post')->name('home.comment_post');
 	});
 
+	Route::get('about-us','Client\HomeController@about_us')->name('home.about-us');
+	Route::get('contact','Client\HomeController@contact')->name('home.contact');
+
+
 });
 Route::get('add-to-dog/{id}','Client\CartController@addDogToCart')->name('home.cart');
 Route::get('add-to-product/{id}','Client\CartController@addProductToCart')->name('home.productcart');
 Route::get('del-cart/{id}','Client\CartController@removeItem')->name('home.del');
+Route::get('reduceOne/{id}','Client\CartController@reduceOne')->name('home.reduce');
 Route::get('checkout','Client\CartController@getCheckout')->name('home.checkout');
 Route::get('viewcart','Client\CartController@viewCart')->name('home.viewcart');
 Route::get('deleteAll', 'Client\CartController@deleteAll')->name('home.deleteAll');

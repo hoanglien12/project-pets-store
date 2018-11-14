@@ -12,7 +12,7 @@
                     <span class="gray">Sort:</span>
                     <div class="select-box inline-block">
                         <form class="woocommerce-ordering" method="get">
-                            <select name="orderby" data="{{ $cate->id }}" class="orderby" onchange="sort_by_price(this)">
+                            <select name="orderby" id="sort" data="{{ $cate->id }}" class="orderby" onchange="sort_by_price(this)">
                                 <option value="">Default sorting</option>
                                 <option value="price">Sort by price: low to high</option>
                                 <option value="price-desc">Sort by price: high to low</option>
@@ -42,28 +42,40 @@
 @section('script')
     <script>
         function sort_by_price(obj) {
-            
             var message = document.getElementById('show_message');
             var get_value = obj.value;
-            var get_id    = $(this).attr('data');
+            var get_id    = $("#sort").attr('data');
+            console.log(get_value);
             if (get_value === 'price'){
-                message.innerHTML = "Bạn đã chọn price " + get_id;
-                                
+                // message.innerHTML = "Bạn đã chọn price-asc ";
                 $.ajax({
                     type: 'post',
                     data: {get_value:get_value,get_id:get_id,"_token": "{{ csrf_token() }}"},
-                    url: '{{ route('home.sort-price') }}',
-                    dataType: 'json',
+                    url: '{{ route('home.sort-dog') }}',
+                    dataType: 'html',
                     success:function(result){
-                       console.log(1) ;
+                        console.log(1111);
+                        console.log(result);
+
+                       $('#reload-dogs').html(result);
+                    },
+                    error: function (errors) {
+                       console.log(errors);
                     }
                 });
-
             }
-            else if (value === 'price-desc'){
-                message.innerHTML = "Bạn đã chọn price-desc";
+            else if (get_value === 'price-desc'){
+                // message.innerHTML = "Bạn đã chọn price-desc";
+                $.ajax({
+                    type: 'post',
+                    data: {get_value:get_value,get_id:get_id,"_token": "{{ csrf_token() }}"},
+                    url: '{{ route('home.sort-dog') }}',
+                    dataType: 'html',
+                    success:function(result){
+                      $('#reload-dogs').html(result);
+                    }
+                });
             }
-
         }
     </script>
 @endsection

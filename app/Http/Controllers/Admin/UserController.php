@@ -11,6 +11,9 @@ class UserController extends Controller
 	function __construct()
 	{
 	    $this->user = new User();
+	    view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+	    
 	}
 
 	public function index(Request $request)
@@ -22,7 +25,6 @@ class UserController extends Controller
 		// dd($request->all());
 		$users		 = $this->user->getAllUsers($name,$role,$begin_date,$end_date)->get();
 		// dd($users);
-		$orders_waiting  = Order::where('status',1)->get();
 		return view('admin.user.index',compact('users','orders_waiting'));
 	}
 }

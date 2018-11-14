@@ -16,6 +16,9 @@ class DogController extends Controller
 	public function __construct(){
 		$this->dog 			= new Dog();
 		$this->dog_category = new DogCategory();
+	    view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+
 	}
 	public function index(Request $request){
 		$request->flash();
@@ -31,21 +34,23 @@ class DogController extends Controller
 		// dd($category_id);
 		$dog_category   = $this->dog_category->getAllDogCategories()->get();
 		// dd($dog_category);
-		$orders_waiting  = Order::where('status',1)->get();
 		return view('admin.dog.index', compact('dogs','dog_category','count_dogs','category_id','orders_waiting'));
 	}
 
 	public function add()
 	{
 		$dog_category = $this->dog_category->getAllDogCategories()->get();
-		return view('admin.dog.create',compact('dog_category'));
+		return view('admin.dog.create',compact('dog_category','orders_waiting'));
 	} 
 
 	public function store(AdminDogRequest $request)
 	{
 		$request->flash();
 		$birthday 	  = null;
-
+		$sale 	      = null;
+		if(empty($request->get('sale'))) {
+			$sale = 0;
+		}
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
 		}
@@ -71,7 +76,7 @@ class DogController extends Controller
                 'description'   => $request->get('description'),
                 'id_dog_cate'   => $request->get('category_id'),
                 'price'         => $request->get('price'),
-                'sale'			=> $request->get('sale'),
+                'sale'			=> $sale,
                 'height'        => $request->get('height'),
                 'weight'        => $request->get('weight'),
                 'birthday'      => $birthday,
@@ -89,7 +94,7 @@ class DogController extends Controller
 	{
 		$dog 		  = Dog::findOrFail($id);
 		$dog_category = $this->dog_category->getAllDogCategories()->get();
-		return view('admin.dog.edit',compact('dog','dog_category'));
+		return view('admin.dog.edit',compact('dog','dog_category','orders_waiting'));
 	} 
 
 	public function update(Request $request,$id)
@@ -97,6 +102,10 @@ class DogController extends Controller
 		$request->flash();
 		$update       = Dog::query()->findOrFail($id);
 
+		$sale 	      = null;
+		if(empty($request->get('sale'))) {
+			$sale = 0;
+		}
 		$birthday     = null;
 		if(!empty($request->get('birthday'))) {
 			$birthday = date('Y:m:d',strtotime($request->get('birthday')));
@@ -127,7 +136,7 @@ class DogController extends Controller
 			// 'photos'		=> json_encode($filename_arr),
             'description'   => $request->description,
             'price'         => $request->price,
-            'sale'			=> $request->sale,
+            'sale'			=> $sale,
             'birthday'      => $birthday,
             'height'        => $request->height,
             'weight'        => $request->weight

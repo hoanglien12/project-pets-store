@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\Models\Dog;
+use App\Models\DogCategory; 
+use App\Models\ProductCategory;
+use App\Models\Product;
+use App\Models\SiteConfig;
+
 class RegisterController extends Controller
 {
     /*
@@ -38,7 +44,13 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        view()->share('site_phone', SiteConfig::where('label','site_phone')->get());
+        view()->share('site_address', SiteConfig::where('label','site_address')->get());
+        view()->share('site_mail', SiteConfig::where('label','site_mail')->get());
+        view()->share('dogCategories', DogCategory::all());
+        view()->share('productCategories', ProductCategory::all());
     }
+
 
     /**
      * Get a validator for an incoming registration request.

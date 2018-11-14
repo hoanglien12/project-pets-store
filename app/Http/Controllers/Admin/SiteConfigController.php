@@ -11,6 +11,9 @@ class SiteConfigController extends Controller
     function __construct()
     {
     	$this->config             = new SiteConfig();
+        view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+
     }
     public function index(Request $request)
     {
@@ -22,13 +25,12 @@ class SiteConfigController extends Controller
         $configs        = $this->config->getAllConfigs($label,$type, $begin_date, $end_date)->get();
         $count_configs  = count($configs);
     	// dd($configs);
-        $orders_waiting  = Order::where('status',1)->get();
     	return view('admin.site-config.index',compact('configs','count_configs','type','orders_waiting'));
     }
 
     public function add(Request $request)
     {
-    	return view('admin.site-config.create');
+    	return view('admin.site-config.create',compact('orders_waiting'));
     }
 
     public function store(Request $request){
@@ -53,7 +55,7 @@ class SiteConfigController extends Controller
         $site_config = SiteConfig::findOrFail($id);
         $type 		 = $site_config->type;
                 // dd($site_config->type);
-        return view('admin.site-config.edit', compact('site_config','type'));
+        return view('admin.site-config.edit', compact('site_config','type','orders_waiting'));
     }
 
     public function update(Request $request,$id){

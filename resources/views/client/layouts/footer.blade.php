@@ -131,11 +131,11 @@
 							<div class="footer-box">
 								<h2 class="title-footer title18 dosis-font text-uppercase font-bold white">Contact</h2>
 								<div class="contact-footer">
-									<p class="desc white"><i class="icon ion-map"></i>{{ $site_address[0]->value }}</p>
+									<p class="desc white"><i class="icon ion-map"></i>Address: {{ $site_address[0]->value }}</p>
 									<p class="desc white"><i class="icon ion-ios-telephone"></i>Mobile: <b>{{ $site_phone[0]->value }}</b>
-									<p class="desc white"><i class="icon ion-ios-email"></i><a class="white" href="mailto:contact.7uptheme@gmail.com">contact.7uptheme@gmail.com</a>
+									<p class="desc white"><i class="icon ion-ios-email"></i><a class="white" href="mailto:contact.7uptheme@gmail.com">Mail: contact.7uptheme@gmail.com</a>
 									<br />
-									<a class="white" href="mailto:thanphamngoc@gmail.com">thanphamngoc@gmail.com</a></p>
+									
 								</div>
 							</div>
 						</div>
@@ -175,7 +175,7 @@
 	</div>
 	<div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row footer-bottom footer-bottom2 vc_custom_1516171781582 vc_row-has-fill">
 		<div class="container">
-			<p class="desc copyright white text-center">@2018 - Design by: <a class="white" href="http://7uptheme.com/">7uptheme.com</a></p>
+			<p class="desc copyright white text-center">@2018 - Design by: <a class="white" href="http://7uptheme.com/">petsstore.com</a></p>
 		</div>
 	</div>
 </footer>

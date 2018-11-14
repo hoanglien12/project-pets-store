@@ -13,15 +13,15 @@ class CommentController extends Controller
     function __construct()
 	{
 	    $this->comment = new Comment();
+	    view()->share('orders_waiting',count(Order::where('status',1)->get()));
 	}
 
 	public function index()
 	{
 		
 		$comments		= Comment::all();
-		$orders_waiting = Order::where('status',1)->get();
-		// dd($comments);
 		
+		// dd($comments);
 		return view('admin.comment.index',compact('comments','orders_waiting'));
 	}
 }
