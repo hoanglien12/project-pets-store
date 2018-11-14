@@ -140,3 +140,20 @@ section.ptb.ptb-xs-60 .col-md-8.col-lg-8.offset-md-2.container.text-center {
 p.desc.summary {
     font-weight: 700;
 }
+.card {
+    vertical-align: middle;
+    width: 50%;
+    margin: 30px auto;
+}
+.card-header {
+    margin-bottom: 40px;
+}
+.card-header h2{
+    font-weight: 700;
+}
+.btn-submit-login {
+    margin: 0px auto;
+    width: 20%;
+}button.btn.btn-primary.btn-success.center {
+    width: 100%;
+}
