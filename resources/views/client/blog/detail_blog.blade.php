@@ -17,7 +17,7 @@
 	        <ul class="list-inline-block post-meta-data">
 	            <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
 	            <li><i aria-hidden="true" class="fa fa-comment color"></i>
-	                <a href="index.html#respond">0
+	                <a href="index.html#respond">{{ count($comment_post)}}
 	                    Comments </a>
 	            </li>
 	        </ul>
@@ -95,6 +95,57 @@
 			        </div><!-- #respond -->
 			    </div>
 		    @endif
+
+		    <div class="related-product">
+	            <h2 class="title18 font-bold text-uppercase single-title">Related products</h2>
+	            <div class="product-slider">
+	                <div class="wrap-item group-navi smart-slider owl-carousel owl-theme" data-item="" data-speed="" data-itemres="0:1,480:2,990:3" data-prev="" data-next="" data-pagination="" data-navigation="true" style="opacity: 1; display: block;">
+	                    <div class="owl-wrapper-outer">
+	                        <div class="owl-wrapper" style="width: 3600px; left: 0px; display: block;">
+	                           @foreach($blogs_other  as $blog)
+	                            <div class="owl-item active" style="width: 300px;">
+	                                <div class="post-716 product type-product status-publish has-post-thumbnail product_cat-belgian-malinois product_cat-bichon-frise product_cat-bloodhound last instock featured shipping-taxable purchasable product-type-simple">
+	                                    <div class="item-product item-product-grid">
+	                                        <div class="product-thumb">
+	                                            <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
+	                                            <a href="{{ route('home.detail_dog',$blog->id) }}" class="product-thumb-link zoom-thumb">
+	                                            	@php
+	                                            		$photo = $blog->getImage($blog->id)
+	                                            	@endphp
+	                                                <img width="270" height="270" src="{{asset('upload/post/'.$photo[0])}}" >
+
+	                                            </a>
+	                                            
+	                                        </div>
+	                                        <div class="product-info">
+	                                            
+	                                            <h3 class="title18 text-uppercase product-title dosis-font font-bold">
+	                                                <a title="{{$blog->title}}" href="../cannoly/index.html" class="black">{{$blog->title}}</a>
+	                                            </h3>
+
+	                                             <p class="desc">
+				                                    {{$blog->summary}}
+				                                </p>
+				                                <ul class="list-inline-block post-meta-data">
+                                    <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
+                                    <li><i aria-hidden="true" class="fa fa-comment color"></i>
+                                        <a href="../flowing-studio-dress-2/index.html#respond">{{ count($comment_post)}}
+                                            Comments </a>
+                                    </li>
+                                </ul>
+                                <a href="{{ route('home.detail_blog',$blog->id) }}" class="shop-button">Read more</a>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            @endforeach
+	                        </div>
+	                        
+	                    </div>
+			         
+	                </div>
+	            </div>
+	        </div>
 	</div>
 	@include('client.layouts.sidebar')
 @endsection

@@ -15,7 +15,7 @@
 	                                        <div class="item">
 	                                            <div class="item-post item-post-default style2">
 	                                                <div class="post-thumb banner-advs zoom-image overlay-image">
-	                                                    <a href="">
+	                                                    <a href="{{ route('home.detail_blog',$blog->id) }}">
 	                                                    	@php
 	                                                    	$photo = $blog->getImage($blog->id)
 	                                                    	@endphp
@@ -25,19 +25,19 @@
 	                                                    </a>
 	                                                </div>
 	                                                <div class="post-info">
-	                                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="" class="black">
+	                                                    <h3 class="title14 dosis-font text-uppercase font-bold post-title"><a href="{{ route('home.detail_blog',$blog->id) }}" class="black">
 	                                                    	{{$blog->title}}
 	                                                    </a></h3>
 	                                                    <ul class="list-inline-block post-meta-data">
-	                                                        <li><i class="fa fa-user color" aria-hidden="true"></i><a href="../author/7uptheme/index.html">7uptheme</a></li>
+	                                                         <li><i class="fa fa-calendar color"></i><span class="gray">{{ date('Y-m-d',strtotime($blog->created_at))}}</span></li>
 	                                                        <li><i aria-hidden="true" class="fa fa-comment color"></i>
-	                                                            <a href="../flowing-studio-dress-2/index.html#respond">0 
-	                        Comments                        </a>
+	                                                            <a href="../flowing-studio-dress-2/index.html#respond">{{$blog->count_cmt($blog->id)}} Comments                        
+	                                                            </a>
 	                                                        </li>
 	                                                    </ul>
 	                                                    <p class="desc">
 	                                                    	{{$blog->summary}}
-	                                                    </p> <a href="../flowing-studio-dress-2/index.html" class="readmore text-uppercase font-bold color wobble-horizontal">Read more<i class="fa fa-angle-right"></i></a>
+	                                                    </p> <a href="{{ route('home.detail_blog',$blog->id) }}" class="readmore text-uppercase font-bold color wobble-horizontal">Read more<i class="fa fa-angle-right"></i></a>
 	                                                </div>
 	                                            </div>
 	                                        </div>

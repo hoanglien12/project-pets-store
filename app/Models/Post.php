@@ -38,4 +38,8 @@ class Post extends Model
         $imgs    = json_decode($images);
         return $imgs;
     }
+    public function count_cmt($id_post)
+    {
+        return Comment::where('id_post', $id_post)->count();
+    }
 }
