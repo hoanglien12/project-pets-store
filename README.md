@@ -10,7 +10,7 @@ Nguyễn Thị Cúc
 
 Phân công công việc:
 - Quản lý Dog categories, Dog, Comment, Users, Post, SiteConfig, Orders trong trang Admin : Liên
-- Quản lý Product categories, Product trang Admin, một phần Cart, toàn bộ phần Order trang Client: Hoài
+- Quản lý Product categories, Product, Login, Logout, Register trang Admin, một phần Cart, Order trang Client: Hoài
 - Tìm kiếm giao diện, chỉnh sửa giao diện, đổ dữ liệu trang Client, một phần Cart: Cúc
 - Xây dựng cơ sở dữ liệu: cả nhóm cùng góp ý xây dựng.
 
