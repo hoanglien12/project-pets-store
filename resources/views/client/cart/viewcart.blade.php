@@ -75,7 +75,7 @@
 												<td class="product-quantity" data-title="Quantity">
 													<label class="qty-label">Qty:</label>
 													<div class="detail-qty info-qty border radius6" style="color: black;">
-														<a href="{{route('home.reduce',$dog['item']['name'])}}" class="qty-down" style="color: black;">
+														<a href="{{route('home.reduce',$dog['item']['id'])}}" class="qty-down" style="color: black;">
 															<i class="fa fa-angle-down" aria-hidden="true"></i>
 														</a>
 														<input type="text" step="1" min="0" max="" name="" value="{{$dog['qty']}}" title="Qty" class="input-text text qty qty-val" size="4" disabled />
