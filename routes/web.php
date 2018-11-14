@@ -100,6 +100,8 @@ Route::group(['prefix' => '/'], function(){
 
 	Route::get('search','Client\HomeController@search')->name('home.search');
 
+	Route::post('sort-price','Client\HomeController@sort')->name('home.sort-price');
+
 	Route::get('/', 'Client\HomeController@index')->name('home.index');
 	Route::get('dog_home','Client\HomeController@dog_home')->name('home.dog_home');
 

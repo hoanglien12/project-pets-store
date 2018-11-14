@@ -4,7 +4,7 @@
 <div class="portlet-body" style="border: 1px solid #ddd;
     border-radius: 4px; padding:10px; margin-bottom:10px;">
         <div class="table-toolbar">
-            <form action="" method="GET" class="form-horizontal form-bordered" id="filter_box">
+            <form action="{{ route('order.index') }}" method="GET" class="form-horizontal form-bordered" id="filter_box">
                 <div class="row">
                     <!-- Filter Name -->
                     <div class="col-md-3">
@@ -15,6 +15,31 @@
                     <div class="col-md-3">
                         <input type="text" name="phone" value="{{ old('phone') }}" placeholder="Phone" class="form-control">
                         <div class="help-block">Phone</div>
+                    </div>
+                    <!-- Filter Address -->
+                    <div class="col-md-3">
+                        <input type="text" name="address" value="{{ old('address') }}" placeholder="Address" class="form-control">
+                        <div class="help-block">Address</div>
+                    </div>
+                    <!-- Filter Address -->
+                    <div class="col-md-3">
+                        <select name="ship" id="" class="form-control">
+                          <option value="">Ship</option>
+                          <option value="1" {{ (isset($ship) && $ship == 1) ? 'selected' : '' }}>Shipping</option>
+                          <option value="2" {{ (isset($ship) && $ship == 2) ? 'selected' : '' }}>Cod</option>
+                          <option value="3" {{ (isset($ship) && $ship == 3) ? 'selected' : '' }}>Express delivery</option>
+
+                        </select>
+                        <div class="help-block">Shipping</div>
+                    </div>
+                    <!-- Filter Address -->
+                    <div class="col-md-3">
+                        <select name="status" id="" class="form-control">
+                          <option value="">Status</option>
+                          <option value="1" {{ (isset($status) && $status == 1) ? 'selected' : '' }}>Waiting</option>
+                          <option value="2" {{ (isset($status) && $status == 2) ? 'selected' : '' }}>Approved</option>
+                        </select>
+                        <div class="help-block">Status</div>
                     </div>
                     <!-- Filter Date -->
                     <div class="col-md-4">
@@ -38,10 +63,10 @@
   <div class="col-lg-12">
       <div class="panel panel-default">
           <div class="panel-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="datatable">
               <thead>
                 <tr>
-                  <th>STT</th>
+                  <th>ID</th>
                   <th>Name</th>
                   <th>Status</th>
                   <th>Address</th>
@@ -88,7 +113,6 @@
                       <td>{{ $order->id }}</td>
                       <td>{{ $order->name }}</td>
                       <td>
-                        
                         <p class="text-info">{{ ($order->status == 1) ? "waiting" : "Approved" }}</p>
                         <span data="{{ $order->id }}" data-type="{{ $order->status }}" class="btn btn-circle bold change_status"><i class="fa fa-exchange"></i></span>
                       </td>

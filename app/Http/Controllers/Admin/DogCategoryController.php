@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DogCategory;
 use App\Models\Dog;
+use App\Models\Order;
 use App\Http\Requests\AdminDogCategoryRequest;
 use App\Http\Requests\AdminEditDogCategoryRequest;
 
@@ -25,7 +26,8 @@ class DogCategoryController extends Controller
 
         $count_category = count($this->dogCategory->getAllDogCategories($name, $begin_date, $end_date)->get());
         $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->get();
-        return view('admin.dog-category.index',compact('dogCategories','name','date','end_date','count_category'));
+        $orders_waiting  = Order::where('status',1)->get();
+        return view('admin.dog-category.index',compact('dogCategories','name','date','end_date','count_category','orders_waiting'));
     }
 
     public function add()

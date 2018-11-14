@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SiteConfig;
-
+use App\Models\Order;
 class SiteConfigController extends Controller
 {
     function __construct()
@@ -22,7 +22,8 @@ class SiteConfigController extends Controller
         $configs        = $this->config->getAllConfigs($label,$type, $begin_date, $end_date)->get();
         $count_configs  = count($configs);
     	// dd($configs);
-    	return view('admin.site-config.index',compact('configs','count_configs','type'));
+        $orders_waiting  = Order::where('status',1)->get();
+    	return view('admin.site-config.index',compact('configs','count_configs','type','orders_waiting'));
     }
 
     public function add(Request $request)

@@ -198,4 +198,21 @@ class HomeController extends Controller
         return view('client.layouts.search',compact('site_address','site_phone','dogCategories','productCategories','value','dogs','products','blogs'));
 
     }
+
+    public function sort(Request $request,$idCate)
+    {
+        dd(1);
+
+        $data          = $request->all();
+        $get_value     = $data['get_value'];
+        $get_id        = $data['get_id'];
+        // console($check->active);
+        if($get_value == 'price'){
+            $dogs     = Dog::where('id_dog_cate',$idCate)->orderBy('price', 'desc')->paginate(6);
+        }
+        else{
+            $dogs     = Dog::where('id_dog_cate',$idCate)->orderBy('price', 'asc')->paginate(6);
+        }
+        return view('client.dog.dog',compact('dogs'));
+    }
 }

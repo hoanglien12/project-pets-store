@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\AdminPostRequest;
 use App\Http\Requests\AdminEditPostRequest;
+use App\Models\Order;
 
 class PostController extends Controller
 {
@@ -28,7 +29,8 @@ class PostController extends Controller
         $count_post 	= count($this->post->getAllDogPosts($title,$status,$type, $begin_date, $end_date)->get());
         $posts 			= $this->post->getAllDogPosts($title,$status,$type,$begin_date,$end_date)->get();
         // dd($posts);
-    	return view('admin.post.index',compact('posts','count_post','status','type'));
+        $orders_waiting  = Order::where('status',1)->get();
+    	return view('admin.post.index',compact('posts','count_post','status','type','orders_waiting'));
     }
 
     public function add()

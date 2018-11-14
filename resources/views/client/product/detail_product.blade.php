@@ -39,11 +39,7 @@
 	                          
 	                        <form class="cart" action="{{route('home.productcart',$products->id)}}" method="get">
 	                        	@csrf
-	                            <label class="qty-label">Qty:</label>
-	                            <div class="detail-qty info-qty border radius6">
-	                                <a href="#" class="qty-down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-	                                <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text text qty qty-val" size="4">
-	                                <a href="#" class="qty-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+	                           
 	                            </div>
 	                            <button type="submit" name="add-to-cart" value="724" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple">Add to cart</button>
 

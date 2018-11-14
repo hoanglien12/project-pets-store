@@ -41,7 +41,7 @@ class Dog extends Model
         }
         
         if($begin_date != null){
-            $dogs = $dogs->whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+            $dogs = $dogs->whereDate('created_at','>=',date('Y-m-d', strtotime($begin_date)));
         }
         if($begin_date != null && $end_date != null){
             $dogs = $dogs->whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));

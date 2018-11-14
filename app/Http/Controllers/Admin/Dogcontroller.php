@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Dog;
 use App\Models\DogCategory;
 use App\Http\Requests\AdminDogRequest;
+use App\Models\Order;
 
 class DogController extends Controller
 {
@@ -30,7 +31,8 @@ class DogController extends Controller
 		// dd($category_id);
 		$dog_category   = $this->dog_category->getAllDogCategories()->get();
 		// dd($dog_category);
-		return view('admin.dog.index', compact('dogs','dog_category','count_dogs','category_id'));
+		$orders_waiting  = Order::where('status',1)->get();
+		return view('admin.dog.index', compact('dogs','dog_category','count_dogs','category_id','orders_waiting'));
 	}
 
 	public function add()

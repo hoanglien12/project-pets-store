@@ -12,12 +12,13 @@
                     <span class="gray">Sort:</span>
                     <div class="select-box inline-block">
                         <form class="woocommerce-ordering" method="get">
-                            <select name="orderby" class="orderby">
-                                <option value="menu_order">Default sorting</option>
+                            <select name="orderby" data="{{ $cate->id }}" class="orderby" onchange="sort_by_price(this)">
+                                <option value="">Default sorting</option>
                                 <option value="price">Sort by price: low to high</option>
                                 <option value="price-desc">Sort by price: high to low</option>
                             </select>
                             <input type="hidden" name="paged" value="1">
+                            <p style="color: red" id="show_message"></p>
                         </form>
                     </div>
                 </div> 
@@ -25,53 +26,8 @@
         </ul>
     </div>
     <div class="product-grid-view   products-wrap js-content-wrap" data-load="{&quot;attr&quot;:{&quot;item_style&quot;:null,&quot;item_style_list&quot;:null,&quot;column&quot;:&quot;3&quot;,&quot;size&quot;:null,&quot;size_list&quot;:null,&quot;shop_style&quot;:null,&quot;animation&quot;:&quot;zoom-thumb&quot;,&quot;number&quot;:&quot;12&quot;,&quot;cats&quot;:&quot;golden-retriever&quot;}}">
-        <div class="products row list-product-wrap js-content-main">
-            @foreach($dogs as $dog) 
-            <div class="list-col-item list-3-item post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
-                <div class="item-product item-product-grid">
-                    <div class="product-thumb">
-                        <!-- s7upf_woocommerce_thumbnail_loop have $size and $animation -->
-                        <a href="{{ route('home.detail_dog',$dog->id)}} " class="product-thumb-link zoom-thumb">
-                            @php
-                                $photos = $dog->getImage($dog->id);
-                            @endphp
-                                @if($photos != null)
-                                <img width="270" height="270" src="{{ asset('upload/dogs/' . $photos[0]) }}" class="attachment-270x270 size-270x270 wp-post-image" alt="" sizes="(max-width: 270px) 100vw, 270px">
-                                @endif
-                        </a>
-                        @if($dog->sale!=0)
-                        <div class="product-label"><span class="sale">sale</span></div>
-                        @endif
-                        <div class="product-extra-link text-center">
-                           
-                            <a href="{{route('home.cart',$dog->id)}}" rel="nofollow" data-product_id="724" data-product_sku="DSP23684" data-quantity="1" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple" data-title="Bailey"><span>Add to cart</span></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="title12 text-uppercase color font-bold">{{$dog->dogcategory->name}}</span>
-                        <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                            <a title="Bailey" href="../../product/bailey/index.html" class="black">Name: {{$dog->name}}</a>
-                        </h3>
-                        @if($dog->sale==0)
-                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog->price}}</span></div>
-                        @else
-                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dog->sale}}</span></ins></div>
-                         @endif
-                        <ul class="wrap-rating list-inline-block">
-                            <li>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:80%"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="number-rate silver">(1s)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-
+        <div id="reload-dogs" class="products row list-product-wrap js-content-main">
+            @include('client.dog.reload-dogs')
         </div>
     </div>
     <div class="text-right">
@@ -82,4 +38,32 @@
 </div>
 </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        function sort_by_price(obj) {
+            
+            var message = document.getElementById('show_message');
+            var get_value = obj.value;
+            var get_id    = $(this).attr('data');
+            if (get_value === 'price'){
+                message.innerHTML = "Bạn đã chọn price " + get_id;
+                                
+                $.ajax({
+                    type: 'post',
+                    data: {get_value:get_value,get_id:get_id,"_token": "{{ csrf_token() }}"},
+                    url: '{{ route('home.sort-price') }}',
+                    dataType: 'json',
+                    success:function(result){
+                       console.log(1) ;
+                    }
+                });
+
+            }
+            else if (value === 'price-desc'){
+                message.innerHTML = "Bạn đã chọn price-desc";
+            }
+
+        }
+    </script>
 @endsection

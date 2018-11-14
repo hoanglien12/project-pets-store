@@ -28,7 +28,7 @@ class DogCategory extends Model
             $dogCategories = DogCategory::where('name','like', "%$name%");
         }
         if($begin_date != null){
-            $dogCategories = DogCategory::whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+            $dogCategories = DogCategory::whereDate('created_at','>=',date('Y-m-d', strtotime($begin_date)));
         }
         if($begin_date != null && $end_date != null){
             $dogCategories = DogCategory::whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));

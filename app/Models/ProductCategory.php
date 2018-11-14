@@ -21,7 +21,7 @@ class ProductCategory extends Model
             $productCategories = ProductCategory::where('name','like', "%$name%");
         }
         if($begin_date != null){
-            $productCategories = ProductCategory::whereDate('created_at',date('Y-m-d', strtotime($begin_date)));
+            $productCategories = ProductCategory::whereDate('created_at','>=',date('Y-m-d', strtotime($begin_date)));
         }
         if($begin_date != null && $end_date != null){
             $productCategories = ProductCategory::whereBetween(DB::raw('DATE(created_at)'), array(date('Y-m-d', strtotime($begin_date)), date('Y-m-d', strtotime($end_date))));
