@@ -29,7 +29,7 @@ class CartController extends Controller
             $dog_add             = Dog::find($id); 
             $oldCart             = Session('cart')?Session::get('cart'):null;
             $cart                = new Cart($oldCart);     
-            $cart->add($dog_add, $id);
+            $cart->add($dog_add, $dog_add->name);
             $req->session()->put('cart',$cart);
 
             return redirect()->back();       
@@ -46,7 +46,7 @@ class CartController extends Controller
             $product_add         = Product::find($id);
             $oldCart             = Session('cart') ? Session::get('cart'):null;
             $cart                = new Cart($oldCart);                   
-            $cart->add($product_add,$id);
+            $cart->add($product_add,$product_add->name);
             //dd($cart);            
             $req->session()->put('cart',$cart);
 
