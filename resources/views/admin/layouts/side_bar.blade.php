@@ -38,6 +38,4 @@
     </li>
     
 </ul>
-<style>
-    
-</style>
+
