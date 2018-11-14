@@ -14,6 +14,9 @@ class ProductCategoryController extends Controller
     public function __construct()
     {
         $this->productCategory = new ProductCategory();
+        view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +30,6 @@ class ProductCategoryController extends Controller
         $end_date = $request->input('end_date');
         $count_category = count($this->productCategory->getAllProductCategories($name, $begin_date, $end_date)->get());
         $cate = $this->productCategory->getAllProductCategories($name,$begin_date,$end_date)->get();
-        $orders_waiting  = Order::where('status',1)->get();
         return view('admin.product-category.show',compact('cate','name','begin_date','end_date','count_category','orders_waiting'));
     }
 
@@ -38,7 +40,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.product-category.add');
+        return view('admin.product-category.add',compact('orders_waiting'));
     }
 
     /**
@@ -63,10 +65,7 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function admin()
-    {
-        return view('admin.layouts.home');
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +77,7 @@ class ProductCategoryController extends Controller
     {
         $cate = ProductCategory::find($id);
 
-        return view('admin.product-category.edit', ['cate' => $cate]);
+        return view('admin.product-category.edit', compact('orders_waiting', 'cate'));
     }
 
     /**

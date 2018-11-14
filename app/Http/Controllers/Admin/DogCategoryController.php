@@ -15,6 +15,8 @@ class DogCategoryController extends Controller
 	public function __construct()
 	{
 		$this->dogCategory = new DogCategory();
+        view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
 	}
 
 	
@@ -26,13 +28,13 @@ class DogCategoryController extends Controller
 
         $count_category = count($this->dogCategory->getAllDogCategories($name, $begin_date, $end_date)->get());
         $dogCategories  = $this->dogCategory->getAllDogCategories($name,$begin_date,$end_date)->get();
-        $orders_waiting  = Order::where('status',1)->get();
+        
         return view('admin.dog-category.index',compact('dogCategories','name','date','end_date','count_category','orders_waiting'));
     }
 
     public function add()
     {
-        return view('admin.dog-category.create');
+        return view('admin.dog-category.create',compact('orders_waiting'));
     }
 
     public function store(AdminDogCategoryRequest $request){
@@ -54,7 +56,7 @@ class DogCategoryController extends Controller
 
     public function edit($id){
         $dogCategory = DogCategory::findOrFail($id);
-        return view('admin.dog-category.edit', compact('dogCategory'));
+        return view('admin.dog-category.edit', compact('dogCategory','orders_waiting'));
     }
 
     public function update(AdminEditDogCategoryRequest $request,$id){

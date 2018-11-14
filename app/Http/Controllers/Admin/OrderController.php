@@ -13,6 +13,8 @@ class OrderController extends Controller
     public function __construct()
     {
         $this->order    = new Order();
+        view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
     }
     public function index(Request $request)
     {
@@ -27,9 +29,6 @@ class OrderController extends Controller
         // dd($request->all());
 
     	$orders 		= $this->order->getAllOrders($name, $phone,$address,$ship, $status,  $begin_date, $end_date)->get();
-
-        $orders_waiting  = Order::where('status',1)->get();
-        // dd($orders);
     	$count_orders   = count($orders);
     	return view('admin.order.index', compact('orders','count_orders','ship','status','orders_waiting'));
     }
@@ -37,7 +36,7 @@ class OrderController extends Controller
     {
     	$detail_order = DetailOrder::where('id_order',$id)->get();
     	// dd($detail_order);
-    	return view('admin.order.detail',compact('detail_order'));
+    	return view('admin.order.detail',compact('detail_order','orders_waiting'));
     }
     public function delete($id)
     {

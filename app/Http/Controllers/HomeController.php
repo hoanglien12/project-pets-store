@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $orders_waiting = Order::where('status',1)->get();
-        return view('admin.layouts.home');
+        $orders_waiting = count(Order::where('status',1)->get());
+        $comments       = count(Comment::all());
+        return view('admin.layouts.home',compact('orders_waiting','comments'));
     }
 }

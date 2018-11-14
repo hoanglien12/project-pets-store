@@ -14,6 +14,9 @@ class PostController extends Controller
     public function __construct()
     {
     	$this->post = new Post();
+        view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+
     }
 
     public function index(Request $request)
@@ -29,13 +32,12 @@ class PostController extends Controller
         $count_post 	= count($this->post->getAllDogPosts($title,$status,$type, $begin_date, $end_date)->get());
         $posts 			= $this->post->getAllDogPosts($title,$status,$type,$begin_date,$end_date)->get();
         // dd($posts);
-        $orders_waiting  = Order::where('status',1)->get();
     	return view('admin.post.index',compact('posts','count_post','status','type','orders_waiting'));
     }
 
     public function add()
     {
-    	return view('admin.post.create');
+    	return view('admin.post.create',compact('orders_waiting'));
     }
 
     public function store(AdminPostRequest $request)
@@ -89,7 +91,7 @@ class PostController extends Controller
     {
         $post          = Post::findOrFail($id);
         // dd($post);
-        return view('admin.post.edit',compact('post'));
+        return view('admin.post.edit',compact('post','orders_waiting'));
     } 
 
     public function update(AdminEditPostRequest $request, $id)

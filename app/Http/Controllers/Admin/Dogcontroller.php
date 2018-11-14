@@ -16,6 +16,9 @@ class DogController extends Controller
 	public function __construct(){
 		$this->dog 			= new Dog();
 		$this->dog_category = new DogCategory();
+	    view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+
 	}
 	public function index(Request $request){
 		$request->flash();
@@ -31,14 +34,13 @@ class DogController extends Controller
 		// dd($category_id);
 		$dog_category   = $this->dog_category->getAllDogCategories()->get();
 		// dd($dog_category);
-		$orders_waiting  = Order::where('status',1)->get();
 		return view('admin.dog.index', compact('dogs','dog_category','count_dogs','category_id','orders_waiting'));
 	}
 
 	public function add()
 	{
 		$dog_category = $this->dog_category->getAllDogCategories()->get();
-		return view('admin.dog.create',compact('dog_category'));
+		return view('admin.dog.create',compact('dog_category','orders_waiting'));
 	} 
 
 	public function store(AdminDogRequest $request)
@@ -92,7 +94,7 @@ class DogController extends Controller
 	{
 		$dog 		  = Dog::findOrFail($id);
 		$dog_category = $this->dog_category->getAllDogCategories()->get();
-		return view('admin.dog.edit',compact('dog','dog_category'));
+		return view('admin.dog.edit',compact('dog','dog_category','orders_waiting'));
 	} 
 
 	public function update(Request $request,$id)

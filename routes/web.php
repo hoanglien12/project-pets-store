@@ -12,7 +12,7 @@
 */ 
 Route::get('/not-allow','Controller@not_allow')->name('not-allow');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function(){
-	Route::get('', 'Admin\ProductCategoryController@admin')->name('indexAdmin');
+	Route::get('', 'HomeController@index')->name('indexAdmin');
 
 	Route::group(['prefix' => 'product-category'], function(){ 
 		Route::get('/', 'Admin\ProductCategoryController@index')->name('product_category.show');

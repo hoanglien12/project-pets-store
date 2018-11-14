@@ -19,6 +19,9 @@ class ProductController extends Controller
     public function __construct(){
         $this->pro         = new Product();
         $this->product_cate = new ProductCategory();
+        view()->share('orders_waiting',count(Order::where('status',1)->get()));
+        
+
     }
     public function index(Request $request){
         $name = $request->input('name');
@@ -29,7 +32,6 @@ class ProductController extends Controller
         $count_products = count($this->pro->getAllProducts($name, $category_id,$price, $begin_date, $end_date)->get());
         $product = $this->pro->getAllProducts($name, $category_id, $price, $begin_date, $end_date)->get();
         $product_cate = $this->product_cate->getAllProductCategories()->get();
-        $orders_waiting  = Order::where('status',1)->get();
         return view('admin.product.show', compact('product','product_cate','count_products','category_id', 'begin_date', 'end_date','sale','orders_waiting'));
     }
 
@@ -42,7 +44,7 @@ class ProductController extends Controller
     {
         $cate = ProductCategory::all();
 
-        return view('admin.product.add', ['cate' => $cate]);
+        return view('admin.product.add', compact('cate','orders_waiting'));
     }
 
     /**
@@ -103,7 +105,7 @@ class ProductController extends Controller
         $cate = ProductCategory::all();
         $product = Product::find($id);
 
-        return view('admin.product.edit', ['product' => $product, 'cate' => $cate]);
+        return view('admin.product.edit', compact('product', 'cate','orders_waiting'));
     }
 
     /**
