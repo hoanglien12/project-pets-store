@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AdminDogRequest;
+use App\Http\Requests\AdminEditDogRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Dog;
 use App\Models\DogCategory;
-use App\Http\Requests\AdminDogRequest;
 use App\Models\Order;
+
+
 
 class DogController extends Controller
 {
@@ -97,7 +100,7 @@ class DogController extends Controller
 		return view('admin.dog.edit',compact('dog','dog_category','orders_waiting'));
 	} 
 
-	public function update(Request $request,$id)
+	public function update(AdminEditDogRequest $request,$id)
 	{
 		$request->flash();
 		$update       = Dog::query()->findOrFail($id);

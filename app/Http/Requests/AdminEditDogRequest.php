@@ -24,14 +24,13 @@ class AdminEditDogRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|unique:dog_categories,name,' .$this->segment(4)
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.unique' => 'The name has already exsit'
+            'name'          =>  'bail|required|unique:dog_categories,name,' .$this->segment(4)
+            'price'         =>  'required|numeric',
+            'category_id'   =>  'required',
+            'photos.*'      =>  'required|image',
+            'sale'          =>  'numeric|nullable',
+            'heigt'         =>  'numeric|nullable',
+            'weight'        =>  'numeric|nullable',
         ];
     }
 }
