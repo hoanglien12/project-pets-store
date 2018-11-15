@@ -131,7 +131,10 @@ class HomeController extends Controller
     {
 
         $value     = $request->input('search');
-
+        if($value == null)
+        {
+            return redirect()->back()->with('fail', 'You must input key in search box!');
+        }
         $dogs      = Dog::join('dog_categories','dogs.id_dog_cate','=','dog_categories.id')
                         ->where('dogs.name','like',"%$value%")
                         ->orWhere('price',$value)

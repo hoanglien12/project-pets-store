@@ -1,7 +1,9 @@
 @extends('client.layouts.master')
 @section('title','About Us')
 @section('content')
+
 <h1>About us</h1>
+@include('admin.layouts.flash-msg')
 <div class="content-wrap content-sidebar-right container col-md-12 col-sm-8 col-xs-12">
     <div class="content-single-blog ">
         <div class="single-post-thumb banner-advs col-md-6">

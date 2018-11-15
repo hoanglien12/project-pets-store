@@ -87,7 +87,7 @@ input:hover {
 .round {
   border-radius: 50%;
 }
-.desc {
+.item-product.item-product-grid .desc {
   height: 90px;
   color: #555;
   margin: 0;

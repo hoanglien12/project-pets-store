@@ -36,7 +36,7 @@
 											</td>
 											@else
 											<td class="product-remove">
- 												<a href="{{route('home.del',$dog['item']['id'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
+ 												<a href="{{route('home.del',$dog['item']['name'])}}" class="remove" aria-label="Remove this item" data-product_id="724" data-product_sku="DSP23684">
 													<i class="fa fa-trash" style="margin-left: 15px; color: red; font-size: 20px;"></i>
 												</a>
 											</td>

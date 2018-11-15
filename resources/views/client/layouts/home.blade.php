@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('title','Pets Store')
 @section('content')
+	@include('admin.layouts.flash-msg')
 	@include('client.slider.slider')
 
     @include('client.dog.dog_age')

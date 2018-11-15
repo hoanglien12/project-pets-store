@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 @section('title','Contact')
 @section('content')
-
+@include('admin.layouts.flash-msg')
 <section class="ptb ptb-xs-60">
     <div class="container">
         <div class="row">
