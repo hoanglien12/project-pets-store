@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('title','Detail Dog')
 @section('content')
+	@include('admin.layouts.flash-msg')
 	<div class="main-wrap-shop content-wrap content-sidebar-right col-md-9 col-sm-8 col-xs-12">
 	    <div id="product-724" class="post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
 	        <div class="product-detail">
@@ -19,7 +20,7 @@
 		                            @endforeach
 	                                
 	                                @if($dogs->sale!=0)
-	                                <div class="product-label"><span class="sale">-{{$dogs->sale}}%</span></div>
+	                                <div class="product-label"><span class="sale">Sale</span></div>
 	                                @endif
 	                            </div>
 	                           
@@ -32,10 +33,10 @@
 	                        <h2 class="product-title title24 dosis-font font-bold text-uppercase">Name : {{$dogs->name}}</h2>
 	                        
 	                        <p class="price"></p>
-	                        @if($dogs->promotion_price==0)
+	                        @if($dogs->sale==0)
 	                        <div class="product-price simple"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></div>
 	                        @else
-	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->promotion_price}}</span></ins></div>
+	                         <div class="product-price simple"><del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->price}}</span></del> <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$dogs->sale}}</span></ins></div>
 	                         @endif
 	                          <div><p>Birthday: {{$dogs->birthday}}</p></div>
 	                         <div><p>Height:    {{$dogs->height}} cm</p></div>
@@ -44,12 +45,6 @@
 
 	                        <form class="cart" action="{{route('home.cart',$dogs->id)}}" method="get">
 	                        	@csrf
-	                            <label class="qty-label">Qty:</label>
-	                            <div class="detail-qty info-qty border radius6">
-	                                <a href="#" class="qty-down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-	                                <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text text qty qty-val" size="4">
-	                                <a href="#" class="qty-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-	                            </div>
 	                            <button type="submit" name="add-to-cart" value="724" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple">Add to cart</button>
 
 	                        </form>

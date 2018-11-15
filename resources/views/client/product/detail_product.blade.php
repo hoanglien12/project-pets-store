@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 @section('title','Detail Product')
-@section('content')
-
+@section('content')	
+	@include('admin.layouts.flash-msg')
 	<div class="main-wrap-shop content-wrap content-sidebar-right col-md-9 col-sm-8 col-xs-12">
 
 	    <div id="product-724" class="post-724 product type-product status-publish has-post-thumbnail product_cat-bichon-frise product_cat-french-bulldog product_cat-golden-retriever first instock sale featured shipping-taxable purchasable product-type-simple">
@@ -39,12 +39,6 @@
 	                          
 	                        <form class="cart" action="{{route('home.productcart',$products->id)}}" method="get">
 	                        	@csrf
-	                            <label class="qty-label">Qty:</label>
-	                            <div class="detail-qty info-qty border radius6">
-	                                <a href="#" class="qty-down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-	                                <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text text qty qty-val" size="4">
-	                                <a href="#" class="qty-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-	                            </div>
 	                            <button type="submit" name="add-to-cart" value="724" class="button addcart-link shop-button bg-color product_type_simple add_to_cart_button s7upf_ajax_add_to_cart product_type_simple">Add to cart</button>
 
 	                        </form>

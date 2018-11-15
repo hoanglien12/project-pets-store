@@ -2,7 +2,7 @@
 @section('title','Product Categories')
 @section('content')
 
-
+@include('admin.layouts.flash-msg')
 @include('client.layouts.sidebar')
     <div class="main-wrap-shop content-wrap content-sidebar-left col-md-9 col-sm-8 col-xs-12">
 
