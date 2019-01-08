@@ -14,7 +14,7 @@ Phân công công việc:
 - Nguyễn Thị Cúc: Tìm kiếm giao diện, chỉnh sửa giao diện, đổ dữ liệu trang Client, một phần Cart
 - Xây dựng cơ sở dữ liệu: cả nhóm cùng góp ý xây dựng.
 
-C chạy project:
+Cách chạy project:
 - Mở cmd, trỏ (cd) đến thư mục chứa project hoặc mở project, chuột phải và chọn open in terminal.
 - Chạy lệnh composer update.
 - Import database:
